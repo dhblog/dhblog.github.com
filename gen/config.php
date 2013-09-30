@@ -1,8 +1,4 @@
 <?php
-$dbip='localhost';
-$dbuser='root';
-$dbpasswd='root';
-$dbname='dhmedia';
 
 date_default_timezone_set ('Asia/Shanghai');
 
@@ -11,13 +7,13 @@ $pagecount=15;
 //预留几页的空间
 //$pagebgen=2;
 
-//$DH_output_path= $_SERVER['DOCUMENT_ROOT'] . '/';
-//$DH_input_path= '/srv/movie002/';
-//$DH_home_url= 'http://movie002.com/';
+//$DH_output_path= '/srv/dhblog/';
+//$DH_input_path= '/srv/dhblog/';
+//$DH_home_url= 'http://dhblog.org/';
 
-$DH_output_path= $_SERVER['DOCUMENT_ROOT'] . '/movie/';
-$DH_input_path= $_SERVER['DOCUMENT_ROOT'] . '/movie002/';
-$DH_home_url= 'http://127.0.0.1/movie/';
+$DH_output_path= $_SERVER['DOCUMENT_ROOT'] . '/dhblog/';
+$DH_input_path= $_SERVER['DOCUMENT_ROOT'] . '/dhblog/';
+$DH_home_url= 'http://127.0.0.1/dhblog/';
 
 $DH_src_path= $DH_input_path. 'gen/';
 $DH_html_path= $DH_src_path . 'html/';
@@ -36,108 +32,9 @@ $DH_page_range = 6;
 $index_list_count = 8;
 
 //页面存储的深度
-$DH_page_store_deep = 3;
+$DH_page_store_deep = 2;
 //每个深度的页面个数
 $DH_page_store_count = 100;
-
-//数据字典定义
-///电影相关：
-///类型：0:'' 1:电影大片 2:电视剧集
-///国家：0:'' 1:华语影视 2:欧美大片 3:日韩风格 4:其他国家
-///电影的状态：0:'' 1:出预告片 2:马上登陆 3:正在上映 4:放映结束 5:出售碟片 6:经典影片
-///链接相关：
-///链接类型：0:'' 1:影视资讯 2:热门评论 3:影视资源 4:购票链接 5:影视资料
-///如果链接是影视资源，子类型：0:'' 1:网站 2:预告 3:花絮 4:在线 5:下载 6:综合
-///如果是在线，子类型：0:'' 1:优酷在线 2:搜狐影视 3:百度影音 4:PPlive 5:风行 6:土豆 7:爱稀奇 8:PPS
-///如果是下载，子类型：0:'' 1:迅雷资源 2:FTP资源 3:BT资源 4:磁力链接 5:电驴资源 6:其他资源
-///清晰度：0:'' 1:TC抢先 2:TC修正 3:DVD清晰 4:BD普清 5:HD高清 6:3D片源
-///状态：0:'' 1:得到链接 2:链接修正 3:得到共同的电影标题 4:得到mediaid 5:得到src 6:结束
-
-$movielist=array('即将登陆','最新资源','一周热门','一月热门','高清资源');
-
-//$movietype=array('','电影大片','电视节目','综艺娱乐','动漫资源');//综艺和动漫剧集归结为电视节目，动漫电影归结为电影
-$movietype=array('','电影','电视','综艺','动漫');//综艺和动漫剧集归结为电视节目，动漫电影归结为电影
-//$moviecountry=array('','华语影视','欧美风格','日韩潮流','其他国家');
-$moviecountry=array('','华语','欧美','日韩','其他');
-$moviestatus=array('','出预告片','马上登陆','正在上映','放映结束','出售碟片','经典影片');
-
-//所有的链接类型，除了影视资源,都在onlylink表中
-$linktype=array('','影视资讯','热门评论','影视资源','购票链接','影视资料','相关活动');
-//在link表中的资源
-$linkway=array('未知','网站','预告','花絮','在线','下载','综合');
-$linkonlinetype=array('','优酷在线','搜狐影视','百度影音','PPlive','风行','土豆','爱稀奇','PPS');
-$linkdowntype=array('未知类型','迅雷资源','FTP资源','BT  资源','磁力链接','电驴资源','手机资源','其他资源');
-$linkquality=array('未知','抢先','修正','普清','高清','超清','三维');
-$linkstatus=array('','得到链接','链接修正','内部得到mediaid','爬取得到mediaid','修正爬取得到mediaid','修正内部得到mediaid','得到src','结束');
-
-//$linkquality=array('','精致','高清','清晰','抢先','');
-//$linkway=array('','滚动更新','即时动态','下载','在线','在线下载','影片信息','影片资讯');
-//$linktype=array('','影视动态','电视前沿','娱乐新闻','热门评论','微电影世界','综艺节目','','预告');
-//$toptype=array('预告片','正在上映','马上登陆','票房纪录');
-
-function dh_get_catname($type,$country)
-{
-	if($type==='o')
-	{
-		echo 'get type: '.$type.'：预告片';
-		return '预告片';
-	}
-	global $movietype,$moviecountry;
-	$cat =$movietype[$type]. '(' .$moviecountry[$country].')';
-	return $cat;
-}
-
-//使用字符串获得id
-function get_movietype($name)
-{
-	if(strstr($name,"电影")||strstr($name,"片"))
-		return 1;
-	if(strstr($name,"电视剧") || strstr($name,"剧集"))
-		return 2;
-	if(strstr($name,"动画") || strstr($name,"动漫"))
-		return 4;
-	if(strstr($name,"综艺"))
-		return 3;		
-	return 0;
-}
-
-function get_moviecountry($name)
-{
-	if(strstr($name,"大陆") ||strstr($name,"中国") ||strstr($name,"香港")  ||strstr($name,"台湾") ||strstr($name,"澳门"))
-		return 1;			
-	if(strstr($name,"美国") ||strstr($name,"USA")|| strstr($name,"法国")|| strstr($name,"德国")|| strstr($name,"俄罗斯")|| strstr($name,"英国"))
-		return 2;
-	if(strstr($name,"日本")||strstr($name,"韩国")||strstr($name,"朝鲜"))
-		return 3;
-	return 4;
-}
-
-function get_quality($name)
-{
-	if(strstr($name,"1080p") ||strstr($name,"720p") ||strstr($name,"BD")  ||strstr($name,"HD"))
-		return 4;			
-	if(strstr($name,"TS") || strstr($name,"tc")|| strstr($name,"抢先")|| strstr($name,"俄罗斯")|| strstr($name,"英国"))
-		return 1;
-	if(strstr($name,"DVD"))
-		return 3;
-	if(strstr($name,"3D"))
-		return 6;		
-	return 0;
-}
-
-
-function dh_mysql_query($sql)
-{
-	$rs = mysql_query($sql);
-	$mysql_error = mysql_error();
-	if($mysql_error)
-	{
-		echo 'dh_mysql_query error info:'.$mysql_error.'</br>';
-		echo $sql;
-		return null;
-	}
-	return $rs;
-}
 
 function output_page_path($basepath,$id) 
 {	
@@ -235,21 +132,6 @@ function higrid_compress_html($higrid_uncompress_html_source )
 	return $higrid_uncompress_html_source; 
 } 
 
-function getupdatebegin($day)
-{
-	//默认设置成120天之前
-	//$day = 365;
-	$sql="select max(updatetime) from page";
-	$res = dh_mysql_query($sql);	
-	$updatetime = mysql_fetch_array($res);
-	$timenow = strtotime($updatetime[0]);
-	$timebegin = $timenow - $day*24*3600;
-	$datebegin = date("Y-m-d",$timebegin);
-	$datebegin = date("Y-m-d H:i:s",strtotime($datebegin));
-	echo $updatetime[0].' -> '.$datebegin."</br>\n";
-	return $datebegin;
-}
-
 function iconvbuff($buff)
 {
 	mb_detect_order('UTF-8,gbk,gb2312,cp950,cp936');
@@ -272,4 +154,38 @@ function iconvbuffgbk($buff)
 	return $buff;
 }
 
+function setshare($DH_output_content,$js)
+{
+	global $DH_home_url,$DH_input_path,$DH_html_path;
+	$DH_share_output_path = $DH_input_path.'gen/top/';
+	$DH_input_html  = $DH_share_output_path . 'meta.html';
+	$DH_output_meta = dh_file_get_contents("$DH_input_html");
+	$DH_input_html  = $DH_share_output_path . 'side.html';
+	$DH_output_side = dh_file_get_contents("$DH_input_html");
+	$DH_input_html  = $DH_share_output_path . 'head.html';
+	$DH_output_head = dh_file_get_contents("$DH_input_html");	
+	$DH_input_html  = $DH_share_output_path . 'foot.html';
+	$DH_output_foot = dh_file_get_contents("$DH_input_html");
+	
+	$DH_output_content = str_replace("%meta%",$DH_output_meta,$DH_output_content);
+	$DH_output_content = str_replace("%side%",$DH_output_side,$DH_output_content);
+	$DH_output_content = str_replace("%head%",$DH_output_head,$DH_output_content);
+	$DH_output_content = str_replace("%foot%",$DH_output_foot,$DH_output_content);		
+	
+	$DH_input_html  = $DH_html_path.$js;
+	$DH_js = dh_file_get_contents($DH_input_html);
+	$DH_js = str_replace("%home%",$DH_home_url,$DH_js);
+	$myPacker = new compressJS($DH_js);	
+	$DH_js = $myPacker->pack();
+	$DH_output_content = str_replace("%$js%",$DH_js,$DH_output_content);	
+	
+	$DH_input_html  = $DH_html_path . 'foot.js';
+	$DH_js = dh_file_get_contents($DH_input_html);
+	$DH_js = str_replace("%home%",$DH_home_url,$DH_js);	
+	$myPacker = new compressJS($DH_js);	
+	$DH_js = $myPacker->pack();
+	$DH_output_content = str_replace("%footjs%",$DH_js,$DH_output_content);	
+	
+	return $DH_output_content;
+}
 ?>

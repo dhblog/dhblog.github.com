@@ -1,0 +1,90 @@
+<div id="top">
+  <div class='topnav'>
+    <div class="left">
+        <div>
+		<ul class="menu">
+		<li><a href="http://127.0.0.1/dhblog/static/index.html">首页</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/static/index.html/">关于本站</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/static/index.html/archivers/">本站导航</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/static/index.html/?page_id=22">本站共享</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/static/index.html/?page_id=20">友情链接</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/static/index.html/?page_id=19">给我留言</a></li> 
+		</ul>
+        </div> 
+    </div>
+    <!--end: left-->
+    <div class="right">	
+dd
+    </div>
+    <!--end: right-->
+  </div>
+</div>
+<!--end: top-->
+<div id="header"> 
+  <div  class="toplink">
+    <ul>
+	  <li><a href="http://127.0.0.1/dhblog/static/" target="_blank">文章RSS</a></li>
+	  <li>
+	  	<script type="text/javascript">
+		function showdate() //显示系统日期   
+		{   
+			var now = new Date();
+			var year = now.getFullYear();
+			var month = now.getMonth()+1; 
+			var day = now.getDate();
+			return year+"年"+month+"月"+day+"日";   
+		}
+		document.write(showdate());
+		</script>	
+	  </li>
+   </ul>
+  </div>
+  <div style="position:absolute;top:5px;left:35px;">
+   <object type="application/x-shockwave-flash" data="images/relog.swf" WIDTH=80 HEIGHT=80>
+    <param name="movie" value="images/relog.swf" />
+    <param name="WMode" value="Transparent" />
+   </object>
+  </div>
+  <div class="logo">
+    <h1 ><a href="http://127.0.0.1/dhblog/static/">
+      DH 博客
+      </a></h1>
+    <h2 class="description">
+      DH出品，必属精品！
+    </h2>
+  </div>
+</div>
+<!--end: header-->
+<div class="topnav menunav">
+	<div class="left">
+		<ul><li><a href="http://127.0.0.1/dhblog/static/cat3.html" title="">信息应用</a><ul><li><a href="http://127.0.0.1/dhblog/static/cat117.html" title="">工具推荐</a></li><li><a href="http://127.0.0.1/dhblog/static/cat120.html" title="">网站设计</a><ul><li><a href="http://127.0.0.1/dhblog/static/cat126.html" title="">网站优化</a></li><li><a href="http://127.0.0.1/dhblog/static/cat125.html" title="">wordpress</a></li><li><a href="http://127.0.0.1/dhblog/static/cat123.html" title="">javascript</a></li><li><a href="http://127.0.0.1/dhblog/static/cat122.html" title="">css</a></li></ul></li></ul></li><li><a href="http://127.0.0.1/dhblog/static/cat7.html" title="">生活百味</a><ul><li><a href="http://127.0.0.1/dhblog/static/cat5.html" title="">电影赏析</a></li><li><a href="http://127.0.0.1/dhblog/static/cat127.html" title="">活动推荐</a></li></ul></li><li><a href="http://127.0.0.1/dhblog/static/cat11.html" title="">投资理财</a></li><li><a href="http://127.0.0.1/dhblog/static/cat129.html" title="">信息基础</a><ul><li><a href="http://127.0.0.1/dhblog/static/cat124.html" title="">专业知识</a></li></ul></li></ul>
+	</div>
+
+  	<script type="text/javascript">
+		function showWarning() //显示系统日期   
+		{   
+			var now = new Date();
+			var hour = now.getHours();
+			if(hour>=23||hour<=6)
+			{
+				var message='<div style="border:2px solid #FF3300;font-size:12px;margin:2px 20px 0 440px;background:#FFFFDF;padding:2px;">提醒: 已经是夜里 ';
+				message +=hour;
+				message +=' 点多了，为了您和家人的健康，请注意按时作息减少熬夜。</div>';				
+			    return message;
+			}
+			else 
+			{			
+			   return 'ddd'; 
+			}
+		}
+		document.write(showWarning());
+	</script>
+	<div id="dh_say_content" class="right" style="margin:4px 0 2px 0">
+		<p id="dh_say" title="点击可查看下一条">ddd</p>
+	</div>
+  <!--end: right-->
+</div>
+<!--end: menunav-->
+<div class="top_content">   
+%top_content%
+</div>

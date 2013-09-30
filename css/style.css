@@ -79,7 +79,7 @@ text-decoration:none;
 }
 
 a:hover {
-text-decoration:none;
+text-decoration:underline;
 }
 
 .topnav {
@@ -243,13 +243,9 @@ top:5px;
 }
 
 .top_content {
-border:1px dashed #aaa;
+border:1px dashed #898f8f;
 padding:5px 5px 7px 40px;
 background:url(../images/audio.png) no-repeat 5px 0;
-border-radius:4px;
--webkit-border-radius:4px;
--khtml-border-radius:4px;
--moz-border-radius:4px;
 }
 
 .toplink ul li {
@@ -275,7 +271,7 @@ font-weight:400;
 font-size:12px;
 position:absolute;
 left:150px;
-top:35px;
+top:55px;
 }
 
 #content {
@@ -289,15 +285,11 @@ z-index:1;
 }
 
 .browse {
-border:1px solid #aaa;
+border:1px solid #898f8f;
 color:#333;
 line-height:18px;
 margin:0 1px;
 padding:3px;
-border-radius:4px;
--webkit-border-radius:4px;
--khtml-border-radius:4px;
--moz-border-radius:4px;
 }
 
 #sidebar {
@@ -320,13 +312,9 @@ color:#333;
 }
 
 .singlewidget {
-border:1px solid #aaa;
+border:1px solid #898f8f;
 margin:0 0 10px;
 padding:0;
-border-radius:4px;
--webkit-border-radius:4px;
--khtml-border-radius:4px;
--moz-border-radius:4px;
 }
 
 .singlewidget h3 {
@@ -357,14 +345,6 @@ margin:0 0 -2px;
 padding:10px 0;
 }
 
-.singlewidget ul li:hover {
-border-bottom:1px solid #52686f;
-}
-
-.singlewidget ul li a:hover {
-text-decoration:none;
-}
-
 .singlewidget .right_count {
 position:absolute;
 right:0;
@@ -383,14 +363,10 @@ text-overflow:ellipsis;
 }
 
 .doublewidget {
-border:1px solid #aaa;
+border:1px solid #898f8f;
 margin:0 0 10px;
 padding:0;
 overflow:hidden;
-border-radius:4px;
--webkit-border-radius:4px;
--khtml-border-radius:4px;
--moz-border-radius:4px;
 }
 
 .doublewidget .box {
@@ -410,37 +386,7 @@ padding:5px 0 5px 5px;
 }
 
 .doublewidget ul li:hover {
-border-bottom:1px solid #52686f;
-}
-
-.tag_widget {
-border:1px solid #aaa;
-margin:0 0 10px;
-padding:0;
-z-index:1;
-overflow:hidden;
-border-radius:4px;
--webkit-border-radius:4px;
--khtml-border-radius:4px;
--moz-border-radius:4px;
-}
-
-.tag_widget_box a {
-	background: #B3875B;
-    border: 3px double white;
-    color: #FFFFFF;
-    display: block;
-    float: left;
-	font-size:13px;
-    margin: 2px;
-    padding: 2px 8px;
-    text-decoration: none;
-	-webkit-border-radius: 15px;
-	-moz-border-radius: 15px;
-	border-radius: 15px;
-}
-.tag_widget_box a:hover {
-	background:#FF8F0D;
+border:1px dashed #c00;
 }
 
 #sidebar h3 {
