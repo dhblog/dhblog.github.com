@@ -14,70 +14,7 @@
 	<div class="browse">你的位置：首页 >>  <a href="http://127.0.0.1/dhblog/static/cat125.html" title="查看分类wordpress下的所有文章">wordpress</a> </div>
 	<div class="entry">
 		<h1>wordpress主题:增加帅哥认证标识</h1>
-		<div class="postmeta">发表时间: 2011-07-15 06:00:46| 标签: <a href="http://127.0.0.1/dhblog/static/tag133.html" title="查看标签wordpress应用下的所有文章">wordpress应用</a> </div>
-		<div id="article-index">
-					<div id="index-title"><span id="the-index-title">正文索引</span><span id="show-index">[ 隐藏 ]</span></div>
-					<div id="index-ul"><ul><li class="level2"><a href="#title-0" title="1 起源">1 起源</a></li>
-<li class="level2"><a href="#title-1" title="2 方法">2 方法</a></li>
-<li class="level2"><a href="#title-2" title="3 帅哥评选原则">3 帅哥评选原则</a></li>
-<li class="level2"><a href="#title-3" title="4 效果图">4 效果图</a></li>
-</ul></div></div><p>ddd</p><h2 id="title-0">1 起源</h2>
-<p>首先感谢自说me话：<a href="http://isayme.com/2011/06/handsome-in-my-blog/">http://isayme.com/2011/06/handsome-in-my-blog/</a><br />
-这篇文章讲了它弄了个帅哥认证，虽然我没有被评为帅哥，但是这不妨碍我学习并定义我这里的帅哥。</p>
-<h2 id="title-1">2 方法</h2>
-<p>方法很简单,在functions.php中添加如下语句</p>
-<pre lang="php">
-function comment_g_title($email = '')
-{
-	if(empty($email))return;
-	$handsome=array(
-	'1'=>'aa@bb.com',
-	'2'=>'cc@dd.com');
-
-	$adminEmail = get_option('admin_email');
-	if($email==$adminEmail)
-	echo "
-<div class='admin' title='博主'>博主</div>
-
-";
-	elseif(in_array($email,$handsome))
-	echo "
-<div class='handsome' title='帅哥'>帅哥</div>
-
-";
-}
-</pre>
-<p>aa@bb.com 为需要添加帅哥的人的邮件。另外需要在评论的显示评论者名字的地方加上一句</p>
-<pre lang="php">
-<?php comment_g_title($comment->comment_author_email); ?>
-</pre>
-<h2 id="title-2">3 帅哥评选原则</h2>
-<p>在我这里评论不小于10条的为帅哥，iSayMe虽然只有9个，但是用了他的东西，所以给他例外。<br />
-这里给出评选的SQL语句：</p>
-<pre lang="sql">
-SELECT comment_author, comment_author_email, COUNT( * )
-FROM `wp_comments`
-where comment_approved = '1'
-GROUP BY comment_author
-ORDER BY COUNT( * ) DESC
-LIMIT 0 , 30
-</pre>
-<p>SQL语句执行结果图：<br />
-<a href="http://dhblog.org/wp-content/uploads/2011/08/handsome1.png"><img src="http://dhblog.org/wp-content/uploads/2011/08/handsome1.png" alt="" title="handsome" width="372" height="443" class="aligncenter size-full wp-image-941" /></a><br />
-很激动 松哥在我这里的留言超过10条了。</p>
-<h2 id="title-3">4 效果图</h2>
-<p>以iSayMe为例：<br />
-<a href="http://dhblog.org/wp-content/uploads/2011/08/handsome2.png"><img src="http://dhblog.org/wp-content/uploads/2011/08/handsome2.png" alt="" title="handsome2" width="632" height="359" class="aligncenter size-full wp-image-942" /></a></p>
-
-		<!-- UY BEGIN -->
-		<div class='nav-below'><div class='nav-previous'></div><div class='nav-next'><a href="p2.html" title="博客总结(2011年上半年总结篇)">博客总结(2011年上半年总结篇) ►</a></div></div>
 	</div>
-	<div id="uyan_frame"></div>
-	<script type="text/javascript" id="UYScript" src="http://v1.uyan.cc/js/iframe.js?UYUserId=1520887" async=""></script>
-	<!-- UY END -->
-	<!-- PingLun.La Begin -->
-	<div id="pinglunla_here"></div><a href="http://www.pinglunla.com/" id="logo-pinglunla">评论啦</a><script type="text/javascript" src="http://s2.pinglun.la/md/pinglun.la.js" charset="utf-8"></script>
-	<!-- PingLun.La End -->	
 </div>
 <div id="sidebar">
 
