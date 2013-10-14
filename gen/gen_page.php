@@ -24,12 +24,6 @@ function dh_gen_page()
 	$DH_output_content = dh_file_get_contents("$DH_input_html");
 	//echo $DH_output_content;
 	$DH_output_content = setshare($DH_output_content,'page.js');
-	$deep = '';
-	for($i= 0;$i<$DH_page_store_deep;$i++)
-	{
-		$deep .= '../';
-	}
-	$DH_output_content = str_replace("%deep%",$deep,$DH_output_content);	
 	$DH_output_content = str_replace("%home%",$DH_home_url,$DH_output_content);		
 	dh_gen_each_page_file($DH_output_html_path,$DH_output_content);
 }
