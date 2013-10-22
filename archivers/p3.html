@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>IT求职知识:基础知识1(c++代码篇) - Powered by dhblog.org</title>
+<meta name="keywords" content="IT求职知识:基础知识1(c++代码篇)" />
+<meta name="description" content="IT求职知识:基础知识1(c++代码篇),静态页面,Powered by dhblog.org" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<div id="wrapper">
+<div id="nav">
+<ul><li><a href="p19.html" title="给我留言">给我留言</a></li>
+<li><a href="p20.html" title="友情链接">友情链接</a></li>
+<li><a href="p21.html" title="关于本站">关于本站</a></li>
+<li><a href="p22.html" title="本站下载">本站下载</a></li>
+<li><a href="p39.html" title="google搜索结果">google搜索结果</a></li>
+</ul>
+</div>
+<div id="top">
+<div id="dhtitle">DH 博客的文章归档</div>
+<center>DH出品，必属精品！</center>
+  <div style="text-align:right;">
+	<a href="http://dhblog.org">原始版本</a>
+  </div>  
+</div><div id="nav">
+<a href="http://dhblog.org/archivers/"><strong>DH 博客</strong></a>  &raquo; <a href="http://dhblog.org/archivers/cat124-1.html">专业知识</a>  &raquo; IT求职知识:基础知识1(c++代码篇)
+| <a href="http://dhblog.org/archives/3.html"><strong>查看此文章的完整的版本</strong></a>
+</div>
+<div id="content">
+<div id="post_content">
+<div id="post_title">IT求职知识:基础知识1(c++代码篇)</div>
+<div id="post_author">2011-07-05 07:45:29</div>
+<div>
+<p>又是一个暑假的到来了，虽然现在工作了，已经体验不要暑假的味道了，但是过了这个暑假，很多同学就要准备找工作了。<p>
+<p>找工作既是一个自己努力的过程，又是一个考验自己的经历，还有一些不懂得运气。<p>
+<p>对于一个it的求职者来说，现在的这个阶段，大家应该在看基础的计算机理论知识。<p>
+<p>前段时间有个兄弟问我，你找工作时候的资料，我叫他到墨鱼的博客找，他说很难找，那我就帮他整理一下，希望他能看到，并找到称心的工作。一来可以把一些觉得还有些意思的题分享给大家，同时也给自己做个备忘。<p>
+<strong>1.宏定义</strong>
+
+<p>2f3350b45f1a9eb064062a99adce3d6e076</p>
+
+
+Answer: 9, 49
+Explanation: 注意此处使用的是宏定义，宏定义的展开是简单的替换，所以每次i都会增2.
+
+<strong>2. 类型转换</strong>
+
+<p>2f3350b45f1a9eb064062a99adce3d6e077</p>
+
+
+Answer: 1
+Explanation: 类型转换在int遇到unsigned int是转换为unsigned int。
+
+<strong>3. 不适用中间变量的a,b值交换</strong>
+
+<p>2f3350b45f1a9eb064062a99adce3d6e078</p>
+
+
+第一种解法不需要解释，但要说明的是有一个缺点就是当a,b很大时会溢出。
+关于第二个解法首先要了解异或运算满足交换律和结合律，从这个角度来看解法二可以这么理解：
+b = (a^b)^b = a^(b^b) = a^0=a;  
+a=(a^b)^a = a^(b^a)=a^(a^b)=(a^a)^b = 0^b = b;
+
+
+<strong>4. atexit函数</strong>
+
+<p>2f3350b45f1a9eb064062a99adce3d6e079</p>
+
+
+
+Answer: 输出 Hi, Jack!
+Explanation:这个函数可以再main函数执行结束的时候执行指定的过程。很想消息注册的机制。下面给出个简单例子。
+注：这是程序员面试宝典37页的例子，dev c++中测试失败。
+
+<strong>5. sizeof</strong>
+
+<p>2f3350b45f1a9eb064062a99adce3d6e080</p>
+
+
+Answer: 11,100,400
+Explanation: 11,100,4*100=400(int的大小是4个字节)
+
+<strong>6. 关于虚继承</strong>
+
+<p>2f3350b45f1a9eb064062a99adce3d6e081</p>
+
+
+对于上述代码类D将拥有两个x成员，B::x和C::x。在很多情况下我们需要把两个x合并成一个，这时候就需要虚基类的帮忙。
+class A;
+class B:virtual public A;
+class C:virtual public A;
+class D:public B, public C;
+
+这而有个二义性和优先级的问题需要考虑：
+a. 如果在继承路径中最终的子类继承的是同一虚基类的成员，则无二义性
+b. 如果在继承路径中某条路径中是虚基类的成员，另一条路径中是派生类的同名成员，则派生类的优先级高于虚基类。
+c. 如果每条继承路径中出现非虚基类的同名成员，则有二义性。
+例子：
+
+<p>2f3350b45f1a9eb064062a99adce3d6e082</p>
+
+
+
+<strong>7.从M进制转换为N进制（宝典中的例子有严重错误）</strong>
+先从简单的例子着手：
+(1) M进制转换到十进制
+a1a2a3…ak(M) = a1*M^(k-1)+a2*M^(k-2) + … ak*M^0 = a1a2…a(k-1)(M)*M + ak = f(k-1)*M + ak（这一步是递归表达）
+(2)十进制转换M进制  仿照上述转换，同样得到 
+f(Num/M)*10 + Num%M(递归表示)
+(3)泛化：任意进制数转换N进制，假设Num/N结果是10进制，Num用自身的进制表示当然对于大于10的进制需要要引入其他符号表示
+f(Num/N)*10 + Num%N
+简单的例子：
+
+<p>2f3350b45f1a9eb064062a99adce3d6e083</p>
+
+
+
+<strong>8.地址的类型</strong>
+
+<p>2f3350b45f1a9eb064062a99adce3d6e084</p>
+
+
+Answer: false true
+Explanation: (int&)a 和 *((int*)&a)是一样的,把&a这个地址上32位数看作int型
+</div>
+</div>
+<div id="post_comment">
+<div id="comment"><div id="comment_title">作者：<strong>屠龙</strong> 时间： 2011-07-05 08:22:43 </div><div id="comment_content">找工作既是一个自己努力的过程，又是一个考验自己的经历，更是一种历练 ，所以要好好加油。 [努力]</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-05 08:24:29 </div><div id="comment_content">恩。主要是把这些知识记录下来，让后来人少走一些路。</div></div><div id="comment"><div id="comment_title">作者：<strong>最新网游</strong> 时间： 2011-07-05 10:16:08 </div><div id="comment_content">汗 有看没有懂</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-05 10:24:11 </div><div id="comment_content">这个是计算机专业的题目。呵呵</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-05 10:24:47 </div><div id="comment_content">不过还是谢谢过来看</div></div><div id="comment"><div id="comment_title">作者：<strong>七七</strong> 时间： 2011-07-05 10:33:07 </div><div id="comment_content">不错的分享，值得学习！</div></div><div id="comment"><div id="comment_title">作者：<strong>iSayme</strong> 时间： 2011-07-05 10:38:08 </div><div id="comment_content">收藏 C++学的不好 看的吃力 [大笑]</div></div><div id="comment"><div id="comment_title">作者：<strong>walfred</strong> 时间： 2011-07-05 15:25:00 </div><div id="comment_content">面向对象忘记的差不多了。。。</div></div><div id="comment"><div id="comment_title">作者：<strong>黄镇</strong> 时间： 2011-07-05 16:45:17 </div><div id="comment_content">C++我完全看不懂，看着都吃力，实践比看来得快</div></div><div id="comment"><div id="comment_title">作者：<strong>草根网赚纪录</strong> 时间： 2011-07-05 18:09:21 </div><div id="comment_content">代码对于小白我来说就是星际文化，博主厉害，火星文都会折腾</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-05 18:41:29 </div><div id="comment_content">找工作的时候用到的。特别是计算机专业的。呵呵</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-05 18:42:25 </div><div id="comment_content">是c++的基础。不涉及面向对象的概念。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-05 18:43:10 </div><div id="comment_content">对的，要理论联系实际的。这些基础知识，自己写个程序实现以下，会很容易记住的。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-05 18:43:28 </div><div id="comment_content">我是计算机专业的，这个是吃饭的家伙。呵呵</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-05 18:44:10 </div><div id="comment_content">谢谢。这些留在这里方便以后自己查找看看。</div></div><div id="comment"><div id="comment_title">作者：<strong>wenjian</strong> 时间： 2011-07-05 18:59:01 </div><div id="comment_content">来看看，通过姜敏博客来的，代码的看不懂。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-05 19:01:55 </div><div id="comment_content">呵呵。我是被代码搞的人。呵呵</div></div><div id="comment"><div id="comment_title">作者：<strong>大雄</strong> 时间： 2011-07-05 19:14:26 </div><div id="comment_content">又爱又恨！</div></div><div id="comment"><div id="comment_title">作者：<strong>张海华</strong> 时间： 2011-07-05 20:32:42 </div><div id="comment_content">IT求职？？？哥都怕做技术了！！</div></div><div id="comment"><div id="comment_title">作者：<strong>村长SEO</strong> 时间： 2011-07-05 21:49:22 </div><div id="comment_content">看不懂，但是支持了</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-06 08:21:41 </div><div id="comment_content">爱什么？我是靠这个吃饭的。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-06 08:22:00 </div><div id="comment_content">我也不喜欢，但是不做，我拿什么吃饭呢？</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-06 08:22:23 </div><div id="comment_content">谢谢支持！</div></div><div id="comment"><div id="comment_title">作者：<strong>屠龙</strong> 时间： 2011-07-06 10:57:19 </div><div id="comment_content">很专业的东西 该好好学习一下。。。。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-06 10:59:38 </div><div id="comment_content">谢谢屠龙大哥夸奖，这些是计算机专业的题目，给找工作的人看的。</div></div><div id="comment"><div id="comment_title">作者：<strong>怎么瘦脸</strong> 时间： 2011-07-06 11:09:51 </div><div id="comment_content">来看看，沙发了。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-06 12:33:10 </div><div id="comment_content">不是沙发吧？前面好像有很多评论了</div></div><div id="comment"><div id="comment_title">作者：<strong>有多远走多远</strong> 时间： 2011-07-06 13:34:34 </div><div id="comment_content">好专业,编程这些我真是不大懂.</div></div><div id="comment"><div id="comment_title">作者：<strong>Harid</strong> 时间： 2011-07-06 16:27:59 </div><div id="comment_content">曾经我也是那么地喜欢C++!</div></div><div id="comment"><div id="comment_title">作者：<strong>卢松松</strong> 时间： 2011-07-06 17:28:57 </div><div id="comment_content">不适合我面试呀 专业不同</div></div><div id="comment"><div id="comment_title">作者：<strong>苍井空</strong> 时间： 2011-07-06 17:49:37 </div><div id="comment_content">感谢分享</div></div><div id="comment"><div id="comment_title">作者：<strong>张海华</strong> 时间： 2011-07-06 20:54:59 </div><div id="comment_content">都说这种人智商太高，么得办法！！</div></div><div id="comment"><div id="comment_title">作者：<strong>官橙宝</strong> 时间： 2011-07-06 21:29:54 </div><div id="comment_content">[渴望] 专业知识  学习下</div></div><div id="comment"><div id="comment_title">作者：<strong>短笑话大全</strong> 时间： 2011-07-06 23:08:48 </div><div id="comment_content">不太懂技术啊~</div></div><div id="comment"><div id="comment_title">作者：<strong>石家庄SEO</strong> 时间： 2011-07-06 23:09:50 </div><div id="comment_content">大家都烦恼代码</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-07 07:42:12 </div><div id="comment_content">术业有专攻，你有你的擅长的东西。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-07 07:42:29 </div><div id="comment_content">谢谢空空</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-07 07:43:03 </div><div id="comment_content">技术问题是给我们这种人搞的，你们有更重要的任务~</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-07 07:43:40 </div><div id="comment_content">谢谢光顾。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-07 07:44:15 </div><div id="comment_content">术业有专攻，把自己擅长的搞好</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-07 07:44:33 </div><div id="comment_content">松哥是什么专业的呢？</div></div><div id="comment"><div id="comment_title">作者：<strong>屠龙</strong> 时间： 2011-07-07 08:11:00 </div><div id="comment_content">回帖一定要注意抢位置，内容不要空洞，要有自己的见解</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-07 08:12:03 </div><div id="comment_content">屠龙大哥，你的这句话我在卢松松的那个刚刚看过</div></div><div id="comment"><div id="comment_title">作者：<strong>知蚁博客</strong> 时间： 2011-07-10 10:17:31 </div><div id="comment_content">感觉更像是关于C的知识</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-11 08:13:50 </div><div id="comment_content">恩。C++和C的基础知识类似。这里面C偏多一些。但是公司招人的时候基本上语言类的就两种：C++和JAVA，所以把这个题目归类到C++类。</div></div><div id="comment"><div id="comment_title">作者：<strong>建材品牌</strong> 时间： 2011-09-20 14:26:03 </div><div id="comment_content">写代码的伤不起啊</div></div><div id="comment"><div id="comment_title">作者：<strong>无痛人流价格</strong> 时间： 2012-02-08 10:58:57 </div><div id="comment_content">谢谢你了~~</div></div>
+</div>
+</div><div id="sidebar">
+<div id="contentcat">
+<h3>分类目录</h3>
+<ul><ul><li><a href="http://dhblog.org/archivers/cat1-1.html" title="">未分类</a> (0)</li><li><a href="http://dhblog.org/archivers/cat3-1.html" title="">信息应用</a> (4)<ul><li><a href="http://dhblog.org/archivers/cat117-1.html" title="">工具推荐</a> (4)</li><li><a href="http://dhblog.org/archivers/cat120-1.html" title="">网站设计</a> (1)<ul><li><a href="http://dhblog.org/archivers/cat126-1.html" title="">网站优化</a> (2)</li><li><a href="http://dhblog.org/archivers/cat125-1.html" title="">wordpress</a> (41)</li><li><a href="http://dhblog.org/archivers/cat123-1.html" title="">javascript</a> (8)</li><li><a href="http://dhblog.org/archivers/cat122-1.html" title="">css</a> (2)</li></ul></li></ul></li><li><a href="http://dhblog.org/archivers/cat7-1.html" title="">生活百味</a> (0)<ul><li><a href="http://dhblog.org/archivers/cat5-1.html" title="">电影赏析</a> (6)</li><li><a href="http://dhblog.org/archivers/cat118-1.html" title="">幽默故事</a> (0)</li><li><a href="http://dhblog.org/archivers/cat127-1.html" title="">活动推荐</a> (5)</li><li><a href="http://dhblog.org/archivers/cat128-1.html" title="">健康养生</a> (0)</li></ul></li><li><a href="http://dhblog.org/archivers/cat11-1.html" title="">投资理财</a> (3)</li><li><a href="http://dhblog.org/archivers/cat129-1.html" title="">信息基础</a> (0)<ul><li><a href="http://dhblog.org/archivers/cat124-1.html" title="">专业知识</a> (2)</li><li><a href="http://dhblog.org/archivers/cat121-1.html" title="">软件编程</a> (0)</li></ul></li><li><a href="http://dhblog.org/archivers/cat119-1.html" title="">时文分享</a> (0)</li></ul></ul>
+</div>
+<div id="contenttag">
+<h3>讨论主题</h3>
+<ul><li><a href="http://dhblog.org/archivers/tag130-1.html" title="">wordpress 定时任务</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag131-1.html" title="">wordpress安全</a> (9)</li>
+<li><a href="http://dhblog.org/archivers/tag123-1.html" title="">javascript</a> (3)</li>
+<li><a href="http://dhblog.org/archivers/tag132-1.html" title="">wordpress提高速度</a> (6)</li>
+<li><a href="http://dhblog.org/archivers/tag133-1.html" title="">wordpress应用</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag134-1.html" title="">IT求职知识</a> (2)</li>
+<li><a href="http://dhblog.org/archivers/tag135-1.html" title="">wordpress定时任务</a> (5)</li>
+<li><a href="http://dhblog.org/archivers/tag136-1.html" title="">经验总结</a> (6)</li>
+<li><a href="http://dhblog.org/archivers/tag137-1.html" title="">友情推荐</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag138-1.html" title="">域名空间</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag139-1.html" title="">拿福能</a> (2)</li>
+<li><a href="http://dhblog.org/archivers/tag140-1.html" title="">wordpress主题</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag141-1.html" title="">wordpress ajax</a> (8)</li>
+<li><a href="http://dhblog.org/archivers/tag143-1.html" title="">wordpress数据库</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag145-1.html" title="">迅雷下载</a> (3)</li>
+<li><a href="http://dhblog.org/archivers/tag147-1.html" title="">BT下载</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag148-1.html" title="">数据库</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag149-1.html" title="">网络赚钱</a> (1)</li>
+</ul>
+</div>
+</div><div id="footer">
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/4836371.js"></script>
+<noscript><a href="http://www.51.la/?4836371" target="_blank"></a></noscript>
+Powered by <strong><a href="http://dhblog.org" target="_blank">dhblog</a></strong> &nbsp;&copy;<a href="http://dhblog.org" target="_blank" title="DH博客">DH</a>
+</div>
+</div>
+</body>
+</html>

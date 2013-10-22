@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>wordpress ajax之三:评论ajax分页 - Powered by dhblog.org</title>
+<meta name="keywords" content="wordpress ajax之三:评论ajax分页" />
+<meta name="description" content="wordpress ajax之三:评论ajax分页,静态页面,Powered by dhblog.org" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<div id="wrapper">
+<div id="nav">
+<ul><li><a href="p19.html" title="给我留言">给我留言</a></li>
+<li><a href="p20.html" title="友情链接">友情链接</a></li>
+<li><a href="p21.html" title="关于本站">关于本站</a></li>
+<li><a href="p22.html" title="本站下载">本站下载</a></li>
+<li><a href="p39.html" title="google搜索结果">google搜索结果</a></li>
+</ul>
+</div>
+<div id="top">
+<div id="dhtitle">DH 博客的文章归档</div>
+<center>DH出品，必属精品！</center>
+  <div style="text-align:right;">
+	<a href="http://dhblog.org">原始版本</a>
+  </div>  
+</div><div id="nav">
+<a href="http://dhblog.org/archivers/"><strong>DH 博客</strong></a>  &raquo; <a href="http://dhblog.org/archivers/cat125-1.html">wordpress</a>  &raquo; wordpress ajax之三:评论ajax分页
+| <a href="http://dhblog.org/47.html"><strong>查看此文章的完整的版本</strong></a>
+</div>
+<div id="content">
+<div id="post_content">
+<div id="post_title">wordpress ajax之三:评论ajax分页</div>
+<div id="post_author">2011-08-29 07:00:54</div>
+<div>
+<h2>1 序言</h2>
+上一遍讲到利用一个简单的例子说明了如何<a href="http://dhblog.org/archives/9.html">使用简单的ajax</a>。这里说明一个应用：评论页的ajax分页应用。关于这方面的文章：
+(1)<a href="http://winysky.com/wordpress-plug-ins-to-achieve-non-ajax-flip-comment">WordPress评论非插件实现ajax翻页</a>，我在测试的时候，发现里面虽然有一些地方有一点问题，但是这些可以参考一下哦。
+(2)<a href="http://www.ninthday.net/2011/08/comment-pages-ajax.html">非插件实现评论AJAX翻页</a>,这个是Harid的方法。
+各种方法基于的原理基本上一样，大家可以多多参考，希望能给自己折腾主题，又需要实现ajax效果的童鞋有一些帮助。
+如果要评论ajax分页，必须首先评论分页，代码中包含了评论分页的内容，大家参考即可。
+
+<h2>2 需要的元素</h2>
+和上篇讲到的一样，元素包括：
+1. 一个客户端页面，这里包含了有css标记的元素，比如a，可以供js来寻找，在用户点击的时候发出ajax请求
+2. jquery.js，下载地址为:http://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js
+3. 定义的js文件，规定请求的动作，和接受数据之后的动作
+4. 后台模板中的functions.php定义一个函数，用了规定接受到ajax请求之后后台要做的动作。
+
+元素的位置：
+1. 对于wordpress，评论页面的就是comments.php
+2. jquery.js在header.php中包含
+
+<p>2f3350b45f1a9eb064062a99adce3d6e050</p>
+
+
+3.把自己定义的js保存为index_ajax_navi.js,同样在header.php中包含
+
+<p>2f3350b45f1a9eb064062a99adce3d6e051</p>
+
+
+4.functions.php中添加行数即可
+
+<h2>3 例子的运行情况</h2>
+具体可以参考<a href="http://dhblog.org">我的博客</a>的评论的分页ajax情况。
+
+<h2>4 comments.php部分</h2>
+把comments.php写成两个文件，把comments.php中列出评论的部分分出成一个文件，实际上就是wp_list_comments函数和分页的函数。分出来为comment_list.php。是ajax请求需要重新加载的页面。
+index里面需要用到wp_list_comments和分页的地方写成：
+
+<p>2f3350b45f1a9eb064062a99adce3d6e052</p>
+
+
+comment_list.php写成这个样子：
+
+<p>2f3350b45f1a9eb064062a99adce3d6e053</p>
+
+
+
+<h2>5 js部分</h2>
+下面的代码保存为comment_ajax_navi.js文件，放到模板里面，记得在header.php中包含哦
+
+<p>2f3350b45f1a9eb064062a99adce3d6e054</p>
+
+
+
+<h2>6 后台php部分</h2>
+下面的代码放到functiongs.php中，
+
+<p>2f3350b45f1a9eb064062a99adce3d6e055</p>
+
+
+
+<h2>7 寄语</h2>
+希望大家通过上面的例子能够成功实现评论的ajax翻页效果。有几个注意点：
+(1)每个人的主题设置不同，需要根据自己的主题设置自己的参数。特别是包含分页链接的div的class。我这里是.page_navi。还有就是包含index_list.php的 div id="comment_list"，需要在js中填入这两个关键的div。
+(2)喜欢折腾的主题中wp_list_comments一般都有callback函数，来重新写评论列表的部分，这时需要在comment_list.php中的wp_list_comments参数有所调整哦。
+本文提供一个思想，要想学好这个，还需要自己摸索一下下。
+</div>
+</div>
+<div id="post_comment">
+<div id="comment"><div id="comment_title">作者：<strong>Harid</strong> 时间： 2011-08-29 09:22:01 </div><div id="comment_content">原来你是把comment.php分离，这样可以省去写重复代码，思路不错。
+如果是像我那样的话不用考虑评论分页，因为那是comments.php里就完成了的，而能AJAX,说明必然是有分页，不然没法点击。</div></div><div id="comment"><div id="comment_title">作者：<strong>网上购药</strong> 时间： 2011-08-29 10:13:46 </div><div id="comment_content">那个原来可以分离啊。。呵呵。</div></div><div id="comment"><div id="comment_title">作者：<strong>草之堂</strong> 时间： 2011-08-29 11:23:44 </div><div id="comment_content">很不错的教程呀。</div></div><div id="comment"><div id="comment_title">作者：<strong>流氓兔足迹</strong> 时间： 2011-08-29 11:38:19 </div><div id="comment_content">俺流氓兔不懂这些，也没用WP。但是俺来了！肯定得留个脚印哈！</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-29 12:41:15 </div><div id="comment_content">你的php代码里面也有评论分页的代码吧。我的方法就是将ajax的操作和代码逻辑分开。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-29 12:42:30 </div><div id="comment_content">谢谢流氓 兔的关心。</div></div><div id="comment"><div id="comment_title">作者：<strong>瞳摄影</strong> 时间： 2011-08-29 13:34:27 </div><div id="comment_content">感觉我能用到，感谢博主！</div></div><div id="comment"><div id="comment_title">作者：<strong>怎样瘦脸</strong> 时间： 2011-08-29 15:08:25 </div><div id="comment_content">来过，沙发一下了</div></div><div id="comment"><div id="comment_title">作者：<strong>乱了感觉</strong> 时间： 2011-08-29 17:12:01 </div><div id="comment_content">我只对留言本做了评论分页，用自己的方法实现的，一般文章评论不分页。还有，这个jQuery1.2.3有点太旧了吧，好歹用1.4.4的啊，最新的都1.6.2了。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-29 17:16:32 </div><div id="comment_content">能用就可以。版本无所谓。版本高了怕出问题。呵呵</div></div><div id="comment"><div id="comment_title">作者：<strong>iSayme</strong> 时间： 2011-08-29 17:43:47 </div><div id="comment_content">精品文章  我就等着呢 哈哈</div></div><div id="comment"><div id="comment_title">作者：<strong>IM路人</strong> 时间： 2011-08-29 18:07:04 </div><div id="comment_content">哈哈，选个有这个功能的主题，就不用折腾了~~~</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-29 18:23:28 </div><div id="comment_content">参考了你的文章哦</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-29 18:23:48 </div><div id="comment_content">可是，有些人不这么想，他们需要折腾，他们需要有自己的主题！</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-29 18:39:17 </div><div id="comment_content">你试试，不行和我说</div></div><div id="comment"><div id="comment_title">作者：<strong>Harid</strong> 时间： 2011-08-29 19:16:28 </div><div id="comment_content">有，不过只是输出而已，没有做判断，直接输出了。</div></div><div id="comment"><div id="comment_title">作者：<strong>葉少</strong> 时间： 2011-08-29 19:19:44 </div><div id="comment_content">不用WP的飘过。。。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-29 20:07:43 </div><div id="comment_content">恩。我的其实也没有多做什么。就是格式和你不一样。思想和你还是比较一致的。</div></div><div id="comment"><div id="comment_title">作者：<strong>海棠果</strong> 时间： 2011-08-29 21:23:46 </div><div id="comment_content">支持你了</div></div><div id="comment"><div id="comment_title">作者：<strong>clove</strong> 时间： 2011-08-29 22:06:55 </div><div id="comment_content">喵,你真有毅力写这个</div></div><div id="comment"><div id="comment_title">作者：<strong>clove</strong> 时间： 2011-08-29 22:07:38 </div><div id="comment_content">同意,还是新版本好用</div></div><div id="comment"><div id="comment_title">作者：<strong>乱了感觉</strong> 时间： 2011-08-29 22:11:35 </div><div id="comment_content">新版本的执行效率不错</div></div><div id="comment"><div id="comment_title">作者：<strong>海棠果</strong> 时间： 2011-08-29 22:21:40 </div><div id="comment_content">我来访问了</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-30 08:48:30 </div><div id="comment_content">主要是实现了。写比较方便，很难写的让别人懂。就当给自己一个备份，方便以后查。。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-30 08:51:16 </div><div id="comment_content">恩。但是我试用一下。谢谢</div></div><div id="comment"><div id="comment_title">作者：<strong>外贸人</strong> 时间： 2011-08-30 09:13:20 </div><div id="comment_content">这个功能不错，我这个仿DZ的模板，在评论分页，和评论表情这里，后期会参照你的资料~~多谢了~</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-30 09:18:12 </div><div id="comment_content">如果使用中有问题，欢迎探讨哦</div></div><div id="comment"><div id="comment_title">作者：<strong>外贸人</strong> 时间： 2011-08-30 09:19:00 </div><div id="comment_content">一定会的~~~</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-30 09:25:57 </div><div id="comment_content">分离就是为了ajax哦</div></div><div id="comment"><div id="comment_title">作者：<strong>华源</strong> 时间： 2011-08-30 09:57:16 </div><div id="comment_content">我的怎么运行不了啊。。是不是与系统有关系呢</div></div><div id="comment"><div id="comment_title">作者：<strong>Supra Muska Skytop</strong> 时间： 2011-08-30 11:42:22 </div><div id="comment_content">挺好用了，学习了！顶</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-30 14:29:32 </div><div id="comment_content">要wp的博客系统。zblog不行。</div></div><div id="comment"><div id="comment_title">作者：<strong>SEO博客大全</strong> 时间： 2011-08-30 14:30:20 </div><div id="comment_content">也在学习WP了，有不明白的到时间过来请教啊</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-30 14:32:54 </div><div id="comment_content">知无不言。呵呵</div></div><div id="comment"><div id="comment_title">作者：<strong>青岛seo</strong> 时间： 2011-08-30 15:02:48 </div><div id="comment_content">就是代码有些看不懂，呵呵</div></div><div id="comment"><div id="comment_title">作者：<strong>保健器材</strong> 时间： 2011-08-30 16:01:06 </div><div id="comment_content">很专业的知识！</div></div><div id="comment"><div id="comment_title">作者：<strong>微故事</strong> 时间： 2011-08-30 21:00:03 </div><div id="comment_content">很专业的代码，我要学习下编程知识</div></div><div id="comment"><div id="comment_title">作者：<strong>无锡团购</strong> 时间： 2011-08-30 21:00:47 </div><div id="comment_content">哇，关于评论翻页的代码，留着以后用</div></div><div id="comment"><div id="comment_title">作者：<strong>网上药店</strong> 时间： 2011-08-31 10:02:33 </div><div id="comment_content">楼上说的那是什么嘛。。呵呵。。。</div></div><div id="comment"><div id="comment_title">作者：<strong>液压机</strong> 时间： 2011-08-31 10:02:39 </div><div id="comment_content">来了送个ip</div></div><div id="comment"><div id="comment_title">作者：<strong>玉满斋</strong> 时间： 2011-08-31 14:35:40 </div><div id="comment_content">唉，我的主题好像不能收到评论发邮件的，这个不知道在哪里可以添加的了！</div></div><div id="comment"><div id="comment_title">作者：<strong>怎样瘦脸</strong> 时间： 2011-08-31 15:10:08 </div><div id="comment_content">来踩踩沙发一下了</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-31 15:10:36 </div><div id="comment_content">参考http://kan.willin.org/?p=1279</div></div><div id="comment"><div id="comment_title">作者：<strong>丹佛斯涡旋压缩机</strong> 时间： 2011-08-31 16:15:33 </div><div id="comment_content">这个~我从来不自己改代码~~~~太难了 [大怒]</div></div><div id="comment"><div id="comment_title">作者：<strong>海棠果</strong> 时间： 2011-08-31 18:02:50 </div><div id="comment_content">我确实不会改代码 来支持你一下</div></div><div id="comment"><div id="comment_title">作者：<strong>短笑话</strong> 时间： 2011-08-31 20:42:16 </div><div id="comment_content">必须首先评论分页</div></div><div id="comment"><div id="comment_title">作者：<strong>最新网游</strong> 时间： 2011-09-01 09:31:06 </div><div id="comment_content">刚刚接触代码 过来顶一下</div></div><div id="comment"><div id="comment_title">作者：<strong>营养保健</strong> 时间： 2011-09-01 10:12:11 </div><div id="comment_content">给我们学习的知识，博主辛苦了！</div></div><div id="comment"><div id="comment_title">作者：<strong>连锁药店</strong> 时间： 2011-09-01 10:29:18 </div><div id="comment_content">真的太权威了。。不顶你行吗。呵呵</div></div><div id="comment"><div id="comment_title">作者：<strong>于申seo优化</strong> 时间： 2011-09-01 13:13:11 </div><div id="comment_content">好吧，对于代码的东西，我只能说我看过了，支持博主，，，</div></div><div id="comment"><div id="comment_title">作者：<strong>艺术签名</strong> 时间： 2011-09-01 18:34:04 </div><div id="comment_content">既然路过，就留下个言吧，呵呵。。。</div></div><div id="comment"><div id="comment_title">作者：<strong>诺客家园博客</strong> 时间： 2011-09-01 18:39:02 </div><div id="comment_content">没用过WP，还真不懂。</div></div><div id="comment"><div id="comment_title">作者：<strong>成都酒吧</strong> 时间： 2011-09-01 21:20:03 </div><div id="comment_content">ajax和flex那个好点呢？？</div></div><div id="comment"><div id="comment_title">作者：<strong>有多远走多远</strong> 时间： 2011-09-01 21:28:54 </div><div id="comment_content">继续前来支持</div></div><div id="comment"><div id="comment_title">作者：<strong>祛斑产品</strong> 时间： 2011-09-01 23:42:46 </div><div id="comment_content">感觉WP真麻烦</div></div><div id="comment"><div id="comment_title">作者：<strong>叶伟昌博客</strong> 时间： 2011-09-02 08:39:31 </div><div id="comment_content">DH博客访问速度有点慢哦，大家有没有觉得呢？欢迎关注叶伟昌博客</div></div><div id="comment"><div id="comment_title">作者：<strong>韩威seo</strong> 时间： 2011-09-02 09:40:22 </div><div id="comment_content">wordpress 没用过，不知道，以后要学学了</div></div><div id="comment"><div id="comment_title">作者：<strong>广州seo</strong> 时间： 2011-09-02 12:40:52 </div><div id="comment_content">都到三了，很不错，继续围观。</div></div><div id="comment"><div id="comment_title">作者：<strong>屠龙</strong> 时间： 2011-09-02 14:09:11 </div><div id="comment_content">我想知道你对博客主题的设计精通不？如果精通的或者有这方面的朋友，联系一下我。我想给博客换主题。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-09-02 17:03:15 </div><div id="comment_content">下个礼拜出四！</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-09-02 17:03:43 </div><div id="comment_content">今天早上空间抽筋了。我的这个空间一个月有两三次抽筋！</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-09-02 19:18:31 </div><div id="comment_content">这个主题是我设计的，我的特长是主题的功能性设计，对主题的美观、图片的设计欠缺，这点你可以从我的主题风格看出来。wp的主题是很多的，你可以在wordpress.org.cn上面的主题里面找到很多的主题的作者。屠龙大哥想换主题，如果你用的wp的后台，需要我的额主题，我的主题可以免费给你使用，本来我的主题是要发布的，但是由于还要测试一段时间，很多功能还不是很完善，使用起来需要一些技术性的设置，所以才推迟发布的。</div></div><div id="comment"><div id="comment_title">作者：<strong>婚纱摄影工作室</strong> 时间： 2011-09-03 09:58:27 </div><div id="comment_content">感觉还是不错，博主设计的这个主题很好，是不是 花钱了</div></div><div id="comment"><div id="comment_title">作者：<strong>保健品</strong> 时间： 2011-09-03 11:01:30 </div><div id="comment_content">恩  感觉 很牛的样子i是不是 花钱了</div></div><div id="comment"><div id="comment_title">作者：<strong>北京摄影工作室</strong> 时间： 2011-09-03 15:06:23 </div><div id="comment_content">好炫啊。。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-09-05 08:38:19 </div><div id="comment_content">这个花钱也弄不了。我自己搞的，自己测试，文章中会把我的主题怎么搞的一步一步讲清楚。</div></div><div id="comment"><div id="comment_title">作者：<strong>hostgator</strong> 时间： 2011-09-05 08:48:40 </div><div id="comment_content">感觉很好。学习了</div></div><div id="comment"><div id="comment_title">作者：<strong>保健器材</strong> 时间： 2011-09-05 11:35:14 </div><div id="comment_content">感觉晕晕滴，咋办啊？</div></div><div id="comment"><div id="comment_title">作者：<strong>广州SEO</strong> 时间： 2011-09-05 13:55:32 </div><div id="comment_content">WP一直都不懂用啊！！！</div></div><div id="comment"><div id="comment_title">作者：<strong>博彩网</strong> 时间： 2011-09-05 16:37:29 </div><div id="comment_content">好哦！差不多咯</div></div><div id="comment"><div id="comment_title">作者：<strong>计算机毕业设计</strong> 时间： 2011-09-07 12:27:52 </div><div id="comment_content">技术真的是可以移植</div></div><div id="comment"><div id="comment_title">作者：<strong>淘宝皇冠店铺</strong> 时间： 2011-09-08 15:20:37 </div><div id="comment_content">博主设计的主题很不错啊 [奸笑]</div></div><div id="comment"><div id="comment_title">作者：<strong>seo千里眼</strong> 时间： 2011-09-10 14:11:21 </div><div id="comment_content">这个分页很不错啊！不过就是代码多了点！如果可以简化一些就更好了！</div></div><div id="comment"><div id="comment_title">作者：<strong>妙行鞋业</strong> 时间： 2011-09-10 14:12:23 </div><div id="comment_content">这个分页不错喔！ [大笑]</div></div><div id="comment"><div id="comment_title">作者：<strong>易众游戏网仙OL专区</strong> 时间： 2011-09-16 17:36:53 </div><div id="comment_content">支持一下！！！！！！！！！</div></div><div id="comment"><div id="comment_title">作者：<strong>家居加盟</strong> 时间： 2011-09-20 14:08:43 </div><div id="comment_content">很不错的哟，支持一下那是必须的</div></div><div id="comment"><div id="comment_title">作者：<strong>家居加盟</strong> 时间： 2011-09-20 14:09:46 </div><div id="comment_content">这个分页不知道有没有简单点的</div></div><div id="comment"><div id="comment_title">作者：<strong>河河</strong> 时间： 2011-10-06 10:26:17 </div><div id="comment_content">不错，收藏了</div></div><div id="comment"><div id="comment_title">作者：<strong>seo工具</strong> 时间： 2011-11-09 13:02:11 </div><div id="comment_content">seo新手经常打听seo秘诀，其实哪有。关心自己的网站数据才是正确的起步点</div></div>
+</div>
+</div><div id="sidebar">
+<div id="contentcat">
+<h3>分类目录</h3>
+<ul><ul><li><a href="http://dhblog.org/archivers/cat1-1.html" title="">未分类</a> (0)</li><li><a href="http://dhblog.org/archivers/cat3-1.html" title="">信息应用</a> (4)<ul><li><a href="http://dhblog.org/archivers/cat117-1.html" title="">工具推荐</a> (4)</li><li><a href="http://dhblog.org/archivers/cat120-1.html" title="">网站设计</a> (1)<ul><li><a href="http://dhblog.org/archivers/cat126-1.html" title="">网站优化</a> (2)</li><li><a href="http://dhblog.org/archivers/cat125-1.html" title="">wordpress</a> (41)</li><li><a href="http://dhblog.org/archivers/cat123-1.html" title="">javascript</a> (8)</li><li><a href="http://dhblog.org/archivers/cat122-1.html" title="">css</a> (2)</li></ul></li></ul></li><li><a href="http://dhblog.org/archivers/cat7-1.html" title="">生活百味</a> (0)<ul><li><a href="http://dhblog.org/archivers/cat5-1.html" title="">电影赏析</a> (6)</li><li><a href="http://dhblog.org/archivers/cat118-1.html" title="">幽默故事</a> (0)</li><li><a href="http://dhblog.org/archivers/cat127-1.html" title="">活动推荐</a> (5)</li><li><a href="http://dhblog.org/archivers/cat128-1.html" title="">健康养生</a> (0)</li></ul></li><li><a href="http://dhblog.org/archivers/cat11-1.html" title="">投资理财</a> (3)</li><li><a href="http://dhblog.org/archivers/cat129-1.html" title="">信息基础</a> (0)<ul><li><a href="http://dhblog.org/archivers/cat124-1.html" title="">专业知识</a> (2)</li><li><a href="http://dhblog.org/archivers/cat121-1.html" title="">软件编程</a> (0)</li></ul></li><li><a href="http://dhblog.org/archivers/cat119-1.html" title="">时文分享</a> (0)</li></ul></ul>
+</div>
+<div id="contenttag">
+<h3>讨论主题</h3>
+<ul><li><a href="http://dhblog.org/archivers/tag130-1.html" title="">wordpress 定时任务</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag131-1.html" title="">wordpress安全</a> (9)</li>
+<li><a href="http://dhblog.org/archivers/tag123-1.html" title="">javascript</a> (3)</li>
+<li><a href="http://dhblog.org/archivers/tag132-1.html" title="">wordpress提高速度</a> (6)</li>
+<li><a href="http://dhblog.org/archivers/tag133-1.html" title="">wordpress应用</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag134-1.html" title="">IT求职知识</a> (2)</li>
+<li><a href="http://dhblog.org/archivers/tag135-1.html" title="">wordpress定时任务</a> (5)</li>
+<li><a href="http://dhblog.org/archivers/tag136-1.html" title="">经验总结</a> (6)</li>
+<li><a href="http://dhblog.org/archivers/tag137-1.html" title="">友情推荐</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag138-1.html" title="">域名空间</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag139-1.html" title="">拿福能</a> (2)</li>
+<li><a href="http://dhblog.org/archivers/tag140-1.html" title="">wordpress主题</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag141-1.html" title="">wordpress ajax</a> (8)</li>
+<li><a href="http://dhblog.org/archivers/tag143-1.html" title="">wordpress数据库</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag145-1.html" title="">迅雷下载</a> (3)</li>
+<li><a href="http://dhblog.org/archivers/tag147-1.html" title="">BT下载</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag148-1.html" title="">数据库</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag149-1.html" title="">网络赚钱</a> (1)</li>
+</ul>
+</div>
+</div><div id="footer">
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/4836371.js"></script>
+<noscript><a href="http://www.51.la/?4836371" target="_blank"></a></noscript>
+Powered by <strong><a href="http://dhblog.org" target="_blank">dhblog</a></strong> &nbsp;&copy;<a href="http://dhblog.org" target="_blank" title="DH博客">DH</a>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>wordpress ajax之二:首页ajax分页 - Powered by dhblog.org</title>
+<meta name="keywords" content="wordpress ajax之二:首页ajax分页" />
+<meta name="description" content="wordpress ajax之二:首页ajax分页,静态页面,Powered by dhblog.org" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<div id="wrapper">
+<div id="nav">
+<ul><li><a href="p19.html" title="给我留言">给我留言</a></li>
+<li><a href="p20.html" title="友情链接">友情链接</a></li>
+<li><a href="p21.html" title="关于本站">关于本站</a></li>
+<li><a href="p22.html" title="本站下载">本站下载</a></li>
+<li><a href="p39.html" title="google搜索结果">google搜索结果</a></li>
+</ul>
+</div>
+<div id="top">
+<div id="dhtitle">DH 博客的文章归档</div>
+<center>DH出品，必属精品！</center>
+  <div style="text-align:right;">
+	<a href="http://dhblog.org">原始版本</a>
+  </div>  
+</div><div id="nav">
+<a href="http://dhblog.org/archivers/"><strong>DH 博客</strong></a>  &raquo; <a href="http://dhblog.org/archivers/cat125-1.html">wordpress</a>  &raquo; wordpress ajax之二:首页ajax分页
+| <a href="http://dhblog.org/46.html"><strong>查看此文章的完整的版本</strong></a>
+</div>
+<div id="content">
+<div id="post_content">
+<div id="post_title">wordpress ajax之二:首页ajax分页</div>
+<div id="post_author">2011-08-22 07:00:45</div>
+<div>
+<h2>1 序言</h2>
+上一遍讲到利用一个简单的例子说明了如何<a href="http://dhblog.org/archives/9.html">使用简单的ajax</a>。这里说明一个应用：首页的ajax分页应用。关于首页ajax分页的文章：
+(1)<a href="http://isayme.com/2011/05/w1s-new-ajax-page/">W1s 首页Ajax翻页新效果</a>，
+(2)<a href="http://philna.com/2009/03/my-plugin-ajax-home-page/">我做的插件: Ajax home page</a>
+(3)<a href="http://jixiangac.com/ajax-page.orz">AJAX文章翻页</a>
+这些可以参考一下哦。
+
+<h2>2 需要的元素</h2>
+和上篇讲到的一样，元素包括：
+1. 一个客户端页面，这里包含了有css标记的元素，比如a，可以供js来寻找，在用户点击的时候发出ajax请求
+2. jquery.js，下载地址为:http://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js
+3. 定义的js文件，规定请求的动作，和接受数据之后的动作
+4. 后台模板中的functions.php定义一个函数，用了规定接受到ajax请求之后后台要做的动作。
+
+元素的位置：
+1. 对于wordpress，首页的客户端页面就是index.php
+2. jquery.js在header.php中包含
+
+<p>2f3350b45f1a9eb064062a99adce3d6e056</p>
+
+
+3.把自己定义的js保存为index_ajax_navi.js,同样在header.php中包含
+
+<p>2f3350b45f1a9eb064062a99adce3d6e057</p>
+
+
+4.functions.php中添加行数即可
+
+<h2>3 例子的运行情况</h2>
+具体可以参考<a href="http://dhblog.org">我的博客</a>的首页的分页ajax情况。
+
+<h2>4 index部分</h2>
+把index.php写成两个文件，一个是框架文件，一个是index_list.php。是ajax请求需要重新加载的页面。这里要注意，并不是要写成这个样子，这是一种思想。就是index_list.php是需要被重新加载的，每个人把自己的index.php需要在点击页面之后重新加载的东西提出来，写到index_list.php之中即可。
+index写成：
+
+<p>2f3350b45f1a9eb064062a99adce3d6e058</p>
+
+
+index_list.php写成这个样子：
+
+<p>2f3350b45f1a9eb064062a99adce3d6e059</p>
+
+
+
+<h2>5 js部分</h2>
+下面的代码保存为 index_ajax_navi.js文件，放到模板里面，记得在header.php中包含哦
+
+<p>2f3350b45f1a9eb064062a99adce3d6e060</p>
+
+
+
+<h2>6 后台php部分</h2>
+下面的代码放到functiongs.php中，
+
+<p>2f3350b45f1a9eb064062a99adce3d6e061</p>
+
+
+
+<h2>7 寄语</h2>
+希望大家通过上面的例子能够成功实现首页的ajax翻页效果。每个人的主题设置不同，需要根据自己的主题设置自己的参数。特别是包含分页链接的div的class。我这里是.page_navi。还有就是包含index_list.php的 div id="content"，需要在js中填入这两个关键的div
+</div>
+</div>
+<div id="post_comment">
+<div id="comment"><div id="comment_title">作者：<strong>最新网游</strong> 时间： 2011-08-22 09:26:03 </div><div id="comment_content">看着头晕</div></div><div id="comment"><div id="comment_title">作者：<strong>clove</strong> 时间： 2011-08-22 11:39:26 </div><div id="comment_content">写了不少啊
+等待插件的诞生</div></div><div id="comment"><div id="comment_title">作者：<strong>流氓兔足迹</strong> 时间： 2011-08-22 18:03:58 </div><div id="comment_content">弱弱的表示下！俺头晕了！</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-22 18:29:45 </div><div id="comment_content">插件难度较大。要和主题结合，不好写啊</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-22 18:30:14 </div><div id="comment_content">呵呵。不过如果要自己弄出自己主题的ajax效果，可以试试。</div></div><div id="comment"><div id="comment_title">作者：<strong>zwwooooo</strong> 时间： 2011-08-22 18:38:14 </div><div id="comment_content">这很容易实现的一种方法，不过浏览器的后退键问题就无能为力了。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-22 18:43:48 </div><div id="comment_content">有什么好办法能实现浏览器的后退问题吗？</div></div><div id="comment"><div id="comment_title">作者：<strong>知蚁博客</strong> 时间： 2011-08-22 18:56:21 </div><div id="comment_content">建议你搞插件，估计很多人看见这么多代码就不想搞了</div></div><div id="comment"><div id="comment_title">作者：<strong>有多远走多远</strong> 时间： 2011-08-22 19:20:37 </div><div id="comment_content">来支持一下,看好ajax 有空研究一下</div></div><div id="comment"><div id="comment_title">作者：<strong>zwwooooo</strong> 时间： 2011-08-22 20:06:05 </div><div id="comment_content">以前有高手写过，但是各种浏览器兼容问题很麻烦，折腾过，木有完成就放弃——当时对ajax还没接触过，头晕脑胀，哈。</div></div><div id="comment"><div id="comment_title">作者：<strong>IM路人</strong> 时间： 2011-08-22 20:49:56 </div><div id="comment_content">主题集成了，省去了折腾~~~</div></div><div id="comment"><div id="comment_title">作者：<strong>一阵风</strong> 时间： 2011-08-22 21:14:36 </div><div id="comment_content">我PHP的功力还不够深厚</div></div><div id="comment"><div id="comment_title">作者：<strong>蓝魔力</strong> 时间： 2011-08-22 21:34:00 </div><div id="comment_content">看见代码就晕</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-22 22:38:39 </div><div id="comment_content">哪个高手，我找找资料。随便弄弄。。。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-22 22:39:09 </div><div id="comment_content">这方面的插件不好搞。要集合主题的。我试试吧。。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-22 22:39:44 </div><div id="comment_content">到时候我也要集成一下。。。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-22 22:40:24 </div><div id="comment_content">呵呵。研究的时候给我一点意见，看看我的代码对不对。呵呵</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-22 22:40:48 </div><div id="comment_content">慢慢来，一年前，我对php一无所知</div></div><div id="comment"><div id="comment_title">作者：<strong>西安SEO</strong> 时间： 2011-08-23 10:00:00 </div><div id="comment_content">呵呵，不错啊，很嘻哈啊</div></div><div id="comment"><div id="comment_title">作者：<strong>Harid</strong> 时间： 2011-08-23 14:06:59 </div><div id="comment_content">有要用到的时候再来仔细研究你的代码。
+我昨晚改了我主题的评论样式，砍掉了一直用的WP-thread-comment插件，然后重新写的样式里有借鉴你的这个评论样式， [大笑] ，就是那个给评论内容加虚线强调。</div></div><div id="comment"><div id="comment_title">作者：<strong>阿黎</strong> 时间： 2011-08-23 14:13:44 </div><div id="comment_content">我的想法是在页面的主体，就是主循环输出的东西外面套div，然后用jquery的load来加载，不知道这种方法如何 [疑问]</div></div><div id="comment"><div id="comment_title">作者：<strong>薇姿隔离霜</strong> 时间： 2011-08-23 14:22:08 </div><div id="comment_content">css标记的元素  css是什么意思</div></div><div id="comment"><div id="comment_title">作者：<strong>loosky</strong> 时间： 2011-08-23 15:05:45 </div><div id="comment_content">我之前的主题使用了这个功能，但是跟某些部分的配合还存在一些bug，只好去掉了。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-23 16:27:10 </div><div id="comment_content">拿出来就是给大家学习的。但是我的css被我压缩了，如果要css的话，可以问我要。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-23 16:30:31 </div><div id="comment_content">css这个百度一下。呵呵，实在不行google一下。用来设计页面的布局等。。。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-23 16:32:53 </div><div id="comment_content">我直接拿来的时候有些bug，经过我调试和更改之后，我这里没有bug了。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-23 16:33:45 </div><div id="comment_content">我用的就是这个方法。但是要注意单独加载jquery的load的内容的时候，由于有些变量没有了，需要重新获得。</div></div><div id="comment"><div id="comment_title">作者：<strong>Harid</strong> 时间： 2011-08-23 16:40:43 </div><div id="comment_content">那倒不是，我只借鉴了评论内容加虚线框这一点。CSS我还是玩得很熟的， [大笑]</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-23 16:44:22 </div><div id="comment_content">所以你很轻松就加上去了。。。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-23 16:46:47 </div><div id="comment_content">顺便问你一个问题。我侧边栏的最近评论里面的下一页的框框老是紧紧地贴着文字，不好看。不知道是什么原因，我搞了好久没有搞定。</div></div><div id="comment"><div id="comment_title">作者：<strong>sailor</strong> 时间： 2011-08-23 16:47:34 </div><div id="comment_content">[大汗] 对这个ajax丝毫不懂的说，对这前端的东西一直不入门～</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-23 16:49:16 </div><div id="comment_content">这个需要前段的ajax结合后端的代码。多看看就知道怎么做的了，最好参考别人的例子。</div></div><div id="comment"><div id="comment_title">作者：<strong>Harid</strong> 时间： 2011-08-23 16:50:21 </div><div id="comment_content">single.css里的“#sidebar .box a”删掉里面的“padding:0;”</div></div><div id="comment"><div id="comment_title">作者：<strong>Harid</strong> 时间： 2011-08-23 16:57:06 </div><div id="comment_content">最好还把single.css里的“.lastest_comments ul .last”中的“height:25px”其高度加大一点。不然方框掉到下面去了</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-23 20:19:25 </div><div id="comment_content">非常感谢！我查了半天，没有查出来，还是你厉害！佩服你犹如滔滔江水，连绵不绝，又有如黄河泛滥，一发不可收拾!你的css功底很深啊，要向你学习啊！我本地的css中改过来了，等下次升级的时候更新，对css的理解又升级了一步！</div></div><div id="comment"><div id="comment_title">作者：<strong>Harid</strong> 时间： 2011-08-23 20:22:21 </div><div id="comment_content">我是借助Chrome的审查元素功能啦，我没有系统学过CSS的。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-23 20:51:10 </div><div id="comment_content">这个功能没有听说过，我一直靠着自己的手工用眼睛看的，太老土了。。。</div></div><div id="comment"><div id="comment_title">作者：<strong>混小子博客</strong> 时间： 2011-08-24 10:04:49 </div><div id="comment_content">技术达人 我真看不大东 呵呵</div></div><div id="comment"><div id="comment_title">作者：<strong>个人艺术照</strong> 时间： 2011-08-24 13:01:26 </div><div id="comment_content">楼主真是个技术GS啊！！木有看明白~~</div></div><div id="comment"><div id="comment_title">作者：<strong>广州seo</strong> 时间： 2011-08-24 13:17:58 </div><div id="comment_content">很详细，有用到的时候来取，哈哈！</div></div><div id="comment"><div id="comment_title">作者：<strong>网上药店</strong> 时间： 2011-08-24 13:34:01 </div><div id="comment_content">非常感谢,,,,</div></div><div id="comment"><div id="comment_title">作者：<strong>屠龙</strong> 时间： 2011-08-24 15:35:52 </div><div id="comment_content">看你的博客确实是看不懂！</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-24 15:40:56 </div><div id="comment_content">你能过来看，我就很开心了。我的博客偏向于wordpress主题插件的制作，注重php部分，功能性的开发。</div></div><div id="comment"><div id="comment_title">作者：<strong>大鲨鱼</strong> 时间： 2011-08-24 19:15:15 </div><div id="comment_content">专业性较强，不太着么看的懂，但还是支持博主的共享精神</div></div><div id="comment"><div id="comment_title">作者：<strong>张海华</strong> 时间： 2011-08-24 21:13:01 </div><div id="comment_content">又是一堆一堆的代码！
+
+
+专业性太强！
+
+
+只能勉强学习！</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-25 09:25:23 </div><div id="comment_content">如果自己想捣鼓一个属于自己的主题，这个可以借鉴一下。。。</div></div><div id="comment"><div id="comment_title">作者：<strong>呜漆滋</strong> 时间： 2011-08-25 15:07:49 </div><div id="comment_content">我是最烦这个东西的，不会了就去八戒那找人解决</div></div><div id="comment"><div id="comment_title">作者：<strong>吵吵</strong> 时间： 2011-08-25 21:59:48 </div><div id="comment_content">恩，学习了，不过首页什么的还是不用ajax来。</div></div><div id="comment"><div id="comment_title">作者：<strong>笨笨</strong> 时间： 2011-08-26 13:02:49 </div><div id="comment_content">[大笑] 学习了，ajax效果还是不错的~~</div></div><div id="comment"><div id="comment_title">作者：<strong>华源</strong> 时间： 2011-08-26 14:03:54 </div><div id="comment_content">专业术语太强了。。。。呵呵。不错啊、</div></div><div id="comment"><div id="comment_title">作者：<strong>牙齿松动</strong> 时间： 2011-08-26 17:16:15 </div><div id="comment_content">来看看看！</div></div><div id="comment"><div id="comment_title">作者：<strong>一阵风</strong> 时间： 2011-08-26 22:06:09 </div><div id="comment_content">我首页有个图片栏，想弄个可以自动滚动的，不知道用什么方法可以实现？</div></div><div id="comment"><div id="comment_title">作者：<strong>iSayme</strong> 时间： 2011-08-27 13:23:29 </div><div id="comment_content">对 我在修改的winysky的w1s主题中就是用的这个类似的方法.
+效率挺高的.呵呵</div></div><div id="comment"><div id="comment_title">作者：<strong>保健品</strong> 时间： 2011-08-27 14:49:31 </div><div id="comment_content">不错。。有专业行啊。。。</div></div><div id="comment"><div id="comment_title">作者：<strong>怎样瘦脸</strong> 时间： 2011-08-27 16:29:08 </div><div id="comment_content">来看看，学习一下</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-27 22:41:02 </div><div id="comment_content">就是学习的你的方法！到现在为止，我成功调通了 首页分页、评论分页、归档页面分页、最新评论分页、评论表情动态加载的ajax效果。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-27 22:43:55 </div><div id="comment_content">这个我还没有实现过，不过这个滚动效果应该是js方法。css方法估计很难实现。你的博客上门已经可以点击滚动了，要不用js定时执行这个滚动？</div></div><div id="comment"><div id="comment_title">作者：<strong>一阵风</strong> 时间： 2011-08-27 23:27:25 </div><div id="comment_content">JS定时好弄不，我想是不是有什么方法可以定时调用向后的那个按键？</div></div><div id="comment"><div id="comment_title">作者：<strong>华源</strong> 时间： 2011-08-28 10:09:41 </div><div id="comment_content">真的应该好好的学习一下。呵呵</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-28 10:23:21 </div><div id="comment_content">js肯定可以调用那个向后的按键的，不过要查一查。具体怎么搞，还真不清楚。</div></div><div id="comment"><div id="comment_title">作者：<strong>保健品</strong> 时间： 2011-08-28 11:31:38 </div><div id="comment_content">值得学习 支持</div></div><div id="comment"><div id="comment_title">作者：<strong>北京婚纱照</strong> 时间： 2011-08-28 15:10:17 </div><div id="comment_content">穴道了  真是技术贴啊  不过小白看不懂~~谢谢分享了</div></div><div id="comment"><div id="comment_title">作者：<strong>皇冠开户</strong> 时间： 2011-08-30 15:37:45 </div><div id="comment_content">俺是小白~表示看不懂~</div></div><div id="comment"><div id="comment_title">作者：<strong>皇冠足球网址</strong> 时间： 2011-08-30 17:45:46 </div><div id="comment_content">顶下。欢迎回访！</div></div><div id="comment"><div id="comment_title">作者：<strong>jixiangac</strong> 时间： 2011-08-31 11:09:44 </div><div id="comment_content">你这个好麻烦呀，其实只要JS部分和在index页面判断下就可以实现了的</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-31 12:54:21 </div><div id="comment_content">你那里有比较好的方法？给我参考一下？我觉得我这个已经比较简单了。多余代码量较少</div></div><div id="comment"><div id="comment_title">作者：<strong>jixiangac</strong> 时间： 2011-08-31 12:57:05 </div><div id="comment_content">看我这里吧哈哈http://jixiangac.com/ajax-page.orz
+是@yinheli做的插件里的代码</div></div><div id="comment"><div id="comment_title">作者：<strong>Cheap Supra Shoes</strong> 时间： 2011-09-01 10:22:04 </div><div id="comment_content">一看到代码就有晕头。。。唉。。。</div></div><div id="comment"><div id="comment_title">作者：<strong>抢客网</strong> 时间： 2011-09-03 11:07:17 </div><div id="comment_content">恩 来学习了   看看  谢谢 博主啊</div></div><div id="comment"><div id="comment_title">作者：<strong>hostgator</strong> 时间： 2011-09-05 08:50:09 </div><div id="comment_content">代码我也不懂不过我要跟博主好好学</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-09-05 09:03:38 </div><div id="comment_content">纯粹测试</div></div><div id="comment"><div id="comment_title">作者：<strong>Shieffan</strong> 时间： 2011-09-09 12:36:11 </div><div id="comment_content">曾经也把我的博客设计成各种ajax，首页ajax，评论ajax分页，后来全都撤掉了。ajax用在首页分页上有个很不好的地方，譬如我点到第5页看了某文章，然后点击返回，我是想返回第5页，现在我又返回首页去了。评论ajax分页也有个问题，链接失效问题，包括最近回复的链接均存在失效问题，譬如我在看某篇文章的第三页评论，然后我点击右侧的最新评论刚好是这篇文章的第五页评论，这样这个最新评论链接就失效了。以上问题都有相关的解决方法，但是都不是很优雅。基本都是才用onhashchange这个事件处理。</div></div><div id="comment"><div id="comment_title">作者：<strong>Shieffan</strong> 时间： 2011-09-09 12:57:21 </div><div id="comment_content">另外，你用的这个willin的ajax评论在样式上，评论之后出现在分页导航之下，很难看有木有！当评论在新的一页的时候不能自动翻到下一页，有木有！
+这还不算最大的问题，最大的问题是再次编辑评论提交后，后台验证有漏洞，懂点ajax的可以很轻易修改任何一条别人的评论，有木有！具体请看这篇文章40楼你的评论，变了有木有！</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-09-09 13:01:46 </div><div id="comment_content">谢谢你提醒，并给我这么多的建议。可以看出我们是志同道合之人啊，以后肯定很多主题设计上的问题要向你请教！我看了你的博客，很不错，清新自然，特别让我感觉非常不错的是页面的文章正文索引，正想问你是怎么实现的呢！</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-09-09 13:03:31 </div><div id="comment_content">这个直接拿了willin的插件就用了，也没有怎么修改。你说的第一个样式不对的问题，我早就发现了，一直懒得修改，至于你提出来了，说明你是一个对很细心的人啊。
+不过第二个问题我没有发现，厉害，具体怎么修改呢？</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-09-09 13:04:43 </div><div id="comment_content">评论在新一页不能自动翻页到下一页，这个问题我还没有注意到。。有什么解决方法吗？</div></div><div id="comment"><div id="comment_title">作者：<strong>Shieffan</strong> 时间： 2011-09-09 13:12:49 </div><div id="comment_content">文章目录功能可以参考这一篇  http://www.ludou.org/wordpress-content-index-plugin.html   文章写的条理一些也有助于SEO。
+
+志同道合之人  [大笑]  以后常交流  [大笑]</div></div><div id="comment"><div id="comment_title">作者：<strong>Shieffan</strong> 时间： 2011-09-09 13:15:32 </div><div id="comment_content">具体随便写个 html form 表单就可以了，post参数通过 firebug 或者 Chrome 的审查元素 看一下 http header 一下就得到完了。 post 参数里面有一个评论id，修改这个评论id为你想修改的评论id，提交表单就修改了。</div></div><div id="comment"><div id="comment_title">作者：<strong>Shieffan</strong> 时间： 2011-09-09 13:16:39 </div><div id="comment_content">所以说willin的这个ajax评论后台验证不完善，至少作下最简单的ip判断</div></div><div id="comment"><div id="comment_title">作者：<strong>Shieffan</strong> 时间： 2011-09-09 13:17:58 </div><div id="comment_content">我也是最近在看ajax评论才看到willin的这个代码，还没想出来个完善的方案出来，你也想想嘛  [大笑]   弄出来个好的大家一起用  [大笑]</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-09-09 13:42:06 </div><div id="comment_content">友情链接已经做好，为了方便交流，这个是必须的！</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-09-09 13:42:49 </div><div id="comment_content">我的建议一条条改，willian这个我想想，这个代码我还没有仔细读过呢。</div></div><div id="comment"><div id="comment_title">作者：<strong>建材招商</strong> 时间： 2011-09-20 14:11:54 </div><div id="comment_content">总觉得这个分页有点麻烦的感觉</div></div><div id="comment"><div id="comment_title">作者：<strong>皇家元林</strong> 时间： 2012-04-22 19:04:39 </div><div id="comment_content">这个对SEO可有影响？</div></div>
+</div>
+</div><div id="sidebar">
+<div id="contentcat">
+<h3>分类目录</h3>
+<ul><ul><li><a href="http://dhblog.org/archivers/cat1-1.html" title="">未分类</a> (0)</li><li><a href="http://dhblog.org/archivers/cat3-1.html" title="">信息应用</a> (4)<ul><li><a href="http://dhblog.org/archivers/cat117-1.html" title="">工具推荐</a> (4)</li><li><a href="http://dhblog.org/archivers/cat120-1.html" title="">网站设计</a> (1)<ul><li><a href="http://dhblog.org/archivers/cat126-1.html" title="">网站优化</a> (2)</li><li><a href="http://dhblog.org/archivers/cat125-1.html" title="">wordpress</a> (41)</li><li><a href="http://dhblog.org/archivers/cat123-1.html" title="">javascript</a> (8)</li><li><a href="http://dhblog.org/archivers/cat122-1.html" title="">css</a> (2)</li></ul></li></ul></li><li><a href="http://dhblog.org/archivers/cat7-1.html" title="">生活百味</a> (0)<ul><li><a href="http://dhblog.org/archivers/cat5-1.html" title="">电影赏析</a> (6)</li><li><a href="http://dhblog.org/archivers/cat118-1.html" title="">幽默故事</a> (0)</li><li><a href="http://dhblog.org/archivers/cat127-1.html" title="">活动推荐</a> (5)</li><li><a href="http://dhblog.org/archivers/cat128-1.html" title="">健康养生</a> (0)</li></ul></li><li><a href="http://dhblog.org/archivers/cat11-1.html" title="">投资理财</a> (3)</li><li><a href="http://dhblog.org/archivers/cat129-1.html" title="">信息基础</a> (0)<ul><li><a href="http://dhblog.org/archivers/cat124-1.html" title="">专业知识</a> (2)</li><li><a href="http://dhblog.org/archivers/cat121-1.html" title="">软件编程</a> (0)</li></ul></li><li><a href="http://dhblog.org/archivers/cat119-1.html" title="">时文分享</a> (0)</li></ul></ul>
+</div>
+<div id="contenttag">
+<h3>讨论主题</h3>
+<ul><li><a href="http://dhblog.org/archivers/tag130-1.html" title="">wordpress 定时任务</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag131-1.html" title="">wordpress安全</a> (9)</li>
+<li><a href="http://dhblog.org/archivers/tag123-1.html" title="">javascript</a> (3)</li>
+<li><a href="http://dhblog.org/archivers/tag132-1.html" title="">wordpress提高速度</a> (6)</li>
+<li><a href="http://dhblog.org/archivers/tag133-1.html" title="">wordpress应用</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag134-1.html" title="">IT求职知识</a> (2)</li>
+<li><a href="http://dhblog.org/archivers/tag135-1.html" title="">wordpress定时任务</a> (5)</li>
+<li><a href="http://dhblog.org/archivers/tag136-1.html" title="">经验总结</a> (6)</li>
+<li><a href="http://dhblog.org/archivers/tag137-1.html" title="">友情推荐</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag138-1.html" title="">域名空间</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag139-1.html" title="">拿福能</a> (2)</li>
+<li><a href="http://dhblog.org/archivers/tag140-1.html" title="">wordpress主题</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag141-1.html" title="">wordpress ajax</a> (8)</li>
+<li><a href="http://dhblog.org/archivers/tag143-1.html" title="">wordpress数据库</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag145-1.html" title="">迅雷下载</a> (3)</li>
+<li><a href="http://dhblog.org/archivers/tag147-1.html" title="">BT下载</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag148-1.html" title="">数据库</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag149-1.html" title="">网络赚钱</a> (1)</li>
+</ul>
+</div>
+</div><div id="footer">
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/4836371.js"></script>
+<noscript><a href="http://www.51.la/?4836371" target="_blank"></a></noscript>
+Powered by <strong><a href="http://dhblog.org" target="_blank">dhblog</a></strong> &nbsp;&copy;<a href="http://dhblog.org" target="_blank" title="DH博客">DH</a>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>wordpress安全:处理垃圾评论(续3)-未经评论表格 - Powered by dhblog.org</title>
+<meta name="keywords" content="wordpress安全:处理垃圾评论(续3)-未经评论表格" />
+<meta name="description" content="wordpress安全:处理垃圾评论(续3)-未经评论表格,静态页面,Powered by dhblog.org" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<div id="wrapper">
+<div id="nav">
+<ul><li><a href="p19.html" title="给我留言">给我留言</a></li>
+<li><a href="p20.html" title="友情链接">友情链接</a></li>
+<li><a href="p21.html" title="关于本站">关于本站</a></li>
+<li><a href="p22.html" title="本站下载">本站下载</a></li>
+<li><a href="p39.html" title="google搜索结果">google搜索结果</a></li>
+</ul>
+</div>
+<div id="top">
+<div id="dhtitle">DH 博客的文章归档</div>
+<center>DH出品，必属精品！</center>
+  <div style="text-align:right;">
+	<a href="http://dhblog.org">原始版本</a>
+  </div>  
+</div><div id="nav">
+<a href="http://dhblog.org/archivers/"><strong>DH 博客</strong></a>  &raquo; <a href="http://dhblog.org/archivers/cat125-1.html">wordpress</a>  &raquo; wordpress安全:处理垃圾评论(续3)-未经评论表格
+| <a href="http://dhblog.org/?p=100"><strong>查看此文章的完整的版本</strong></a>
+</div>
+<div id="content">
+<div id="post_content">
+<div id="post_title">wordpress安全:处理垃圾评论(续3)-未经评论表格</div>
+<div id="post_author">2012-02-27 01:07:50</div>
+<div>
+<h2>1 原因</h2>
+垃圾评论一直是我们独立博客主讨厌的，因为这个需要浪费很多的数据库空间，造成不必要的浪费，而且，这个就像脚气一样，很难根除，实属讨厌之极!下面有几个规则：
+规则1：如果你的博客可以留下垃圾评论, 那这个垃圾评论还会再來, 而且越来越多.不仅spam如此, 人肉AD也是如此。这样，即使屏蔽掉这个垃圾评论，也没有办法，因为它们仍然回来。
+规则2：大多数垃圾评论是经过 wp-comments-post.php 注入的。小墙在报垃圾评论的时候会报送这个：
+<a href="http://dhblog.org/wp-content/uploads/2012/02/lajipinglu.jpg"><img src="http://dhblog.org/wp-content/uploads/2012/02/lajipinglu.jpg" alt="" title="lajipinglu" width="606" height="271" class="aligncenter size-full wp-image-101" /></a>
+根据这些规则，看来必须屏蔽wp-comments-post.php是比较好的选择，让这些垃圾留言没有切入点。
+<h2>2 解决方法1</h2>
+这个方法比较单纯，在没有使用任何其他评论提交方法的情况下，比较适用。
+操作手法：<a href="http://linhun.com/1290.html" target="_blank">修改wp-comments-post.php来防垃圾评论的方法</a>
+<h2>3 解决方法2</h2>
+我使用的 Ajax comments 评论提交方法，这个比较简单了，不需要wp-comments-post.php提交评论，所以只要去除wp-comments-post.php即可。
+操作手法：进入wordpress的目录，手动将wp-comments-post.php改名字即可
+<h2>4 升级探讨</h2>
+在3的方法中，使用了
+<h3>4.1 修改一个</h3>
+如果使用 Ajax comments, 可以将 comments-ajax.php 修改为 my-comments.php, 然后在 comments-ajaxjs 头部的ajax_php_url = js_url.replace('-ajax.js','-ajax.php'),
+也改成
+ajax_php_url = js_url.replace('comments-ajax.js','my-comments.php'),
+上面的 my-comments.php 只是举例, 你也可以改成 abc.php 或 xyz.php 反正你看得懂就行.
+<h3>4.2 修改两个</h3>
+4.1的修改会造成comments-ajax的两个文件不一样，我们也可以修改comments-ajax的文件名为同一个名字。这时候需要在4.2的基础上修改：
+1. 将comments-ajax.js 更名为 my-comments-ajax.js
+2. 将header.php中调用comments-ajax.js的地方修改为调用my-comments-ajax.js
+3. 在my-comments-ajax.js内部，将comments-ajax.js 修改 my-comments-ajax.js，位置在第九行左右
+
+<h2>5 结果</h2>
+果然，小墙不会报wp-comments-post.php注入的垃圾评论了。
+</div>
+</div>
+<div id="post_comment">
+<div id="comment"><div id="comment_title">作者：<strong>walfred</strong> 时间： 2012-02-27 09:35:11 </div><div id="comment_content">小站流量少，暂时spam少，暂时还没有考虑防~</div></div><div id="comment"><div id="comment_title">作者：<strong>网商学院</strong> 时间： 2012-02-27 10:58:41 </div><div id="comment_content">spam是垃圾评论的意思吗</div></div><div id="comment"><div id="comment_title">作者：<strong>青岛葡萄酒</strong> 时间： 2012-02-27 10:59:08 </div><div id="comment_content">垃圾评论的确蛮烦人的</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2012-02-27 12:43:15 </div><div id="comment_content">我开始也是这个想法，但是后来被几个spam盯上了。就是垃圾评永远不停止，非常麻烦</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2012-02-27 12:43:34 </div><div id="comment_content">是的。</div></div><div id="comment"><div id="comment_title">作者：<strong>影楼网销培训</strong> 时间： 2012-02-27 12:56:57 </div><div id="comment_content">过来学习一下来了</div></div><div id="comment"><div id="comment_title">作者：<strong>似水年华</strong> 时间： 2012-02-27 14:50:19 </div><div id="comment_content">等网站浏览量上去以后在考虑垃圾信息的问题</div></div><div id="comment"><div id="comment_title">作者：<strong>绞股蓝</strong> 时间： 2012-02-27 21:42:16 </div><div id="comment_content">wp垃圾太多了</div></div><div id="comment"><div id="comment_title">作者：<strong>睢宁人才网</strong> 时间： 2012-02-29 09:56:14 </div><div id="comment_content">找了很久了，这块</div></div><div id="comment"><div id="comment_title">作者：<strong>影楼网络营销培训</strong> 时间： 2012-02-29 11:40:37 </div><div id="comment_content">博主说的很详细啊，学习了</div></div><div id="comment"><div id="comment_title">作者：<strong>阳光音基</strong> 时间： 2012-02-29 14:00:12 </div><div id="comment_content">不错哦，学习下，谢谢</div></div><div id="comment"><div id="comment_title">作者：<strong>浩子</strong> 时间： 2012-02-29 14:45:09 </div><div id="comment_content">我是删除wp-comments-post.php
+然后用其他方式提交评论，哈哈</div></div><div id="comment"><div id="comment_title">作者：<strong>养生</strong> 时间： 2012-02-29 15:54:13 </div><div id="comment_content">这个有用，呵呵，学习了</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2012-02-29 18:56:26 </div><div id="comment_content">这样好，但是如果有人尝试登陆 wp_login.php,怎么是他不能访问这个页面呢</div></div><div id="comment"><div id="comment_title">作者：<strong>绞股蓝</strong> 时间： 2012-02-29 22:56:13 </div><div id="comment_content">wp垃圾评论太多了</div></div><div id="comment"><div id="comment_title">作者：<strong>三十岁</strong> 时间： 2012-03-01 22:44:01 </div><div id="comment_content">滑动解锁滑动解锁</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2012-03-02 08:48:41 </div><div id="comment_content">去掉了 wp-comments-post.php之后，几乎没有垃圾评论了。滑动解锁就是加载有点慢</div></div><div id="comment"><div id="comment_title">作者：<strong>saintsky</strong> 时间： 2012-03-03 13:24:20 </div><div id="comment_content">还好啦，我的文章评论的人少，有点垃圾评论也无所谓</div></div><div id="comment"><div id="comment_title">作者：<strong>脂肪肝症状</strong> 时间： 2012-03-04 23:37:23 </div><div id="comment_content">那干脆关闭评论就是了</div></div><div id="comment"><div id="comment_title">作者：<strong>影楼网销培训</strong> 时间： 2012-03-07 13:23:55 </div><div id="comment_content">垃圾评论太多了啊</div></div><div id="comment"><div id="comment_title">作者：<strong>Sola</strong> 时间： 2012-03-08 22:19:17 </div><div id="comment_content">这插件是不错，可是楼上的看起来都是垃圾评论。。。</div></div><div id="comment"><div id="comment_title">作者：<strong>小Z的藏经阁</strong> 时间： 2012-03-10 18:22:00 </div><div id="comment_content">现在的垃圾评论真的是很多、头疼。。</div></div><div id="comment"><div id="comment_title">作者：<strong>武汉普瑞眼科</strong> 时间： 2012-03-14 09:51:38 </div><div id="comment_content">爱···</div></div><div id="comment"><div id="comment_title">作者：<strong>影楼网销培训</strong> 时间： 2012-03-14 11:40:59 </div><div id="comment_content">谢谢博主分享了啊</div></div><div id="comment"><div id="comment_title">作者：<strong>花木网</strong> 时间： 2012-03-20 20:16:08 </div><div id="comment_content">多谢分享了</div></div><div id="comment"><div id="comment_title">作者：<strong>影楼网络营销</strong> 时间： 2012-03-21 13:27:34 </div><div id="comment_content">谢谢博主分享了</div></div><div id="comment"><div id="comment_title">作者：<strong>笑话大全</strong> 时间： 2012-03-22 18:04:42 </div><div id="comment_content">学习</div></div><div id="comment"><div id="comment_title">作者：<strong>河北商标注册</strong> 时间： 2012-03-28 17:02:14 </div><div id="comment_content">看不懂 [折 磨] [折磨]  [折磨]  [折磨]  [折磨]  [折磨]</div></div><div id="comment"><div id="comment_title">作者：<strong>高压锅炉管</strong> 时间： 2012-04-15 14:18:23 </div><div id="comment_content">好高深啊呵呵 感觉看不懂啊</div></div><div id="comment"><div id="comment_title">作者：<strong>离子溅射仪</strong> 时间： 2012-04-24 11:18:20 </div><div id="comment_content">确实是不错的分享</div></div><div id="comment"><div id="comment_title">作者：<strong>北京SEO公司</strong> 时间： 2012-04-24 11:18:52 </div><div id="comment_content">发现WP博客真多</div></div><div id="comment"><div id="comment_title">作者：<strong>BB</strong> 时间： 2012-05-04 07:46:03 </div><div id="comment_content">这样才全面可靠</div></div><div id="comment"><div id="comment_title">作者：<strong>豆豆博客</strong> 时间： 2012-05-19 02:15:17 </div><div id="comment_content">这个值得学习，呵呵！ [渴望]</div></div><div id="comment"><div id="comment_title">作者：<strong>江淮威铃洒水车</strong> 时间： 2012-07-15 16:49:45 </div><div id="comment_content">好办法</div></div><div id="comment"><div id="comment_title">作者：<strong>宁波肛肠</strong> 时间： 2012-09-14 13:51:23 </div><div id="comment_content">我是觉得垃圾留言确实比较讨厌，只有看完一篇文章后才能有所了解其中的内容，这个方面是一定的。也只有这样才能更好的做评论。</div></div>
+</div>
+</div><div id="sidebar">
+<div id="contentcat">
+<h3>分类目录</h3>
+<ul><ul><li><a href="http://dhblog.org/archivers/cat1-1.html" title="">未分类</a> (0)</li><li><a href="http://dhblog.org/archivers/cat3-1.html" title="">信息应用</a> (4)<ul><li><a href="http://dhblog.org/archivers/cat117-1.html" title="">工具推荐</a> (4)</li><li><a href="http://dhblog.org/archivers/cat120-1.html" title="">网站设计</a> (1)<ul><li><a href="http://dhblog.org/archivers/cat126-1.html" title="">网站优化</a> (2)</li><li><a href="http://dhblog.org/archivers/cat125-1.html" title="">wordpress</a> (41)</li><li><a href="http://dhblog.org/archivers/cat123-1.html" title="">javascript</a> (8)</li><li><a href="http://dhblog.org/archivers/cat122-1.html" title="">css</a> (2)</li></ul></li></ul></li><li><a href="http://dhblog.org/archivers/cat7-1.html" title="">生活百味</a> (0)<ul><li><a href="http://dhblog.org/archivers/cat5-1.html" title="">电影赏析</a> (6)</li><li><a href="http://dhblog.org/archivers/cat118-1.html" title="">幽默故事</a> (0)</li><li><a href="http://dhblog.org/archivers/cat127-1.html" title="">活动推荐</a> (5)</li><li><a href="http://dhblog.org/archivers/cat128-1.html" title="">健康养生</a> (0)</li></ul></li><li><a href="http://dhblog.org/archivers/cat11-1.html" title="">投资理财</a> (3)</li><li><a href="http://dhblog.org/archivers/cat129-1.html" title="">信息基础</a> (0)<ul><li><a href="http://dhblog.org/archivers/cat124-1.html" title="">专业知识</a> (2)</li><li><a href="http://dhblog.org/archivers/cat121-1.html" title="">软件编程</a> (0)</li></ul></li><li><a href="http://dhblog.org/archivers/cat119-1.html" title="">时文分享</a> (0)</li></ul></ul>
+</div>
+<div id="contenttag">
+<h3>讨论主题</h3>
+<ul><li><a href="http://dhblog.org/archivers/tag130-1.html" title="">wordpress 定时任务</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag131-1.html" title="">wordpress安全</a> (9)</li>
+<li><a href="http://dhblog.org/archivers/tag123-1.html" title="">javascript</a> (3)</li>
+<li><a href="http://dhblog.org/archivers/tag132-1.html" title="">wordpress提高速度</a> (6)</li>
+<li><a href="http://dhblog.org/archivers/tag133-1.html" title="">wordpress应用</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag134-1.html" title="">IT求职知识</a> (2)</li>
+<li><a href="http://dhblog.org/archivers/tag135-1.html" title="">wordpress定时任务</a> (5)</li>
+<li><a href="http://dhblog.org/archivers/tag136-1.html" title="">经验总结</a> (6)</li>
+<li><a href="http://dhblog.org/archivers/tag137-1.html" title="">友情推荐</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag138-1.html" title="">域名空间</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag139-1.html" title="">拿福能</a> (2)</li>
+<li><a href="http://dhblog.org/archivers/tag140-1.html" title="">wordpress主题</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag141-1.html" title="">wordpress ajax</a> (8)</li>
+<li><a href="http://dhblog.org/archivers/tag143-1.html" title="">wordpress数据库</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag145-1.html" title="">迅雷下载</a> (3)</li>
+<li><a href="http://dhblog.org/archivers/tag147-1.html" title="">BT下载</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag148-1.html" title="">数据库</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag149-1.html" title="">网络赚钱</a> (1)</li>
+</ul>
+</div>
+</div><div id="footer">
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/4836371.js"></script>
+<noscript><a href="http://www.51.la/?4836371" target="_blank"></a></noscript>
+Powered by <strong><a href="http://dhblog.org" target="_blank">dhblog</a></strong> &nbsp;&copy;<a href="http://dhblog.org" target="_blank" title="DH博客">DH</a>
+</div>
+</div>
+</body>
+</html>

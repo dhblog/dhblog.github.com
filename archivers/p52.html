@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>wordpress数据库:表posts清理和整理 - Powered by dhblog.org</title>
+<meta name="keywords" content="wordpress数据库:表posts清理和整理" />
+<meta name="description" content="wordpress数据库:表posts清理和整理,静态页面,Powered by dhblog.org" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<div id="wrapper">
+<div id="nav">
+<ul><li><a href="p19.html" title="给我留言">给我留言</a></li>
+<li><a href="p20.html" title="友情链接">友情链接</a></li>
+<li><a href="p21.html" title="关于本站">关于本站</a></li>
+<li><a href="p22.html" title="本站下载">本站下载</a></li>
+<li><a href="p39.html" title="google搜索结果">google搜索结果</a></li>
+</ul>
+</div>
+<div id="top">
+<div id="dhtitle">DH 博客的文章归档</div>
+<center>DH出品，必属精品！</center>
+  <div style="text-align:right;">
+	<a href="http://dhblog.org">原始版本</a>
+  </div>  
+</div><div id="nav">
+<a href="http://dhblog.org/archivers/"><strong>DH 博客</strong></a>  &raquo; <a href="http://dhblog.org/archivers/cat125-1.html">wordpress</a>  &raquo; wordpress数据库:表posts清理和整理
+| <a href="http://dhblog.org/52.html"><strong>查看此文章的完整的版本</strong></a>
+</div>
+<div id="content">
+<div id="post_content">
+<div id="post_title">wordpress数据库:表posts清理和整理</div>
+<div id="post_author">2011-11-14 07:00:09</div>
+<div>
+<h2>1 缘起</h2>
+wordpress的posts表是非常重要的表，所有的文章都放在里面，但是有时候内容很多，仔细检查表发现，还有很多的重复的内容，让人看起来非常不爽，而且数据量的增多会导致维护麻烦，而且会是数据库访问变慢。
+<h2>2 原因</h2>
+wp默认的配置会写草稿和修订版，这样会导致文章很多，占用数据空间。
+<h2>3 方法</h2>
+1. 清理posts表,清理掉草稿和修订版本 文章wordpress提高速度之一(数据库清理)已经提及了。http://dhblog.org/18.html
+2. 禁止草稿、修订,这样就不会生成多余的内容了
+3. 重新排序，删除之后会导致序号缺失，洁癖者需要重新整理数据，这样使得文章的序号非常整齐。
+
+<h2>4 清理posts表</h2>
+wordpress的文章有好多：wp_posts表中包括
+文章种类：文章、修订版本、页面、文章的附件、菜单。
+其中每种文章又会有很多状态：继承、发布、私有、草稿、自动草稿、回收站中。
+
+冗余原因：
+(1)在博主写文章的时候，系统会保存很多的中间状态，在文章发布之后其很多的中间状态没有被删除。
+
+解决办法：
+(1)使用插件：WP Cleaner，使用插件的好处就是有保护机制，无论怎么操作都无法影响已发布的贴子，请放心使用^^
+(2)自己动手删除，数据库中的标志删除文章，注意备份。
+说明：wp_posts的重要字段含义：
+post_type：文章类型，post表示为文章，revision表示为修订版本，page为页面，attachment是文章的附件信息，nav_menu_item是菜单。这里我们需要的是文章、页面、和菜单。
+post_status：文章状态，inherit是继承的附件和文章的附带信息，publish是已经发布、private是私有的，draft是草稿，auto-draft是自动草稿，trash是在回收站。这里我们需要的是publish的状态的。
+这里我们主要是要 已经发布的文章、页面和菜单，除此之外的都可以删除，当然可以根据自己的需求选择删除哪些
+
+<p>2f3350b45f1a9eb064062a99adce3d6e009</p>
+
+
+
+<h2>5 禁止草稿、修订</h2>
+在 网站根目录下的 wp-config.php中添加：
+
+<p>2f3350b45f1a9eb064062a99adce3d6e010</p>
+
+
+或者在function.php中添加
+
+<p>2f3350b45f1a9eb064062a99adce3d6e011</p>
+
+
+这样就不会保存草稿和自动修订版了。
+<h2>6 重新排序</h2>
+清理之后，还有很多重要的问题没有解决：
+1. 就是新文章的序号很大，还不能设置过小，因为已经有很大的文章号出现了。
+2. 旧文章的序号空缺很大，让人很不舒服。
+下面就是解决这个问题的，这是Lee的代码，我使用了一下，没有问题。
+将一下代码保存为config.php,放在网站的根目录。执行即可。注意：
+1. 在执行之前需要备份好数据库
+2. 需要将http://dhblog.org/archives/修改为你需要的固定文章的地址。
+3. 推荐方法，建议在本机安装php环境和数据库，把网站数据导入到本地数据库之后，用执行完之后的数据恢复网上的数据。
+
+<p>2f3350b45f1a9eb064062a99adce3d6e012</p>
+
+
+
+但是这样很危险：如果执行了"重新排序"之后，后果还是很严重的，主要有：
+1. 会导致搜索引擎的不友好，不收录新的网页，被认为是抄袭。
+2. 会导致你以前网页的链接没有了，应为改名字了。
+3. 会让收藏你以前网页的网友不知道新的地址了。
+总之要慎重。不管你们慎重不慎重，反正我是做了，而且收录下降了，但是我的主要流量不是搜索引擎，而且我不出名，所以删了就删了，无所谓。呵呵。
+</div>
+</div>
+<div id="post_comment">
+<div id="comment"><div id="comment_title">作者：<strong>两心小屋</strong> 时间： 2011-11-14 08:51:36 </div><div id="comment_content">博客很漂亮啊</div></div><div id="comment"><div id="comment_title">作者：<strong>视频会议</strong> 时间： 2011-11-14 09:59:02 </div><div id="comment_content">很厉害。。</div></div><div id="comment"><div id="comment_title">作者：<strong>一次说走就走的旅行</strong> 时间： 2011-11-14 11:09:13 </div><div id="comment_content">数据库正是我要了解的，谢谢了</div></div><div id="comment"><div id="comment_title">作者：<strong>雨帆</strong> 时间： 2011-11-14 13:52:24 </div><div id="comment_content">怪不得我的数据库那么大，我现在要果断精简数据库哦。</div></div><div id="comment"><div id="comment_title">作者：<strong>电脑控</strong> 时间： 2011-11-14 15:05:28 </div><div id="comment_content">学习了 感谢分享</div></div><div id="comment"><div id="comment_title">作者：<strong>空空裤兜</strong> 时间： 2011-11-14 18:33:31 </div><div id="comment_content">介个东西有用哈</div></div><div id="comment"><div id="comment_title">作者：<strong>jixiangac</strong> 时间： 2011-11-14 18:38:32 </div><div id="comment_content">以前也是没有禁止草稿和修订版，结果数据库没多少时间就2M多了 [囧囧] 
+现在也没重新排序过，说明俺不算洁癖 [鄙视]</div></div><div id="comment"><div id="comment_title">作者：<strong>磐石博客</strong> 时间： 2011-11-14 20:33:13 </div><div id="comment_content">学习了！！！！</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-11-14 21:07:46 </div><div id="comment_content">不客气，共享的力量。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-11-14 21:11:47 </div><div id="comment_content">我是洁癖。。。搞了几次。。</div></div><div id="comment"><div id="comment_title">作者：<strong>乱了感觉</strong> 时间： 2011-11-15 12:22:04 </div><div id="comment_content">直接用插件wp cleaner，方便。</div></div><div id="comment"><div id="comment_title">作者：<strong>wmtimes</strong> 时间： 2011-11-15 14:53:11 </div><div id="comment_content">自动保存草稿确实没什么必要。</div></div><div id="comment"><div id="comment_title">作者：<strong>Firm</strong> 时间： 2011-11-15 16:46:54 </div><div id="comment_content">数据的清理前，我基本都要备份次，不太敢动。</div></div><div id="comment"><div id="comment_title">作者：<strong>hostgator</strong> 时间： 2011-11-15 16:50:31 </div><div id="comment_content">是要有备份，不然会流失了</div></div><div id="comment"><div id="comment_title">作者：<strong>西安私家侦探</strong> 时间： 2011-11-15 16:56:19 </div><div id="comment_content">备份很重要啊~刚才实践了下，没成，幸亏备份了~~好险</div></div><div id="comment"><div id="comment_title">作者：<strong>柏氏化妆品</strong> 时间： 2011-11-15 16:57:21 </div><div id="comment_content">为什么要重新排序呢？</div></div><div id="comment"><div id="comment_title">作者：<strong>变频器</strong> 时间： 2011-11-15 16:58:49 </div><div id="comment_content">[囧囧] 不懂啊~~~没有看懂啊~~</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-11-15 19:12:05 </div><div id="comment_content">由于我的失误让你丢失数据，很抱歉。所以一定要备份，不备份不要做这些操作。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-11-15 19:13:32 </div><div id="comment_content">最好的习惯是定期备份。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-11-15 19:14:09 </div><div id="comment_content">wp_cleaner没有办法把保存草搞去掉，也没有办法重新排序。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-11-15 19:14:38 </div><div id="comment_content">可以让自己后面的xx.html的xx变得连续和小一点。</div></div><div id="comment"><div id="comment_title">作者：<strong>草本护肤</strong> 时间： 2011-11-16 13:21:37 </div><div id="comment_content">过来支持啦，呵呵</div></div><div id="comment"><div id="comment_title">作者：<strong>青岛网站建设</strong> 时间： 2011-11-16 13:22:28 </div><div id="comment_content">还是很专业的</div></div><div id="comment"><div id="comment_title">作者：<strong>旅行装备</strong> 时间： 2011-11-16 16:45:10 </div><div id="comment_content">[大笑]  [大笑]有用，不错</div></div><div id="comment"><div id="comment_title">作者：<strong>卢松松</strong> 时间： 2011-11-16 17:27:19 </div><div id="comment_content">还有很多的重复的内同，
+你的字打错了
+既然的文章表，为何会产生重复内容呢？</div></div><div id="comment"><div id="comment_title">作者：<strong>电脑控</strong> 时间： 2011-11-16 18:08:52 </div><div id="comment_content">学习了 顶下</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-11-16 19:41:34 </div><div id="comment_content">这是wordpress的设置，发表文章的时候，会产生草稿、修改文章会产生修订版，导致一篇文章在数据库中有很多的记录。导致post表变大.</div></div><div id="comment"><div id="comment_title">作者：<strong>包容天下</strong> 时间： 2011-11-16 20:01:59 </div><div id="comment_content">学习来了</div></div><div id="comment"><div id="comment_title">作者：<strong>工作室</strong> 时间： 2011-11-16 22:12:59 </div><div id="comment_content">这主题不错，感觉很好
+博文格式很用心！</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-11-16 22:38:15 </div><div id="comment_content">谢谢。就像博客风格一样，文章也要有自己的风格。。。</div></div><div id="comment"><div id="comment_title">作者：<strong>卡其视觉</strong> 时间： 2011-11-16 22:48:21 </div><div id="comment_content">来了解一下呵呵  不错哦 博主的文采很不错哦  我来学习一下</div></div><div id="comment"><div id="comment_title">作者：<strong>北京婚纱照</strong> 时间： 2011-11-16 22:49:35 </div><div id="comment_content">哎  博主啊  有点看不懂啊 代码啊</div></div><div id="comment"><div id="comment_title">作者：<strong>自来水博客</strong> 时间： 2011-11-17 09:11:29 </div><div id="comment_content">很到位  赞一个啦！</div></div><div id="comment"><div id="comment_title">作者：<strong>振动监测</strong> 时间： 2011-11-17 10:29:27 </div><div id="comment_content">踩踩，支持支持~</div></div><div id="comment"><div id="comment_title">作者：<strong>米多</strong> 时间： 2011-11-17 12:54:41 </div><div id="comment_content">我用的是插件，自己写，呵呵。。。也不错</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-11-17 13:29:19 </div><div id="comment_content">自己写，有自己写得乐趣。</div></div><div id="comment"><div id="comment_title">作者：<strong>Ski Helmets</strong> 时间： 2011-11-17 23:39:43 </div><div id="comment_content">很好的教程。谢谢了。</div></div><div id="comment"><div id="comment_title">作者：<strong>Harid</strong> 时间： 2011-11-18 11:41:08 </div><div id="comment_content">我就是使用WP Cleaner插件，挺方便的，关键是安全！</div></div><div id="comment"><div id="comment_title">作者：<strong>Harid</strong> 时间： 2011-11-18 11:42:16 </div><div id="comment_content">而且这个插件并不需要在head结构里写什么东西，对整体速度的影响可以忽略不计。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-11-18 12:16:47 </div><div id="comment_content">恩。我也是用的这个插件清理表的，post手动的删除不建议使用。这里我来说明如何不让post表增加多余的内容内容，还有清理之后文章id号变得很大，如何重新对数据库进行排序的问题。</div></div><div id="comment"><div id="comment_title">作者：<strong>Harid</strong> 时间： 2011-11-18 13:15:07 </div><div id="comment_content">嗯，我的现在文章ID就是好大了！</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-11-18 13:52:05 </div><div id="comment_content">可以我的方法变小，但是代价很大的。</div></div><div id="comment"><div id="comment_title">作者：<strong>知蚁博客</strong> 时间： 2011-11-19 09:54:10 </div><div id="comment_content">当初为了ID连续，改了很多东西，现在最郁闷的是升级</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-11-19 13:54:11 </div><div id="comment_content">升级会导致数据库无法使用？</div></div><div id="comment"><div id="comment_title">作者：<strong>知蚁博客</strong> 时间： 2011-11-19 16:03:58 </div><div id="comment_content">因为改了很多wordpress的文件，升级起来很麻烦，需要一个个文件的去改</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-11-20 14:14:48 </div><div id="comment_content">好像这个可以修改functions.php文件。不用修改config文件。</div></div><div id="comment"><div id="comment_title">作者：<strong>影楼营销</strong> 时间： 2011-11-29 10:47:56 </div><div id="comment_content">过来学习一下了</div></div><div id="comment"><div id="comment_title">作者：<strong>石家庄婚纱礼服</strong> 时间： 2011-12-12 10:21:53 </div><div id="comment_content">过来看看学习一下了啊</div></div>
+</div>
+</div><div id="sidebar">
+<div id="contentcat">
+<h3>分类目录</h3>
+<ul><ul><li><a href="http://dhblog.org/archivers/cat1-1.html" title="">未分类</a> (0)</li><li><a href="http://dhblog.org/archivers/cat3-1.html" title="">信息应用</a> (4)<ul><li><a href="http://dhblog.org/archivers/cat117-1.html" title="">工具推荐</a> (4)</li><li><a href="http://dhblog.org/archivers/cat120-1.html" title="">网站设计</a> (1)<ul><li><a href="http://dhblog.org/archivers/cat126-1.html" title="">网站优化</a> (2)</li><li><a href="http://dhblog.org/archivers/cat125-1.html" title="">wordpress</a> (41)</li><li><a href="http://dhblog.org/archivers/cat123-1.html" title="">javascript</a> (8)</li><li><a href="http://dhblog.org/archivers/cat122-1.html" title="">css</a> (2)</li></ul></li></ul></li><li><a href="http://dhblog.org/archivers/cat7-1.html" title="">生活百味</a> (0)<ul><li><a href="http://dhblog.org/archivers/cat5-1.html" title="">电影赏析</a> (6)</li><li><a href="http://dhblog.org/archivers/cat118-1.html" title="">幽默故事</a> (0)</li><li><a href="http://dhblog.org/archivers/cat127-1.html" title="">活动推荐</a> (5)</li><li><a href="http://dhblog.org/archivers/cat128-1.html" title="">健康养生</a> (0)</li></ul></li><li><a href="http://dhblog.org/archivers/cat11-1.html" title="">投资理财</a> (3)</li><li><a href="http://dhblog.org/archivers/cat129-1.html" title="">信息基础</a> (0)<ul><li><a href="http://dhblog.org/archivers/cat124-1.html" title="">专业知识</a> (2)</li><li><a href="http://dhblog.org/archivers/cat121-1.html" title="">软件编程</a> (0)</li></ul></li><li><a href="http://dhblog.org/archivers/cat119-1.html" title="">时文分享</a> (0)</li></ul></ul>
+</div>
+<div id="contenttag">
+<h3>讨论主题</h3>
+<ul><li><a href="http://dhblog.org/archivers/tag130-1.html" title="">wordpress 定时任务</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag131-1.html" title="">wordpress安全</a> (9)</li>
+<li><a href="http://dhblog.org/archivers/tag123-1.html" title="">javascript</a> (3)</li>
+<li><a href="http://dhblog.org/archivers/tag132-1.html" title="">wordpress提高速度</a> (6)</li>
+<li><a href="http://dhblog.org/archivers/tag133-1.html" title="">wordpress应用</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag134-1.html" title="">IT求职知识</a> (2)</li>
+<li><a href="http://dhblog.org/archivers/tag135-1.html" title="">wordpress定时任务</a> (5)</li>
+<li><a href="http://dhblog.org/archivers/tag136-1.html" title="">经验总结</a> (6)</li>
+<li><a href="http://dhblog.org/archivers/tag137-1.html" title="">友情推荐</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag138-1.html" title="">域名空间</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag139-1.html" title="">拿福能</a> (2)</li>
+<li><a href="http://dhblog.org/archivers/tag140-1.html" title="">wordpress主题</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag141-1.html" title="">wordpress ajax</a> (8)</li>
+<li><a href="http://dhblog.org/archivers/tag143-1.html" title="">wordpress数据库</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag145-1.html" title="">迅雷下载</a> (3)</li>
+<li><a href="http://dhblog.org/archivers/tag147-1.html" title="">BT下载</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag148-1.html" title="">数据库</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag149-1.html" title="">网络赚钱</a> (1)</li>
+</ul>
+</div>
+</div><div id="footer">
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/4836371.js"></script>
+<noscript><a href="http://www.51.la/?4836371" target="_blank"></a></noscript>
+Powered by <strong><a href="http://dhblog.org" target="_blank">dhblog</a></strong> &nbsp;&copy;<a href="http://dhblog.org" target="_blank" title="DH博客">DH</a>
+</div>
+</div>
+</body>
+</html>

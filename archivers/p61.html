@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>wordpress主题:添加文章目录 - Powered by dhblog.org</title>
+<meta name="keywords" content="wordpress主题:添加文章目录" />
+<meta name="description" content="wordpress主题:添加文章目录,静态页面,Powered by dhblog.org" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<div id="wrapper">
+<div id="nav">
+<ul><li><a href="p19.html" title="给我留言">给我留言</a></li>
+<li><a href="p20.html" title="友情链接">友情链接</a></li>
+<li><a href="p21.html" title="关于本站">关于本站</a></li>
+<li><a href="p22.html" title="本站下载">本站下载</a></li>
+<li><a href="p39.html" title="google搜索结果">google搜索结果</a></li>
+</ul>
+</div>
+<div id="top">
+<div id="dhtitle">DH 博客的文章归档</div>
+<center>DH出品，必属精品！</center>
+  <div style="text-align:right;">
+	<a href="http://dhblog.org">原始版本</a>
+  </div>  
+</div><div id="nav">
+<a href="http://dhblog.org/archivers/"><strong>DH 博客</strong></a>  &raquo; <a href="http://dhblog.org/archivers/cat125-1.html">wordpress</a>  &raquo; wordpress主题:添加文章目录
+| <a href="http://dhblog.org/61.html"><strong>查看此文章的完整的版本</strong></a>
+</div>
+<div id="content">
+<div id="post_content">
+<div id="post_title">wordpress主题:添加文章目录</div>
+<div id="post_author">2011-10-08 07:00:44</div>
+<div>
+<h2>1 缘起</h2>
+有一次，我在逛博客，看到有个博客(<a href="http://shieffan.me/">清水稀饭</a>)很有意思，竟然像百度百科一样，有标题！这种标题wiki也有，是一种有助于读者快速掌握文章内容，方便读者在篇幅较长的文章中找到他们想看的内容，这个也就相当于索引。作者也提供了方法，我学着做了一个，扩展了一些功能。支持双层的标题。参考文章有：
+<a href="http://www.ludou.org/wordpress-content-index-plugin.html">WordPress文章目录插件</a>
+<h2>2 示例</h2>
+看我的博客文章的右上角的目录索引，可以隐藏的那个。具体如图：
+<a href="http://dhblog.org/wp-content/uploads/2011/09/content.png"><img class="aligncenter size-full wp-image-60" title="content" src="http://dhblog.org/wp-content/uploads/2011/09/content.png" alt="" width="600" height="300" /></a>
+<h2>3 代码</h2>
+要完成这个功能，需要有前台的css支持和后台的代码。这里以我的为例说明，各位看官需要更具自己的情况修改代码和css。
+<h3>3.1 后台部分</h3>
+后台主要实现的是对content的过滤，需要替换字符和添加目录。代码是这样的。保存为article_index.php
+
+<p>2f3350b45f1a9eb064062a99adce3d6e019</p>
+
+
+这个文件需要在functions.php中include一下哦
+
+<p>2f3350b45f1a9eb064062a99adce3d6e020</p>
+
+
+<h3>3.2 前台css部分</h3>
+css是调整显示的，让这个好看一点。保存为article_index.css。
+
+<p>2f3350b45f1a9eb064062a99adce3d6e021</p>
+
+
+需要在header.php中包含
+<h3>3.2 前台js部分</h3>
+js是用来隐藏目录和显示目录使用的。保存为article_index.js。
+
+<p>2f3350b45f1a9eb064062a99adce3d6e022</p>
+
+
+需要在header.php中包含
+
+<p>2f3350b45f1a9eb064062a99adce3d6e023</p>
+
+
+<h2>4 注意点</h2>
+<h3>4.1 文章写法</h3>
+写文章需要有条理，需要用h2 作为二级标题，h3作为三级标题。在编辑文章的时候，切换到HTML模式，将需要添加到目录中的标题用&lt;h2&gt;和&lt;/h2&gt;括起来就可以了，如&lt;h2&gt;序言&lt;/h2&gt;。当然你也可以用其他标签，如&lt;h4&gt;&lt;/h4&gt;等，需要自己修改代码哦。
+<h3>4.2 与前人的不同</h3>
+我这里支持二级标题，但是支持二级标题需要有很多的限制，如果需要研究的读者可以读一下代码研究一下。
+</div>
+</div>
+<div id="post_comment">
+<div id="comment"><div id="comment_title">作者：<strong>iSayme</strong> 时间： 2011-10-08 08:44:50 </div><div id="comment_content">沙发~~这个可以有~~</div></div><div id="comment"><div id="comment_title">作者：<strong>保健品</strong> 时间： 2011-10-08 10:25:58 </div><div id="comment_content">呵呵 博主啊  你这什么什么代码我还是看不懂啊 不认识谢谢博主的分享 希望博主事事顺心</div></div><div id="comment"><div id="comment_title">作者：<strong>振动监测</strong> 时间： 2011-10-08 10:32:55 </div><div id="comment_content">踩踩，支持支持~</div></div><div id="comment"><div id="comment_title">作者：<strong>米多</strong> 时间： 2011-10-08 11:59:52 </div><div id="comment_content">DH，这主题送不？给米多一个啥</div></div><div id="comment"><div id="comment_title">作者：<strong>IM路人</strong> 时间： 2011-10-08 12:00:21 </div><div id="comment_content">有时写些长文章的时候可以用到，不过我这边机会很少，懒呐~~~</div></div><div id="comment"><div id="comment_title">作者：<strong>jixiangac</strong> 时间： 2011-10-08 14:15:56 </div><div id="comment_content">月光博客也有这个
+技术或者介绍文什么的用这个感觉很有条理呵呵</div></div><div id="comment"><div id="comment_title">作者：<strong>零度记忆</strong> 时间： 2011-10-08 15:10:58 </div><div id="comment_content">这个真的不错，你太厉害了，这都弄出来了</div></div><div id="comment"><div id="comment_title">作者：<strong>婚纱摄影网站</strong> 时间： 2011-10-08 15:31:06 </div><div id="comment_content">博主。你的这是二级域名吗。呵呵。</div></div><div id="comment"><div id="comment_title">作者：<strong>toinka</strong> 时间： 2011-10-08 15:46:43 </div><div id="comment_content">这个不错啊~我也试试看</div></div><div id="comment"><div id="comment_title">作者：<strong>瑶浴</strong> 时间： 2011-10-08 15:55:05 </div><div id="comment_content">嗯嗯 虽然看不懂</div></div><div id="comment"><div id="comment_title">作者：<strong>药油</strong> 时间： 2011-10-08 16:04:59 </div><div id="comment_content">这个不错，谢谢分享啊。</div></div><div id="comment"><div id="comment_title">作者：<strong>一阵风</strong> 时间： 2011-10-08 17:37:35 </div><div id="comment_content">这个工具不错，不过我的博客很少有一二三级标题，估计用不上</div></div><div id="comment"><div id="comment_title">作者：<strong>赵子香</strong> 时间： 2011-10-09 15:29:00 </div><div id="comment_content">关注你 留下我的足迹</div></div><div id="comment"><div id="comment_title">作者：<strong>婚纱摄影网站</strong> 时间： 2011-10-09 16:26:05 </div><div id="comment_content">不错的吗。言之有理</div></div><div id="comment"><div id="comment_title">作者：<strong>我的移动互联</strong> 时间： 2011-10-09 18:25:56 </div><div id="comment_content">内容多得文章用得上</div></div><div id="comment"><div id="comment_title">作者：<strong>英语笑话</strong> 时间： 2011-10-09 20:16:17 </div><div id="comment_content">文章需要有条理</div></div><div id="comment"><div id="comment_title">作者：<strong>walfred</strong> 时间： 2011-10-10 09:14:46 </div><div id="comment_content">这个挺不错的，有点wiki的意思。</div></div><div id="comment"><div id="comment_title">作者：<strong>青岛策划</strong> 时间： 2011-10-10 15:40:29 </div><div id="comment_content">这个真的是挺好的</div></div><div id="comment"><div id="comment_title">作者：<strong>青岛网站建设</strong> 时间： 2011-10-10 15:40:58 </div><div id="comment_content">恩，这个真的是很不错啊</div></div><div id="comment"><div id="comment_title">作者：<strong>足球比分</strong> 时间： 2011-10-10 17:00:43 </div><div id="comment_content">不错耶~那样会简洁明了</div></div><div id="comment"><div id="comment_title">作者：<strong>姜敏</strong> 时间： 2011-10-10 22:09:16 </div><div id="comment_content">挺炫的，是不是所有主题都支持呢</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-10-11 12:40:24 </div><div id="comment_content">是的。只要是wp的程序。但是每个不一样的主题，自己要修改一下css</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-10-11 12:41:16 </div><div id="comment_content">恩。但是有点点耗资源哦。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-10-11 12:41:51 </div><div id="comment_content">呵呵。有时候会用一点点。但是用标题读者会比较清晰。</div></div><div id="comment"><div id="comment_title">作者：<strong>婚纱摄影网站</strong> 时间： 2011-10-11 15:47:14 </div><div id="comment_content">不错的吗。呵呵顶你</div></div><div id="comment"><div id="comment_title">作者：<strong>星尔</strong> 时间： 2011-10-11 23:14:18 </div><div id="comment_content">这个不错，有时间我也修改一下，谢谢分享啊~~~</div></div><div id="comment"><div id="comment_title">作者：<strong>婚纱摄影网站</strong> 时间： 2011-10-12 16:13:24 </div><div id="comment_content">是啊。主要是要看看是谁的呢。呵呵。</div></div><div id="comment"><div id="comment_title">作者：<strong>小鱼头</strong> 时间： 2011-10-12 16:23:02 </div><div id="comment_content">一直想知道这个效果是怎么弄的，学习了。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-10-12 22:23:10 </div><div id="comment_content">一起折腾。呵呵！</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-10-12 22:23:57 </div><div id="comment_content">呵呵，其实我还有很多想法，下次在和你们说，我想是不是可以直接插入到文字中，不用每次现实的时候过滤。</div></div><div id="comment"><div id="comment_title">作者：<strong>小马过河</strong> 时间： 2011-10-13 15:08:29 </div><div id="comment_content">博主的技术文章写的很不错！
+而且通过你的友情链接，可以访问到其他相当好的博客，非常谢谢！
+
+如果要插入到文字当中，也许可以试试shortcode,个人觉得修改正文content的话，用shortcode非常简便。我的博文中的adsense就是用shortcode做的，想往哪里添加，就写[adsense]就可以了，很方便的。</div></div><div id="comment"><div id="comment_title">作者：<strong>小马过河</strong> 时间： 2011-10-13 22:18:22 </div><div id="comment_content">shortcode, 修改wordpress博客正文的利器 http://www.doosolar.com/2011/10/3383/ 我的一个简单运用。 [微笑]</div></div><div id="comment"><div id="comment_title">作者：<strong>卢松松</strong> 时间： 2011-10-14 09:36:38 </div><div id="comment_content">你说的这个清水稀饭已经一个多月没更新了哦</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-10-14 11:16:32 </div><div id="comment_content">可能比较忙吧。和松哥没有办法比。松哥有时候一天更新几篇文章。我这里只能一个礼拜一次。</div></div><div id="comment"><div id="comment_title">作者：<strong>万书华博客</strong> 时间： 2011-10-14 14:12:04 </div><div id="comment_content">这个经验是很不错</div></div><div id="comment"><div id="comment_title">作者：<strong>zjobb</strong> 时间： 2011-10-14 14:29:16 </div><div id="comment_content">你好 wordpress 论坛过来 我可以优雅的支持你一下吗? 呵呵 如果你要回访我的博客 请到：http://www.ytq1118.com/  期待你的来访哦 ！</div></div><div id="comment"><div id="comment_title">作者：<strong>创意家居</strong> 时间： 2011-10-15 13:22:54 </div><div id="comment_content">非常靠谱，支持！</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-10-15 18:13:32 </div><div id="comment_content">谢谢支持，已经回访！</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-10-15 21:13:26 </div><div id="comment_content">不知道怎么回事，访问你的博客是连接已经损坏。你的这个方法我看过了，很不多，特别是对在文中插入广告这个功能，可以随心所欲。但是需要在写文章的时候添加标记，这个补方便。但是程序的原理就是替换，和我这个有类似的地方，我的这个是一个实际的应用。</div></div><div id="comment"><div id="comment_title">作者：<strong>bedspreads</strong> 时间： 2011-10-16 08:33:33 </div><div id="comment_content">不错的空间呀</div></div><div id="comment"><div id="comment_title">作者：<strong>美国主机评论博客</strong> 时间： 2011-10-16 19:29:47 </div><div id="comment_content">不错，学习了，谢谢</div></div><div id="comment"><div id="comment_title">作者：<strong>小李飞刀</strong> 时间： 2011-10-16 21:31:06 </div><div id="comment_content">看起来真不错的啊，</div></div><div id="comment"><div id="comment_title">作者：<strong>西安SEO顾问</strong> 时间： 2011-10-16 22:51:12 </div><div id="comment_content">看来博主是php高手呀。呵呵</div></div><div id="comment"><div id="comment_title">作者：<strong>IT圈中人</strong> 时间： 2011-10-27 20:44:39 </div><div id="comment_content">哎呀妈呀，绝对支持，好东西呀。
+看起来很爽 [大笑]  [渴望]</div></div><div id="comment"><div id="comment_title">作者：<strong>影楼团购</strong> 时间： 2011-10-28 12:48:59 </div><div id="comment_content">看代码还是有点头晕的额</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-10-29 11:24:21 </div><div id="comment_content">谢谢。其实也是参考学习人家的。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-10-29 11:24:53 </div><div id="comment_content">多谢支持！还要相互学习，多完善博客。</div></div><div id="comment"><div id="comment_title">作者：<strong>引产后多久可以同房</strong> 时间： 2011-11-23 16:29:17 </div><div id="comment_content">恩，挺不错的</div></div><div id="comment"><div id="comment_title">作者：<strong>ZoLxFn</strong> 时间： 2012-02-28 20:15:08 </div><div id="comment_content">&lt;!--?php      这里为什么是这个加&quot;!--&quot;?</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2012-02-28 20:31:16 </div><div id="comment_content">写错了，代码拷贝错了。</div></div><div id="comment"><div id="comment_title">作者：<strong>ZoLxFn</strong> 时间： 2012-02-28 23:25:39 </div><div id="comment_content">[大汗] 我说怎么会出错呢</div></div><div id="comment"><div id="comment_title">作者：<strong>ZoLxFn</strong> 时间： 2012-02-28 23:54:48 </div><div id="comment_content">还是不行啊,按照你的方法加上了,这次不报错了,不过也不显示了.目录那一块什么也不显示</div></div><div id="comment"><div id="comment_title">作者：<strong>ZoLxFn</strong> 时间： 2012-02-29 16:06:32 </div><div id="comment_content">解决了,还是上面的错误,第6.14.19行,多"--"</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2012-02-29 18:54:12 </div><div id="comment_content">谢谢指正，当时拷贝的时候被过滤了。。。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2012-03-01 16:35:42 </div><div id="comment_content">你的博客地址是什么？我这里没有记录</div></div><div id="comment"><div id="comment_title">作者：<strong>ZoLxFn</strong> 时间： 2012-03-01 17:12:28 </div><div id="comment_content">我在本地测试的,现在已经解决了.多谢!</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2012-03-01 20:04:00 </div><div id="comment_content">你现在还没有博客吧，如果有，我逛逛你的博客</div></div><div id="comment"><div id="comment_title">作者：<strong>ZoLxFn</strong> 时间： 2012-03-01 22:00:40 </div><div id="comment_content">是啊,还没建好.建好了给你留言 [大笑]</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2012-03-02 12:36:41 </div><div id="comment_content">看来，你在偷偷打造史上最强的主题，呵呵。</div></div>
+</div>
+</div><div id="sidebar">
+<div id="contentcat">
+<h3>分类目录</h3>
+<ul><ul><li><a href="http://dhblog.org/archivers/cat1-1.html" title="">未分类</a> (0)</li><li><a href="http://dhblog.org/archivers/cat3-1.html" title="">信息应用</a> (4)<ul><li><a href="http://dhblog.org/archivers/cat117-1.html" title="">工具推荐</a> (4)</li><li><a href="http://dhblog.org/archivers/cat120-1.html" title="">网站设计</a> (1)<ul><li><a href="http://dhblog.org/archivers/cat126-1.html" title="">网站优化</a> (2)</li><li><a href="http://dhblog.org/archivers/cat125-1.html" title="">wordpress</a> (41)</li><li><a href="http://dhblog.org/archivers/cat123-1.html" title="">javascript</a> (8)</li><li><a href="http://dhblog.org/archivers/cat122-1.html" title="">css</a> (2)</li></ul></li></ul></li><li><a href="http://dhblog.org/archivers/cat7-1.html" title="">生活百味</a> (0)<ul><li><a href="http://dhblog.org/archivers/cat5-1.html" title="">电影赏析</a> (6)</li><li><a href="http://dhblog.org/archivers/cat118-1.html" title="">幽默故事</a> (0)</li><li><a href="http://dhblog.org/archivers/cat127-1.html" title="">活动推荐</a> (5)</li><li><a href="http://dhblog.org/archivers/cat128-1.html" title="">健康养生</a> (0)</li></ul></li><li><a href="http://dhblog.org/archivers/cat11-1.html" title="">投资理财</a> (3)</li><li><a href="http://dhblog.org/archivers/cat129-1.html" title="">信息基础</a> (0)<ul><li><a href="http://dhblog.org/archivers/cat124-1.html" title="">专业知识</a> (2)</li><li><a href="http://dhblog.org/archivers/cat121-1.html" title="">软件编程</a> (0)</li></ul></li><li><a href="http://dhblog.org/archivers/cat119-1.html" title="">时文分享</a> (0)</li></ul></ul>
+</div>
+<div id="contenttag">
+<h3>讨论主题</h3>
+<ul><li><a href="http://dhblog.org/archivers/tag130-1.html" title="">wordpress 定时任务</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag131-1.html" title="">wordpress安全</a> (9)</li>
+<li><a href="http://dhblog.org/archivers/tag123-1.html" title="">javascript</a> (3)</li>
+<li><a href="http://dhblog.org/archivers/tag132-1.html" title="">wordpress提高速度</a> (6)</li>
+<li><a href="http://dhblog.org/archivers/tag133-1.html" title="">wordpress应用</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag134-1.html" title="">IT求职知识</a> (2)</li>
+<li><a href="http://dhblog.org/archivers/tag135-1.html" title="">wordpress定时任务</a> (5)</li>
+<li><a href="http://dhblog.org/archivers/tag136-1.html" title="">经验总结</a> (6)</li>
+<li><a href="http://dhblog.org/archivers/tag137-1.html" title="">友情推荐</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag138-1.html" title="">域名空间</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag139-1.html" title="">拿福能</a> (2)</li>
+<li><a href="http://dhblog.org/archivers/tag140-1.html" title="">wordpress主题</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag141-1.html" title="">wordpress ajax</a> (8)</li>
+<li><a href="http://dhblog.org/archivers/tag143-1.html" title="">wordpress数据库</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag145-1.html" title="">迅雷下载</a> (3)</li>
+<li><a href="http://dhblog.org/archivers/tag147-1.html" title="">BT下载</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag148-1.html" title="">数据库</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag149-1.html" title="">网络赚钱</a> (1)</li>
+</ul>
+</div>
+</div><div id="footer">
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/4836371.js"></script>
+<noscript><a href="http://www.51.la/?4836371" target="_blank"></a></noscript>
+Powered by <strong><a href="http://dhblog.org" target="_blank">dhblog</a></strong> &nbsp;&copy;<a href="http://dhblog.org" target="_blank" title="DH博客">DH</a>
+</div>
+</div>
+</body>
+</html>

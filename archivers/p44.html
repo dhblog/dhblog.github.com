@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>wordpress安全:被垃圾评论搞的很烦 - Powered by dhblog.org</title>
+<meta name="keywords" content="wordpress安全:被垃圾评论搞的很烦" />
+<meta name="description" content="wordpress安全:被垃圾评论搞的很烦,静态页面,Powered by dhblog.org" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<div id="wrapper">
+<div id="nav">
+<ul><li><a href="p19.html" title="给我留言">给我留言</a></li>
+<li><a href="p20.html" title="友情链接">友情链接</a></li>
+<li><a href="p21.html" title="关于本站">关于本站</a></li>
+<li><a href="p22.html" title="本站下载">本站下载</a></li>
+<li><a href="p39.html" title="google搜索结果">google搜索结果</a></li>
+</ul>
+</div>
+<div id="top">
+<div id="dhtitle">DH 博客的文章归档</div>
+<center>DH出品，必属精品！</center>
+  <div style="text-align:right;">
+	<a href="http://dhblog.org">原始版本</a>
+  </div>  
+</div><div id="nav">
+<a href="http://dhblog.org/archivers/"><strong>DH 博客</strong></a>  &raquo; <a href="http://dhblog.org/archivers/cat125-1.html">wordpress</a>  &raquo; wordpress安全:被垃圾评论搞的很烦
+| <a href="http://dhblog.org/44.html"><strong>查看此文章的完整的版本</strong></a>
+</div>
+<div id="content">
+<div id="post_content">
+<div id="post_title">wordpress安全:被垃圾评论搞的很烦</div>
+<div id="post_author">2011-06-28 08:12:24</div>
+<div>
+<h2>缘起</h2>
+wordpress默认的处理垃圾评论一直不是很理想，加上我想我的博客不会有人来留言，特别是垃圾评论，少之又少，所以就没有对垃圾评论做处理。
+不过这几天，情况就不一样了。如图所示：
+<a href="http://dhblog.org/wp-content/uploads/2011/06/spam.png"><img src="http://dhblog.org/wp-content/uploads/2011/06/spam.png" alt="" title="spam" width="606" height="521" class="aligncenter size-full wp-image-929" /></a>
+
+由于垃圾评论没有标记为spam，开始手动删除这些垃圾评论，后来越来越多，没有办法，手动累的要死。下图就是我手动删除的悲惨情况：
+<a href="http://dhblog.org/wp-content/uploads/2011/06/spamdel.png"><img src="http://dhblog.org/wp-content/uploads/2011/06/spamdel.png" alt="" title="spamdel" width="487" height="424" class="aligncenter size-full wp-image-930" /></a>
+后来想到一个办法，用我的sql知识，批量删除，我知道这段时间没有博友们的正式评论，所以干脆删除了所有的被攻击时段的评论，使用下面的sql语句。
+
+<p>2f3350b45f1a9eb064062a99adce3d6e088</p>
+
+
+
+如果博友们觉得运行delete 很危险，就先运行
+
+<p>2f3350b45f1a9eb064062a99adce3d6e089</p>
+
+
+然后在后台查看是否真的是垃圾评论，删除垃圾评论即可。
+</div>
+</div>
+<div id="post_comment">
+<div id="comment"><div id="comment_title">作者：<strong>季远</strong> 时间： 2011-06-28 08:36:34 </div><div id="comment_content">貌似后台默认有个去垃圾评论的插件 不过我还没机会实验呢  [大笑] 
+
+博主 你这的表情很好玩~[努力]</div></div><div id="comment"><div id="comment_title">作者：<strong>最新网游</strong> 时间： 2011-06-28 09:30:32 </div><div id="comment_content">垃圾评论不好处理 太费时间了</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-28 10:03:21 </div><div id="comment_content">我的表情是网上下的。以前没有的，现在被人盯上了，垃圾评论暴多。不得不面对的问题啊</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-28 10:03:52 </div><div id="comment_content">有插件的，正在系统研究如何处理中。。。</div></div><div id="comment"><div id="comment_title">作者：<strong>空空裤兜</strong> 时间： 2011-06-28 10:33:23 </div><div id="comment_content">最麻烦的是人肉spam</div></div><div id="comment"><div id="comment_title">作者：<strong>电商圈</strong> 时间： 2011-06-28 10:33:51 </div><div id="comment_content">垃圾评论，一个不留，呵呵</div></div><div id="comment"><div id="comment_title">作者：<strong>家具团购</strong> 时间： 2011-06-28 10:43:36 </div><div id="comment_content">[害怕] 我的邮箱都在来垃圾邮件了</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-28 11:16:22 </div><div id="comment_content">说明你的网站越来越出名了哦</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-28 11:22:59 </div><div id="comment_content">你的方法是怎么样的，我正在总结处理垃圾评论的方法</div></div><div id="comment"><div id="comment_title">作者：<strong>黄镇</strong> 时间： 2011-06-28 11:39:25 </div><div id="comment_content">都是发外链软件惹的祸，博主可以弄个插件试试</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-28 11:52:14 </div><div id="comment_content">人肉spam是什么？就是用人发spam？</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-28 11:53:03 </div><div id="comment_content">恩。已经弄了willin大师的小强。效果很好，现在正在整理防止垃圾评论的方法</div></div><div id="comment"><div id="comment_title">作者：<strong>空空裤兜</strong> 时间： 2011-06-28 12:15:46 </div><div id="comment_content">答对了，加十分</div></div><div id="comment"><div id="comment_title">作者：<strong>IM路人</strong> 时间： 2011-06-28 12:24:20 </div><div id="comment_content">禁IP~~~~~</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-28 12:29:20 </div><div id="comment_content">很多ip的。图中的每封邮件就是一个ip。我怀疑是一个利用多ip发的软件。有专门提供这种外链服务的恶心商家搞的</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-28 12:29:52 </div><div id="comment_content">这个很难对付的哦。祝贺你的pr变成3了哦</div></div><div id="comment"><div id="comment_title">作者：<strong>怎么瘦脸</strong> 时间： 2011-06-28 16:54:30 </div><div id="comment_content">唉，这是一件让人很无语的四情。</div></div><div id="comment"><div id="comment_title">作者：<strong>姜敏</strong> 时间： 2011-06-28 17:15:58 </div><div id="comment_content">我博客现在一天近800条，幸亏设置了首次评论需审核，不然简直要疯了，太猖狂了</div></div><div id="comment"><div id="comment_title">作者：<strong>szoOrz</strong> 时间： 2011-06-28 17:39:20 </div><div id="comment_content">akismet强大到让博主自己的也成垃圾留言</div></div><div id="comment"><div id="comment_title">作者：<strong>广东硅谷学院</strong> 时间： 2011-06-28 20:51:21 </div><div id="comment_content">恩，弄个插件就不会那么头痛了</div></div><div id="comment"><div id="comment_title">作者：<strong>三亚SEO</strong> 时间： 2011-06-28 21:02:40 </div><div id="comment_content">[囧囧]  出现这个情况就是困扰啊</div></div><div id="comment"><div id="comment_title">作者：<strong>iSayme</strong> 时间： 2011-06-28 22:04:12 </div><div id="comment_content">呵呵 俺用willinkan大师的小墙 spam去无踪~~</div></div><div id="comment"><div id="comment_title">作者：<strong>于申</strong> 时间： 2011-06-28 22:40:04 </div><div id="comment_content">可以用Akismet插件啊，感觉挺好的。</div></div><div id="comment"><div id="comment_title">作者：<strong>有多远走多远</strong> 时间： 2011-06-28 23:00:54 </div><div id="comment_content">多谢分享,一般Akismet删除一次 自动列入黑名单了.</div></div><div id="comment"><div id="comment_title">作者：<strong>草根网赚纪录</strong> 时间： 2011-06-29 07:02:15 </div><div id="comment_content">sql语句具体是怎么运行的？说实话，从来不敢碰数据库，但是你的方法看起来是那么的诱人！
+恭喜PR值到2了</div></div><div id="comment"><div id="comment_title">作者：<strong>混小子博客</strong> 时间： 2011-06-29 07:31:19 </div><div id="comment_content">讨厌这样的垃圾人</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-29 08:26:39 </div><div id="comment_content">我和你情况茶不错。问题是这800条不是一个ip的，我觉得好像被人盯上了。原来大家都有这个烦恼。虽然屏蔽了留言，但是心里知道，这些ip还在不断地链接我的博客，造成我新能和流量的损失。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-29 08:27:06 </div><div id="comment_content">已经用了willin大师的小墙，效果还不错。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-29 08:28:40 </div><div id="comment_content">恩。我就是用的这个，但是，如果仔细发现的话，虽然不允许他们留言显示，但是那些ip还是不断地尝试留言。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-29 08:29:38 </div><div id="comment_content">这个好像会误杀好人的。。。用了willin大师的小墙呵呵</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-29 08:33:03 </div><div id="comment_content">由于我之前没有设置垃圾评论功能，所以很多留言和正常的留言一样被允许了。这样有接近千条的数据，由于这些垃圾数据是一段时间留下的，我用sql语句删除了这段时间的数据。sql语句在数据库的管理界面运行的。管理界面是通过你的管理入口进去，一般是phpMyAdmin。进去之后又执行sql的窗口的。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-29 08:33:50 </div><div id="comment_content">这个好像会误杀好人的。。。用了willin大师的小墙，现在好多了</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-29 08:34:11 </div><div id="comment_content">呵呵。讨厌这些人，好像国外的居多。用了一些插件，好多了</div></div><div id="comment"><div id="comment_title">作者：<strong>松鼠网</strong> 时间： 2011-06-29 09:21:39 </div><div id="comment_content">学习了，非常好的总结。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-29 11:27:56 </div><div id="comment_content">他们不是人，是自动的程序</div></div><div id="comment"><div id="comment_title">作者：<strong>卢松松</strong> 时间： 2011-06-29 13:13:51 </div><div id="comment_content">我还经常被人肉spam 哎 郁闷</div></div><div id="comment"><div id="comment_title">作者：<strong>大雄</strong> 时间： 2011-06-29 13:15:21 </div><div id="comment_content">有人的地方就有江湖，有江湖的地方就有垃圾留言。欲除垃圾留言必先除人！</div></div><div id="comment"><div id="comment_title">作者：<strong>郑州SEO</strong> 时间： 2011-06-29 13:18:51 </div><div id="comment_content">这个问题不好解决，有留言的地方就有广告！</div></div><div id="comment"><div id="comment_title">作者：<strong>先看看</strong> 时间： 2011-06-29 14:12:39 </div><div id="comment_content">装个插件就OK了啊</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-29 18:46:50 </div><div id="comment_content">你的博客那么有名，人肉那是非常非常正常的。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-29 18:47:24 </div><div id="comment_content">呵呵，你很凶猛，道高一尺，魔高一丈，很难除掉</div></div><div id="comment"><div id="comment_title">作者：<strong>蓝莓绿茶</strong> 时间： 2011-06-30 11:58:30 </div><div id="comment_content">我用了几个插件，基本把全英文和几个字，以及链接广告等垃圾留言过滤掉了。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-30 12:38:48 </div><div id="comment_content">恩。插件治标不治本。那些可恶的人还在尝试访问你的留言地址的。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-30 12:39:15 </div><div id="comment_content">什么插件呢？我用的是willin的小墙，效果还不错。</div></div><div id="comment"><div id="comment_title">作者：<strong>家具团购</strong> 时间： 2011-06-30 13:57:28 </div><div id="comment_content">哈哈！多了多了</div></div><div id="comment"><div id="comment_title">作者：<strong>苍井空</strong> 时间： 2011-06-30 14:22:56 </div><div id="comment_content">学习了..........</div></div><div id="comment"><div id="comment_title">作者：<strong>Harid</strong> 时间： 2011-06-30 14:30:09 </div><div id="comment_content">我当年也遇到过，每天垃圾评论100多条，建议还是加一个验证环节。<a href="http://www.ninthday.net/2010/11/adding-calculation-checking.html" rel="nofollow">《添加代码实现评论算术验证》</a></div></div><div id="comment"><div id="comment_title">作者：<strong>黄镇</strong> 时间： 2011-06-30 16:25:53 </div><div id="comment_content">呵呵，我的基本还还</div></div><div id="comment"><div id="comment_title">作者：<strong>屠龙</strong> 时间： 2011-06-30 17:27:53 </div><div id="comment_content">恩 凡是都有弊端的一面 呵呵 出现这样的问题，倒不如装个插件看看、</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-30 17:34:03 </div><div id="comment_content">谢谢，考虑到评论的友好性，不希望减少用户的友好性，就没有设置。。呵呵，以后考虑！</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-30 17:35:37 </div><div id="comment_content">谢谢，已经按照了willin的插件，暂时避避。但是这些麻烦去也去不掉。还是有人在无情的访问你的留言功能，在插件的日志可以看出来，只是屏蔽而已，眼不见为净。</div></div><div id="comment"><div id="comment_title">作者：<strong>toinka</strong> 时间： 2011-06-30 20:07:55 </div><div id="comment_content">我的印加部落时不时也有些英文的垃圾评论，我是直接在后台删除的！我用的是Akismet</div></div><div id="comment"><div id="comment_title">作者：<strong>dh</strong> 时间： 2011-06-30 22:27:31 </div><div id="comment_content">每次删除很烦，关键是知道有人在弄你的网站，那他没有办法。</div></div><div id="comment"><div id="comment_title">作者：<strong>蓝莓绿茶</strong> 时间： 2011-07-01 08:00:28 </div><div id="comment_content">Minimum Comment Length 和some Chinese please.小墙也有用,模板自带的。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-01 08:41:53 </div><div id="comment_content">这两个字面意思就是，评论长度不能太短和中文字符。机器人的垃圾评论的评论一般很长，如果国外的针对中文搞一个机器人，那就挡不住了吧？</div></div><div id="comment"><div id="comment_title">作者：<strong>Harid</strong> 时间： 2011-07-01 12:03:12 </div><div id="comment_content">加一个简单的加法验证环节，并不会给访客带来多大的负担。不过当然是没有更好啦</div></div><div id="comment"><div id="comment_title">作者：<strong>三亚SEO</strong> 时间： 2011-07-01 12:36:07 </div><div id="comment_content">我今天学习这个方法，试试去</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-01 12:38:07 </div><div id="comment_content">没有用插件时候的方法，有了插件删除这些就方便多了</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-07-01 12:39:12 </div><div id="comment_content">你的方法我觉得是对用户比较有好的。不加验证，后台处理比较麻烦一点，用户方便一点。</div></div><div id="comment"><div id="comment_title">作者：<strong>宁康</strong> 时间： 2011-07-02 13:27:50 </div><div id="comment_content">目前你有什么好的办法处理了么</div></div><div id="comment"><div id="comment_title">作者：<strong>屠龙</strong> 时间： 2011-07-02 13:48:04 </div><div id="comment_content">已经按照了willin的插件，暂时避避。但是这些麻烦去也去不掉，真是一个很大问题</div></div><div id="comment"><div id="comment_title">作者：<strong>宁夏枸杞</strong> 时间： 2011-07-03 14:10:55 </div><div id="comment_content">很多好像是机器提交的啊</div></div><div id="comment"><div id="comment_title">作者：<strong>苍井空</strong> 时间： 2011-07-12 19:08:03 </div><div id="comment_content">路过，来支持下</div></div><div id="comment"><div id="comment_title">作者：<strong>建材品牌</strong> 时间： 2011-09-20 14:27:55 </div><div id="comment_content">写代码简单轻松多了</div></div><div id="comment"><div id="comment_title">作者：<strong>星尔</strong> 时间： 2011-10-02 13:58:03 </div><div id="comment_content">确实比较烦，我用了评论验证还好些。</div></div>
+</div>
+</div><div id="sidebar">
+<div id="contentcat">
+<h3>分类目录</h3>
+<ul><ul><li><a href="http://dhblog.org/archivers/cat1-1.html" title="">未分类</a> (0)</li><li><a href="http://dhblog.org/archivers/cat3-1.html" title="">信息应用</a> (4)<ul><li><a href="http://dhblog.org/archivers/cat117-1.html" title="">工具推荐</a> (4)</li><li><a href="http://dhblog.org/archivers/cat120-1.html" title="">网站设计</a> (1)<ul><li><a href="http://dhblog.org/archivers/cat126-1.html" title="">网站优化</a> (2)</li><li><a href="http://dhblog.org/archivers/cat125-1.html" title="">wordpress</a> (41)</li><li><a href="http://dhblog.org/archivers/cat123-1.html" title="">javascript</a> (8)</li><li><a href="http://dhblog.org/archivers/cat122-1.html" title="">css</a> (2)</li></ul></li></ul></li><li><a href="http://dhblog.org/archivers/cat7-1.html" title="">生活百味</a> (0)<ul><li><a href="http://dhblog.org/archivers/cat5-1.html" title="">电影赏析</a> (6)</li><li><a href="http://dhblog.org/archivers/cat118-1.html" title="">幽默故事</a> (0)</li><li><a href="http://dhblog.org/archivers/cat127-1.html" title="">活动推荐</a> (5)</li><li><a href="http://dhblog.org/archivers/cat128-1.html" title="">健康养生</a> (0)</li></ul></li><li><a href="http://dhblog.org/archivers/cat11-1.html" title="">投资理财</a> (3)</li><li><a href="http://dhblog.org/archivers/cat129-1.html" title="">信息基础</a> (0)<ul><li><a href="http://dhblog.org/archivers/cat124-1.html" title="">专业知识</a> (2)</li><li><a href="http://dhblog.org/archivers/cat121-1.html" title="">软件编程</a> (0)</li></ul></li><li><a href="http://dhblog.org/archivers/cat119-1.html" title="">时文分享</a> (0)</li></ul></ul>
+</div>
+<div id="contenttag">
+<h3>讨论主题</h3>
+<ul><li><a href="http://dhblog.org/archivers/tag130-1.html" title="">wordpress 定时任务</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag131-1.html" title="">wordpress安全</a> (9)</li>
+<li><a href="http://dhblog.org/archivers/tag123-1.html" title="">javascript</a> (3)</li>
+<li><a href="http://dhblog.org/archivers/tag132-1.html" title="">wordpress提高速度</a> (6)</li>
+<li><a href="http://dhblog.org/archivers/tag133-1.html" title="">wordpress应用</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag134-1.html" title="">IT求职知识</a> (2)</li>
+<li><a href="http://dhblog.org/archivers/tag135-1.html" title="">wordpress定时任务</a> (5)</li>
+<li><a href="http://dhblog.org/archivers/tag136-1.html" title="">经验总结</a> (6)</li>
+<li><a href="http://dhblog.org/archivers/tag137-1.html" title="">友情推荐</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag138-1.html" title="">域名空间</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag139-1.html" title="">拿福能</a> (2)</li>
+<li><a href="http://dhblog.org/archivers/tag140-1.html" title="">wordpress主题</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag141-1.html" title="">wordpress ajax</a> (8)</li>
+<li><a href="http://dhblog.org/archivers/tag143-1.html" title="">wordpress数据库</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag145-1.html" title="">迅雷下载</a> (3)</li>
+<li><a href="http://dhblog.org/archivers/tag147-1.html" title="">BT下载</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag148-1.html" title="">数据库</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag149-1.html" title="">网络赚钱</a> (1)</li>
+</ul>
+</div>
+</div><div id="footer">
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/4836371.js"></script>
+<noscript><a href="http://www.51.la/?4836371" target="_blank"></a></noscript>
+Powered by <strong><a href="http://dhblog.org" target="_blank">dhblog</a></strong> &nbsp;&copy;<a href="http://dhblog.org" target="_blank" title="DH博客">DH</a>
+</div>
+</div>
+</body>
+</html>

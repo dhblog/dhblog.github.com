@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>wordpress提高速度之一(数据库清理) - Powered by dhblog.org</title>
+<meta name="keywords" content="wordpress提高速度之一(数据库清理)" />
+<meta name="description" content="wordpress提高速度之一(数据库清理),静态页面,Powered by dhblog.org" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<div id="wrapper">
+<div id="nav">
+<ul><li><a href="p19.html" title="给我留言">给我留言</a></li>
+<li><a href="p20.html" title="友情链接">友情链接</a></li>
+<li><a href="p21.html" title="关于本站">关于本站</a></li>
+<li><a href="p22.html" title="本站下载">本站下载</a></li>
+<li><a href="p39.html" title="google搜索结果">google搜索结果</a></li>
+</ul>
+</div>
+<div id="top">
+<div id="dhtitle">DH 博客的文章归档</div>
+<center>DH出品，必属精品！</center>
+  <div style="text-align:right;">
+	<a href="http://dhblog.org">原始版本</a>
+  </div>  
+</div><div id="nav">
+<a href="http://dhblog.org/archivers/"><strong>DH 博客</strong></a>  &raquo; <a href="http://dhblog.org/archivers/cat125-1.html">wordpress</a>  &raquo; wordpress提高速度之一(数据库清理)
+| <a href="http://dhblog.org/18.html"><strong>查看此文章的完整的版本</strong></a>
+</div>
+<div id="content">
+<div id="post_content">
+<div id="post_title">wordpress提高速度之一(数据库清理)</div>
+<div id="post_author">2011-02-26 16:02:15</div>
+<div>
+在使用wordpress的时候，新手往往不会关注数据库，但是如果使用时间长了，不免会因为速度的问题会去优化数据库，需要提高数据库的效率。这里介绍两种类型的数据库优化：
+一种是删除wordpress的无用数据或者不重要的数据，这里叫做数据库清理，需要对wordpress的数据库有一定的了解，这样减少数据量，可以使得数据库查找快。
+另一种是不删除数据库数据，只是将数据库的结构优化一下，就像整理电脑磁盘一样，这样让数据库结构合理，增加数据库查询效率。这里先说第一种，文章  中说明第二种方式。
+
+<h2>1 wordpress数据库表</h2>
+首先我们需要了解wordpress各个数据库表（3.0以上）的作用，这样删除的时候心里有底。
+(1)wp_commentmeta: 用于保存评论的元信息，在将评论放入回收站等操作时会将数据放入此表，Akismet等插件也会生成此表的数据。此表不太重要。
+(2)wp_comments: 用于保存评论信息的表。
+(3)wp_links: 用于保存用户输入到Wordpress中的链接(通过Link Manager)的表。
+(4)wp_options: 用于保存Wordpress相关设置、参数的表，里面包括了大量的重要信息。
+(5)wp_postmeta: 用于保存文章的元信息(meta)的表。此表不太重要。
+(6)wp_posts: 用于保存你所有的文章相关信息的表，非常的重要。一般它存储的数据是最多的。
+(7)wp_terms: 文章和链接分类以及文章的tag分类可以在表里找到。
+(8)wp_term_relationships: 日志与wp_terms中的类别与标签联合起来共同存储在wp_terms_relationships表中。类别相关链接也存储在wp_terms_relationships中。
+(9)wp_term_taxonomy: 该表格对wp_terms表中的条目分类（类别、链接以及标签）进行说明。
+(10)wp_usermeta : 用于保存用户元信息(meta)的表。
+(11)wp_users:用于保存Wordpress使用者的相关信息的表。
+
+<h2>2. wordpress数据库清理涉及到的表</h2>
+更换主题，删除插件会在将数据留在数据库中，在卸载后无法被清理。除此之外，在由于一些操作，会导致数据库的冗余，比如已经没有的评论，不应该在评论元数据表中有记录，由于没有外键的约束，这些记录没有被删除，会造成数据的冗余。本文的宗旨是删除掉不必要的数据库内容，提高wordpress的效率，在此，主要涉及到一下几张表：wp_options， wp_posts， wp_postmeta，wp_commentmeta。注意清理之前进行备份。
+
+<h2>3. wp_options的清理</h2>
+wp_options 这个数据表是wordpress设置的全局数据，这个表会经常有数据膨胀。主要原因是：
+(1)以前用过的一些插件、主题在删除之后没有进行设置的清理，造成残留数据。
+(2)占用数据的大户--RSS缓存，后台的数据调用竟然会放到数据库里面。
+处理方法：
+(1)网上对RSS处理方法有两种一个是修改后台的文件直接不去调用，这个是我不喜欢的毕竟修改了程序，其实这个很容
+易忘记WP升级是太频繁的哪次更新覆盖了新文件还是照样缓存.另外一种就是在配置文件里面填写define('MAGPIE_CACHE_ON', '0'); 这个是管用的,添加以后后台首页的调用明显变慢。
+(2)使用插件clean options
+(3)费力但是简单的清除方法：删除wp_options表，会删除一些设置，需要重新设置wordpress，推荐新手使用
+
+<p>2f3350b45f1a9eb064062a99adce3d6e115</p>
+
+
+
+<h2>4.wp_posts清理</h2>
+wordpress的文章有好多：wp_posts表中包括
+文章种类：文章、修订版本、页面、文章的附件、菜单。
+其中每种文章又会有很多状态：继承、发布、私有、草稿、自动草稿、回收站中。
+
+冗余原因：
+(1)在博主写文章的时候，系统会保存很多的中间状态，在文章发布之后其很多的中间状态没有被删除。
+
+解决办法：
+(1)使用插件：WP Cleaner，使用插件的好处就是有保护机制，无论怎么操作都无法影响已发布的贴子，请放心使用^^
+(2)自己动手删除，数据库中的标志删除文章，注意备份。
+说明：wp_posts的重要字段含义：
+post_type：文章类型，post表示为文章，revision表示为修订版本，page为页面，attachment是文章的附件信息，nav_menu_item是菜单。这里我们需要的是文章、页面、和菜单。
+post_status：文章状态，inherit是继承的附件和文章的附带信息，publish是已经发布、private是私有的，draft是草稿，auto-draft是自动草稿，trash是在回收站。这里我们需要的是publish的状态的。
+这里我们主要是要 已经发布的文章、页面和菜单，除此之外的都可以删除，当然可以根据自己的需求选择删除哪些
+
+<p>2f3350b45f1a9eb064062a99adce3d6e116</p>
+
+
+
+<h2>5.wp_postmeta清理</h2>
+wp_postmeta是文章的元信息表，其数据是系统或者插件使用。
+冗余原因：
+(1)文章被删除之后，其在wp_postmeta中的数据理应被删除，在系统中多数情况是系统自动删除，但是由于人为删除文章，系统不知道被删除，就不会删除wp_postmeta表中的数据，造成冗余。
+(2)很多主题、插件没有做好及时清除的工作。
+
+解决办法：
+(1) 手动删除
+(1.1)规矩删除
+删除文章中不存在文章的元信息，这种删除比较安全，文章不存在了，其meta也肯定没有作用了。
+
+<p>2f3350b45f1a9eb064062a99adce3d6e117</p>
+
+
+(1.1)安全删除
+删除_edit_lock和_edit_last条目是安全的，所以这里给出SQL语句
+
+<p>2f3350b45f1a9eb064062a99adce3d6e118</p>
+
+
+(1.2)风险删除
+除了这两条还执行了一些其他语句由于有些风险：自己酌情考虑
+
+<p>2f3350b45f1a9eb064062a99adce3d6e119</p>
+
+
+(1.3)特殊插件删除
+postnav插件会记录每个文章的访问数，如果不需要，可以删除
+
+<p>2f3350b45f1a9eb064062a99adce3d6e120</p>
+
+
+(1.4)特殊操作删除
+在WordPress的后台上传图片或者附件后会在wp_postmeta中生成_wp_attached_file和_wp_attachment_metadata两个项，wp_posts也会记录附件的信息。如果使用FTP工具上传文件，表中就不会有这些信息。
+
+<p>2f3350b45f1a9eb064062a99adce3d6e121</p>
+
+
+(1.5)洁癖删除
+这几条条语句执行完毕能够删除掉95%以上的数据，算的上是极限优化了，最后考虑到这个数据表并不是很重要，有洁
+净癖的人可以尝试清空这个表，当然我测试清空表会让一些原本的数据丢失。
+
+<p>2f3350b45f1a9eb064062a99adce3d6e122</p>
+
+
+(2)插件
+尚未发现比较好用的插件，希望读者推荐
+
+<h2>6. wp_commentmeta清理</h2>
+冗余原因：
+(1)评论被删除之后，其在wp_commentmeta中的数据理应被删除，在系统中多数情况是系统自动删除，但是由于人为删除文章，系统不知道被删除，就不会删除wp_commentmeta表中的数据，造成冗余。
+(2)很多主题、插件没有做好及时清除的工作。比如akismet插件会生成记录，评论被移到回收站中有记录生成。
+解决办法：
+一下语句去除没有用的数据，如果评论中没有此条评论，那么在wp_commentmeta也没有意义，好像wordpress在清空回收站的时候会删除wp_commentmeta相应的数据。如果不出意外，下面的操作我们应该不需要做。
+
+<p>2f3350b45f1a9eb064062a99adce3d6e123</p>
+
+
+
+插件和回收站的记录删除，因为akismet插件本身就是在线拦截垃圾评论的，所以直接清空应该也是没有什么问题的。
+
+<p>2f3350b45f1a9eb064062a99adce3d6e124</p>
+
+
+
+如果直接全部删除wp_commentmeta，影响不会太大，这里面不会涉及重要的数据
+
+<p>2f3350b45f1a9eb064062a99adce3d6e125</p>
+
+
+
+<h2>7. 总结</h2>
+其实大部分无用的数据均在这几张表中，清理过后应该不会又太多的冗余数据了。但这里没有针对特殊插件或主题做数据库清理，有时这些插件和主题会悄悄动了一些数据库表，这样给清理带来很大难度，需要看代码才知道哦
+</div>
+</div>
+<div id="post_comment">
+<div id="comment"><div id="comment_title">作者：<strong>小叶</strong> 时间： 2011-03-06 14:02:20 </div><div id="comment_content">汗，没怎么研究wordpress数据库，就用过Optimize DB这个插件</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-03-06 21:59:38 </div><div id="comment_content">就是删除数据库中一些不用的数据，对于不能有瑕疵的人比较有用</div></div><div id="comment"><div id="comment_title">作者：<strong>卢松松</strong> 时间： 2011-03-07 09:43:26 </div><div id="comment_content">你这个博客是做什么的啊？</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-03-07 18:10:31 </div><div id="comment_content">所有和自己相关的、自己感兴趣的，具体主题现在还没有定</div></div><div id="comment"><div id="comment_title">作者：<strong>年五</strong> 时间： 2011-03-08 11:58:03 </div><div id="comment_content">数据呀 安全呀 这些东西我都搞不懂 还有俺现在是用zblog</div></div><div id="comment"><div id="comment_title">作者：<strong>92palm</strong> 时间： 2011-03-09 00:55:40 </div><div id="comment_content">现在我在想：到底用不用WP呢？在本地测试都非常的卡。而且没有备份数据库的功能。晕。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-03-09 08:54:50 </div><div id="comment_content">我没有太多研究，觉得大家用就用了。mysql数据库备份有导入导出功能的，但是不熟悉数据库的就比较麻烦。</div></div><div id="comment"><div id="comment_title">作者：<strong>晨光博客</strong> 时间： 2011-03-10 20:25:17 </div><div id="comment_content">我也安装了一个清理插件</div></div><div id="comment"><div id="comment_title">作者：<strong>数控雕刻机</strong> 时间： 2011-03-14 16:54:46 </div><div id="comment_content">可不可以一键清理啊</div></div><div id="comment"><div id="comment_title">作者：<strong>BT博客</strong> 时间： 2011-03-14 18:05:25 </div><div id="comment_content">本想用WP做个博客的，结果空间商那边说，不能放WP。 [囧囧]</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-03-14 18:29:46 </div><div id="comment_content">貌似没有一起清理的插件</div></div><div id="comment"><div id="comment_title">作者：<strong>压铸机</strong> 时间： 2011-03-17 14:58:57 </div><div id="comment_content">是不是可以一键清理</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-03-18 09:43:27 </div><div id="comment_content">可以用一大堆SQL语句搞定，不同用户的需求不一样，而且wp_options表比较难处理。</div></div><div id="comment"><div id="comment_title">作者：<strong>nikeshoxshoes</strong> 时间： 2011-03-18 16:43:38 </div><div id="comment_content">[晕了] 是不是麻烦了点</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-03-18 17:06:49 </div><div id="comment_content">每个表的清理基本上都有插件帮助清理的，用插件就不晕了 [微笑]</div></div><div id="comment"><div id="comment_title">作者：<strong>SEO工程师</strong> 时间： 2011-03-19 09:34:43 </div><div id="comment_content">[渴望] 这个牛逼，可以提速哈</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-03-19 12:56:18 </div><div id="comment_content">我的数据库量小，有没有提速我还不知道。</div></div><div id="comment"><div id="comment_title">作者：<strong>学炒外汇</strong> 时间： 2011-03-20 19:54:44 </div><div id="comment_content">鉴定为专业文章</div></div><div id="comment"><div id="comment_title">作者：<strong>微微健康网</strong> 时间： 2011-03-23 11:53:33 </div><div id="comment_content">不错的文章哦!</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-03-23 12:37:07 </div><div id="comment_content">谢谢，希望再来！</div></div><div id="comment"><div id="comment_title">作者：<strong>皮肤干燥怎么办</strong> 时间： 2011-03-24 22:09:32 </div><div id="comment_content">卢松松博客看到贵站，过来看看，支持一下!
+欢迎回访我的博客：http://www.ytq1118.com/</div></div><div id="comment"><div id="comment_title">作者：<strong>免费库</strong> 时间： 2011-03-26 20:21:19 </div><div id="comment_content">不错的文章，学习力</div></div><div id="comment"><div id="comment_title">作者：<strong>卢松松</strong> 时间： 2011-03-27 12:18:42 </div><div id="comment_content">经常清理下数据库是不错，我前两天刚清理过</div></div><div id="comment"><div id="comment_title">作者：<strong>nikeshoxshoes</strong> 时间： 2011-03-29 10:54:25 </div><div id="comment_content">[大笑]   俺再来瞧瞧  嘻嘻嘻</div></div><div id="comment"><div id="comment_title">作者：<strong>奚少</strong> 时间： 2011-03-29 16:58:41 </div><div id="comment_content">我用的my-visitors插件，呵呵~</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-03-29 19:29:51 </div><div id="comment_content">貌似 my-visitors不能删除冗余的逻辑数据吧？</div></div><div id="comment"><div id="comment_title">作者：<strong>学夫子</strong> 时间： 2011-03-31 09:49:28 </div><div id="comment_content">不知道emlog可以这样搞不，嘿嘿</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-03-31 11:28:17 </div><div id="comment_content">不能一样搞，但是研究一下数据库和它的存储机制，也可以去除一些无关的数据，但是道理相通。</div></div><div id="comment"><div id="comment_title">作者：<strong>Kailash</strong> 时间： 2011-04-05 11:02:56 </div><div id="comment_content">我这两天就是在优化Blog.</div></div><div id="comment"><div id="comment_title">作者：<strong>insect</strong> 时间： 2011-04-06 16:04:19 </div><div id="comment_content">wordpress隔段时间是要清理一下</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-04-06 17:09:54 </div><div id="comment_content">希望对你有帮助</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-04-06 17:11:05 </div><div id="comment_content">恩。特别是文章的冗余这块，好多历史版本，这些可以没有。。</div></div><div id="comment"><div id="comment_title">作者：<strong>insect</strong> 时间： 2011-04-06 18:03:53 </div><div id="comment_content">历史版本这些我都是直接禁用了，所以不需要考虑</div></div><div id="comment"><div id="comment_title">作者：<strong>橙色多天网</strong> 时间： 2011-04-06 21:56:53 </div><div id="comment_content">这个，看来是我的下一个工作了</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-04-07 12:30:53 </div><div id="comment_content">祝你成功，呵呵，注意备份</div></div><div id="comment"><div id="comment_title">作者：<strong>申佳明</strong> 时间： 2011-04-07 13:03:53 </div><div id="comment_content">一般都用插件优化1下数据库了。谁有空没事去搞SQL语句。蛋疼……http://xn--sqrq1o.net/</div></div><div id="comment"><div id="comment_title">作者：<strong>申佳明</strong> 时间： 2011-04-07 13:04:23 </div><div id="comment_content">晕 网站地址复制错地方了。得罪勿怪哈~~</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-04-07 16:49:17 </div><div id="comment_content">有的有插件可以清理，有的没有。况且，不少人人为插件多了不好，能不用插件就不用。况且，对于简单的SQL语句，对于有些数据库知识的人来说，不算太难。</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-04-07 16:49:57 </div><div id="comment_content">发现你还是个中文的域名</div></div><div id="comment"><div id="comment_title">作者：<strong>Kailash</strong> 时间： 2011-04-07 22:45:29 </div><div id="comment_content">只敢从程序下手，对数据库还是不敢动刀。</div></div><div id="comment"><div id="comment_title">作者：<strong>reizhi</strong> 时间： 2011-04-08 03:17:16 </div><div id="comment_content">这个对新手确实不怎么友好，还是做个插件比较舒服哈</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-04-08 17:20:20 </div><div id="comment_content">现在还不会写插件，部分表的清理推荐了插件。</div></div><div id="comment"><div id="comment_title">作者：<strong>阿亮</strong> 时间： 2011-04-14 14:19:40 </div><div id="comment_content">好文章。俺平时只是在phpmyadmin全选优化一下就完了。 [大哭]</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-04-14 15:11:05 </div><div id="comment_content">那个优化是物理级别的，不删数据。我的这个是要删数据的。 [很酷]</div></div><div id="comment"><div id="comment_title">作者：<strong>南极骆驼</strong> 时间： 2011-04-22 17:38:52 </div><div id="comment_content">学习学习！！</div></div><div id="comment"><div id="comment_title">作者：<strong>coolhandle</strong> 时间： 2011-05-08 21:01:43 </div><div id="comment_content">数据库不敢乱动！速度慢点不要紧，万一删错了，可就完了！</div></div><div id="comment"><div id="comment_title">作者：<strong>美丽的人</strong> 时间： 2011-05-08 21:46:46 </div><div id="comment_content">还是要理解数据库的，无论要写插件，还是写主题，都需要对数据库有理解。</div></div><div id="comment"><div id="comment_title">作者：<strong>自在</strong> 时间： 2011-05-17 12:21:28 </div><div id="comment_content">学习了～</div></div><div id="comment"><div id="comment_title">作者：<strong>ixwebhosting</strong> 时间： 2011-06-11 06:55:36 </div><div id="comment_content">我把文件生成静态，哈哈，不用再读数据库了！</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-13 08:47:34 </div><div id="comment_content">你有这方面文章的分享吗？我也想学习一下，怎么变成静态的。</div></div><div id="comment"><div id="comment_title">作者：<strong>ixwebhosting</strong> 时间： 2011-06-13 13:41:58 </div><div id="comment_content">用插件呀，比如wp-html-cache（好像是这个名字吧）或cos-html-cache</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-13 13:51:23 </div><div id="comment_content">谢谢。不过这个好像是伪静态，不过先试试</div></div><div id="comment"><div id="comment_title">作者：<strong>toinka</strong> 时间： 2011-06-14 19:08:54 </div><div id="comment_content">这个不敢尝试啊·上次就因为乱尝试使得博客无法登陆 [大汗]  [大哭]</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-06-14 19:10:47 </div><div id="comment_content">呵呵。注意备份即可。其实弄了这个之后对wp的数据库结构有一定的了解，便于以后修改主题、插件。</div></div>
+</div>
+</div><div id="sidebar">
+<div id="contentcat">
+<h3>分类目录</h3>
+<ul><ul><li><a href="http://dhblog.org/archivers/cat1-1.html" title="">未分类</a> (0)</li><li><a href="http://dhblog.org/archivers/cat3-1.html" title="">信息应用</a> (4)<ul><li><a href="http://dhblog.org/archivers/cat117-1.html" title="">工具推荐</a> (4)</li><li><a href="http://dhblog.org/archivers/cat120-1.html" title="">网站设计</a> (1)<ul><li><a href="http://dhblog.org/archivers/cat126-1.html" title="">网站优化</a> (2)</li><li><a href="http://dhblog.org/archivers/cat125-1.html" title="">wordpress</a> (41)</li><li><a href="http://dhblog.org/archivers/cat123-1.html" title="">javascript</a> (8)</li><li><a href="http://dhblog.org/archivers/cat122-1.html" title="">css</a> (2)</li></ul></li></ul></li><li><a href="http://dhblog.org/archivers/cat7-1.html" title="">生活百味</a> (0)<ul><li><a href="http://dhblog.org/archivers/cat5-1.html" title="">电影赏析</a> (6)</li><li><a href="http://dhblog.org/archivers/cat118-1.html" title="">幽默故事</a> (0)</li><li><a href="http://dhblog.org/archivers/cat127-1.html" title="">活动推荐</a> (5)</li><li><a href="http://dhblog.org/archivers/cat128-1.html" title="">健康养生</a> (0)</li></ul></li><li><a href="http://dhblog.org/archivers/cat11-1.html" title="">投资理财</a> (3)</li><li><a href="http://dhblog.org/archivers/cat129-1.html" title="">信息基础</a> (0)<ul><li><a href="http://dhblog.org/archivers/cat124-1.html" title="">专业知识</a> (2)</li><li><a href="http://dhblog.org/archivers/cat121-1.html" title="">软件编程</a> (0)</li></ul></li><li><a href="http://dhblog.org/archivers/cat119-1.html" title="">时文分享</a> (0)</li></ul></ul>
+</div>
+<div id="contenttag">
+<h3>讨论主题</h3>
+<ul><li><a href="http://dhblog.org/archivers/tag130-1.html" title="">wordpress 定时任务</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag131-1.html" title="">wordpress安全</a> (9)</li>
+<li><a href="http://dhblog.org/archivers/tag123-1.html" title="">javascript</a> (3)</li>
+<li><a href="http://dhblog.org/archivers/tag132-1.html" title="">wordpress提高速度</a> (6)</li>
+<li><a href="http://dhblog.org/archivers/tag133-1.html" title="">wordpress应用</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag134-1.html" title="">IT求职知识</a> (2)</li>
+<li><a href="http://dhblog.org/archivers/tag135-1.html" title="">wordpress定时任务</a> (5)</li>
+<li><a href="http://dhblog.org/archivers/tag136-1.html" title="">经验总结</a> (6)</li>
+<li><a href="http://dhblog.org/archivers/tag137-1.html" title="">友情推荐</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag138-1.html" title="">域名空间</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag139-1.html" title="">拿福能</a> (2)</li>
+<li><a href="http://dhblog.org/archivers/tag140-1.html" title="">wordpress主题</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag141-1.html" title="">wordpress ajax</a> (8)</li>
+<li><a href="http://dhblog.org/archivers/tag143-1.html" title="">wordpress数据库</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag145-1.html" title="">迅雷下载</a> (3)</li>
+<li><a href="http://dhblog.org/archivers/tag147-1.html" title="">BT下载</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag148-1.html" title="">数据库</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag149-1.html" title="">网络赚钱</a> (1)</li>
+</ul>
+</div>
+</div><div id="footer">
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/4836371.js"></script>
+<noscript><a href="http://www.51.la/?4836371" target="_blank"></a></noscript>
+Powered by <strong><a href="http://dhblog.org" target="_blank">dhblog</a></strong> &nbsp;&copy;<a href="http://dhblog.org" target="_blank" title="DH博客">DH</a>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>wordpress定时任务之二:插件中控制WP-Cron任务 - Powered by dhblog.org</title>
+<meta name="keywords" content="wordpress定时任务之二:插件中控制WP-Cron任务" />
+<meta name="description" content="wordpress定时任务之二:插件中控制WP-Cron任务,静态页面,Powered by dhblog.org" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<div id="wrapper">
+<div id="nav">
+<ul><li><a href="p19.html" title="给我留言">给我留言</a></li>
+<li><a href="p20.html" title="友情链接">友情链接</a></li>
+<li><a href="p21.html" title="关于本站">关于本站</a></li>
+<li><a href="p22.html" title="本站下载">本站下载</a></li>
+<li><a href="p39.html" title="google搜索结果">google搜索结果</a></li>
+</ul>
+</div>
+<div id="top">
+<div id="dhtitle">DH 博客的文章归档</div>
+<center>DH出品，必属精品！</center>
+  <div style="text-align:right;">
+	<a href="http://dhblog.org">原始版本</a>
+  </div>  
+</div><div id="nav">
+<a href="http://dhblog.org/archivers/"><strong>DH 博客</strong></a>  &raquo; <a href="http://dhblog.org/archivers/cat125-1.html">wordpress</a>  &raquo; wordpress定时任务之二:插件中控制WP-Cron任务
+| <a href="http://dhblog.org/28.html"><strong>查看此文章的完整的版本</strong></a>
+</div>
+<div id="content">
+<div id="post_content">
+<div id="post_title">wordpress定时任务之二:插件中控制WP-Cron任务</div>
+<div id="post_author">2011-05-16 15:02:13</div>
+<div>
+上一篇文章讲到如何<a href="http://dhblog.org/archives/892.html">利用插件wp-crontrol来控制WP-Cron任务</a>，利用wp-crontrol的好处是比较直观，但是对于手动写插件的wordpressers来说，不方便，不可能叫用户安装wp-crontrol来手动添加定时任务吧，就需要在代码里面自己使用WP-Cron。
+利用插件使用的时候主要有以下几个要点要解决：
+(1)如何定义时间间隔
+(2)如何在插件启动的时候创建hook
+(3)如何在插件停止的时候删除hook
+本文用以下的代码举例，说明如何在插件使用WP-Cron，希望高手能做出更强大的插件，起到抛砖引玉的作用。
+将以下代码保存为一个php，打包成一个插件就可以直接安装在wp中运行。但是需要修改dh_task_function中wp_mail函数参数中的邮件名。
+使用时注意使用 wp-crontrol来查看是否已经成功添加hook和schedule。
+
+<p>2f3350b45f1a9eb064062a99adce3d6e103</p>
+
+
+</div>
+</div>
+<div id="post_comment">
+<div id="comment"><div id="comment_title">作者：<strong>瘦腿袜</strong> 时间： 2011-05-17 01:11:51 </div><div id="comment_content">我的爱好之一就是看博客，每天基本上要看100篇博客，一般是不怎么回复的，可是看到博主的文章我不得不回，我只想说一句话：“博主你的文章是我见过写的最好的了！</div></div><div id="comment"><div id="comment_title">作者：<strong>宋若愚</strong> 时间： 2011-05-17 19:08:08 </div><div id="comment_content">又来看看了</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-05-17 19:14:35 </div><div id="comment_content">谢谢。你的文章更新太快了，已经来不及看了</div></div><div id="comment"><div id="comment_title">作者：<strong>宋若愚</strong> 时间： 2011-05-17 19:15:54 </div><div id="comment_content">呵呵，没办法，初期多发一些好</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-05-17 19:19:53 </div><div id="comment_content">我还不知道这个，我现在没有时间。一个礼拜一篇的更新。。。</div></div><div id="comment"><div id="comment_title">作者：<strong>nhl jerseys</strong> 时间： 2011-05-18 13:57:38 </div><div id="comment_content">进来看看，感受一下再走</div></div><div id="comment"><div id="comment_title">作者：<strong>mbt shoes</strong> 时间： 2011-05-18 14:01:47 </div><div id="comment_content">进来瞅瞅，顶一个</div></div><div id="comment"><div id="comment_title">作者：<strong>玄幻小说完本</strong> 时间： 2011-05-19 09:29:50 </div><div id="comment_content">呵呵 你的博客很好 我喜欢</div></div><div id="comment"><div id="comment_title">作者：<strong>小说排行榜</strong> 时间： 2011-05-20 16:36:31 </div><div id="comment_content">不可能叫用户安装wp-crontrol来手动添加定时任务吧，就需要在代码里面自己使用WP-Cron</div></div><div id="comment"><div id="comment_title">作者：<strong>吴江英才网</strong> 时间： 2011-05-21 16:04:28 </div><div id="comment_content">我又来看看 了 、哈哈哈</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-05-22 22:29:38 </div><div id="comment_content">谢谢回访。。</div></div><div id="comment"><div id="comment_title">作者：<strong>玄幻小说排行榜完本</strong> 时间： 2011-08-08 10:45:21 </div><div id="comment_content">希望高手能做出更强大的插件，起到抛砖引玉的作用</div></div><div id="comment"><div id="comment_title">作者：<strong>DH</strong> 时间： 2011-08-08 13:47:30 </div><div id="comment_content">我的目的是能够给开发人员一些帮助。</div></div>
+</div>
+</div><div id="sidebar">
+<div id="contentcat">
+<h3>分类目录</h3>
+<ul><ul><li><a href="http://dhblog.org/archivers/cat1-1.html" title="">未分类</a> (0)</li><li><a href="http://dhblog.org/archivers/cat3-1.html" title="">信息应用</a> (4)<ul><li><a href="http://dhblog.org/archivers/cat117-1.html" title="">工具推荐</a> (4)</li><li><a href="http://dhblog.org/archivers/cat120-1.html" title="">网站设计</a> (1)<ul><li><a href="http://dhblog.org/archivers/cat126-1.html" title="">网站优化</a> (2)</li><li><a href="http://dhblog.org/archivers/cat125-1.html" title="">wordpress</a> (41)</li><li><a href="http://dhblog.org/archivers/cat123-1.html" title="">javascript</a> (8)</li><li><a href="http://dhblog.org/archivers/cat122-1.html" title="">css</a> (2)</li></ul></li></ul></li><li><a href="http://dhblog.org/archivers/cat7-1.html" title="">生活百味</a> (0)<ul><li><a href="http://dhblog.org/archivers/cat5-1.html" title="">电影赏析</a> (6)</li><li><a href="http://dhblog.org/archivers/cat118-1.html" title="">幽默故事</a> (0)</li><li><a href="http://dhblog.org/archivers/cat127-1.html" title="">活动推荐</a> (5)</li><li><a href="http://dhblog.org/archivers/cat128-1.html" title="">健康养生</a> (0)</li></ul></li><li><a href="http://dhblog.org/archivers/cat11-1.html" title="">投资理财</a> (3)</li><li><a href="http://dhblog.org/archivers/cat129-1.html" title="">信息基础</a> (0)<ul><li><a href="http://dhblog.org/archivers/cat124-1.html" title="">专业知识</a> (2)</li><li><a href="http://dhblog.org/archivers/cat121-1.html" title="">软件编程</a> (0)</li></ul></li><li><a href="http://dhblog.org/archivers/cat119-1.html" title="">时文分享</a> (0)</li></ul></ul>
+</div>
+<div id="contenttag">
+<h3>讨论主题</h3>
+<ul><li><a href="http://dhblog.org/archivers/tag130-1.html" title="">wordpress 定时任务</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag131-1.html" title="">wordpress安全</a> (9)</li>
+<li><a href="http://dhblog.org/archivers/tag123-1.html" title="">javascript</a> (3)</li>
+<li><a href="http://dhblog.org/archivers/tag132-1.html" title="">wordpress提高速度</a> (6)</li>
+<li><a href="http://dhblog.org/archivers/tag133-1.html" title="">wordpress应用</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag134-1.html" title="">IT求职知识</a> (2)</li>
+<li><a href="http://dhblog.org/archivers/tag135-1.html" title="">wordpress定时任务</a> (5)</li>
+<li><a href="http://dhblog.org/archivers/tag136-1.html" title="">经验总结</a> (6)</li>
+<li><a href="http://dhblog.org/archivers/tag137-1.html" title="">友情推荐</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag138-1.html" title="">域名空间</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag139-1.html" title="">拿福能</a> (2)</li>
+<li><a href="http://dhblog.org/archivers/tag140-1.html" title="">wordpress主题</a> (7)</li>
+<li><a href="http://dhblog.org/archivers/tag141-1.html" title="">wordpress ajax</a> (8)</li>
+<li><a href="http://dhblog.org/archivers/tag143-1.html" title="">wordpress数据库</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag145-1.html" title="">迅雷下载</a> (3)</li>
+<li><a href="http://dhblog.org/archivers/tag147-1.html" title="">BT下载</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag148-1.html" title="">数据库</a> (1)</li>
+<li><a href="http://dhblog.org/archivers/tag149-1.html" title="">网络赚钱</a> (1)</li>
+</ul>
+</div>
+</div><div id="footer">
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/4836371.js"></script>
+<noscript><a href="http://www.51.la/?4836371" target="_blank"></a></noscript>
+Powered by <strong><a href="http://dhblog.org" target="_blank">dhblog</a></strong> &nbsp;&copy;<a href="http://dhblog.org" target="_blank" title="DH博客">DH</a>
+</div>
+</div>
+</body>
+</html>
