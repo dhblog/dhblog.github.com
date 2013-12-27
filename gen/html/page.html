@@ -14,6 +14,36 @@
 	<div class="browse">你的位置：首页 >>  <a href="http://127.0.0.1/dhblog/static/cat125.html" title="查看分类wordpress下的所有文章">wordpress</a> </div>
 	<div class="entry">
 		<h1>wordpress主题:增加帅哥认证标识</h1>
+<h2>1 可怕的现象</h2>
+今天访问我的博客，发现老是无法访问，弹出上海电信的114 网址纠错，第一个就是我的博客，但是继续点击这个，还是不行。我就知道出问题了。
+<a href="http://dhblog.org/wp-content/uploads/2011/07/wufafagnwen.png"><img src="http://dhblog.org/wp-content/uploads/2011/07/wufafagnwen.png" alt="" title="wufafagnwen" width="600" height="400" class="aligncenter size-full wp-image-946" /></a>
+但是我访问内页就不会出错。
+
+<h2>2 原因：</h2>
+114劫持
+
+<h2>3 解决方法</h2>
+硬着头皮找资料，找了几个方法解决这个问题。
+<h3>3.1 最简单的办法，改DNS设置。</h3>
+这个比较好使： 208.67.222.222
+另外还有：61.152.82.18 8.8.8.8 8.8.4.4等
+<h3>3.2 改Hosts文件</h3>
+在文件位置：C:\WINDOWS\system32\drivers\etc 中添加：
+
+<p>2f3350b45f1a9eb064062a99adce3d6e072</p>
+
+
+<h3>3.3 屏蔽掉上海电信 </h3>
+这个方法我没有试过。
+直接到Internet选项——安全——受限制的站点（最后那个红色的）——站点——添加——vnet.cn，继续添加218.30.64.193（121），222.68.193.81。然后把自定义级别中所有项目禁用。
+再打开Internet选项——隐私——站点——输入vnet.cn——拒绝，继续拒绝218.30.64.193（121），222.68.193.81。 
+
+<h3>3.4 注意点</h3>
+第一，但这些办法只能对自己使用，别人还是被劫持，还是不能访问我的网站。第二，我用的是360极速浏览器，这个会记录dns的，所以要清楚缓存之后这些方法才能有效。
+
+<h2>4 我无奈和害怕</h2>
+还是要备案啊，要不然，迟早要被消灭掉的。
+		
 	</div>
 </div>
 <div id="sidebar">
