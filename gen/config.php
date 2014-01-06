@@ -72,8 +72,8 @@ function dh_file_get_contents($filename)
 	return $data;
 }
 
-function dh_file_put_contents($filename, $content) {
-	
+function dh_file_put_contents($filename, $content)
+{	
 	// Open the file for writing
 	$fh = @fopen($filename, 'wb', false)or die("Can not open file: $filename.\n");
 	// Write to the file

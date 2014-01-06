@@ -14,10 +14,17 @@ set_time_limit(600);
 //dh_gen_page();
 
 global $DH_src_path;
+$lists=array();
 scan_dir($DH_src_path.'pages');
+//array_multisort('0',$lists);
+print_r($lists);
+//output_lists($lists);
+
 
 $cats=array('xx','yy','zz','dd','bb','aa','cc');
 $tags=array('tag1','tag2','tag3','tag4','tag5','tag6','tag7');
+
+
 
 function dh_gen_page()
 {
@@ -90,28 +97,63 @@ function dh_gen_page()
 
 function scan_dir($dir)
 {
-	echo $dir.":\n";		
-
+	//echo $dir.":\n";		
 	$files = scandir($dir,1);
-	print_r($files);
+	//print_r($files);
 	foreach($files as $key=>$file)
 	{
-		//echo $file."\n";
-		if(strstr($file,'.'))
+		//echo "search ".$file."\n";
+		if(strcmp($file,'.')===0)
 			continue;
-		if(strstr($file,'..'))
+		if(strcmp($file,'..')===0)
 			continue;
 		$down = $dir.'/'.$file;
-		echo $down."\n";
 		if(is_dir($down))
 		{
 			scan_dir($down);
 		}
 		else
-			echo 'dd'."\n";
-			//echo $down."\n";
+		{
+			echo $down."\n";
+			get_entry($down);
+		}
 	}
 	return;
+}
+
+function get_entry($filename)
+{
+	$content = dh_file_get_contents("$filename");
+	//echo $content;
+	preg_match_all('/<a>(.*?)<\/a>/s',$content,$entrys);
+	print_r($entrys);
+	foreach($entrys[1] as $key=>$entry)
+	{
+		insert_lists($entry);		
+	}
+}
+
+function insert_lists($entry)
+{
+	global $lists;
+	preg_match('/<date>(.*?)<\/date>/s',$entry,$match);
+	print_r($match);
+	$insert_entry=array();
+	//array_push($insert_entry,$match[1],$entry);
+	//print_r($insert_entry);
+	//array_push($lists,$insert_entry);
+	array_push($lists,$match[1]=>$entry);
+}
+
+function output_lists($lists)
+{
+	global $DH_src_path;
+	$lists_all='';
+	foreach($lists as $key=>$list)
+	{
+		$lists_all.="\n<a><id>".$key.'</id>'.$list.'</a>';
+	}
+	dh_file_put_contents($DH_src_path.'list.xml',$lists_all);	
 }
 
 function dh_gen_each_page_file($path,$DH_output_content)
