@@ -142,7 +142,8 @@ function insert_lists($entry)
 	//array_push($insert_entry,$match[1],$entry);
 	//print_r($insert_entry);
 	//array_push($lists,$insert_entry);
-	array_push($lists,$match[1]=>$entry);
+	//array_push($lists,$match[1]=>$entry);
+	$lists[$match[1]]=$entry;
 }
 
 function output_lists($lists)
