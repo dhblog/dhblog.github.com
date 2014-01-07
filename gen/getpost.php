@@ -1,9 +1,21 @@
 <?php
+function dh_mysql_query($sql)
+{
+	$rs = mysql_query($sql);
+	$mysql_error = mysql_error();
+	if($mysql_error)
+	{
+		echo 'dh_mysql_query error info:'.$mysql_error.'</br>';
+		echo $sql;
+		return null;
+	}
+	return $rs;
+}
 
 $dbip='localhost';
 $dbuser='root';
 $dbpasswd='root';
-$dbname='dhmedia';
+$dbname='dhblog';
 
 require("config.php");
 
@@ -19,34 +31,27 @@ mysql_close($conn);
 
 function getpost()
 {
-	$sql="select link.link,link.title,link.cat,author.cmovietype,author.cmoviecountry,author.clinkquality,author.clinktype,author.clinkway,author.clinkonlinetype,author.clinkdowntype,author.contain from link,author where link.author=author.name";
-//	$sql="select link.link,link.title,link.cat,author.cmovietype,author.cmoviecountry,author.clinkquality,author.clinktype,author.clinkway,author.clinkonlinetype,author.clinkdowntype,author.contain from link,author where link.author=author.name and link.lstatus=0;";	
-	$results=dh_mysql_query($sql);	
+	$sql="select * from wp_posts where post_type ='post'";
+	$results=dh_mysql_query($sql);
+	$old='';	
 	if($results)
-	{	
-		echo 'movietype moviecountry linkquality linkway linkonlinetype linkdowntype title link'."</br>\n";
+	{			
 		while($row = mysql_fetch_array($results))
 		{
-			$movietype = testneed($row['cmovietype'],$row['link'],$row['title'],$row['cat']);
-			$moviecountry = testneed($row['cmoviecountry'],$row['link'],$row['title'],$row['cat']);
-			$linkquality = testneed($row['clinkquality'],$row['link'],$row['title'],$row['cat']);
-			$linkway = testneed($row['clinkway'],$row['link'],$row['title'],$row['cat']);
-			$linkonlinetype = testneed($row['clinkonlinetype'],$row['link'],$row['title'],$row['cat']);
-			$linkdowntype = testneed($row['clinkdowntype'],$row['link'],$row['title'],$row['cat']);
-			
-			$result = new FilterResult();
-			if($row['contain']=='')
-			{
-				$result = filte_movie_name($result,$row['title']);		
-			}
-			else
-			{
-				$result = get_movie_name($result,$row['title'],$row['contain']);
-			}
-			$link = $row['link'];
-			$sql="update link set movietype=$movietype,moviecountry=$moviecountry, linkquality=$linkquality,linkway=$linkway,linkonlinetype=$linkonlinetype, linkdowntype=$linkdowntype,linkdowntype=$linkdowntype,ctitle=\"$result->end_name\", movieyear=$result->year,lstatus=1 where link='$link';";
-			$sqlresult=dh_mysql_query($sql);	
-			echo $movietype.' '.$moviecountry.' '.$linkquality.' '.$linkway.' '.$linkonlinetype.' '.$linkdowntype.' '.$row['title'].' '.$link.' '.$row['cat']." -> 修改link成功！</br> \n";
+			$title=$row['post_title'];
+			$datewrite = strtotime($row['post_date']);
+			$datenow = date("YmdH",$datewrite);
+			$body=$row['post_content'];
+			$aold="<a>
+<title>$title</title>
+<c>建站技术</c><t>t1</t><t>t2</t>
+<date>$datenow</date><author>DH</author>
+<body>
+$body
+</body>
+</a>";
+			$old .= $aold."\n";
         }
 	}
+	dh_file_put_contents('old.xml',$old);
 }
