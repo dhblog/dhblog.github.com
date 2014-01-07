@@ -16,9 +16,9 @@ set_time_limit(600);
 global $DH_src_path;
 $lists=array();
 scan_dir($DH_src_path.'pages');
-//array_multisort('0',$lists);
+ksort($lists);
 print_r($lists);
-//output_lists($lists);
+output_lists($lists);
 
 
 $cats=array('xx','yy','zz','dd','bb','aa','cc');
@@ -126,9 +126,18 @@ function get_entry($filename)
 	$content = dh_file_get_contents("$filename");
 	//echo $content;
 	preg_match_all('/<a>(.*?)<\/a>/s',$content,$entrys);
-	print_r($entrys);
+	//print_r($entrys);
 	foreach($entrys[1] as $key=>$entry)
 	{
+		//取得summary
+		preg_match('/<body>(.*?)<\/body>/s',$entry,$match);
+		//print_r($match);
+		if(!empty($match[1])&&mb_strlen($match[1],'UTF-8')>64)
+		{
+			$x = mb_substr($match[1],0,64,'UTF-8');
+			$entry = preg_replace( '/<body>(.*?)<\/body>/s',"<body>$x\n</body>",$entry);
+		}
+		$entry = $entry."<f>".$filename."</f>";
 		insert_lists($entry);		
 	}
 }
@@ -137,7 +146,7 @@ function insert_lists($entry)
 {
 	global $lists;
 	preg_match('/<date>(.*?)<\/date>/s',$entry,$match);
-	print_r($match);
+	//print_r($match);
 	$insert_entry=array();
 	//array_push($insert_entry,$match[1],$entry);
 	//print_r($insert_entry);
@@ -150,9 +159,11 @@ function output_lists($lists)
 {
 	global $DH_src_path;
 	$lists_all='';
+	$i=1;
 	foreach($lists as $key=>$list)
 	{
-		$lists_all.="\n<a><id>".$key.'</id>'.$list.'</a>';
+		$lists_all.="\n<a>\n<id>".$i.'</id>'.$list."\n</a>";
+		$i++;
 	}
 	dh_file_put_contents($DH_src_path.'list.xml',$lists_all);	
 }
