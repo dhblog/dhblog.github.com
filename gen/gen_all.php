@@ -130,14 +130,13 @@ function get_entry($filename)
 	foreach($entrys[1] as $key=>$entry)
 	{
 		//取得summary
-		preg_match('/<body>(.*?)<\/body>/s',$entry,$match);
-		//print_r($match);
-		if(!empty($match[1])&&mb_strlen($match[1],'UTF-8')>64)
-		{
-			$x = mb_substr($match[1],0,64,'UTF-8');
-			$entry = preg_replace( '/<body>(.*?)<\/body>/s',"<body>$x\n</body>",$entry);
-		}
-		$entry = $entry."<f>".$filename."</f>";
+		//preg_match('/<body>(.*?)<\/body>/s',$entry,$match);
+		////print_r($match);
+		//if(!empty($match[1])&&mb_strlen($match[1],'UTF-8')>64)
+		//{
+		//	$x = mb_substr($match[1],0,64,'UTF-8');
+		//	$entry = preg_replace( '/<body>(.*?)<\/body>/s',"<body>$x\n</body>",$entry);
+		//}
 		insert_lists($entry);		
 	}
 }
