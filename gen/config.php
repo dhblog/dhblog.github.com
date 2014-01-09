@@ -34,7 +34,7 @@ $index_list_count = 8;
 //页面存储的深度
 $DH_page_store_deep = 2;
 //每个深度的页面个数
-$DH_page_store_count = 100;
+$DH_page_store_count = 300;
 
 function output_page_path($basepath,$id) 
 {	
