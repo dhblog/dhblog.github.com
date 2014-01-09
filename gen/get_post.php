@@ -42,14 +42,14 @@ function getpost()
 			$datewrite = strtotime($row['post_date']);
 			$datenow = date("YmdH",$datewrite);
 			$body=$row['post_content'];
-			$aold="<a>
+			$aold="<entry>
 <title>$title</title>
 <c>建站技术</c><t>t1</t><t>t2</t>
 <date>$datenow</date><author>DH</author>
 <body>
 $body
 </body>
-</a>";
+</entry>";
 			$old .= $aold."\n";
         }
 	}

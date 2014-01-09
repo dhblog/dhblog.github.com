@@ -29,7 +29,7 @@ $begincount=$match[2];
 $lists=array();
 scan_dir($DH_src_path.'pages');
 ksort($lists);
-//print_r($lists);
+print_r($lists);
 output_lists();
 
 //输出到pages
