@@ -1,8 +1,8 @@
-<a>
-<title>经验总结:我的推广方法</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2015111407</date><author>DH</author>
-<body>
+<_e>
+<_T>经验总结:我的推广方法</_T>
+<_c>IT技术</_c><_t>信息应用</_t><_t>域名空间</_t>
+<_d>2015111407</_d><_a>DH</_a>
+<_b>
 1 评论推广
 
 2.导航推广
@@ -23,13 +23,13 @@
 
 4.3 JiaThis社交化网站推广
   微博、校内、开心、googlereader、豆瓣等
-</body>
-</a>
-<a>
-<title>经验总结:寻找博客的方法</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2015112107</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>经验总结:寻找博客的方法</_T>
+<_c>IT技术</_c><_t>信息应用</_t><_t>域名空间</_t>
+<_d>2015112107</_d><_a>DH</_a>
+<_b>
 博客来源：
 
 导航系列：
@@ -53,33 +53,33 @@ wordpress论坛 新手上路
 1. googlereader
 2. 知蚁站长助手的更新
 3. 不断巡检
-</body>
-</a>
-<a>
-<title>经验总结:我的文章的发表频率</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2015120507</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>经验总结:我的文章的发表频率</_T>
+<_c>IT技术</_c><_t>信息应用</_t><_t>域名空间</_t>
+<_d>2015120507</_d><_a>DH</_a>
+<_b>
 <h2>缘起</h2>
 很多做seo的人总会
 <h2></h2>
 <h2></h2>
 <h2></h2>
-</body>
-</a>
-<a>
-<title>wordpress发布:主题也需要上线过程</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2015120518</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress发布:主题也需要上线过程</_T>
+<_c>IT技术</_c><_t>css</_t><_t>网站优化</_t>
+<_d>2015120518</_d><_a>DH</_a>
+<_b>
 
-</body>
-</a>
-<a>
-<title>wordpress主题:你需要一个wp主题！</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2015121207</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress主题:你需要一个wp主题！</_T>
+<_c>IT技术</_c><_t>网站优化</_t>
+<_d>2015121207</_d><_a>DH</_a>
+<_b>
 第一，但凡大佬们都有自己的主题。
 比如卢松松：低调与华丽；比如水煮鱼，比如万戈，比如。。。
 
@@ -87,21 +87,21 @@ wordpress论坛 新手上路
 大家对你的博客的第一映像就是对你主题的映像，如果看到的主题似曾相识，那么映像会大打折扣
 
 第三，
-</body>
-</a>
-<a>
-<title>2011大片全预告</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011010506</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>2011大片全预告</_T>
+<_c>IT技术</_c><_t>电影赏析</_t>
+<_d>2011010506</_d><_a>DH</_a>
+<_b>
 点击 下载  <a href="http://dh.eyesay.org/wp-content/uploads/2011/01/2011movies.pdf">2011movies</a>
-</body>
-</a>
-<a>
-<title>JavaScript:加入收藏代码</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011010921</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>JavaScript:加入收藏代码</_T>
+<_c>IT技术</_c><_t>链接表</_t><_t>专业知识</_t>
+<_d>2011010921</_d><_a>DH</_a>
+<_b>
 <pre lang="javascript" line="1">
 <script type="text/javascript">
 function addBookmark(title,url) {
@@ -135,26 +135,26 @@ window.sidebar.addPanel(title, url, "")
 引用：
 <a href="#" onclick=" bookmarksite('百度','http://www.baidu.com')">收藏百度</a>
 </pre>
-</body>
-</a>
-<a>
-<title>javascript:博客分享控件JiaThis</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011011420</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>javascript:博客分享控件JiaThis</_T>
+<_c>IT技术</_c><_t>链接表</_t><_t>幽默故事</_t><_t>wordpress应用</_t>
+<_d>2011011420</_d><_a>DH</_a>
+<_b>
 JiaThis是一个提供网页地址收藏、分享及发送的WEB2.0按钮工具，网站的浏览者可以方便的分享到人人网、分享到开心网、分享到QQ空间、分享到新浪微博等一系列社会化关系网络站点。 
 网站主可以在这里获得标准按钮JS代码，嵌入到自己的网站...让网站链接分享到互联网各个角落！
 个人用户可以在这里给浏览器添加分享快捷方式，下次在浏览其他网站时，直接点击收藏的这个链接即可调入Jiathis“分享到...”功能！越来越多的网站, 正在使用Jiathis服务
 
 网站地址：<a href="http://www.jiathis.com" target=“_blank”>JiaThis</a>
 
-</body>
-</a>
-<a>
-<title>闲钱过节好去处--“南方现金宝”</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011012814</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>闲钱过节好去处--“南方现金宝”</_T>
+<_c>IT技术</_c><_t>投资理财</_t>
+<_d>2011012814</_d><_a>DH</_a>
+<_b>
 闲钱过节好去处--“南方现金宝”
 
   春节假期临近，银行卡里有“闲钱”或是轻仓过节的投资者，如何运作闲置资金，让钱生钱？南方基金网上直销推出基金投资好工具——“现金宝”，为投资者提供了闲钱过节的好去处。
@@ -171,24 +171,24 @@ JiaThis是一个提供网页地址收藏、分享及发送的WEB2.0按钮工具�
 
   推荐阅读：工行卡申购定投 全面5折优惠! 
 
-</body>
-</a>
-<a>
-<title>修改css中加入float之后夫div不能自适应问题</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011020823</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>修改css中加入float之后夫div不能自适应问题</_T>
+<_c>IT技术</_c><_t>链接表</_t><_t>javascript</_t>
+<_d>2011020823</_d><_a>DH</_a>
+<_b>
 在父div中加入
 	z-index:1;
 	overflow:hidden;
 即可
-</body>
-</a>
-<a>
-<title>WordPress每页文章数个性修改</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011020823</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>WordPress每页文章数个性修改</_T>
+<_c>IT技术</_c><_t>链接表</_t><_t>网站优化</_t><_t>wordpress定时任务</_t>
+<_d>2011020823</_d><_a>DH</_a>
+<_b>
 如果需要自己制作和修改主题，在Wordpress的使用过程中，难免会遇到不同的页面中文章个数显示的尴尬。
 比如我的主题，在显示首页和page页的时候，列出了文章的前面的部分，在显示某个分类时，只是显示题目。这样就发生了因为WP后台统一设置显示文章条数而引起的不美观。那有什么方法可以设置不同的页显示不同的文章数吗？当然。
 给出两种方法：
@@ -223,26 +223,26 @@ JiaThis是一个提供网页地址收藏、分享及发送的WEB2.0按钮工具�
 第二种方法：使用插件
 我们在这里介绍一款名为Different Posts Per Page的插件，此插件适合入门级WP选手，使用也比较简单。但目前的版本就是需要通过邮箱激活，这点也许作者有他的想法，只是我个人不是很喜欢，所以我选择了第一种方式。
 原文出处：http://www.ctusky.com/archives/show-number-of-wordpress-article.html
-</body>
-</a>
-<a>
-<title>我的博客被别人引用了哦</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011021513</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>我的博客被别人引用了哦</_T>
+<_c>IT技术</_c><_t>链接表</_t><_t>投资理财</_t>
+<_d>2011021513</_d><_a>DH</_a>
+<_b>
 前一段时间要过年，闲钱不知道哪里可以升值，就到南方基金的页面转载了一篇文章，
 今天经过百度流量，看到自己竟然被引用了哦，嘻嘻
 引用地址：<a href="http://www.caibangzi.com/monetary_fund/202301">http://www.caibangzi.com/monetary_fund/202301</a>
 贴图：
 
 <a href="http://www.dhblog.org/wp-content/uploads/2011/02/nanfjj.png"><img title="nanfjj" src="http://www.dhblog.org/wp-content/uploads/2011/02/nanfjj.png" alt="" width="392" height="292" /></a>
-</body>
-</a>
-<a>
-<title>中国联通WLAN免费友好体验活动火热进行中</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011021612</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>中国联通WLAN免费友好体验活动火热进行中</_T>
+<_c>IT技术</_c><_t>健康养生</_t>
+<_d>2011021612</_d><_a>DH</_a>
+<_b>
 <strong>中国联通WLAN免费友好体验活动火热进行中</strong>  
 尊敬的客户： 
     中国联通为满足广大用户对WiFi网络的使用需求，将于即日起至2011年3月31日面向中国联通后付费手机用户开展WLAN友好体验活动。活动期间，后付费手机用户可在中国联通全国WLAN公共热点覆盖区域，通过具有WiFi无线网络功能的手机、笔记本电脑等终端设备，不限时、不限流量地免费登录使用WLAN网络，体验媲美固定宽带和WCDMA 3G网络的接入速率，畅游互联网世界。 
@@ -254,13 +254,13 @@ JiaThis是一个提供网页地址收藏、分享及发送的WEB2.0按钮工具�
 2010年12月31日
 
 可惜上班的地方没有WIFI，悲剧啊！
-</body>
-</a>
-<a>
-<title>wordpress提高速度之一(数据库清理)</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011022616</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress提高速度之一(数据库清理)</_T>
+<_c>IT技术</_c><_t>链接表</_t><_t>网站优化</_t><_t>IT求职知识</_t>
+<_d>2011022616</_d><_a>DH</_a>
+<_b>
 在使用wordpress的时候，新手往往不会关注数据库，但是如果使用时间长了，不免会因为速度的问题会去优化数据库，需要提高数据库的效率。这里介绍两种类型的数据库优化：
 一种是删除wordpress的无用数据或者不重要的数据，这里叫做数据库清理，需要对wordpress的数据库有一定的了解，这样减少数据量，可以使得数据库查找快。
 另一种是不删除数据库数据，只是将数据库的结构优化一下，就像整理电脑磁盘一样，这样让数据库结构合理，增加数据库查询效率。这里先说第一种，文章  中说明第二种方式。
@@ -385,13 +385,13 @@ TRUNCATE TABLE wp_commentmeta
 
 <h2>7. 总结</h2>
 其实大部分无用的数据均在这几张表中，清理过后应该不会又太多的冗余数据了。但这里没有针对特殊插件或主题做数据库清理，有时这些插件和主题会悄悄动了一些数据库表，这样给清理带来很大难度，需要看代码才知道哦
-</body>
-</a>
-<a>
-<title>li之间添加分隔线(横排、竖排)</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011032822</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>li之间添加分隔线(横排、竖排)</_T>
+<_c>IT技术</_c><_t>javascript</_t>
+<_d>2011032822</_d><_a>DH</_a>
+<_b>
 li之间添加一些间隔，显示比较美观，本文展示分割的几种方法：
 
 <b>示例：</b>
@@ -487,13 +487,13 @@ li之间添加一些间隔，显示比较美观，本文展示分割的几种方
 </body>
 </html>
 [/runcode]
-</body>
-</a>
-<a>
-<title>wordpress:文章的最后更新时间或修改时间</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011040817</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress:文章的最后更新时间或修改时间</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>wordpress定时任务</_t>
+<_d>2011040817</_d><_a>DH</_a>
+<_b>
 wordpress默认的文章的显示是按照发表的时间排序的，
 而有些时候，有些博主需要对以前的文章做一些修改，这样需要将修改的文章显示到第一个位置，
 
@@ -550,13 +550,13 @@ wordpress默认的文章的显示是按照发表的时间排序的，
 </pre>
 
 这样就可以根据需要将年月日显示在不同的地方，就像我的博客一样
-</body>
-</a>
-<a>
-<title>wordpress安全:登录邮件提醒(防止攻击)</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011041822</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress安全:登录邮件提醒(防止攻击)</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>wordpress提高速度</_t>
+<_d>2011041822</_d><_a>DH</_a>
+<_b>
 自己的博客被别人反复尝试登陆怎么办？有没有办法知道呢？
 本文介绍两种方法：
 前提是空间有邮件功能，测试有无邮件功能的方法：登录界面点击“忘记密码”，有邮件发到你邮箱就有邮件功能。
@@ -615,13 +615,13 @@ function wp_login_failed_notify()
 
 add_action('wp_login_failed', 'wp_login_failed_notify');
 </pre>
-</body>
-</a>
-<a>
-<title>域名申请攻略(以godaddy+支付宝为例)</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011050320</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>域名申请攻略(以godaddy+支付宝为例)</_T>
+<_c>IT技术</_c><_t>信息应用</_t>
+<_d>2011050320</_d><_a>DH</_a>
+<_b>
 域名申请攻略(以godaddy+支付宝为例)
 
 前一阵子想申请一个域名，听大家说godaddy比较好，就尝试着申请一下。费了不少劲走完了整个流程，有些经验希望能给需要域名的朋友们一些帮助，少走一些弯路：
@@ -722,13 +722,13 @@ ps：
     Once canceled, please reply to this email and we will submit your refund request.
     ...</pre>
 解释一下中文的意思：需要在5天120小时内删除域名，并发信给billing@godaddy.com即可
-</body>
-</a>
-<a>
-<title>wordpress定时任务之一:利用wp-crontrol控制WP-Cron任务</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011051122</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress定时任务之一:利用wp-crontrol控制WP-Cron任务</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>友情推荐</_t>
+<_d>2011051122</_d><_a>DH</_a>
+<_b>
 <strong>1. WP-Cron简介</strong>
 我要定时发邮件！我要定时清理数据库！我要定时备份！我们怎么在wordpress之中执行定时任务呢？
 本文介绍第一种方法，实用WP-Cron，用插件wp-crontrol来控制WP-Cron。
@@ -763,13 +763,13 @@ function dh_task_function()
 <strong>8. 删除schedule</strong>
 同理可以在 点击 设置--&gt;Crontrol 中删除自己定义的schedule。
 <a href="http://www.dhblog.org/wp-content/uploads/2011/05/wp-crontrol4.png"><img class="aligncenter size-full wp-image-896" title="wp-crontrol4" src="http://www.dhblog.org/wp-content/uploads/2011/05/wp-crontrol4.png" alt="" width="598" height="138" /></a>
-</body>
-</a>
-<a>
-<title>wordpress定时任务之二:插件中控制WP-Cron任务</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011051615</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress定时任务之二:插件中控制WP-Cron任务</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>友情推荐</_t>
+<_d>2011051615</_d><_a>DH</_a>
+<_b>
 上一篇文章讲到如何<a href="http://dhblog.org/archives/892.html">利用插件wp-crontrol来控制WP-Cron任务</a>，利用wp-crontrol的好处是比较直观，但是对于手动写插件的wordpressers来说，不方便，不可能叫用户安装wp-crontrol来手动添加定时任务吧，就需要在代码里面自己使用WP-Cron。
 利用插件使用的时候主要有以下几个要点要解决：
 (1)如何定义时间间隔
@@ -829,13 +829,13 @@ add_action( 'dh_task_weekly', 'dh_task_function' );
 ?>
 
 </pre>
-</body>
-</a>
-<a>
-<title>wordpress定时任务之三:主题中控制WP-Cron任务</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011052116</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress定时任务之三:主题中控制WP-Cron任务</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>友情推荐</_t>
+<_d>2011052116</_d><_a>DH</_a>
+<_b>
 上一篇文章讲到如何<a href="http://www.dhblog.org/archives/897.html">插件中控制WP-Cron任务</a>，在插件代码里面自己使用WP-Cron。但是代码中的register_activation_hook无法在主题中，使用
 使用WP-Cron要解决的几个要点：
 (1)如何定义时间间隔
@@ -878,13 +878,13 @@ function dh_task_function() {
 add_action( 'dh_task_weekly', 'dh_task_function' );
 </pre>
 注：如果在使用的过程中发现任何bug，真心希望您能留言告诉我，谢谢你的试用和分享！让我们更加熟悉wordpress！
-</body>
-</a>
-<a>
-<title>wordpress定时任务之四:页面访问触发执行(插件篇)</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011052420</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress定时任务之四:页面访问触发执行(插件篇)</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>友情推荐</_t>
+<_d>2011052420</_d><_a>DH</_a>
+<_b>
 我要定时发邮件！我要定时清理数据库！我要定时备份！我们怎么在wordpress之中执行定时任务呢？
 <a href="http://www.dhblog.org/?p=892">wordpress定时任务一</a>、<a href="http://dhblog.org/?p=897">wordpress定时任务二</a>、<a href="http://dhblog.org/?p=898">wordpress定时任务三</a>介绍利用WP-Cron来控制定时任务，本文介绍另外一种方法，利用访客访问页面的触发来执行定时任务。
 页面触发定时任务的大体思想是：将定时信息存储在数据库中，的当访客访问页面时，如果已经等于或者过了应该定时执行的时间，就执行定时任务。
@@ -936,13 +936,13 @@ if ($next_check <= $now)
 }
 ?>
 </pre>
-</body>
-</a>
-<a>
-<title>wordpress定时任务之五:页面访问触发执行(主题篇)</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011052710</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress定时任务之五:页面访问触发执行(主题篇)</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>友情推荐</_t>
+<_d>2011052710</_d><_a>DH</_a>
+<_b>
 上一篇文章 讲到 <a href="http://dhblog.org/archives/899.html">利用访客访问页面的触发来执行定时任务的插件时间</a>，这篇将使用在主题中定义定时任务的方法。
 将以下代码添加到主题中的functions.php中即可
 <pre lang="php">$options = get_option('dh_recycle');
@@ -973,13 +973,13 @@ if ($next_check &lt;= $now)
 	$options[1]=$now;
 	update_option('dh_recycle', $options);
 }</pre>
-</body>
-</a>
-<a>
-<title>首次接触拿福能(感受篇)</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011052717</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>首次接触拿福能(感受篇)</_T>
+<_c>IT技术</_c><_t>信息应用</_t><_t>wordpress ajax</_t>
+<_d>2011052717</_d><_a>DH</_a>
+<_b>
 最近，我爱水煮鱼、万戈、卢松松的博客上几乎同一时间出现了 拿福能 的字样，也就不可避免地让我点击了拿福能的网站。
 出于向大牛们看齐，或者学习的态度，我也申请了 拿福能 账号，申请之后，发现还是比较适合我这样的博主的，下面说说感受吧：
 <h2>1. 线下活动很丰富</h2>
@@ -1008,13 +1008,13 @@ if ($next_check &lt;= $now)
 2、要注册。已经注册账号，并添加域名。
 3、要贴广告。侧栏第一个就是
 4、要发文章。就是这篇文章，并说明点击 <a href="http://www.nuffnang.com.cn/blog/2011/05/23/challenge-1000">http://www.nuffnang.com.cn/blog/2011/05/23/challenge-1000</a>参加活动过
-</body>
-</a>
-<a>
-<title>wordpress提高速度之二:数据库定时优化插件(WP_Cron篇)</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011053010</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress提高速度之二:数据库定时优化插件(WP_Cron篇)</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>IT求职知识</_t>
+<_d>2011053010</_d><_a>DH</_a>
+<_b>
 点击下载：<a href="http://dhblog.org/wp-content/uploads/2011/05/dh-optimize-db1.zip">dh-optimize-db1</a>
 
 作用：定期优化数据库
@@ -1076,13 +1076,13 @@ function dh_optimize_db1_deactivate()
 add_action( 'dh_task_fortnightly', 'dh_optimize_db1' );
 ?>
 </pre>
-</body>
-</a>
-<a>
-<title>wordpress提高速度之三:数据库定时优化插件(访问触发篇)</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011060210</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress提高速度之三:数据库定时优化插件(访问触发篇)</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>IT求职知识</_t>
+<_d>2011060210</_d><_a>DH</_a>
+<_b>
 点击下载：<a href='http://dhblog.org/wp-content/uploads/2011/06/dh-optimize-db2.zip'>dh-optimize-db2</a>
 作用：定期优化数据库
 描述：使用中 <a href="http://dhblog.org/archives/899.html">wordpress 定时任务之四:页面访问触发执行(插件篇)</a> 中的方法定期优化数据库
@@ -1144,13 +1144,13 @@ if ($next_check <= $now)
 }
 ?>
 </pre>
-</body>
-</a>
-<a>
-<title>wordpress提高速度之四:数据库优化总结</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011060511</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress提高速度之四:数据库优化总结</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>IT求职知识</_t>
+<_d>2011060511</_d><_a>DH</_a>
+<_b>
 当删除一个表的一部分记录时,这些记录仍然保持在一个类似于一个链表的存储空间中，当插入新数据时会再次使用这些老纪录的位置。所以删除纪录会闲置一些空间造成这里的“多余”。  
  我这个截图多余的空间还很小，但是时间一长“多余”的数量还是挺大的，于是很多同学开始看他不顺眼了，想把他清理掉。其实这个多余是没有什么害处的，他不会占用你的空间，他指的是那些已经分配给当前表但是却没有使用的空间，但优化一下呢，会不会使得速度加快，我这里并没有测试，但是总归是好不是坏。至少我认为磁盘空间少占用了一些。
 
@@ -1181,13 +1181,13 @@ OPTIMIZE TABLE wp_users;
 方法见：
 <a href="http://dhblog.org/archives/902.html">wordpress提高速度之三:数据库定时优化(访问触发篇)</a>
 <a href="http://dhblog.org/archives/901.html">wordpress提高速度之二:数据库定时优化(WP_Cron篇)</a>
-</body>
-</a>
-<a>
-<title>javascript 熬夜提醒</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011060713</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>javascript 熬夜提醒</_T>
+<_c>IT技术</_c><_t>专业知识</_t><_t>wordpress应用</_t>
+<_d>2011060713</_d><_a>DH</_a>
+<_b>
 最近弄博客比较晚，就看到51.la上面给出了提醒，觉得非常的有心，决定我的博客也需要一个，所以就写了一个js，来提醒晚上23点以后还在看我的博客的博友，快快去睡觉哦！
 将一下代码贴在你需要的设置提醒的地方。
 <pre lang='javascript'>
@@ -1213,13 +1213,13 @@ OPTIMIZE TABLE wp_users;
 <a href="http://dhblog.org/wp-content/uploads/2011/06/jsaoye.png"><img src="http://dhblog.org/wp-content/uploads/2011/06/jsaoye.png" alt="" title="jsaoye" width="648" height="316" class="aligncenter size-full wp-image-913" /></a>
 
 
-</body>
-</a>
-<a>
-<title>wordpress安全:博客被攻击</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011061012</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress安全:博客被攻击</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>wordpress提高速度</_t>
+<_d>2011061012</_d><_a>DH</_a>
+<_b>
 <h1>历史回顾</h1>
 2011年04月18日：发表文章<a href="http://dhblog.org/archives/888.html" target="_blank">wordpress登录邮件提醒(防止攻击)</a>，只是觉得这个功能还可以。
 2011年05月01日：<a href="http://awy.me/2011/05/prevent-attacks-wordpress-login-e-mail-alert/" target="_blank">防止攻击 - WordPress登录邮件提醒</a>，被人转载，感觉很好。
@@ -1229,13 +1229,13 @@ OPTIMIZE TABLE wp_users;
 <a href="http://dhblog.org/wp-content/uploads/2011/06/attack.png"><img src="http://dhblog.org/wp-content/uploads/2011/06/attack.png" alt="" title="attack" width="620" height="493" class="aligncenter size-full wp-image-914" /></a>
 <h1>应对策略</h1>
 在输入次数过多之后，不允许这个ip访问，解决方法在研究中。。。
-</body>
-</a>
-<a>
-<title>网页中显示当前日期(php/jsp/javascript/flash)</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011061312</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>网页中显示当前日期(php/jsp/javascript/flash)</_T>
+<_c>IT技术</_c><_t>专业知识</_t><_t>wordpress应用</_t>
+<_d>2011061312</_d><_a>DH</_a>
+<_b>
 上次发了文章<a href="http://dhblog.org/archives/907.html">javascript 熬夜提醒</a>，用的不是服务器计算当前时间的方法，是用的浏览器在本地运行javascript的方法，这里说明一下各种方法和区别吧。
 我的网站上的时间就是用js方法显示的。
 <h2>1. php的服务器端方法</h2>
@@ -1304,13 +1304,13 @@ document.write(showdate());
 2. 好看的。
 3. 互动的。
 
-</body>
-</a>
-<a>
-<title>wordpress安全:应对尝试密码的攻击</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011061907</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress安全:应对尝试密码的攻击</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>wordpress提高速度</_t>
+<_d>2011061907</_d><_a>DH</_a>
+<_b>
 <h2>序</h2>
 前一段时间<a href="http://dhblog.org/archives/915.html">博客被攻击</a>了，自从发了文章之后，得到了很多人得关心，也得到了有史以来的最多的评论数目：>50。很多博友提出了很多有方法，这里特别感谢：
 <a href="http://blog.30c.org/">Clove</a>，<a href="http://014.cc/">Dianso</a>，<a href="http://ixwebhosting.us">ixwebhosting</a>,根据他们的建议，我总结了一下，应对这类攻击的方法：
@@ -1347,13 +1347,13 @@ kan.willin对此有独特的研究，并给出了很好的解决方法，具体�
 
 <h2>9. 结束语</h2>
 尝试密码的攻击，只要密码设置比较复杂，是不会造成什么伤害的，基本上不会攻击成功，但是不排除有小孩喜欢这样尝试，尝试多了也会对服务器造成伤害，所以，在博客出名之后，适当防止也是必要的。
-</body>
-</a>
-<a>
-<title>wordpress提高速度之五:主题中数据库定时优化(访问触发篇)</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011062213</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress提高速度之五:主题中数据库定时优化(访问触发篇)</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>IT求职知识</_t>
+<_d>2011062213</_d><_a>DH</_a>
+<_b>
 之前讲到 <a href="http://dhblog.org/archives/902.html">利用访客访问页面的触发来执行优化数据库的插件</a>，这篇将使用定期优化集成到主题中的方法。
 将以下代码添加到主题中的functions.php中即可
 <pre lang='php'>
@@ -1396,13 +1396,13 @@ if ($next_check <= $now)
 }
 ?>
 </pre>
-</body>
-</a>
-<a>
-<title>wordpress提高速度之六:主题中数据库定时优化(WP_Cron篇)</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011062513</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress提高速度之六:主题中数据库定时优化(WP_Cron篇)</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>IT求职知识</_t>
+<_d>2011062513</_d><_a>DH</_a>
+<_b>
 上一篇文章讲到<a href="http://dhblog.org/archives/901.html">如何用插件实现数据库定时优化</a>，在插件代码里面自己使用WP-Cron。这篇文章将如何集成到主题中来。
 
 <pre lang='php'>
@@ -1441,13 +1441,13 @@ add_action('switch_theme',dh_theme_switch);
 add_action( 'dh_task_fortnightly', 'dh_optimize_db' );
 </pre>
 注：如果在使用的过程中发现任何bug，真心希望您能留言告诉我，谢谢你的试用和分享！让我们更加熟悉wordpress！
-</body>
-</a>
-<a>
-<title>wordpress安全:被垃圾评论搞的很烦</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011062808</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress安全:被垃圾评论搞的很烦</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>wordpress提高速度</_t>
+<_d>2011062808</_d><_a>DH</_a>
+<_b>
 <h2>缘起</h2>
 wordpress默认的处理垃圾评论一直不是很理想，加上我想我的博客不会有人来留言，特别是垃圾评论，少之又少，所以就没有对垃圾评论做处理。
 不过这几天，情况就不一样了。如图所示：
@@ -1466,13 +1466,13 @@ delete from `wp_comments` where comment_approved='spm';
 update `wp_comments` set comment_approved='spm' WHERE comment_date> '2011-06-16 22:22:22';
 </pre>
 然后在后台查看是否真的是垃圾评论，删除垃圾评论即可。
-</body>
-</a>
-<a>
-<title>wordpress安全:处理垃圾评论</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011070105</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress安全:处理垃圾评论</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>wordpress提高速度</_t>
+<_d>2011070105</_d><_a>DH</_a>
+<_b>
 <div style="color: #f00; font-size: 16px; font-weight: 700;">以此文献给 中国共产党建党90周年！</div>
 最近看到很多电视剧、电影都给党的生日献礼，我也不例外，献礼一篇文章吧！本来呢，以我的风格，肯定是之一、之二之类的。像这篇文章，会分为四个篇章。但是既然是献礼文章，就不能马虎，一气呵成，不拖泥带水。
 上一篇文章讲到<a href="http://dhblog.org/archives/932.html"> wordpress安全:被垃圾评论搞的很烦</a>，不少博友提出了很多的解决方法，在此表示非常的感谢，也知道大部分博友也遇到这个非常烦人的问题，垃圾评论就像前面的一坨屎一样，恶习却只能视而不见。彻底阻止它们来访问你，并试图利用wp_comment.php是不可能的，只能屏蔽掉，视而不见。如果不断有垃圾评论，利用很多的ip访问你，就等于一种DOS攻击，从这个角度讲，是威胁到博客的安全。所以tag就是wordpress安全。
@@ -1542,13 +1542,13 @@ RewriteCond %{HTTP_USER_AGENT} ^$
 RewriteRule (.*) ^http://%{REMOTE_ADDR}/$ [R=301,L]
 </pre>
 这篇文章到此结束，太长了，希望能读完，呵呵。并选择适合于自己的方法
-</body>
-</a>
-<a>
-<title>IT求职知识:基础知识1(c++代码篇)</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011070507</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>IT求职知识:基础知识1(c++代码篇)</_T>
+<_c>IT技术</_c><_t>wordpress</_t><_t>经验总结</_t>
+<_d>2011070507</_d><_a>DH</_a>
+<_b>
 <p>又是一个暑假的到来了，虽然现在工作了，已经体验不要暑假的味道了，但是过了这个暑假，很多同学就要准备找工作了。<p>
 <p>找工作既是一个自己努力的过程，又是一个考验自己的经历，还有一些不懂得运气。<p>
 <p>对于一个it的求职者来说，现在的这个阶段，大家应该在看基础的计算机理论知识。<p>
@@ -1716,13 +1716,13 @@ cout << (int&)b << endl;
 cout << boolalpha << ( (int)b == (int&)b ) << endl;</pre>
 Answer: false true
 Explanation: (int&)a 和 *((int*)&a)是一样的,把&a这个地址上32位数看作int型
-</body>
-</a>
-<a>
-<title>IT求职知识:基础知识2(c++理论篇)</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011070708</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>IT求职知识:基础知识2(c++理论篇)</_T>
+<_c>IT技术</_c><_t>wordpress</_t><_t>经验总结</_t>
+<_d>2011070708</_d><_a>DH</_a>
+<_b>
 上一篇文章给大家分享了<a href="http://dhblog.org/archives/3.html">涉及C++代码的有趣的题目</a>，这一章节给出遇到的一些理论性的C++问题，给大家分享一下。
 
 <strong>1. #include <> 和#include " "的区别？</strong>
@@ -1791,13 +1791,13 @@ b.工具类，有些工具类只提供静态函数调用，并且没有非静态
 内部类能够隐藏起来，不为同一包中的其他类所见
 匿名内部类可以方便地定义运行时回调
 内部类在编写事件驱动的程序时很方便
-</body>
-</a>
-<a>
-<title>wordperss和zblog的一个区别，求解</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011071120</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordperss和zblog的一个区别，求解</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>wordpress定时任务</_t>
+<_d>2011071120</_d><_a>DH</_a>
+<_b>
 <p>我喜欢在每个看到了博客的评论中留言，特别是可以填自己网站的博客，具体原因大家都懂的。在留言的博客中，两类博客占了主流：wordpress和zblog。对于用哪种博客，我没有任何偏向，但是在zblog中留言有个很不方便的地方，情况大概是这样的：</p>
 
 在填写 用户名、邮箱和自己的博客网站的时候，如果此博客你之前从未留言，或者其没有记录你的浏览记录，那么：
@@ -1806,13 +1806,13 @@ b.工具类，有些工具类只提供静态函数调用，并且没有非静态
 
 朋友们都知道，虽然用户名、邮箱、网站输入了很多次，但是输入一次还是有点费力的。
 不知道 大家都是怎么解决这么问题的呢？
-</body>
-</a>
-<a>
-<title>wordpress主题:增加帅哥认证标识</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011071506</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress主题:增加帅哥认证标识</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>wordpress定时任务</_t>
+<_d>2011071506</_d><_a>DH</_a>
+<_b>
 <h2>1 起源</h2>
 首先感谢自说me话：<a href="http://isayme.com/2011/06/handsome-in-my-blog/">http://isayme.com/2011/06/handsome-in-my-blog/</a>
 这篇文章讲了它弄了个帅哥认证，虽然我没有被评为帅哥，但是这不妨碍我学习并定义我这里的帅哥。
@@ -1856,13 +1856,13 @@ SQL语句执行结果图：
 以iSayMe为例：
 <a href="http://dhblog.org/wp-content/uploads/2011/08/handsome2.png"><img src="http://dhblog.org/wp-content/uploads/2011/08/handsome2.png" alt="" title="handsome2" width="632" height="359" class="aligncenter size-full wp-image-942" /></a>
 
-</body>
-</a>
-<a>
-<title>博客总结(2011年上半年总结篇)</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011071807</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>博客总结(2011年上半年总结篇)</_T>
+<_c>IT技术</_c><_t>信息应用</_t><_t>域名空间</_t>
+<_d>2011071807</_d><_a>DH</_a>
+<_b>
 <h2>1 开场白</h2>
 做学生，半年要一次期中考试；开公司，半年要举行一次活动；做职工，半年要做一次年中总结；同样，写博客，半年要做一次半年总结；博客已经6各月大了，需要对这段时间的点点滴滴重新回顾一下，不仅为了纪念过去，还需要给博友分享经验，少走冤枉路，共同提高
 
@@ -1902,13 +1902,13 @@ SQL语句执行结果图：
 虽然博客现在运行很好，但是还是内忧外患，未雨绸缪以下吧：
 1. 域名是国外的，空间是国外的，在白名单制度的黑暗之前，没有做好充足的准备
 2. 域名没有备案。备案，比较麻烦，说错了话要喝茶。不备案，白名单下必死无疑。备，难；不备，更难！
-</body>
-</a>
-<a>
-<title>友情推荐:知蚁博客站长助手软件</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011072107</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>友情推荐:知蚁博客站长助手软件</_T>
+<_c>IT技术</_c><_t>幽默故事</_t><_t>拿福能</_t>
+<_d>2011072107</_d><_a>DH</_a>
+<_b>
 最近看到知蚁博客的一个小工具，觉得很有意思，作为一个it认识，看到这个觉得很不错，就给大家推荐一下，再给知蚁推广一下。
 <h2>1 软件主要解决的问题</h2>
 评论推广的时候都是怎么寻找博客,够记录下经常互访的博客地址， 并且能够一次性的打开所有博客，然后一个个的评论就好了，省去了找博客地址以及一个个打开的时间。
@@ -1937,13 +1937,13 @@ SQL语句执行结果图：
 3. 有分类功能，把各个类型的网站分类，技术类、seo类、情感类等
 4. 最好有好人能过整理出博客列表，让博主不用那么辛苦找博客，也很根据分类信息找到自己的博客，因为同类型的博主关心你的博客多一点。
 5. 开源吧，激起大家一起搞的乐趣，呵呵。
-</body>
-</a>
-<a>
-<title>域名空间:域名被劫持,恐怖啊</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011072406</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>域名空间:域名被劫持,恐怖啊</_T>
+<_c>IT技术</_c><_t>信息应用</_t><_t>wordpress主题</_t>
+<_d>2011072406</_d><_a>DH</_a>
+<_b>
 <h2>1 可怕的现象</h2>
 今天访问我的博客，发现老是无法访问，弹出上海电信的114 网址纠错，第一个就是我的博客，但是继续点击这个，还是不行。我就知道出问题了。
 <a href="http://dhblog.org/wp-content/uploads/2011/07/wufafagnwen.png"><img src="http://dhblog.org/wp-content/uploads/2011/07/wufafagnwen.png" alt="" title="wufafagnwen" width="600" height="400" class="aligncenter size-full wp-image-946" /></a>
@@ -1973,13 +1973,13 @@ SQL语句执行结果图：
 <h2>4 我无奈和害怕</h2>
 还是要备案啊，要不然，迟早要被消灭掉的。
 
-</body>
-</a>
-<a>
-<title>拿福能:观影《变形金刚3:月黑之夜》</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011072607</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>拿福能:观影《变形金刚3:月黑之夜》</_T>
+<_c>IT技术</_c><_t>链接表</_t><_t>电影赏析</_t><_t>wordpress ajax</_t>
+<_d>2011072607</_d><_a>DH</_a>
+<_b>
 <h2>序言</h2>
 我右边的侧边栏广告是拿福能的。本来不想写这篇文章的，免得有做广告的嫌疑，看了知蚁博客的<a href="http://www.letuknowit.com/archives/114">拿福能观影之《变形金刚3》归来</a>，还是觉得要写一下感受吧，要不然对不起那电影，还发了T-shirt。我在<a href="http://dhblog.org/archives/908.html">首次接触拿福能(感受篇)</a>中说，活动多，希望在上海举办一点，这个终于来了。
 <h2>发起</h2>
@@ -1991,13 +1991,13 @@ SQL语句执行结果图：
 就这样，来看电影，虽然摸了很长时间猜到新天地，但是还是按时找到了。找到rachel比较简单，就在门口，电影的剧情 不说...
 <h2>尾声</h2>
 看完就回家了...
-</body>
-</a>
-<a>
-<title>wordpress主题:增加最多评论功能</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011080107</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress主题:增加最多评论功能</_T>
+<_c>IT技术</_c><_t>链接表</_t><_t>网站优化</_t>
+<_d>2011080107</_d><_a>DH</_a>
+<_b>
 <h2>1 源起</h2>
 终于搞完了这个功能，现在上线了。这几天非常忙，在休息的时候，看看自说Me话的代码，自己随便搞搞，终于成功了。
 最初版：<a href="http://www.daqianduan.com/css3-wordpress-wall/">CSS3动画-wordpress读者墙</a>
@@ -2180,13 +2180,13 @@ opacity:.8
 5.2 修改了SQL语句，为所有评论中的排序 vs 自说Me话的 近30天的评论
 5.3 修改了大小，使能适应我的侧边栏的大小
 5.4  修改了图像的个数为15个
-</body>
-</a>
-<a>
-<title>wordpress ajax之一:一个简单的例子</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011080807</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress ajax之一:一个简单的例子</_T>
+<_c>IT技术</_c><_t>链接表</_t><_t>专业知识</_t><_t>网站优化</_t><_t>wordpress数据库</_t>
+<_d>2011080807</_d><_a>DH</_a>
+<_b>
 <h2>序言</h2>
 今天是星期一，是我发文章的日子。最近在搞一个东西，就是将ajax运用到wordpress中，大家可以看我的博客，里面有很多的ajax的东西，包括：
 1.首页的分页的ajax
@@ -2315,13 +2315,13 @@ add_action('template_redirect', 'test_action_do');
 </pre>
 
 希望大家通过上面的例子能够理解ajax的工作过程，能做好ajax学习的第一步！
-</body>
-</a>
-<a>
-<title>wordpress主题:增加帅哥认证标识(续)</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011081507</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress主题:增加帅哥认证标识(续)</_T>
+<_c>IT技术</_c><_t>网站优化</_t>
+<_d>2011081507</_d><_a>DH</_a>
+<_b>
 <h2>1 序言</h2>
 自从上次推出<a href="http://dhblog.org/archives/1.html">帅哥认证</a>以来，<a href="http://www.initers.com/">IT圈中人</a>便锲而不舍地在我这里留言，希望能得到一个帅哥认证。但是就是没有看到自己的头像有帅哥标识，原因是我上次的全部是手动填的，这次把这个修改成自动的了，只要评论超过10条就有帅哥标识，于是乎，IT圈中人现在终于可以有了帅哥标识了。
 
@@ -2374,13 +2374,13 @@ include("comment_g_title.php");
 1. 使用了将帅哥保存到option表中的技巧。减少数据库的读写。
 2. 帅哥评选原则是 累计评论超过10条，系统自动评出帅哥
 3. 需要在显示图像的下面引用这个函数comment_g_title($comment->comment_author_email)，一般在wp_list_comments的callback函数中，关于wp_list_comments的callback函数如何写，就要google了。
-</body>
-</a>
-<a>
-<title>wordpress ajax之二:首页ajax分页</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011082207</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress ajax之二:首页ajax分页</_T>
+<_c>IT技术</_c><_t>专业知识</_t><_t>网站优化</_t><_t>wordpress数据库</_t>
+<_d>2011082207</_d><_a>DH</_a>
+<_b>
 <h2>1 序言</h2>
 上一遍讲到利用一个简单的例子说明了如何<a href="http://dhblog.org/archives/9.html">使用简单的ajax</a>。这里说明一个应用：首页的ajax分页应用。关于首页ajax分页的文章：
 (1)<a href="http://isayme.com/2011/05/w1s-new-ajax-page/">W1s 首页Ajax翻页新效果</a>，
@@ -2558,13 +2558,13 @@ function dh_pagenavi($range = 9)
 
 <h2>7 寄语</h2>
 希望大家通过上面的例子能够成功实现首页的ajax翻页效果。每个人的主题设置不同，需要根据自己的主题设置自己的参数。特别是包含分页链接的div的class。我这里是.page_navi。还有就是包含index_list.php的 div id="content"，需要在js中填入这两个关键的div
-</body>
-</a>
-<a>
-<title>wordpress ajax之三:评论ajax分页</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011082907</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress ajax之三:评论ajax分页</_T>
+<_c>IT技术</_c><_t>专业知识</_t><_t>网站优化</_t><_t>wordpress数据库</_t>
+<_d>2011082907</_d><_a>DH</_a>
+<_b>
 <h2>1 序言</h2>
 上一遍讲到利用一个简单的例子说明了如何<a href="http://dhblog.org/archives/9.html">使用简单的ajax</a>。这里说明一个应用：评论页的ajax分页应用。关于这方面的文章：
 (1)<a href="http://winysky.com/wordpress-plug-ins-to-achieve-non-ajax-flip-comment">WordPress评论非插件实现ajax翻页</a>，我在测试的时候，发现里面虽然有一些地方有一点问题，但是这些可以参考一下哦。
@@ -2726,13 +2726,13 @@ add_action('template_redirect', 'comment_ajax_navi');
 (1)每个人的主题设置不同，需要根据自己的主题设置自己的参数。特别是包含分页链接的div的class。我这里是.page_navi。还有就是包含index_list.php的 div id="comment_list"，需要在js中填入这两个关键的div。
 (2)喜欢折腾的主题中wp_list_comments一般都有callback函数，来重新写评论列表的部分，这时需要在comment_list.php中的wp_list_comments参数有所调整哦。
 本文提供一个思想，要想学好这个，还需要自己摸索一下下。
-</body>
-</a>
-<a>
-<title>wordpress ajax之四:archive页面ajax分页</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011090507</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress ajax之四:archive页面ajax分页</_T>
+<_c>IT技术</_c><_t>专业知识</_t><_t>网站优化</_t><_t>wordpress数据库</_t>
+<_d>2011090507</_d><_a>DH</_a>
+<_b>
 <h2>1 序言</h2>
 上一遍讲到利用一个简单的例子说明了如何<a href="http://dhblog.org/archives/9.html">使用简单的ajax</a>。这里说明一个应用：archive页面的ajax分页应用。用户可以点击 信息应用 标签来体验这个archive页面的分页。如图：
 <a href="http://dhblog.org/wp-content/uploads/2011/09/archive.png"><img class="aligncenter" src="http://dhblog.org/wp-content/uploads/2011/09/archive.png" alt="archive 分页" title="archive" width="600" height="400" class="alignnone size-full wp-image-55" /></a>
@@ -2825,13 +2825,13 @@ $(document).ready(function archive_ajax_navi(){
 <pre lang="php"><!--?php function archive_ajax_navi(){ 	if( isset($_POST['action'])&& $_POST['action'] == 'archive_ajax_navi'){ 		include_once TEMPLATEPATH.'/list.php';  //注意修改为你自己的文件的位置 		die(); 	}else{ 		return; 	} } add_action('template_redirect', 'archive_ajax_navi'); ?--></pre>
 <h2>7 寄语</h2>
 希望大家通过上面的例子能够成功实现archive页面的ajax翻页效果。每个人的主题设置不同，需要根据自己的主题设置自己的参数。特别是包含分页链接的div的class。我这里是.page_navi。还有就是包含index_list.php的 div id="content_list"，需要在js中填入这两个关键的div
-</body>
-</a>
-<a>
-<title>wordpress ajax之五:最近评论ajax分页</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011091207</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress ajax之五:最近评论ajax分页</_T>
+<_c>IT技术</_c><_t>专业知识</_t><_t>网站优化</_t><_t>wordpress数据库</_t>
+<_d>2011091207</_d><_a>DH</_a>
+<_b>
 <h2>1 序言</h2>
 上一遍讲到利用一个简单的例子说明了如何<a href="http://dhblog.org/archives/9.html">使用简单的ajax</a>。这里说明一个应用：最近评论的ajax分页应用。其效果就是右边的最近评论框，点击下一页和上一页可以不刷新整体页面而查看以前的评论。效果如图：
 <a href="http://dhblog.org/wp-content/uploads/2011/09/zuijpl.jpg"><img class="aligncenter" src="http://dhblog.org/wp-content/uploads/2011/09/zuijpl.jpg" alt="最近评论" title="zuijpl" width="251" height="356" class="size-full wp-image-56" /></a>
@@ -3131,13 +3131,13 @@ color:#666
 
 <h2>7 寄语</h2>
 希望大家成功
-</body>
-</a>
-<a>
-<title>wordpress ajax之六:评论表情动态加载</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011091907</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress ajax之六:评论表情动态加载</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>wordpress数据库</_t>
+<_d>2011091907</_d><_a>DH</_a>
+<_b>
 <h2>1 序言</h2>
 上一遍讲到利用一个简单的例子说明了如何<a href="http://dhblog.org/archives/9.html">使用简单的ajax</a>。这里说明一个应用：评论表情动态加载。什么是表情动态加载呢?就是文章页面不加载表情，节省带宽，要知道加载很多表情符号，很费力的，在用户点击评论框之后，才动态加载表情，这样针对性更强，加快页面的转载速度。其效果就是点击评论框试试。效果如图：
 <a href="http://dhblog.org/wp-content/uploads/2011/09/biaoqing.png"><img src="http://dhblog.org/wp-content/uploads/2011/09/biaoqing.png" alt="表情动态加载" title="biaoqing" width="629" height="355" class="aligncenter size-full wp-image-59" /></a>
@@ -3328,13 +3328,13 @@ include("smiley_ajax.php");
 
 <h2>7 寄语</h2>
 希望大家成功
-</body>
-</a>
-<a>
-<title>wordpress主题:博客主题新功能</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011092607</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress主题:博客主题新功能</_T>
+<_c>IT技术</_c><_t>网站优化</_t>
+<_d>2011092607</_d><_a>DH</_a>
+<_b>
 <h2>1 序言</h2>
 很长时间没有在博客上面活动了，也不经常去大家的博客看看了。最近比较忙，前段时间搞了ajax基本上可以告一个段落了。ajax的文章其实早就写好了，压着一直没有发表，按照固定的频率，一周一篇地发表。现在主题又有一些新的功能，当然也是早就搞好了的。今天上线新功能了。
 <h2>2 哪些新功能</h2>
@@ -3352,13 +3352,13 @@ include("smiley_ajax.php");
 由于这次文章很水，所以附录一个笑话，希望大家开心开心：
 
 一领导招聘秘书，考题是：女人上下两口的区别？1号答：一横一竖！2号：有牙无牙！3号：有舌无舌！4号：有毛无毛！5号：有话无话！6号：上面吃喝，下面玩乐！7号：上面谈情说爱，下面传宗接代！8号：上面歌颂三个代表，下面满足各位领导！——8号入选！
-</body>
-</a>
-<a>
-<title>wordpress主题:非插件post_view</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011100107</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress主题:非插件post_view</_T>
+<_c>IT技术</_c><_t>网站优化</_t>
+<_d>2011100107</_d><_a>DH</_a>
+<_b>
 <h2>1 序言</h2>
 首先祝大家国庆快乐！
 最近准备抛弃willian大师的my_visitor，因为占用数据库实在是太大，但是其很好用的三个功能：
@@ -3459,13 +3459,13 @@ include("dh_post_views.php");
 <h3>3.2 这里还提供了两个函数</h3>
 (1)get_most_viewed_format 得到最多阅读的文章，列出5个。
 (2)get_totalviews 得到评论的总数
-</body>
-</a>
-<a>
-<title>wordpress主题:添加文章目录</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011100807</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress主题:添加文章目录</_T>
+<_c>IT技术</_c><_t>网站优化</_t>
+<_d>2011100807</_d><_a>DH</_a>
+<_b>
 <h2>1 缘起</h2>
 有一次，我在逛博客，看到有个博客(<a href="http://shieffan.me/">清水稀饭</a>)很有意思，竟然像百度百科一样，有标题！这种标题wiki也有，是一种有助于读者快速掌握文章内容，方便读者在篇幅较长的文章中找到他们想看的内容，这个也就相当于索引。作者也提供了方法，我学着做了一个，扩展了一些功能。支持双层的标题。参考文章有：
 <a href="http://www.ludou.org/wordpress-content-index-plugin.html">WordPress文章目录插件</a>
@@ -3594,13 +3594,13 @@ $(document).ready(function(){
 写文章需要有条理，需要用h2 作为二级标题，h3作为三级标题。在编辑文章的时候，切换到HTML模式，将需要添加到目录中的标题用&lt;h2&gt;和&lt;/h2&gt;括起来就可以了，如&lt;h2&gt;序言&lt;/h2&gt;。当然你也可以用其他标签，如&lt;h4&gt;&lt;/h4&gt;等，需要自己修改代码哦。
 <h3>4.2 与前人的不同</h3>
 我这里支持二级标题，但是支持二级标题需要有很多的限制，如果需要研究的读者可以读一下代码研究一下。
-</body>
-</a>
-<a>
-<title>wordpress安全:处理垃圾评论(续)-前台管理评论</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011101707</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress安全:处理垃圾评论(续)-前台管理评论</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>wordpress提高速度</_t>
+<_d>2011101707</_d><_a>DH</_a>
+<_b>
 <h2>1 序言</h2>
 上次讲到<a href="http://dhblog.org/43.html">处理垃圾评论</a>，很多方法，但是没有办法处理手动录入的评论如：
 <a href="http://dhblog.org/wp-content/uploads/2011/09/lajipingl.png"><img src="http://dhblog.org/wp-content/uploads/2011/09/lajipingl.png" alt="" title="lajipingl" width="241" height="351" class="aligncenter size-full wp-image-62" /></a>
@@ -3673,13 +3673,13 @@ function dhchannel_comment($comment, $args, $depth)
 </pre>
 <h2>4 注意点</h2>
 基本上没有什么注意点。呵呵
-</body>
-</a>
-<a>
-<title>wordpress数据库:定期备份邮寄数据库</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011102407</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress数据库:定期备份邮寄数据库</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>wordpress安全</_t>
+<_d>2011102407</_d><_a>DH</_a>
+<_b>
 <h2>1 序言</h2>
 最近准备抛弃willian大师的my_visitor，因为占用数据库实在是太大，但是其很好用的三个功能：
 1. 简易post_view
@@ -3847,13 +3847,13 @@ fclose($fp);
  $dump_peak_usage = round(memory_get_peak_usage()/1024/1024, 2);
 ?>
 </pre>
-</body>
-</a>
-<a>
-<title>迅雷下载:《沉默的15分钟》(名侦探柯南剧场版15)[rmvb/584m]</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011103107</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>迅雷下载:《沉默的15分钟》(名侦探柯南剧场版15)[rmvb/584m]</_T>
+<_c>IT技术</_c><_t>电影赏析</_t><_t>BT下载</_t>
+<_d>2011103107</_d><_a>DH</_a>
+<_b>
 <h2>剧情简介</h2>
 《沉默的15分钟》讲述12月的某一天，获得连任的朝仓东京都知事接到了谜一般的恐吓信。信中扬言将于次日在刚刚开通的都营新地铁隧道中实行爆炸！而多亏了从毛利小五郎那里了解到恐吓信之事的柯南，才在无人伤亡的情况下,避免了这一重大惨案的发生……
 <h2>影片其他信息</h2>
@@ -3873,13 +3873,13 @@ fclose($fp);
 <img alt="" src="http://image.tianjimedia.com/uploadImages/2010/343/H1IDB8W00EFI_18dbf7236ad4f00293580739_500.jpg" class="aligncenter" width="500" height="373" />
 <h2>下载地址</h2>
 <a href="thunder://QUFmdHA6Ly82OjZAZnRwLmthbjY2LmNvbTo0NTE4L+OAkDZ255S15b2xd3d3LmR5MTMxLmNvbeOAkeWQjeS+puaOouafr+WNl+WJp+WcuueJiDE15rKJ6buY55qEMTXliIbpkp8ucm12Ylpa">点此利用迅雷下载</a>
-</body>
-</a>
-<a>
-<title>wordpress主题:纯静态文件文章归档</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011110707</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress主题:纯静态文件文章归档</_T>
+<_c>IT技术</_c><_t>网站优化</_t>
+<_d>2011110707</_d><_a>DH</_a>
+<_b>
 <h2>功能宣言</h2>
 <font color="red">我要给读者一个纯净的空间，因为你们有权利要求！</font>
 为什么要这么说呢？现在我的博客，已经很臃肿了，功能是不少，但是加载速度确实很慢，不仅仅对读者，对搜索引擎也不是很合理。冗余的广告代码、统计代码、第三方推广代码、客户登陆cookit、每页都有相关的统计频繁访问数据库、加载用户的评论。这些已经让读者的浏览器不堪重负！
@@ -3914,13 +3914,13 @@ $Lc_archivers_src_path= ABSPATH . 'wp-content/themes/dhchannel/functions/archive
 //这个是访问静态页面生成之后的地址，我的是我的网站域名/archivers/
 $Lc_archivers_url= get_bloginfo('url'). '/archivers/';</pre>
 4.里面的额style都是我配置的和我的网站类似的，需要配置成自己喜欢的。
-</body>
-</a>
-<a>
-<title>wordpress数据库:表posts清理和整理</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011111407</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress数据库:表posts清理和整理</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>迅雷下载</_t>
+<_d>2011111407</_d><_a>DH</_a>
+<_b>
 <h2>1 缘起</h2>
 wordpress的posts表是非常重要的表，所有的文章都放在里面，但是有时候内容很多，仔细检查表发现，还有很多的重复的内容，让人看起来非常不爽，而且数据量的增多会导致维护麻烦，而且会是数据库访问变慢。
 <h2>2 原因</h2>
@@ -4032,13 +4032,13 @@ echo 'Total:'. $convertedrows .', It\'s ok! ';
 2. 会导致你以前网页的链接没有了，应为改名字了。
 3. 会让收藏你以前网页的网友不知道新的地址了。
 总之要慎重。不管你们慎重不慎重，反正我是做了，而且收录下降了，但是我的主要流量不是搜索引擎，而且我不出名，所以删了就删了，无所谓。呵呵。
-</body>
-</a>
-<a>
-<title>迅雷下载:《猩球崛起》[rmvb(483M|1.1G)/mkv(999M)]</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011112107</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>迅雷下载:《猩球崛起》[rmvb(483M|1.1G)/mkv(999M)]</_T>
+<_c>IT技术</_c><_t>电影赏析</_t><_t>BT下载</_t>
+<_d>2011112107</_d><_a>DH</_a>
+<_b>
 <h2>1 缘起</h2>
 知蚁博客看了之后，写了观后感，<a href="http://www.letuknowit.com/archives/152">《猩球崛起》观后感</a>， 但是不给种子，这样不好，我来给！而且给出满足各种要求的下载。
 <h2>2 剧情简介</h2>
@@ -4065,13 +4065,13 @@ echo 'Total:'. $convertedrows .', It\'s ok! ';
 <a href="thunder://QUFmdHA6Ly82djo2dkBmdHAua2FuNjYuY29tOjQxMjEv44CQNnbnlLXlvbF3d3cuZHkxMzEuY29t44CR54y/5peP5bSb6LW3RFZE5Lit5a2XLnJtdmJaWg==">点击 迅雷下载 猿族崛起_DVD中字.rmvb(483M)</a>
 <a href="thunder://QUFmdHA6Ly9keWdvZDE6ZHlnb2QxQGQzMTcuZHlnb2Qub3JnOjYwMTAvW+eUteW9seWkqeWggi13d3cuZHkyMDE4Lm5ldF3njKnnkIPltJvotbcuMTAyNHg1NzYu5Zu96Iux5Y+M6K+tLuS4reaWh+Wtl+W5lS5ta3ZaWg==">点击 迅雷下载 猿族崛起_1024x576.国英双语.中文字幕.mkv(999M)</a>
 <a href="thunder://QUFmdHA6Ly82djo2dkBmdHAxLmthbjY2LmNvbToxMjYzL1s2dueUteW9sXd3dy5keTEzMS5jb21d54y/5peP5bSb6LW3QkTkuK3lrZcxMjgw6auY5riFLnJtdmJaWg==">点击 迅雷下载 猿族崛起_BD中字1280高清.rmvb(1.1G)</a>
-</body>
-</a>
-<a>
-<title>经验总结:丢失的百度收录回来了</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011112807</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>经验总结:丢失的百度收录回来了</_T>
+<_c>IT技术</_c><_t>活动推荐</_t><_t>域名空间</_t>
+<_d>2011112807</_d><_a>DH</_a>
+<_b>
 <h2>1 前言</h2>
 前面好几个月，我的百度经历了由多变少，最后变成3个，最后又突然回来的过程。我想和博友分享一下我的经历和教训，给大家一点启示。
 <h2>2 如何丢失了百度收录</h2>
@@ -4116,13 +4116,13 @@ echo 'Total:'. $convertedrows .', It\'s ok! ';
 2. 网页中有大量广告和统计代码等杂乱代码？
 3. 主题对搜索百度支持不好？
 4. 主机在国外？访问速度慢？
-</body>
-</a>
-<a>
-<title>BT下载:《夫妻成长日记真人版》[rmvb(699M)]</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011120520</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>BT下载:《夫妻成长日记真人版》[rmvb(699M)]</_T>
+<_c>IT技术</_c><_t>电影赏析</_t><_t>网络赚钱</_t>
+<_d>2011120520</_d><_a>DH</_a>
+<_b>
 <h2>1 剧情简介</h2>
 根据几年前看过动漫版《夫妻成长日记》改编的真人版的，相信有朋友喜欢吧。看题目就知道是夫妻养成之类的，还有一点伦理之类的，大家都懂的。电影讲述主人公小野田优良和真在完全没有性体验的状况下，却结为了夫妇。在结婚初夜，由于两人对于两性方面缺乏了解，很多事都无法很顺利的完成。因此，两人决心以成为“真正的夫妇”为目标而付出努力的行动……
 <h2>2 影片其他信息</h2>
@@ -4142,13 +4142,13 @@ echo 'Total:'. $convertedrows .', It\'s ok! ';
 <h2>4 下载地址</h2>
 <a href="http://dhblog.org/wp-content/uploads/torrent/夫妻成长日记真人版[rmvb(699M)].torrent">点击 下载 夫妻成长日记真人版.rmvb(699M) 种子文件</a>
 注意没有字幕，找了很多时间没有字幕，希望有人能共享字幕！
-</body>
-</a>
-<a>
-<title>网络赚钱:91问问调查网(1000积分换10元)</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011121307</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>网络赚钱:91问问调查网(1000积分换10元)</_T>
+<_c>IT技术</_c><_t>投资理财</_t>
+<_d>2011121307</_d><_a>DH</_a>
+<_b>
 <h2>1 前言</h2>
 是搏友<a href="http://www.letuknowit.com/archives/133">知蚁博客</a>推荐的91问问调查网，自己就试了一下。而且顺利地花了3个月拿到了9.85元了，虽然少了点，但是苍蝇虽小，也是肉！
 还不错，就推荐给大家了。为了证明真实性，我贴图说明。
@@ -4189,13 +4189,13 @@ echo 'Total:'. $convertedrows .', It\'s ok! ';
 <a href="http://dhblog.org/wp-content/uploads/2011/12/91wenwen04.png"><img src="http://dhblog.org/wp-content/uploads/2011/12/91wenwen04.png" alt="" title="91wenwen04" width="638" height="39" class="aligncenter size-full wp-image-85" /></a>
 <h3>3.4 花掉这个钱</h3>
 这个随便你。呵呵
-</body>
-</a>
-<a>
-<title>友情推荐:BOX国外高速免费网盘服务</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011121907</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>友情推荐:BOX国外高速免费网盘服务</_T>
+<_c>IT技术</_c><_t>幽默故事</_t><_t>拿福能</_t>
+<_d>2011121907</_d><_a>DH</_a>
+<_b>
 <h2>1 起因</h2>
 需要一个网盘服务，要求：
 1.稳定，要有强大的注明的公司支撑、业界有好评。
@@ -4223,13 +4223,13 @@ BOX的注册教程：
 5. 自定义一个名称
 6. 进入网上邻居，就可以看到刚才设置的网络磁盘文件夹了
 7. 双击进入文件夹，就可以自由上传和下载文件
-</body>
-</a>
-<a>
-<title>友情推荐:box wordpress展示</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2011122607</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>友情推荐:box wordpress展示</_T>
+<_c>IT技术</_c><_t>幽默故事</_t><_t>拿福能</_t>
+<_d>2011122607</_d><_a>DH</_a>
+<_b>
 <h2>1 来源</h2>
   看到林木木的文章<a href="http://immmmm.com/tag/box-net" target="_blank">利用 Google Feed API 制作 Box.net 网盘页面</a>，于是想做一个共享我的资料的页面，但是林木木提供的是普遍性的使用，需要改造一下。于是就动手小改了一下。
 <h2>2 展示与体验</h2>
@@ -4244,13 +4244,13 @@ BOX的注册教程：
 <h2>1 下载链接</h2>
 我的修改下载，到林木木的博客里面有原版的下载。
 <a href="http://www.boxcn.net/s/gre0cf6cl57aogel9c1e">http://www.boxcn.net/s/gre0cf6cl57aogel9c1e</a>
-</body>
-</a>
-<a>
-<title>迅雷下载:《龙门飞甲》《金陵十三钗》[rmvb]</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2012010107</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>迅雷下载:《龙门飞甲》《金陵十三钗》[rmvb]</_T>
+<_c>IT技术</_c><_t>电影赏析</_t><_t>BT下载</_t>
+<_d>2012010107</_d><_a>DH</_a>
+<_b>
 <h2>序言</h2>
 祝大家新年快乐！谢谢大家在2011年对我博客的关注，并祝大家在2012年这新的一年里事事顺利！
 
@@ -4277,13 +4277,13 @@ attime.net：
 <h2>3 《金陵十三钗》下载地址</h2>
 点击以下地址，或者复制到迅雷中下载。
 <a href="thunder://QUFmdHA6Ly9keTpkeUB4bGEueHVuYm8uY2M6NDAxNjMvW9G4wNfPwtTYd3d3Llh1bkJvLkNjXb3wwerKrsj97s4uSEQxMjgwx+XO+rn60+/W0NOiy6vX1i5ybXZiWlo=">点击 迅雷下载《金陵十三钗》清晰国语中字[rmvb/833.5M]</a>
-</body>
-</a>
-<a>
-<title>友情推荐:体验电信免费WiFi宽带</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2012010907</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>友情推荐:体验电信免费WiFi宽带</_T>
+<_c>IT技术</_c><_t>健康养生</_t><_t>拿福能</_t>
+<_d>2012010907</_d><_a>DH</_a>
+<_b>
 <h2>1 消息主体</h2>
 　　9月20日消息，中国电信天翼宽带WiFi推出免费上网体验活动，从即日起至12月31日，天翼手机用户每月赠送10小时免费WiFi上网，而中国移动和中国联通用户每月也可申请2小时连续WiFi免费上网体验。
 　　据悉，中国电信用户如原来享受一定时长的免费WiFi上网，本次免费时长可叠加，即另外赠送10小时。中国移动和联通用户每月可在电信WiFi网络上网Portal认证页面中，输入手机号码获取用于WiFi临时上网的数字密码，密码连续2小时内有效，密码有效期内可多次登录并免费使用。
@@ -4300,13 +4300,13 @@ https://wlan.ct10000.com/portal2/Login.do?logintype=3，直接有链接可以跳
 具体见图：
 <a href="http://dhblog.org/wp-content/uploads/2012/01/dianxin.jpg"><img src="http://dhblog.org/wp-content/uploads/2012/01/dianxin.jpg" alt="" title="dianxin" width="623" height="396" class="aligncenter size-full wp-image-90" /></a>
 
-</body>
-</a>
-<a>
-<title>友情推荐:2012(龙年)春晚节目单</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2012012022</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>友情推荐:2012(龙年)春晚节目单</_T>
+<_c>IT技术</_c><_t>健康养生</_t><_t>拿福能</_t>
+<_d>2012012022</_d><_a>DH</_a>
+<_b>
 接花献佛了，祝大家新年快乐！
 　“春晚节目单”制作精美，图文并茂，节目单上既有龙年春晚的标识，也有所有亮相春晚表演的节目和演员。这张中央电视台龙年春晚节目单，将刊登在1月21日出版的《人民日报》《光明日报》《经济日报》《解放军报》《中国日报英文版》及全国众多都市报。全国观众也可以在新浪网及中央电视台春晚官方网站上下载节目单。
 [caption id="" align="aligncenter" width="389" caption="春晚节目单"]<img alt="" src="http://photocdn.sohu.com/20120120/Img332779988.jpg" title="春晚节目单" width="389" height="550" />[/caption]
@@ -4367,13 +4367,13 @@ https://wlan.ct10000.com/portal2/Login.do?logintype=3，直接有链接可以跳
 　　节目如有变化，以除夕当天直播为准。
 
 注：2012央视春节联欢晚会:【春晚特讯】近期赵本山带病坚持排练、积极备战春晚，因身体极度疲惫、状态欠佳，最终赵本山还是决定惜别2012年的春晚舞台，我们感到特别的遗憾。对于赵本山的全心投入和真诚付出，我们由衷感谢，期待赵本山早日康复，再登春晚舞台，继续为全国观众带来欢笑。
-</body>
-</a>
-<a>
-<title>wordpress安全:处理垃圾评论(续2)-Trackback攻击</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2012013107</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress安全:处理垃圾评论(续2)-Trackback攻击</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>wordpress提高速度</_t>
+<_d>2012013107</_d><_a>DH</_a>
+<_b>
 <h2>1 什么是Trackback评论攻击</h2>
 现在的垃圾评论很多，<a href="http://dhblog.org">我的博客</a>深受其害，前面有好几篇文章介绍怎么对付垃圾评论：
 <a href="http://dhblog.org/44.html">wordpress安全:被垃圾评论搞的很烦</a>
@@ -4403,13 +4403,13 @@ UPDATE wp_posts SET ping_status = ‘closed’;
 </pre>
 <h3>2.4 手动删除垃圾评论</h3>
 如果你不想安装上面的内容，又不想关闭Trackback功能，也可以在垃圾评论有的时候，手动删除即可。
-</body>
-</a>
-<a>
-<title>wordpress:wordpress升级到3.3</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2012021307</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress:wordpress升级到3.3</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>wordpress定时任务</_t>
+<_d>2012021307</_d><_a>DH</_a>
+<_b>
 <h2>1 序言</h2>
 升级wordpress是个非常难搞的事情，，所以我的博客是能不升级就不升级，为什么呢？主要是：
 1. 涉及的事情太多,步骤太多。
@@ -4469,13 +4469,13 @@ UPDATE wp_posts SET ping_status = ‘closed’;
 1. 百度的收录会不会有什么变化
 2. 主题在3.3下面会不会有什么bug
 3. 博友的反应。。。
-</body>
-</a>
-<a>
-<title>wordpress ajax之七:随机动态显示名言</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2012022007</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress ajax之七:随机动态显示名言</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>wordpress数据库</_t>
+<_d>2012022007</_d><_a>DH</_a>
+<_b>
 <h2>1 序言</h2>
 对于如何使用ajax写主题请参考：
 1. <a href="http://dhblog.org/9.html" target="_blank">wordpress ajax之一:一个简单的例子</a>
@@ -4591,13 +4591,13 @@ include("dh_say_ajax.php");
 </pre>
 <h2>7 寄语</h2>
 希望大家成功
-</body>
-</a>
-<a>
-<title>wordpress安全:处理垃圾评论(续3)-未经评论表格</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2012022701</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress安全:处理垃圾评论(续3)-未经评论表格</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>wordpress提高速度</_t>
+<_d>2012022701</_d><_a>DH</_a>
+<_b>
 <h2>1 原因</h2>
 垃圾评论一直是我们独立博客主讨厌的，因为这个需要浪费很多的数据库空间，造成不必要的浪费，而且，这个就像脚气一样，很难根除，实属讨厌之极!下面有几个规则：
 规则1：如果你的博客可以留下垃圾评论, 那这个垃圾评论还会再來, 而且越来越多.不仅spam如此, 人肉AD也是如此。这样，即使屏蔽掉这个垃圾评论，也没有办法，因为它们仍然回来。
@@ -4625,13 +4625,13 @@ ajax_php_url = js_url.replace('comments-ajax.js','my-comments.php'),
 
 <h2>5 结果</h2>
 果然，小墙不会报wp-comments-post.php注入的垃圾评论了。
-</body>
-</a>
-<a>
-<title>wordpress ajax之七:随机动态显示名言(续)</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2012030507</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress ajax之七:随机动态显示名言(续)</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>wordpress定时任务</_t><_t>wordpress数据库</_t>
+<_d>2012030507</_d><_a>DH</_a>
+<_b>
 <h2>就是序言</h2>
 由于是随机动态显示，很难看到所有的名言，这里把这些都贴出来，
 一来看看这些陶冶情操。
@@ -4653,25 +4653,25 @@ ajax_php_url = js_url.replace('comments-ajax.js','my-comments.php'),
 君子与小人斗，小人必胜。
 在有些政治体制下，敢于承认错误能得分。有些政治体制下，承认错误就要下台。
 我们可以爱一个人爱到不要命，但是我们绝不能爱一个人爱到不要脸。
-</body>
-</a>
-<a>
-<title>经验总结:没有备案，成功加入百度联盟</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2012042607</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>经验总结:没有备案，成功加入百度联盟</_T>
+<_c>IT技术</_c><_t>健康养生</_t><_t>域名空间</_t><_t>拿福能</_t>
+<_d>2012042607</_d><_a>DH</_a>
+<_b>
 *，您好：   
          恭喜您成功注册为百度联盟会员。您可以使用以下业务或服务：   
          网盟推广合作 在页面上投放与内容相关的百度网盟推广合作业务，将流量转化为点击收入。
 　　      新业务合作 加入百度联盟新业务合作业务，分享更多产品为您带来的收入。　　   
          请访问http://union.baidu.com，使用您注册时的ID和密码登录到自己的帐户。
-</body>
-</a>
-<a>
-<title>经验总结:没有备案，成功加入百度联盟(2)</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2012050313</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>经验总结:没有备案，成功加入百度联盟(2)</_T>
+<_c>IT技术</_c><_t>健康养生</_t><_t>域名空间</_t><_t>拿福能</_t>
+<_d>2012050313</_d><_a>DH</_a>
+<_b>
 <h2>道歉</h2>
 前面一篇文章是 <a href="http://dhblog.org/105.html" title="经验总结:没有备案，成功加入百度联盟">《经验总结:没有备案，成功加入百度联盟》</a>，只写了成功了，但是没有写问什么能加入，不是为了钓大家的胃口，是因为比较忙，本来想写好再发表的，但是由于自动发布的原因，就这样稀里糊涂发布了一个没有写完的文章。
 <h2>经验</h2>
@@ -4682,13 +4682,13 @@ ajax_php_url = js_url.replace('comments-ajax.js','my-comments.php'),
 我这样写了之后，通过之后百度联盟的工作人员还给我打了电话，通知我已经通过了。
 <h2>加油</h2>
 希望大家按照我的方法，能够成功！
-</body>
-</a>
-<a>
-<title>wordpress:wordpress博客我面临的两个问题</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2012052307</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>wordpress:wordpress博客我面临的两个问题</_T>
+<_c>IT技术</_c><_t>网站优化</_t><_t>wordpress提高速度</_t><_t>wordpress定时任务</_t>
+<_d>2012052307</_d><_a>DH</_a>
+<_b>
 <h2>1. 速度</h2>
 这个问题很多博主都提过了，wordpress功能越来越多的同时，带来的问题就是臃肿，随着插件和主题的增加，还有文章数据的增多，特别是评论数目的增多，不得不提的就是速度变慢了。
 
@@ -4697,13 +4697,13 @@ ajax_php_url = js_url.replace('comments-ajax.js','my-comments.php'),
 
 <h2>3. 解决方案</h2>
 这两个问题花了我很长时间去解决，虽然没有彻底解决，但是也有几种折中的方案，也在寻找各种方案，等我成功了，给大家分享。
-</body>
-</a>
-<a>
-<title>经验总结:建一个独立博客，需要懂得很多</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2012112007</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>经验总结:建一个独立博客，需要懂得很多</_T>
+<_c>IT技术</_c><_t>软件编程</_t><_t>域名空间</_t>
+<_d>2012112007</_d><_a>DH</_a>
+<_b>
 <h2>购买域名</h2>
 godday、万网、美橙、空间商提供的
 <h2>购买空间</h2>
@@ -4730,13 +4730,13 @@ google分析、百度分析、51.la、淘宝分析
 关注名博：卢松松、willian
 关注同类博客：google订阅、抓虾订阅，九点订阅、freebrun订阅。
 互动：
-</body>
-</a>
-<a>
-<title>经验总结:PR值终于熬到3了</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>2013011607</date><author>DH</author>
-<body>
+</_b>
+</_e>
+<_e>
+<_T>经验总结:PR值终于熬到3了</_T>
+<_c>IT技术</_c><_t>活动推荐</_t><_t>域名空间</_t>
+<_d>2013011607</_d><_a>DH</_a>
+<_b>
 <h2>1 PR的追求</h2>
 时间太有限，我的博客没有在pr上面太多的关注，知识寻找一些志同道合的博友链接一下，偶尔在wordoress.org.cn上面贴贴我的文章，但是这样对pr值的贡献太小了，所以pr值一直很低。
 <h2>2 技术的追求</h2>
@@ -4750,5 +4750,5 @@ google分析、百度分析、51.la、淘宝分析
 2011-08-06 0
 2011-06-28 2
 2011-04-11 0
-</body>
-</a>
+</_b>
+</_e>

@@ -42,14 +42,27 @@ function getpost()
 			$datewrite = strtotime($row['post_date']);
 			$datenow = date("YmdH",$datewrite);
 			$body=$row['post_content'];
-			$aold="<entry>
-<title>$title</title>
-<c>建站技术</c><t>t1</t><t>t2</t>
-<date>$datenow</date><author>DH</author>
-<body>
+			$id=$row['ID'];
+			$tags='';
+			$sql2="select wp_terms.name from wp_term_relationships,wp_terms where wp_term_relationships.object_id=$id and wp_term_relationships.term_taxonomy_id=wp_terms.term_id";			
+			$results2=dh_mysql_query($sql2);
+			if($results2)
+			{
+				while($row2 = mysql_fetch_array($results2))
+				{
+					//echo $row2['name'].':';
+					$tags.='<_t>'.$row2['name'].'</_t>';
+				}
+			}
+			
+			$aold="<_e>
+<_T>$title</_T>
+<_c>IT技术</_c>$tags
+<_d>$datenow</_d><_a>DH</_a>
+<_b>
 $body
-</body>
-</entry>";
+</_b>
+</_e>";
 			$old .= $aold."\n";
         }
 	}
