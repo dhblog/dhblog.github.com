@@ -1,3 +1,4 @@
+
 <?php
 /////////////////////////////////////////////////////
 /// 函数名称：gen_all
@@ -28,11 +29,15 @@ $begincount=$match[2];
 
 //扫描所有的文件
 $lists=array();
+$lists_num=array();
 $pages=array();
 scan_dir($DH_src_path.'pages');
 krsort($lists);
+gen_lists_num();
 ksort($pages);
 //print_r($lists);
+//print_r($lists_num);
+
 //print_r($pages);
 //output_all();
 
@@ -105,6 +110,7 @@ function dh_gen_list()
 	
 	$tags=array();
 	$cats=array();
+	$all=array();
 	foreach($lists as $key=>$list)
 	{
 		preg_match('/<\_c>(.*?)<\/\_c>/s',$list,$matchc);
@@ -121,6 +127,8 @@ function dh_gen_list()
 			{
 				array_push($cats[$urlcode],$key);
 			}
+			
+			array_push($all,$key);		
 		}		
 		preg_match_all('/<\_t>(.*?)<\/\_t>/s',$list,$matchts);
 		//print_r($matchts);
@@ -148,14 +156,17 @@ function dh_gen_list()
 		dh_gen_each_list($tag,$key,$listeach,$DH_output_content);
 	}
 	
-	//print_r($cats);
-	//print_r($tags);
+	dh_gen_each_list($all,'all',$listeach,$DH_output_content);
+	
+	print_r($cats);
+	print_r($tags);
+	print_r($all);
 }
 
 
 function dh_gen_each_list($eachlist,$name,$listeach,$content)
 {
-	global $DH_output_index_path,$lists,$pagecount;
+	global $DH_output_index_path,$lists,$lists_num,$pagecount,$DH_index_url,$DH_html_url;
 	$liout="";
 	$DH_output_file_dir = $DH_output_index_path.$name.'/';
 	if (!file_exists($DH_output_file_dir))  
@@ -180,12 +191,14 @@ function dh_gen_each_list($eachlist,$name,$listeach,$content)
 		$listtmp = str_replace("%title%",$matchT[1],$listeach);
 		$listtmp = str_replace("%content%",$matchb[1],$listtmp);
 		$listtmp = str_replace("%cat%",$matchc[1],$listtmp);
+		$html_url = output_page_path($DH_html_url,$lists_num[$list]);
+		$listtmp = str_replace("%url%",$html_url,$listtmp);
 		//$listtmp = str_replace("%title%",$matchT[1],$listtmp);
 		$liout.=$listtmp;
 		if($count%$pagecount==0)
 		{
 			$catpage = $count/$pagecount;
-			$pagenavi = dh_pagenavi(5,$pages,$DH_output_file_dir,$catpage);
+			$pagenavi = dh_pagenavi(5,$pages,$DH_index_url.$name.'/',$catpage);
 			echo 'genpage:'.$catpage."</br>\n";				
 			$content_new = str_replace("%pagenavi%",$pagenavi,$content);
 			$content_new = str_replace("%list_each%",$liout,$content_new);
@@ -273,6 +286,17 @@ function get_entry($filename)
 				$lists[$match[1]]=$eachentry;
 			}			
 		}		
+	}
+}
+
+function gen_lists_num()
+{
+	global $lists,$lists_num;
+	$i=0;
+	foreach($lists as $key=>$list)
+	{
+		$i++;
+		$lists_num[$key]=$i;
 	}
 }
 
