@@ -43,8 +43,11 @@ ksort($pages);
 
 //输出到pages
 dh_gen_page();
-dh_gen_list();
 //输出到各个lists
+dh_gen_list();
+//拷贝index
+copy($DH_output_index_path."all/1.html",$DH_output_path."index.html");
+
 
 //将搞定的date和count写入文件保存
 $endcount=end($lists);
@@ -184,16 +187,35 @@ function dh_gen_each_list($eachlist,$name,$listeach,$content)
 		$onelist = $lists[$list];
 		preg_match('/<\_T>(.*?)<\/\_T>/s',$onelist,$matchT);
 		preg_match('/<\_b>(.*?)<\/\_b>/s',$onelist,$matchb);
-		preg_match('/<\_d>(.*?)<\/\_d>/s',$onelist,$matchd);
-		preg_match('/<\_a>(.*?)<\/\_a>/s',$onelist,$matcha);
+		preg_match('/<\_d>(.*?)<\/\_d>/s',$onelist,$matchd);		
+		//preg_match('/<\_a>(.*?)<\/\_a>/s',$onelist,$matcha);
 		preg_match('/<\_c>(.*?)<\/\_c>/s',$onelist,$matchc);
+		preg_match_all('/<\_t>(.*?)<\/\_t>/s',$onelist,$matchts);
+		//print_r($match);
+		$tags='';
+		if(!empty($matchts[1]))
+		{
+			foreach($matchts[1] as $key=>$tag)
+			{
+				$tags.=$tag.' ';
+			}
+		}
 		
 		$listtmp = str_replace("%title%",$matchT[1],$listeach);
 		$listtmp = str_replace("%content%",$matchb[1],$listtmp);
 		$listtmp = str_replace("%cat%",$matchc[1],$listtmp);
 		$html_url = output_page_path($DH_html_url,$lists_num[$list]);
 		$listtmp = str_replace("%url%",$html_url,$listtmp);
-		//$listtmp = str_replace("%title%",$matchT[1],$listtmp);
+		$listtmp = str_replace("%tags%",$tags,$listtmp);
+		$time = strtotime($matchd[1].'00');
+		$date=date("y-m",$time);
+		print_r($date);
+		$datew=date("D",$time);
+		$dated=date("d",$time);
+		$listtmp = str_replace("%date%",$date,$listtmp);
+		$listtmp = str_replace("%datew%",$datew,$listtmp);
+		$listtmp = str_replace("%dated%",$dated,$listtmp);
+		
 		$liout.=$listtmp;
 		if($count%$pagecount==0)
 		{
