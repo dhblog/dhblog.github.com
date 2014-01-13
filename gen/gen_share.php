@@ -6,15 +6,15 @@
 /// 作者地址: http://dhblog.org/ 
 /////////////////////////////////////////////////////
 
-header('Content-Type:text/html;charset= UTF-8'); 
+//header('Content-Type:text/html;charset= UTF-8'); 
 
 #需要使用的基础函数
-include("config.php");
-include("compressJS.class.php");
+//include("config.php");
+//include("compressJS.class.php");
 
-dh_gen_share();
+//dh_gen_share(array(),20);
 
-function dh_gen_share()
+function dh_gen_share($tags,$countpages)
 {
 	global $DH_html_path,$DH_index_url,$DH_output_path,$DH_input_path,$DH_home_url,$DH_page_store_deep,$conn;
 	
@@ -54,17 +54,18 @@ function dh_gen_share()
 	dh_file_put_contents($DH_output_file,$DH_output);	
 	echo "gen meta success !</br>\n";
 	
-	$DH_input_html  = $DH_html_path . 'side.html';
-	$DH_side = dh_file_get_contents($DH_input_html);
 	$DH_input_html  = $DH_html_path . 'side_each.html';
 	$DH_side_each = dh_file_get_contents($DH_input_html);
+	
+	$DH_input_html  = $DH_html_path . 'side_each2.html';
+	$DH_side_each2 = dh_file_get_contents($DH_input_html);	
 	//广告
 	$DH_side_ad= str_replace("%title%",'广告',$DH_side_each);
 	$DH_side_ad= str_replace("%more%",'',$DH_side_ad);
 	$DH_side_ad= str_replace("%content%",'',$DH_side_ad);
 	
 	//网站统计
-	$DH_side_tongji= str_replace("%title%",'网站统计',$DH_side_each);
+	$DH_side_tongji= str_replace("%title%",'网站统计',$DH_side_each2);
 	$DH_side_tongji= str_replace("%more%",'',$DH_side_tongji);
 	$diffecho = '';
 	$datetoday = strtotime(date("Y-m-d"));
@@ -80,35 +81,48 @@ function dh_gen_share()
 	$days = $monthc % 30;
 	if($days>0)
 		$diffecho .= $days.'天';		
-	$tongji="\n".'<li><span class="lt2v0">运行时间:</span>'.'<span class="rt2v0 cred">'.$diffecho.'</span></li>';
+	$tongji='<li>运行时间: <span style="font-size:12px;color:#555;">'.$diff.'天</span></li>';
 	
-	//$sql="select max(id) from page";
-	//$results=dh_mysql_query($sql);	
-	//$count = mysql_fetch_array($results);	
-	//$tongji.="\n".'<li><span class="lt2v0">博文总数:</span>'.'<span class="rt2v0 cred">'.$count[0].' 部</span></li>';
-    //
+	$tongji.='<li>博文总数: <span style="font-size:12px;color:#555;">'.$countpages.'篇</span></li>';
+	
+	$tongji.='<li>最近更新: <span style="font-size:12px;color:#555;">'.$countpages.'篇</span></li>';
+	
+	$tongji.='<li>标签数目: <span style="font-size:12px;color:#555;">'.$countpages.'篇</span></li>';
+	
+	$tongji.='<li>分类数目: <span style="font-size:12px;color:#555;">'.$countpages.'篇</span></li>';
+    
 	//$datetoday =date("Y-m-d");
 	//$sql="select count(*) from page where updatetime >= '$datetoday'";
 	//$results=dh_mysql_query($sql);	
 	//$count = mysql_fetch_array($results);	
-	//$tongji.="\n".'<li><span class="lt2v0">当月更新:</span>'.'<span class="rt2v0 cred">'.$count[0].' 部</span></li>';
+	//$tongji.="\n".'<li><span class="lt2v0">最新更新:</span>'.'<span class="rt2v0 cred">'.$count[0].' 部</span></li>';
 
-	$tongji = '<ul>'.$tongji.'</ul>';
+	$tongji = "<ul>".$tongji.'</ul>';
 	$DH_side_tongji= str_replace("%content%",$tongji,$DH_side_tongji);
 	
 	//友情链接
 	$DH_side_fl= str_replace("%title%",'友情链接',$DH_side_each);
 	$DH_side_fl= str_replace("%content%",'',$DH_side_fl);
 	
-	//$DH_side_content=$DH_side_ad.$DH_side_hotmovie.$DH_side_hottv.$DH_side_tongji;	
-	$DH_side_content=$DH_side_ad.$DH_side_tongji;	
+	//$DH_side_content=$DH_side_ad.$DH_side_hotmovie.$DH_side_hottv.$DH_side_tongji;
 	
-	$DH_side= str_replace("%side_content%",$DH_side_content,$DH_side);
+	$DH_input_html  = $DH_html_path . 'side_eacht.html';
+	$DH_side_eacht = dh_file_get_contents($DH_input_html);
+	$tagsall='';
+	foreach($tags as $key=>$tag)
+	{
+		$urlcode = rawurlencode($key);
+		$urlcode = 't'.str_replace("%",'',$urlcode);	
+		$tagsall.="<a href=\"$DH_index_url/$urlcode/1.html\" title=\"共有文章 $tag 篇\">$key</a>";
+	}	
+	$DH_side_eacht= str_replace("%content%",$tagsall,$DH_side_eacht);	
+	
+	$DH_side=$DH_side_ad.$DH_side_eacht.$DH_side_tongji;	
+	
 	$DH_output_file = $DH_share_output_path. 'side.html';
 	dh_file_put_contents($DH_output_file,$DH_side);	
 	echo "gen side success !</br>\n";
 	
 	echo "gen cse success !</br>\n";	
-	
 }
 ?>

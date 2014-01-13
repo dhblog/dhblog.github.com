@@ -3,7 +3,7 @@
 date_default_timezone_set ('Asia/Shanghai');
 
 //每页显示的记录的个数
-$pagecount=10;
+$pagecount=5;
 //预留几页的空间
 //$pagebgen=2;
 

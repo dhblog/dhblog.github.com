@@ -1,43 +1,31 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<title>%cat% 分类(二手电影)</title>
-	<meta name="keywords" content="%cat% 分页列表 第%num%页" />
-	<meta name="description" content="%cat% 类别的分页第%num%页。" />
-	%meta%		
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>%title%(DH博客)</title>
+	<meta name="keywords" content="DH博客,电影,影视,IT技术" />
+	<meta name="description" content="DH博客,电影,影视,IT技术" />
+	%meta%
 </head>
-
 <body>
-	<div id="wrapper" class="width_1">
-		<div id="header">
-			%head%
+<div id="wrapper">
+	%head%
+	<div id="content">
+		<div class="browse">你的位置：首页 >>  <a href="http://127.0.0.1/dhblog/static/cat125.html" title="查看分类wordpress下的所有文章">wordpress</a> </div>
+		<div id="contendlist">
+				%list_each%
+			<div class="page_navi">%pagenavi%</div>	
 		</div>
-		<!-- header -->
-		<div id="middle" class="width_2">
-			<div id="title">
-				<div style="border-bottom:1px solid #ccc;padding:0 0 10px 5px;font-weight:500">您的位置： <a href="%home%" title="回到首页"> 首页</a> >> %catlink% %cat%</div>				
-			</div>		
-			<div id="content"  class="width_3 listcontent">
-				<ul class="f12px width_3">
-					%list_each%
-				</ul>		
-				<div class="page_navi">%pagenavi%</div>
-			</div>
-			<!-- content -->
-			<div id="sidebar" class="clearfix">
-				%side%
-			</div>
-		<!-- middle -->
-		<div id="footer">
-			%foot%
-		</div>
+	</div>	
+	<div id="sidebar">
+		%side%
+	</div>		
+	<!--end: sidebar-->
+	<div id="bottom">
+	%foot%
 	</div>
-	<!-- wrapper -->
-	<script type="text/javascript">
-	%list.js%
-	</script>
-	<script type="text/javascript">
-	%footjs%
-	</script>	
+	<!--end: bottom-->
+</div>
+<!--end: wrapper-->
 </body>
 </html>

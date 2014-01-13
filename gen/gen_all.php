@@ -12,6 +12,7 @@ require("config.php");
 #需要使用的基础函数
 require("compressJS.class.php");
 require("page_navi.php");
+require("gen_share.php");
 set_time_limit(600); 
 
 //预定义
@@ -41,10 +42,14 @@ ksort($pages);
 //print_r($pages);
 //output_all();
 
-//输出到pages
-dh_gen_page();
+//生成关键信息之后调用gen_share();
+dh_gen_public();
+
 //输出到各个lists
 dh_gen_list();
+//输出到pages
+dh_gen_page();
+
 //拷贝index
 copy($DH_output_index_path."all/1.html",$DH_output_path."index.html");
 
@@ -55,6 +60,27 @@ $maxdate=key($lists);
 $maxcount=$begincount+count($lists);
 echo $maxdate.":".$maxcount;
 
+
+function dh_gen_public()
+{
+	global $lists;
+	foreach($lists as $key=>$list)
+	{	
+		preg_match_all('/<\_t>(.*?)<\/\_t>/s',$list,$matchts);
+		if(!empty($matchts[1]))
+		{
+			foreach($matchts[1] as $tag)
+			{
+				if(empty($tags[$tag]))
+					$tags[$tag]=1;
+				else
+					$tags[$tag]++;
+			}
+		}	
+	}
+	//print_r($tags);
+	dh_gen_share($tags,count($lists));
+}
 
 function dh_gen_page()
 {
