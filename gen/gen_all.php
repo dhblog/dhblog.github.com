@@ -13,6 +13,7 @@ require("config.php");
 require("compressJS.class.php");
 require("page_navi.php");
 require("gen_share.php");
+require("gen_sitemap.php");
 set_time_limit(600); 
 
 //预定义
@@ -53,6 +54,9 @@ dh_gen_page();
 //拷贝index
 copy($DH_output_index_path."all/1.html",$DH_output_path."index.html");
 
+//gen_sitemap($lists);
+gen_html_date($lists);
+gen_html_num($lists,20);
 
 //将搞定的date和count写入文件保存
 $endcount=end($lists);
@@ -187,9 +191,9 @@ function dh_gen_list()
 	
 	dh_gen_each_list($all,'all',$listeach,$DH_output_content);
 	
-	print_r($cats);
-	print_r($tags);
-	print_r($all);
+	//print_r($cats);
+	//print_r($tags);
+	//print_r($all);
 }
 
 

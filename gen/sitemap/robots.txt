@@ -1,0 +1,5 @@
+User-agent: *
+Disallow:/gen/
+Disallow:/reader/
+Disallow:/backup/
+%sitemaps%
