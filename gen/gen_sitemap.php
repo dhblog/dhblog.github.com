@@ -5,8 +5,7 @@
 /// 函数作者: DH
 /// 作者地址: http://dhblog.org 
 /////////////////////////////////////////////////////
-header('Content-Type:text/html;charset= UTF-8'); 
-
+//header('Content-Type:text/html;charset= UTF-8'); 
 ////导出数据库设置
 //require("../config.php");
 //require("common.php");
@@ -50,7 +49,7 @@ function gen_sitemap($lists)
 	gen_sitemapall();
 }
 
-function gen_sitemap_each($sql,$date,$cycle,$name,$times)
+function gen_xml($date,$cycle,$lists,$pagecount)
 {	
 	global $DH_input_path,$DH_output_path,$DH_home_url,$DH_html_url;
 	$sitemappath=$DH_output_path.'sitemapxml/';
@@ -73,7 +72,6 @@ function gen_sitemap_each($sql,$date,$cycle,$name,$times)
 	$DH_input_html  = $DH_input_path . 'sitemap/sitemap/sitemap_baidu_each.xml';
 	$DH_sitemap_baidu_each = dh_file_get_contents("$DH_input_html");		
 	
-	$rs = mysql_query($sql);
 	$sitemap_all='';
 	$sitemap_baidu_all='';
 	
@@ -92,8 +90,12 @@ function gen_sitemap_each($sql,$date,$cycle,$name,$times)
 		$sitemap_baidu_each = str_replace("%title%",$title,$sitemap_baidu_each);		
 		$sitemap_baidu_all.=$sitemap_baidu_each;		
 	}
+	$i=1;
+	$rlists=array_reverse($lists);
+	$DH_sitemap='';
+	$DH_sitemap_baidu='';
 	
-	while($row = mysql_fetch_array($rs))
+	foreach($rlists as $key=>$list)
 	{
 		$htmlpath = output_page_path($DH_html_url,$row['id']);
 		$sitemap_each = str_replace("%url%",$htmlpath,$DH_sitemap_each);
@@ -117,22 +119,38 @@ function gen_sitemap_each($sql,$date,$cycle,$name,$times)
 		$title .=' 在线下载资源和影讯影评(二手电影)';
 		$sitemap_baidu_each = str_replace("%title%",$title,$sitemap_baidu_each);		
 		$sitemap_baidu_all.=$sitemap_baidu_each;
+		if($i%$pagecount==0)
+		{
+			$page = ceil($i/$pagecount);
+			$DH_sitemap = str_replace("%sitemaps%",$sitemap_all,$DH_sitemap);
+			$DH_sitemap_baidu = str_replace("%sitemaps%",$sitemap_baidu_all,$DH_sitemap_baidu);
+			
+			$DH_output_file = $sitemappath.'sitemap'.$page.'.xml';
+			dh_file_put_contents($DH_output_file,$DH_sitemap);
+			$DH_output_file = $sitemappath.'sitemap_baidu'.$page.'.xml';
+			dh_file_put_contents($DH_output_file,$DH_sitemap_baidu);
+			
+			$sitemap_all='';
+			$sitemap_baidu_all='';
+		}		
 	}
-	$DH_sitemap = str_replace("%sitemaps%",$sitemap_all,$DH_sitemap);
-	$DH_sitemap_baidu = str_replace("%sitemaps%",$sitemap_baidu_all,$DH_sitemap_baidu);
 	
-	$DH_output_file = $sitemappath.'sitemap'.$name.'.xml';
-	dh_file_put_contents($DH_output_file,$DH_sitemap);
-	$DH_output_file = $sitemappath.'sitemap_baidu'.$name.'.xml';
-	dh_file_put_contents($DH_output_file,$DH_sitemap_baidu);
 	
-	if($name==$times)
+	if($sitemap_all!='')
 	{
-		$DH_output_file = $DH_output_path.'sitemap.xml';
+		$page = ceil($i/$pagecount);
+		$DH_sitemap = str_replace("%sitemaps%",$sitemap_all,$DH_sitemap);
+		$DH_sitemap_baidu = str_replace("%sitemaps%",$sitemap_baidu_all,$DH_sitemap_baidu);
+		$DH_output_file = $sitemappath.'sitemap'.$page.'.xml';
 		dh_file_put_contents($DH_output_file,$DH_sitemap);
-		$DH_output_file = $DH_output_path.'sitemap_baidu.xml';
-		dh_file_put_contents($DH_output_file,$DH_sitemap_baidu);	
-	}	
+		$DH_output_file = $sitemappath.'sitemap_baidu'.$page.'.xml';
+		dh_file_put_contents($DH_output_file,$DH_sitemap_baidu);
+	}
+	
+	$DH_output_file = $DH_output_path.'sitemap.xml';
+	dh_file_put_contents($DH_output_file,$DH_sitemap);
+	$DH_output_file = $DH_output_path.'sitemap_baidu.xml';
+	dh_file_put_contents($DH_output_file,$DH_sitemap_baidu);	
 }
 
 function gen_html_num($lists,$pagecount)
@@ -153,6 +171,7 @@ function gen_html_num($lists,$pagecount)
 	$i=0;
 	$rlists=array_reverse($lists);
 	
+	$sitemaphtml='';
 	foreach($rlists as $key=>$list)
 	{
 		$i++;
@@ -164,29 +183,36 @@ function gen_html_num($lists,$pagecount)
 			$type = $match[1];
 		}
 		preg_match('/<\_T>(.*?)<\/\_T>/s',$list,$matchT);
-		$htmlpath = output_page_path($DH_html_url,$i);
+		$pagesindex=$list_count - $i;
+		$htmlpath = output_page_path($DH_html_url,$pagesindex);
 		$updatetime=date('Y-m-d',strtotime($key.'00'));
 		$liout.='<li> '.$i.' ['.$updatetime.']'.$type.'] <a href="'.$htmlpath.'" target="_blank">'.$matchT[1]."</a></li>\n";
 		//如果达到达到要求，开始写文件
 		if($i%$pagecount==0)
 		{
-			$sitemaphtml = str_replace("%num%",'第 '.$i.' 页',$DH_output_content);
+			$page = ceil($i/$pagecount);
+			$sitemaphtml = str_replace("%num%",'第 '.$page.' 页',$DH_output_content);
 			$sitemaphtml = str_replace("%list%",$liout,$sitemaphtml);		
-			$pagenavi = dh_pagenavi(9,9,$DH_home_url.'sitemaphtml/sitemap',$i);		
+			$pagenavi = dh_pagenavi(9,$times,$DH_home_url.'sitemaphtml/sitemap',$page);		
 			$sitemaphtml= str_replace("%pagenavi%",$pagenavi,$sitemaphtml);
-			$DH_output_file = $sitemappath.'sitemap'.$i.'.html';
+			$DH_output_file = $sitemappath.'sitemap'.$page.'.html';
 			dh_file_put_contents($DH_output_file,$sitemaphtml);	
 			$liout='';
 		}
 	}
-	$sitemaphtml = str_replace("%num%",'第 '.$i.' 页',$DH_output_content);
-	$sitemaphtml = str_replace("%list%",$liout,$sitemaphtml);		
-	$pagenavi = dh_pagenavi(9,9,$DH_home_url.'sitemaphtml/sitemap',$i);		
-	$sitemaphtml= str_replace("%pagenavi%",$pagenavi,$sitemaphtml);
-	$DH_output_file = $sitemappath.'sitemap'.$i.'.html';
-	dh_file_put_contents($DH_output_file,$sitemaphtml);	
+	//说明正好是整数倍
+	if($liout!='')
+	{	
+		$page = ceil($i/$pagecount);
+		$sitemaphtml = str_replace("%num%",'第 '.$page.' 页',$DH_output_content);
+		$sitemaphtml = str_replace("%list%",$liout,$sitemaphtml);		
+		$pagenavi = dh_pagenavi(9,$times,$DH_home_url.'sitemaphtml/sitemap',$page);		
+		$sitemaphtml= str_replace("%pagenavi%",$pagenavi,$sitemaphtml);
+		$DH_output_file = $sitemappath.'sitemap'.$page.'.html';
+		dh_file_put_contents($DH_output_file,$sitemaphtml);		
+	}
 	$DH_output_file = $DH_output_path.'sitemap.html';
-	dh_file_put_contents($DH_output_file,$sitemaphtml);		
+	dh_file_put_contents($DH_output_file,$sitemaphtml);
 }
 
 function gen_html_date($lists)
