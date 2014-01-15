@@ -58,6 +58,7 @@ copy($DH_output_index_path."all/1.html",$DH_output_path."index.html");
 gen_html_date($lists);
 gen_html_num($lists,20);
 gen_xml(date("Y-m-d H:i:s"),'weekly',$lists,20);
+gen_siteindex(date("Y-m-d H:i:s"));
 
 //将搞定的date和count写入文件保存
 $endcount=end($lists);

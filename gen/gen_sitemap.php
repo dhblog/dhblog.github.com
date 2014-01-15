@@ -49,9 +49,10 @@ function gen_sitemap($lists)
 	gen_sitemapall();
 }
 
+//产生百度和google的网站地图
 function gen_xml($date,$cycle,$lists,$pagecount)
 {	
-	global $DH_input_path,$DH_output_path,$DH_home_url,$DH_html_url;
+	global $DH_src_path,$DH_output_path,$DH_home_url,$DH_html_url;
 	$sitemappath=$DH_output_path.'sitemapxml/';
 	if (!file_exists($sitemappath))  
 		mkdir($sitemappath,0777);
@@ -59,17 +60,20 @@ function gen_xml($date,$cycle,$lists,$pagecount)
 	$timetmp = strtotime($date);
 	$updatetime = date("Y-m-d",$timetmp)."T".date("H:i:s",$timetmp)."+00:00";
 
+	$list_count=count($lists);
+	$times=ceil($list_count/$pagecount);	
 	
-	$DH_input_html  = $DH_input_path . 'sitemap/sitemap/sitemap.xml';
+	
+	$DH_input_html  = $DH_src_path . 'sitemap/sitemap.xml';
 	$DH_sitemap = dh_file_get_contents("$DH_input_html");
 	$DH_sitemap = str_replace("%lastdate%",$updatetime,$DH_sitemap);
-	$DH_input_html  = $DH_input_path . 'sitemap/sitemap/sitemap_each.xml';
+	$DH_input_html  = $DH_src_path . 'sitemap/sitemap_each.xml';
 	$DH_sitemap_each = dh_file_get_contents("$DH_input_html");	
 	
-	$DH_input_html  = $DH_input_path . 'sitemap/sitemap/sitemap_baidu.xml';
+	$DH_input_html  = $DH_src_path . 'sitemap/sitemap_baidu.xml';
 	$DH_sitemap_baidu = dh_file_get_contents("$DH_input_html");	
 	$DH_sitemap_baidu = str_replace("%lastdate%",$updatetime,$DH_sitemap_baidu);
-	$DH_input_html  = $DH_input_path . 'sitemap/sitemap/sitemap_baidu_each.xml';
+	$DH_input_html  = $DH_src_path . 'sitemap/sitemap_baidu_each.xml';
 	$DH_sitemap_baidu_each = dh_file_get_contents("$DH_input_html");		
 	
 	$sitemap_all='';
@@ -90,16 +94,16 @@ function gen_xml($date,$cycle,$lists,$pagecount)
 		$sitemap_baidu_each = str_replace("%title%",$title,$sitemap_baidu_each);		
 		$sitemap_baidu_all.=$sitemap_baidu_each;		
 	}
-	$i=1;
+	$i=0;
 	$rlists=array_reverse($lists);
-	$DH_sitemap='';
-	$DH_sitemap_baidu='';
 	
 	foreach($rlists as $key=>$list)
 	{
-		$htmlpath = output_page_path($DH_html_url,$row['id']);
+		$i++;
+		$pagesindex=$list_count - $i;
+		$htmlpath = output_page_path($DH_html_url,$pagesindex);
 		$sitemap_each = str_replace("%url%",$htmlpath,$DH_sitemap_each);
-		$timetmp = strtotime($row['updatetime']);
+		$timetmp = strtotime($key.'00');
 		$updatetime = date("Y-m-d",$timetmp)."T".date("H:i:s",$timetmp)."+00:00";
 		
 		$sitemap_each = str_replace("%updatetime%",$updatetime,$sitemap_each);
@@ -108,15 +112,10 @@ function gen_xml($date,$cycle,$lists,$pagecount)
 		$sitemap_all.=$sitemap_each;
 				
 		$sitemap_baidu_each = str_replace("%url%",$htmlpath,$DH_sitemap_baidu_each);
-		$sitemap_baidu_each = str_replace("%updatetime%",$row['updatetime'],$sitemap_baidu_each);	
-		$title = $row['title'];
-		if($row['aka']!='')
-		{
-			$akas=preg_split("/[\/]+/", $row['aka']);
-			$title.=' '.$akas[0];
-			//echo $title."</br>\n";
-		}
-		$title .=' 在线下载资源和影讯影评(二手电影)';
+		$updatetime2=date('Y-m-d H:i:s',strtotime($key.'00'));
+		$sitemap_baidu_each = str_replace("%updatetime%",$updatetime2,$sitemap_baidu_each);	
+		preg_match('/<\_T>(.*?)<\/\_T>/s',$list,$matchT);
+		$title = $matchT[1];
 		$sitemap_baidu_each = str_replace("%title%",$title,$sitemap_baidu_each);		
 		$sitemap_baidu_all.=$sitemap_baidu_each;
 		if($i%$pagecount==0)
@@ -133,8 +132,7 @@ function gen_xml($date,$cycle,$lists,$pagecount)
 			$sitemap_all='';
 			$sitemap_baidu_all='';
 		}		
-	}
-	
+	}	
 	
 	if($sitemap_all!='')
 	{
@@ -153,6 +151,7 @@ function gen_xml($date,$cycle,$lists,$pagecount)
 	dh_file_put_contents($DH_output_file,$DH_sitemap_baidu);	
 }
 
+//按照固定的页面数目产生html索引
 function gen_html_num($lists,$pagecount)
 {
 	global $DH_html_url,$DH_home_url,$DH_output_path,$DH_src_path;
@@ -215,6 +214,7 @@ function gen_html_num($lists,$pagecount)
 	dh_file_put_contents($DH_output_file,$sitemaphtml);
 }
 
+//按照月份产生索引
 function gen_html_date($lists)
 {
 	global $DH_html_url,$DH_home_url,$DH_output_path,$DH_src_path;
@@ -270,18 +270,18 @@ function gen_html_date($lists)
 
 function gen_siteindex($date)
 {
-	global $DH_output_path,$DH_input_path,$DH_home_url,$DH_home_url;
+	global $DH_output_path,$DH_src_path,$DH_home_url,$DH_home_url;
 	
 	$timetmp = strtotime($date);
 	$date = date("Y-m-d",$timetmp)."T".date("H:i:s",$timetmp)."+00:00";	
 	
-	$DH_input_html  = $DH_input_path . 'sitemap/sitemap/siteindex.xml';
+	$DH_input_html  = $DH_src_path . 'sitemap/siteindex.xml';
 	$DH_siteindex = dh_file_get_contents("$DH_input_html");
-	$DH_input_html  = $DH_input_path . 'sitemap/sitemap/siteindex_each.xml';
+	$DH_input_html  = $DH_src_path . 'sitemap/siteindex_each.xml';
 	$DH_siteindex_each = dh_file_get_contents("$DH_input_html");	
 	$DH_siteindex_each = str_replace("%home%",$DH_home_url,$DH_siteindex_each);
 	
-	$DH_input_html  = $DH_input_path . 'sitemap/sitemap/robots.txt';
+	$DH_input_html  = $DH_src_path . 'sitemap/robots.txt';
 	$DH_robots = dh_file_get_contents("$DH_input_html");
 		
 	$siteindex_all='';
