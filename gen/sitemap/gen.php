@@ -267,7 +267,7 @@ function gen_html_date($lists)
 	dh_file_put_contents($DH_output_file,$sitemaphtml);	
 }
 
-
+//生成所有sitemap的siteindex
 function gen_siteindex($date)
 {
 	global $DH_output_path,$DH_src_path,$DH_home_url,$DH_home_url;
@@ -289,7 +289,7 @@ function gen_siteindex($date)
 	$siterobots='';
 	
 	$files = scandir($DH_output_path.'sitemapxml',1);
-	echo "<b>Files in " . $DH_output_path . ":</b><br/>\n";
+	echo "<b>Files in " . $DH_output_path.'sitemapxml' . ":</b><br/>\n";
 	foreach($files as $key=>$file)
 	{
 		$ext=strrchr($file,'.');
@@ -303,7 +303,7 @@ function gen_siteindex($date)
 		if(strstr($file,'sitemap_baidu'))
 		{
 			echo "sitemap_baidu:$file<br/>";
-			$siteindex_baidu_each = str_replace("%sitemap%",$file,$DH_siteindex_each);
+			$siteindex_baidu_each = str_replace("%sitemap%",'sitemapxml/'.$file,$DH_siteindex_each);
 			if(!empty($match[1]))
 			{
 				$timetmp = strtotime($match[1]);
@@ -319,7 +319,7 @@ function gen_siteindex($date)
 		if(strstr($file,'sitemap')||(strstr($file,'sitemap_baidu')))
 		{
 			echo "sitemap:$file<br/>";
-			$siteindex_each = str_replace("%sitemap%",$file,$DH_siteindex_each);
+			$siteindex_each = str_replace("%sitemap%",'sitemapxml/'.$file,$DH_siteindex_each);
 			if(!empty($match[1]))
 			{
 				$timetmp = strtotime($match[1]);
@@ -349,9 +349,9 @@ function gen_siteindex($date)
 
 function gen_sitemapall()
 {
-	global $DH_output_path,$DH_input_path,$DH_home_url,$DH_home_url;
+	global $DH_output_path,$DH_src_path,$DH_home_url,$DH_home_url;
 	
-	$DH_input_html  = $DH_input_path . 'sitemap/sitemap/sitemapindex.html';
+	$DH_input_html  = $DH_src_path . 'sitemap/sitemapindex.html';
 	$DH_siteindex = dh_file_get_contents("$DH_input_html");	
 	$DH_siteindex = str_replace("%home%",$DH_home_url,$DH_siteindex);
 		
