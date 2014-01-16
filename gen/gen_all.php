@@ -193,6 +193,8 @@ function dh_gen_list()
 		dh_gen_each_list($tag,$key,$listeach,$DH_output_content);
 	}
 	
+	
+	
 	dh_gen_each_list($all,'all',$listeach,$DH_output_content);
 	
 	//print_r($cats);
@@ -238,6 +240,7 @@ function dh_gen_each_list($eachlist,$name,$listeach,$content)
 		$listtmp = str_replace("%title%",$matchT[1],$listeach);
 		$listtmp = str_replace("%content%",$matchb[1],$listtmp);
 		$listtmp = str_replace("%cat%",$matchc[1],$listtmp);
+		echo $list.'-->'.$lists_num[$list]."\n";
 		$html_url = output_page_path($DH_html_url,$lists_num[$list]);
 		$listtmp = str_replace("%url%",$html_url,$listtmp);
 		$listtmp = str_replace("%tags%",$tags,$listtmp);
@@ -354,10 +357,11 @@ function gen_lists_num()
 {
 	global $lists,$lists_num;
 	$i=0;
+	$count=count($lists);
 	foreach($lists as $key=>$list)
 	{
 		$i++;
-		$lists_num[$key]=$i;
+		$lists_num[$key]=$count-$i;
 	}
 }
 
