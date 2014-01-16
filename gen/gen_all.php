@@ -27,6 +27,7 @@ $content = dh_file_get_contents("$countpath");
 preg_match('/<date>(.*?)<\/date><count>(.*?)<\/count>/s',$content,$match);
 print_r($match);
 $begindate=$match[1];
+$todaydate=date("YmdH");
 $begincount=$match[2];
 
 //扫描所有的文件
@@ -305,7 +306,7 @@ function scan_dir($dir)
 
 function get_entry($filename)
 {
-	global $begindate,$lists,$pages;
+	global $begindate,$lists,$pages,$todaydate;
 	$content = dh_file_get_contents("$filename");
 	//echo $content;
 	preg_match_all('/<\_e>(.*?)<\/\_e>/s',$content,$entrys);
@@ -313,10 +314,15 @@ function get_entry($filename)
 	foreach($entrys[1] as $key=>$entry)
 	{
 		//取得date
-		preg_match('/<\_d>(.*?)<\/\_d>/s',$entry,$match);
+		preg_match('/<\_d>(.*?)<\/\_d>/s',$entry,$match);	
+		
 		//print_r($match);
 		if(!empty($match[1]))
 		{
+			//如果不到现在的发布日期，不处理
+			if($match[1]>$todaydate)
+				continue;
+		
 			if($match[1]>$begindate)
 				$pages[$match[1]]=$entry;
 			
