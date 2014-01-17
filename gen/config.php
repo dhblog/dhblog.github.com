@@ -9,11 +9,11 @@ $pagecount=5;
 
 //$DH_output_path= '/srv/dhblog/';
 //$DH_input_path= '/srv/dhblog/';
-//$DH_home_url= 'http://dhblog.org/';
+$DH_home_url= 'http://dhblog.org/';
 
 $DH_output_path= $_SERVER['DOCUMENT_ROOT'] . '/dhblog/';
 $DH_input_path= $_SERVER['DOCUMENT_ROOT'] . '/dhblog/';
-$DH_home_url= 'http://127.0.0.1/dhblog/';
+//$DH_home_url= 'http://127.0.0.1/dhblog/';
 
 $DH_src_path= $DH_input_path. 'gen/';
 $DH_html_path= $DH_src_path . 'html/';
