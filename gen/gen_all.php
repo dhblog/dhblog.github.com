@@ -55,9 +55,14 @@ dh_gen_page();
 //拷贝index
 copy($DH_output_index_path."all/1.html",$DH_output_path."index.html");
 
+//一页网页地图使用多少个项
+//资料：Google允许的sitemap数量是1000，现在提升到50000，但是这是理论数据。根据测试，实际情况所对应的以下数据为佳。
+//调整前：理论最大1000条URL，实际500以下为佳，
+//调整后：理论最大50000条URL，实际2500以下为佳。
+$pagecount=2500;
 gen_html_date($lists);
-gen_html_num($lists,20);
-gen_xml(date("Y-m-d H:i:s"),'weekly',$lists,20);
+gen_html_num($lists,$pagecount);
+gen_xml(date("Y-m-d H:i:s"),'weekly',$lists,$pagecount);
 gen_siteindex(date("Y-m-d H:i:s"));
 gen_sitemapall();
 
