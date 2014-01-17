@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>%title%(DH博客)</title>
-	<meta name="keywords" content="DH博客,电影,影视,IT技术" />
-	<meta name="description" content="DH博客,电影,影视,IT技术" />
+	<title> 最新更新 (DH博客)</title>
+	<meta name="keywords" content="最新更新 的列表" />
+	<meta name="description" content="最新更新 的列表" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="Content-Language" content="zh-CN">	
@@ -16,7 +16,7 @@
 </head>
 <body>
 <div id="wrapper">
-	<div id="top" style="height:25px;border-top: 1px solid #898f8f;border-bottom: 1px solid #898f8f">
+	<div id="top" style="height:30px;border-top: 1px solid #898f8f;border-bottom: 1px solid #898f8f">
   <div class="topnav">
     <div class="left">
         <div>
@@ -32,7 +32,25 @@
     </div>
     <!--end: left-->
     <div class="right">
-		dd
+		<script type="text/javascript">
+			function showWarning() //显示系统日期   
+			{   
+				var now = new Date();
+				var hour = now.getHours();
+				if(hour>=23||hour<=6)
+				{
+					var message='<div style="border:2px solid #FF3300;font-size:12px;margin:2px 20px 0 440px;background:#FFFFDF;padding:2px;">提醒: 已经是夜里 ';
+					message +=hour;
+					message +=' 点多了，为了您和家人的健康，请注意按时作息减少熬夜。</div>';
+					return message;
+				}
+				else 
+				{			
+				   return 'ddd'; 
+				}
+			}
+			document.write(showWarning());
+		</script>
     </div>
     <!--end: right-->
   </div>
@@ -41,7 +59,7 @@
 <div id="header"> 
   <div  class="toplink">
     <ul>
-	  <li><a href="http://127.0.0.1/dhblog/static/" target="_blank">文章RSS</a></li>
+	  <li><a href="http://127.0.0.1/dhblog/rss.xml" target="_blank">文章RSS</a></li>
 	  <li>
 	  	<script type="text/javascript">
 		function showdate() //显示系统日期   
@@ -64,7 +82,7 @@
    </object>
   </div>
   <div class="logo">
-    <h1 ><a href="http://127.0.0.1/dhblog/static/">
+    <h1 ><a href="http://127.0.0.1/dhblog/">
       DH 博客
       </a></h1>
     <h2 class="description">
@@ -73,56 +91,42 @@
   </div>
 </div>
 <!--end: header-->
-<div style="height:35px">
-	<div class="topnav menunav">
-		<div class="left">
-			<ul>
-				<li><a href="http://127.0.0.1/dhblog/static/cat3.html" title="">影视聚焦</a>
-					<ul>
-						<li><a href="http://127.0.0.1/dhblog/static/cat117.html" title="">每周回顾</a></li>
-						<li><a href="http://127.0.0.1/dhblog/static/cat120.html" title="">影视合集</a></li>
-						<li><a href="http://127.0.0.1/dhblog/static/cat120.html" title="">精彩推荐</a></li>
-					</ul>
-				</li>
-				<li><a href="http://127.0.0.1/dhblog/static/cat7.html" title="">IT技术</a>
-					<ul>
-						<li><a href="http://127.0.0.1/dhblog/static/cat5.html" title="">建站技术</a></li>
-						<li><a href="http://127.0.0.1/dhblog/static/cat127.html" title=""></a>编程技术</li>
-					</ul>
-				</li>
-				<li><a href="http://127.0.0.1/dhblog/static/cat7.html" title="">其他交流</a></li>
-			</ul>
+<div style="height:32px;position:relative;border-bottom: 1px solid #252525;border-top: 1px solid #252525;">
+	<div style="position: absolute;top:5px;left:10px;">类别导航：</div>
+	<div style="position: absolute;top:0;left:90px;">
+		<div class="topnav">
+			<div class="left">
+				<ul>
+					<li><a href="http://127.0.0.1/dhblog/">影视聚焦</a>
+						<ul>
+							<li><a href="http://127.0.0.1/dhblog//index//1.html">每周影视</a></li>
+							<li><a href="http://127.0.0.1/dhblog//index//1.html">影视合集</a></li>
+							<li><a href="http://127.0.0.1/dhblog//index/cE5BDB1E8A786E68EA8E88D90/1.html">影视推荐</a></li>
+						</ul>
+					</li>
+					<li><a href="http://127.0.0.1/dhblog/">IT 技术</a>
+						<ul>
+							<li><a href="http://127.0.0.1/dhblog//index/cE5BBBAE7AB99E68A80E69CAF/1.html">建站技术</a></li>
+							<li><a href="http://127.0.0.1/dhblog//index/cE7BD91E7BB9CE68EA8E5B9BF/1.html">编程技术</a></li>
+						</ul>
+					</li>
+					<li><a href="http://127.0.0.1/dhblog//index/cE7BD91E7BB9CE68EA8E5B9BF/1.html">网络推广</a></li>
+					<li><a href="http://127.0.0.1/dhblog//index/cE7BD91E7AB99E79B88E588A9/1.html">网站盈利</a></li>
+					<li><a href="http://127.0.0.1/dhblog//index/cE585B6E4BB96E4BAA4E6B581/1.html">其他交流</a></li>
+				</ul>
+			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
-		function showWarning() //显示系统日期   
-		{   
-			var now = new Date();
-			var hour = now.getHours();
-			if(hour>=23||hour<=6)
-			{
-				var message='<div style="border:2px solid #FF3300;font-size:12px;margin:2px 20px 0 440px;background:#FFFFDF;padding:2px;">提醒: 已经是夜里 ';
-				message +=hour;
-				message +=' 点多了，为了您和家人的健康，请注意按时作息减少熬夜。</div>';
-				return message;
-			}
-			else 
-			{			
-			   return 'ddd'; 
-			}
-		}
-		document.write(showWarning());
-	</script>
 	<div id="dh_say_content" class="right" style="margin:4px 0 2px 0">
 		<p id="dh_say" title="点击可查看下一条">ddd</p>
 	</div>	
 </div>
 <!--end: menunav-->
 <div class="top_content">   
-%top_content%
+博客恢复运行，持续更新中... 20140118
 </div>
 	<div id="content">
-		<div class="browse">你的位置：首页 >>  <a href="http://127.0.0.1/dhblog/static/cat125.html" title="查看分类wordpress下的所有文章">wordpress</a> </div>
+		<div class="browse">你的位置：<a href="http://127.0.0.1/dhblog/">首页</a> >>  <a href="http://127.0.0.1/dhblog/index/all/1.html" title="查看 最新更新 下的所有文章">最新更新</a> </div>
 		<div id="contendlist">
 							<div class="post">
 				<div class="postbox">
@@ -133,13 +137,13 @@
 					</div>
 					<div class="header">
 						<span class="title"><a href="http://127.0.0.1/dhblog/html/0/71.html" rel="bookmark" title="经验总结:PR值终于熬到3了">经验总结:PR值终于熬到3了</a></span>
-						<span class="comment" >阅读：<a href="recent_post_url" title="$post->post_title">3</a></span>			
+						<span class="comment" >阅读：<a href="http://127.0.0.1/dhblog/html/0/71.html" title="查看文章">3</a></span>			
 					</div>
 					<div class="meta f12px">
-						<span class="category">分类： <a href="%caturl%" title="IT技术">IT技术</a> </span>
-						<span class="tags">	标签：活动推荐 域名空间 </span>	
+						<span class="category">分类： <a href="http://127.0.0.1/dhblog/index/cE7BD91E7BB9CE68EA8E5B9BF/1.html" title="网络推广">网络推广</a> </span>
+						<span class="tags">	标签：<a href="http://127.0.0.1/dhblog/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="经验分享">经验分享</a> </span>	
 					</div>
-					<div class="info">时间太有限，我的博客没有在pr上面太多的关注，知识寻找一些志同道合的博友链接一下，偶尔在wordoress.org.cn上面贴贴我的文章，但是这样对pr值的贡献太小了，所以pr值一直很低。纯粹技术的追求是没有止境的，而且是孤单的，所以很少有人会知道你，没有</div>
+					<div class="info"> 时间太有限，我的博客没有在pr上面太多的关注，知识寻找一些志同道合的博友链接一下，偶尔在wordoress.org.cn上面贴贴我的文章，但是这样对pr值的贡献太小了，所以pr值一直很低。纯粹技术的追求是没有止境的，而且是孤单的，所以很少有人会知道你，没有 </div>
 				</div>
 			</div>			<div class="post">
 				<div class="postbox">
@@ -150,13 +154,13 @@
 					</div>
 					<div class="header">
 						<span class="title"><a href="http://127.0.0.1/dhblog/html/0/70.html" rel="bookmark" title="经验总结:建一个独立博客，需要懂得很多">经验总结:建一个独立博客，需要懂得很多</a></span>
-						<span class="comment" >阅读：<a href="recent_post_url" title="$post->post_title">3</a></span>			
+						<span class="comment" >阅读：<a href="http://127.0.0.1/dhblog/html/0/70.html" title="查看文章">3</a></span>			
 					</div>
 					<div class="meta f12px">
-						<span class="category">分类： <a href="%caturl%" title="IT技术">IT技术</a> </span>
-						<span class="tags">	标签：软件编程 域名空间 </span>	
+						<span class="category">分类： <a href="http://127.0.0.1/dhblog/index/cE5BBBAE7AB99E68A80E69CAF/1.html" title="建站技术">建站技术</a> </span>
+						<span class="tags">	标签：<a href="http://127.0.0.1/dhblog/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="经验分享">经验分享</a> </span>	
 					</div>
-					<div class="info">godday、万网、美橙、空间商提供的blogbus、godday、vps需要懂得 css、javascript、php/asp/jsp、html布局、数据库SQL语言wordpress、zblog、dreamweam、css布局、精简css和javasc</div>
+					<div class="info"> godday、万网、美橙、空间商提供的blogbus、godday、vps需要懂得 css、javascript、php/asp/jsp、html布局、数据库SQL语言wordpress、zblog、dreamweam、css布局、精简css和javasc </div>
 				</div>
 			</div>			<div class="post">
 				<div class="postbox">
@@ -167,13 +171,13 @@
 					</div>
 					<div class="header">
 						<span class="title"><a href="http://127.0.0.1/dhblog/html/0/69.html" rel="bookmark" title="wordpress:wordpress博客我面临的两个问题">wordpress:wordpress博客我面临的两个问题</a></span>
-						<span class="comment" >阅读：<a href="recent_post_url" title="$post->post_title">3</a></span>			
+						<span class="comment" >阅读：<a href="http://127.0.0.1/dhblog/html/0/69.html" title="查看文章">3</a></span>			
 					</div>
 					<div class="meta f12px">
-						<span class="category">分类： <a href="%caturl%" title="IT技术">IT技术</a> </span>
-						<span class="tags">	标签：网站优化 wordpress提高速度 wordpress定时任务 </span>	
+						<span class="category">分类： <a href="http://127.0.0.1/dhblog/index/cE5BBBAE7AB99E68A80E69CAF/1.html" title="建站技术">建站技术</a> </span>
+						<span class="tags">	标签：<a href="http://127.0.0.1/dhblog/index/twordpress/1.html" title="wordpress">wordpress</a> </span>	
 					</div>
-					<div class="info">这个问题很多博主都提过了，wordpress功能越来越多的同时，带来的问题就是臃肿，随着插件和主题的增加，还有文章数据的增多，特别是评论数目的增多，不得不提的就是速度变慢了。这个问题很多博主都提过了，wordpress使用者越来越多的同时，带来的问题就是安</div>
+					<div class="info"> 这个问题很多博主都提过了，wordpress功能越来越多的同时，带来的问题就是臃肿，随着插件和主题的增加，还有文章数据的增多，特别是评论数目的增多，不得不提的就是速度变慢了。这个问题很多博主都提过了，wordpress使用者越来越多的同时，带来的问题就是安 </div>
 				</div>
 			</div>			<div class="post">
 				<div class="postbox">
@@ -184,13 +188,13 @@
 					</div>
 					<div class="header">
 						<span class="title"><a href="http://127.0.0.1/dhblog/html/0/68.html" rel="bookmark" title="经验总结:没有备案，成功加入百度联盟(2)">经验总结:没有备案，成功加入百度联盟(2)</a></span>
-						<span class="comment" >阅读：<a href="recent_post_url" title="$post->post_title">3</a></span>			
+						<span class="comment" >阅读：<a href="http://127.0.0.1/dhblog/html/0/68.html" title="查看文章">3</a></span>			
 					</div>
 					<div class="meta f12px">
-						<span class="category">分类： <a href="%caturl%" title="IT技术">IT技术</a> </span>
-						<span class="tags">	标签：健康养生 域名空间 拿福能 </span>	
+						<span class="category">分类： <a href="http://127.0.0.1/dhblog/index/cE7BD91E7AB99E79B88E588A9/1.html" title="网站盈利">网站盈利</a> </span>
+						<span class="tags">	标签：<a href="http://127.0.0.1/dhblog/index/tE88194E79B9F/1.html" title="联盟">联盟</a> </span>	
 					</div>
-					<div class="info">前面一篇文章是 《经验总结:没有备案，成功加入百度联盟》，只写了成功了，但是没有写问什么能加入，不是为了钓大家的胃口，是因为比较忙，本来想写好再发表的，但是由于自动发布的原因，就这样稀里糊涂发布了一个没有写完的文章。经验不是填写假的备案号，这样会被惩罚的。</div>
+					<div class="info"> 前面一篇文章是 《经验总结:没有备案，成功加入百度联盟》，只写了成功了，但是没有写问什么能加入，不是为了钓大家的胃口，是因为比较忙，本来想写好再发表的，但是由于自动发布的原因，就这样稀里糊涂发布了一个没有写完的文章。经验不是填写假的备案号，这样会被惩罚的。 </div>
 				</div>
 			</div>			<div class="post">
 				<div class="postbox">
@@ -201,16 +205,16 @@
 					</div>
 					<div class="header">
 						<span class="title"><a href="http://127.0.0.1/dhblog/html/0/67.html" rel="bookmark" title="经验总结:没有备案，成功加入百度联盟">经验总结:没有备案，成功加入百度联盟</a></span>
-						<span class="comment" >阅读：<a href="recent_post_url" title="$post->post_title">3</a></span>			
+						<span class="comment" >阅读：<a href="http://127.0.0.1/dhblog/html/0/67.html" title="查看文章">3</a></span>			
 					</div>
 					<div class="meta f12px">
-						<span class="category">分类： <a href="%caturl%" title="IT技术">IT技术</a> </span>
-						<span class="tags">	标签：健康养生 域名空间 拿福能 </span>	
+						<span class="category">分类： <a href="http://127.0.0.1/dhblog/index/cE7BD91E7AB99E79B88E588A9/1.html" title="网站盈利">网站盈利</a> </span>
+						<span class="tags">	标签：<a href="http://127.0.0.1/dhblog/index/tE88194E79B9F/1.html" title="联盟">联盟</a> </span>	
 					</div>
-					<div class="info">*，您好：            恭喜您成功注册为百度联盟会员。您可以使用以下业务或服务：            网盟推广合作 在页面上投放与内容相关的百度网盟推广合作业务，将流量转化为点击收入。　　      新业务合作 加入百度联盟新业务合作业务，分享</div>
+					<div class="info"> *，您好：            恭喜您成功注册为百度联盟会员。您可以使用以下业务或服务：            网盟推广合作 在页面上投放与内容相关的百度网盟推广合作业务，将流量转化为点击收入。　　      新业务合作 加入百度联盟新业务合作业务，分享 </div>
 				</div>
 			</div>
-			<div class="page_navi"><a href='http://127.0.0.1/dhblog/index/all/1.html' class='extend' title='跳转到首页'> 返回首页 </a><a href='http://127.0.0.1/dhblog/index/all/1.html' class='current'>1</a><a href='http://127.0.0.1/dhblog/index/all/2.html'>2</a><a href='http://127.0.0.1/dhblog/index/all/3.html'>3</a><a href='http://127.0.0.1/dhblog/index/all/4.html'>4</a><a href='http://127.0.0.1/dhblog/index/all/5.html'>5</a><a href='http://127.0.0.1/dhblog/index/all/6.html'>6</a> ... <a href='http://127.0.0.1/dhblog/index/all/2.html' class='extend' title='下一页'> 下一页 </a><a href='http://127.0.0.1/dhblog/index/all/14.html' class='extend' title='跳转到最后一页'> 最后一页(14 页) </a></div>	
+			<div class="page_navi"><a href='http://127.0.0.1/dhblog/index/all/1.html' class='extend' title='跳转到首页'> 返回首页 </a><a href='http://127.0.0.1/dhblog/index/all/1.html' class='current'>1</a><a href='http://127.0.0.1/dhblog/index/all/2.html'>2</a><a href='http://127.0.0.1/dhblog/index/all/3.html'>3</a><a href='http://127.0.0.1/dhblog/index/all/4.html'>4</a><a href='http://127.0.0.1/dhblog/index/all/5.html'>5</a><a href='http://127.0.0.1/dhblog/index/all/6.html'>6</a> ... <a href='http://127.0.0.1/dhblog/index/all/2.html' class='extend' title='下一页'> 下一页 </a><a href='http://127.0.0.1/dhblog/index/all/15.html' class='extend' title='跳转到最后一页'> 最后一页(15 页) </a></div>	
 		</div>
 	</div>	
 	<div id="sidebar">
@@ -227,14 +231,14 @@
 		标签
 	</h3>
 	<div class="tag_widget_box">
-	  <a href="http://127.0.0.1/dhblog/index//tE6B4BBE58AA8E68EA8E88D90/1.html" title="共有文章 2 篇">活动推荐</a><a href="http://127.0.0.1/dhblog/index//tE59F9FE5908DE7A9BAE997B4/1.html" title="共有文章 6 篇">域名空间</a><a href="http://127.0.0.1/dhblog/index//tE8BDAFE4BBB6E7BC96E7A88B/1.html" title="共有文章 1 篇">软件编程</a><a href="http://127.0.0.1/dhblog/index//tE7BD91E7AB99E4BC98E58C96/1.html" title="共有文章 41 篇">网站优化</a><a href="http://127.0.0.1/dhblog/index//twordpressE68F90E9AB98E9809FE5BAA6/1.html" title="共有文章 9 篇">wordpress提高速度</a><a href="http://127.0.0.1/dhblog/index//twordpressE5AE9AE697B6E4BBBBE58AA1/1.html" title="共有文章 7 篇">wordpress定时任务</a><a href="http://127.0.0.1/dhblog/index//tE581A5E5BAB7E585BBE7949F/1.html" title="共有文章 5 篇">健康养生</a><a href="http://127.0.0.1/dhblog/index//tE68BBFE7A68FE883BD/1.html" title="共有文章 7 篇">拿福能</a><a href="http://127.0.0.1/dhblog/index//twordpressE695B0E68DAEE5BA93/1.html" title="共有文章 8 篇">wordpress数据库</a><a href="http://127.0.0.1/dhblog/index//tE794B5E5BDB1E8B58FE69E90/1.html" title="共有文章 5 篇">电影赏析</a><a href="http://127.0.0.1/dhblog/index//tBTE4B88BE8BDBD/1.html" title="共有文章 3 篇">BT下载</a><a href="http://127.0.0.1/dhblog/index//tE5B9BDE9BB98E69585E4BA8B/1.html" title="共有文章 4 篇">幽默故事</a><a href="http://127.0.0.1/dhblog/index//tE68A95E8B584E79086E8B4A2/1.html" title="共有文章 2 篇">投资理财</a><a href="http://127.0.0.1/dhblog/index//tE7BD91E7BB9CE8B59AE992B1/1.html" title="共有文章 1 篇">网络赚钱</a><a href="http://127.0.0.1/dhblog/index//tE8BF85E99BB7E4B88BE8BDBD/1.html" title="共有文章 1 篇">迅雷下载</a><a href="http://127.0.0.1/dhblog/index//twordpressE5AE89E585A8/1.html" title="共有文章 1 篇">wordpress安全</a><a href="http://127.0.0.1/dhblog/index//tE4B893E4B89AE79FA5E8AF86/1.html" title="共有文章 8 篇">专业知识</a><a href="http://127.0.0.1/dhblog/index//tE993BEE68EA5E8A1A8/1.html" title="共有文章 7 篇">链接表</a><a href="http://127.0.0.1/dhblog/index//twordpress20ajax/1.html" title="共有文章 2 篇">wordpress ajax</a><a href="http://127.0.0.1/dhblog/index//tE4BFA1E681AFE5BA94E794A8/1.html" title="共有文章 4 篇">信息应用</a><a href="http://127.0.0.1/dhblog/index//twordpressE4B8BBE9A298/1.html" title="共有文章 1 篇">wordpress主题</a><a href="http://127.0.0.1/dhblog/index//twordpress/1.html" title="共有文章 2 篇">wordpress</a><a href="http://127.0.0.1/dhblog/index//tE7BB8FE9AA8CE680BBE7BB93/1.html" title="共有文章 2 篇">经验总结</a><a href="http://127.0.0.1/dhblog/index//tITE6B182E8818CE79FA5E8AF86/1.html" title="共有文章 6 篇">IT求职知识</a><a href="http://127.0.0.1/dhblog/index//twordpressE5BA94E794A8/1.html" title="共有文章 3 篇">wordpress应用</a><a href="http://127.0.0.1/dhblog/index//tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 5 篇">友情推荐</a><a href="http://127.0.0.1/dhblog/index//tjavascript/1.html" title="共有文章 1 篇">javascript</a>
+	  <a href="http://127.0.0.1/dhblog/index//tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 2 篇">经验分享</a><a href="http://127.0.0.1/dhblog/index//twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://127.0.0.1/dhblog/index//tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://127.0.0.1/dhblog/index//tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://127.0.0.1/dhblog/index//tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 6 篇">友情推荐</a><a href="http://127.0.0.1/dhblog/index//tE794B5E5BDB1/1.html" title="共有文章 5 篇">电影</a><a href="http://127.0.0.1/dhblog/index//tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://127.0.0.1/dhblog/index//tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://127.0.0.1/dhblog/index//tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://127.0.0.1/dhblog/index//tphp/1.html" title="共有文章 11 篇">php</a><a href="http://127.0.0.1/dhblog/index//tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://127.0.0.1/dhblog/index//tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://127.0.0.1/dhblog/index//tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://127.0.0.1/dhblog/index//tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://127.0.0.1/dhblog/index//tcss/1.html" title="共有文章 1 篇">css</a><a href="http://127.0.0.1/dhblog/index//tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
 	</div>
 </div> <div class="doublewidget">
 	<h3>
 		网站统计
 	</h3>
 	<div class="box">
-		<ul><li>运行时间: <span style="font-size:12px;color:#555;">1073天</span></li><li>博文总数: <span style="font-size:12px;color:#555;">72篇</span></li><li>最近更新: <span style="font-size:12px;color:#555;">72篇</span></li><li>标签数目: <span style="font-size:12px;color:#555;">72篇</span></li><li>分类数目: <span style="font-size:12px;color:#555;">72篇</span></li></ul>
+		<ul><li>运行时间: <span style="font-size:12px;color:#555;">1074天</span></li><li>博文总数: <span style="font-size:12px;color:#555;">71篇</span></li><li>最近更新: <span style="font-size:12px;color:#555;">0篇</span></li><li>标签数目: <span style="font-size:12px;color:#555;">16个</span></li><li>分类数目: <span style="font-size:12px;color:#555;">6个</span></li></ul>
 	</div>
 </div>
 

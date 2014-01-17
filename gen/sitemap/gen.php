@@ -96,6 +96,7 @@ function gen_xml($date,$cycle,$lists,$pagecount)
 	}
 	$i=0;
 	$rlists=array_reverse($lists);
+	//print_r($rlists);
 	
 	foreach($rlists as $key=>$list)
 	{
@@ -115,6 +116,9 @@ function gen_xml($date,$cycle,$lists,$pagecount)
 		$updatetime2=date('Y-m-d H:i:s',strtotime($key.'00'));
 		$sitemap_baidu_each = str_replace("%updatetime%",$updatetime2,$sitemap_baidu_each);	
 		preg_match('/<\_T>(.*?)<\/\_T>/s',$list,$matchT);
+		if(empty($matchT))
+			print_r($list);
+		
 		$title = $matchT[1];
 		$sitemap_baidu_each = str_replace("%title%",$title,$sitemap_baidu_each);		
 		$sitemap_baidu_all.=$sitemap_baidu_each;

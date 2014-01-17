@@ -25,7 +25,7 @@ global $DH_src_path;
 $countpath=$DH_src_path.'tmp/count';
 $content = dh_file_get_contents("$countpath");
 preg_match('/<date>(.*?)<\/date><count>(.*?)<\/count>/s',$content,$match);
-print_r($match);
+//print_r($match);
 $begindate=$match[1];
 $todaydate=date("YmdH");
 $begincount=$match[2];
@@ -45,7 +45,7 @@ ksort($pages);
 //output_all();
 
 //生成关键信息之后调用gen_share();
-dh_gen_public();
+dh_gen_share($lists);
 
 //输出到各个lists
 dh_gen_list();
@@ -69,30 +69,9 @@ $maxcount=$begincount+count($lists);
 echo $maxdate.":".$maxcount;
 
 
-function dh_gen_public()
-{
-	global $lists;
-	foreach($lists as $key=>$list)
-	{	
-		preg_match_all('/<\_t>(.*?)<\/\_t>/s',$list,$matchts);
-		if(!empty($matchts[1]))
-		{
-			foreach($matchts[1] as $tag)
-			{
-				if(empty($tags[$tag]))
-					$tags[$tag]=1;
-				else
-					$tags[$tag]++;
-			}
-		}	
-	}
-	//print_r($tags);
-	dh_gen_share($tags,count($lists));
-}
-
 function dh_gen_page()
 {
-	global $pages,$DH_home_url,$DH_html_path,$DH_output_path,$DH_output_html_path,$DH_src_path,$begincount;
+	global $pages,$DH_home_url,$DH_index_url,$DH_html_path,$DH_output_path,$DH_output_html_path,$DH_src_path,$begincount;
 	if (!file_exists($DH_output_html_path))  
 		mkdir($DH_output_html_path,0777);
 	
@@ -101,7 +80,7 @@ function dh_gen_page()
 	$DH_output_content = setshare($DH_output_content,'page.js');
 	$DH_output_content = str_replace("%home%",$DH_home_url,$DH_output_content);
 	//echo $DH_output_content;
-	$i=1;
+	$i=0;
 	foreach($pages as $key=>$page)
 	{
 		$i++;
@@ -109,7 +88,7 @@ function dh_gen_page()
 		//	break;
 		//print_r($page);		
 		preg_match('/<\_T>(.*?)<\/\_T>/s',$page,$matchT);
-		preg_match('/<\_b>(.*?)<\/\_b>/s',$page,$matchb);
+		preg_match('/<\_b>\<!\-\-(.*?)\-\-\><\/\_b>/s',$page,$matchb);
 		preg_match('/<\_d>(.*?)<\/\_d>/s',$page,$matchd);
 		preg_match('/<\_a>(.*?)<\/\_a>/s',$page,$matcha);
 		preg_match('/<\_c>(.*?)<\/\_c>/s',$page,$matchc);
@@ -125,6 +104,14 @@ function dh_gen_page()
 		}
 		$entry="<h1>".$matchT[1]."</h1>"."<div>发表日期：".$matchd[1]." 作者：".$matcha[1]."分类：".$matchc[1]." 标签： ".$tags."</div>".$matchb[1];		
 		$DH_output_content_each =  str_replace("%entry%",$entry,$DH_output_content);
+		$DH_output_content_each =  str_replace("%title%",$matchT[1],$DH_output_content_each);
+		$DH_output_content_each =  str_replace("%keywords%",$matchT[1],$DH_output_content_each);
+		$DH_output_content_each =  str_replace("%description%",$matchT[1].' 详细页面',$DH_output_content_each);
+		$DH_output_content_each =  str_replace("%cat%",$matchc[1],$DH_output_content_each);
+		$urlcode = 'c'.str_replace("%",'',rawurlencode($matchc[1]));
+		$caturl = $DH_index_url.$urlcode.'/1.html';
+		$DH_output_content_each =  str_replace("%caturl%",$caturl,$DH_output_content_each);
+			
 		$DH_output_file = output_page_path($DH_output_html_path,$i+$begincount);
 		dh_file_put_contents($DH_output_file,$DH_output_content_each);		
 	}
@@ -153,16 +140,16 @@ function dh_gen_list()
 		preg_match('/<\_c>(.*?)<\/\_c>/s',$list,$matchc);
 		if(!empty($matchc[1]))
 		{
-			$urlcode = rawurlencode($matchc[1]);
-			$urlcode = 'c'.str_replace("%",'',$urlcode);
+			//$urlcode = rawurlencode($matchc[1]);
+			//$urlcode = 'c'.str_replace("%",'',$urlcode);
 			//$urlcode = $matchc[1];
-			if(empty($cats[$urlcode]))
+			if(empty($cats[$matchc[1]]))
 			{
-				$cats[$urlcode]=array($key);
+				$cats[$matchc[1]]=array($key);
 			}
 			else
 			{
-				array_push($cats[$urlcode],$key);
+				array_push($cats[$matchc[1]],$key);
 			}
 			
 			array_push($all,$key);		
@@ -173,16 +160,15 @@ function dh_gen_list()
 		{
 			foreach($matchts[1] as $tag)
 			{
-				$urlcode = rawurlencode($tag);
-				$urlcode = 't'.str_replace("%",'',$urlcode);
+				//$urlcode = 't'.str_replace("%",'',rawurlencode($tag));
 				//$urlcode = $tag;
-				if(empty($tags[$urlcode]))
+				if(empty($tags[$tag]))
 				{
-					$tags[$urlcode]=array($key);
+					$tags[$tag]=array($key);
 				}
 				else
 				{
-					array_push($tags[$urlcode],$key);
+					array_push($tags[$tag],$key);
 				}
 			}
 		}	
@@ -190,24 +176,26 @@ function dh_gen_list()
 	
 	foreach($tags as $key=>$tag)
 	{
-		dh_gen_each_list($tag,$key,$listeach,$DH_output_content);
-	}
-	
-	
-	
-	dh_gen_each_list($all,'all',$listeach,$DH_output_content);
-	
+		$urlcode = 't'.str_replace("%",'',rawurlencode($key));
+		dh_gen_each_list($tag,$urlcode,'标签 '.$key,$listeach,$DH_output_content);
+	}	
+	foreach($cats as $key=>$cat)
+	{
+		$urlcode = 'c'.str_replace("%",'',rawurlencode($key));
+		dh_gen_each_list($cat,$urlcode,'分类 '.$key,$listeach,$DH_output_content);
+	}	
+	dh_gen_each_list($all,'all','最新更新',$listeach,$DH_output_content);
 	//print_r($cats);
 	//print_r($tags);
 	//print_r($all);
 }
 
 
-function dh_gen_each_list($eachlist,$name,$listeach,$content)
+function dh_gen_each_list($eachlist,$urlname,$name,$listeach,$content)
 {
 	global $DH_output_index_path,$lists,$lists_num,$pagecount,$DH_index_url,$DH_html_url;
 	$liout="";
-	$DH_output_file_dir = $DH_output_index_path.$name.'/';
+	$DH_output_file_dir = $DH_output_index_path.$urlname.'/';
 	if (!file_exists($DH_output_file_dir))  
 		mkdir($DH_output_file_dir,0777);
 		
@@ -222,7 +210,7 @@ function dh_gen_each_list($eachlist,$name,$listeach,$content)
 		$count++;
 		$onelist = $lists[$list];
 		preg_match('/<\_T>(.*?)<\/\_T>/s',$onelist,$matchT);
-		preg_match('/<\_b>(.*?)<\/\_b>/s',$onelist,$matchb);
+		preg_match('/<\_b>\<!\-\-(.*?)\-\-\><\/\_b>/s',$onelist,$matchb);
 		preg_match('/<\_d>(.*?)<\/\_d>/s',$onelist,$matchd);		
 		//preg_match('/<\_a>(.*?)<\/\_a>/s',$onelist,$matcha);
 		preg_match('/<\_c>(.*?)<\/\_c>/s',$onelist,$matchc);
@@ -233,20 +221,26 @@ function dh_gen_each_list($eachlist,$name,$listeach,$content)
 		{
 			foreach($matchts[1] as $key=>$tag)
 			{
-				$tags.=$tag.' ';
+				$urlcode = 't'.str_replace("%",'',rawurlencode($tag));
+				$tagurl = $DH_index_url.$urlcode.'/1.html';
+				$tagseach="<a href=\"$tagurl\" title=\"$tag\">$tag</a>";
+				$tags.=$tagseach.' ';
 			}
 		}
 		
 		$listtmp = str_replace("%title%",$matchT[1],$listeach);
 		$listtmp = str_replace("%content%",$matchb[1],$listtmp);
 		$listtmp = str_replace("%cat%",$matchc[1],$listtmp);
-		echo $list.'-->'.$lists_num[$list]."\n";
+		$urlcode = 'c'.str_replace("%",'',rawurlencode($matchc[1]));
+		$caturl = $DH_index_url.$urlcode.'/1.html';
+		$listtmp = str_replace("%caturl%",$caturl,$listtmp);
+		//echo $list.'-->'.$lists_num[$list]."\n";
 		$html_url = output_page_path($DH_html_url,$lists_num[$list]);
 		$listtmp = str_replace("%url%",$html_url,$listtmp);
 		$listtmp = str_replace("%tags%",$tags,$listtmp);
 		$time = strtotime($matchd[1].'00');
 		$date=date("y-m",$time);
-		print_r($date);
+		//print_r($date);
 		$datew=date("D",$time);
 		$dated=date("d",$time);
 		$listtmp = str_replace("%date%",$date,$listtmp);
@@ -257,11 +251,16 @@ function dh_gen_each_list($eachlist,$name,$listeach,$content)
 		if($count%$pagecount==0)
 		{
 			$catpage = $count/$pagecount;
-			$pagenavi = dh_pagenavi(5,$pages,$DH_index_url.$name.'/',$catpage);
+			$pagenavi = dh_pagenavi(5,$pages,$DH_index_url.$urlname.'/',$catpage);
 			echo 'genpage:'.$catpage."</br>\n";				
 			$content_new = str_replace("%pagenavi%",$pagenavi,$content);
 			$content_new = str_replace("%list_each%",$liout,$content_new);
 			$content_new = str_replace("%num%",$catpage,$content_new);
+			
+			$content_new =  str_replace("%cat%",$name,$content_new);
+			$caturl = $DH_index_url.$urlname.'/1.html';
+			$content_new =  str_replace("%caturl%",$caturl,$content_new);			
+			
 			$DH_output_file = $DH_output_file_dir.$catpage.'.html';
 			dh_file_put_contents($DH_output_file,$content_new);
 			$liout='';
@@ -275,6 +274,11 @@ function dh_gen_each_list($eachlist,$name,$listeach,$content)
 		$content_new = str_replace("%pagenavi%",$pagenavi,$content);
 		$content_new = str_replace("%list_each%",$liout,$content_new);
 		$content_new = str_replace("%num%",$catpage,$content_new);
+		
+		$content_new =  str_replace("%cat%",$name,$content_new);
+		$caturl = $DH_index_url.$urlname.'/1.html';
+		$content_new =  str_replace("%caturl%",$caturl,$content_new);
+			
 		$DH_output_file = $DH_output_file_dir.$catpage.'.html';
 		dh_file_put_contents($DH_output_file,$content_new);
 	}
@@ -329,7 +333,8 @@ function get_entry($filename)
 			if($match[1]>$begindate)
 				$pages[$match[1]]=$entry;
 			
-			preg_match('/<\_b>(.*?)<\/\_b>/s',$entry,$match1);
+			preg_match('/<\_b>\<!\-\-(.*?)\-\-\><\/\_b>/s',$entry,$match1);
+			//print_r($match1);
 			if(!empty($match1[1]))
 			{
 				$eachentry = trim($match1[1]);
@@ -345,8 +350,13 @@ function get_entry($filename)
 				if(mb_strlen($eachentry,'UTF-8')>128)
 				{
 					$x = mb_substr($eachentry,0,128,'UTF-8');
-					$eachentry = preg_replace( '/<\_b>(.*?)<\/\_b>/s',"<_b>$x</_b>",$entry);
-				}			
+					$eachentry = preg_replace( '/<\_b>(.*?)<\/\_b>/s',"<_b><!-- $x --></_b>",$entry);
+				}
+				else
+				{
+					$eachentry = preg_replace( '/<\_b>(.*?)<\/\_b>/s',"<_b><!-- $eachentry --></_b>",$entry);
+				}
+				//echo $eachentry;
 				$lists[$match[1]]=$eachentry;
 			}			
 		}		
@@ -359,9 +369,9 @@ function gen_lists_num()
 	$i=0;
 	$count=count($lists);
 	foreach($lists as $key=>$list)
-	{
-		$i++;
+	{		
 		$lists_num[$key]=$count-$i;
+		$i++;
 	}
 }
 

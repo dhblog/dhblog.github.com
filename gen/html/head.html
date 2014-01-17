@@ -1,4 +1,4 @@
-<div id="top" style="height:25px;border-top: 1px solid #898f8f;border-bottom: 1px solid #898f8f">
+<div id="top" style="height:30px;border-top: 1px solid #898f8f;border-bottom: 1px solid #898f8f">
   <div class="topnav">
     <div class="left">
         <div>
@@ -14,7 +14,25 @@
     </div>
     <!--end: left-->
     <div class="right">
-		dd
+		<script type="text/javascript">
+			function showWarning() //显示系统日期   
+			{   
+				var now = new Date();
+				var hour = now.getHours();
+				if(hour>=23||hour<=6)
+				{
+					var message='<div style="border:2px solid #FF3300;font-size:12px;margin:2px 20px 0 440px;background:#FFFFDF;padding:2px;">提醒: 已经是夜里 ';
+					message +=hour;
+					message +=' 点多了，为了您和家人的健康，请注意按时作息减少熬夜。</div>';
+					return message;
+				}
+				else 
+				{			
+				   return 'ddd'; 
+				}
+			}
+			document.write(showWarning());
+		</script>
     </div>
     <!--end: right-->
   </div>
@@ -23,7 +41,7 @@
 <div id="header"> 
   <div  class="toplink">
     <ul>
-	  <li><a href="http://127.0.0.1/dhblog/static/" target="_blank">文章RSS</a></li>
+	  <li><a href="%home%rss.xml" target="_blank">文章RSS</a></li>
 	  <li>
 	  	<script type="text/javascript">
 		function showdate() //显示系统日期   
@@ -46,7 +64,7 @@
    </object>
   </div>
   <div class="logo">
-    <h1 ><a href="http://127.0.0.1/dhblog/static/">
+    <h1 ><a href="%home%">
       DH 博客
       </a></h1>
     <h2 class="description">
@@ -55,51 +73,37 @@
   </div>
 </div>
 <!--end: header-->
-<div style="height:35px">
-	<div class="topnav menunav">
-		<div class="left">
-			<ul>
-				<li><a href="http://127.0.0.1/dhblog/static/cat3.html" title="">影视聚焦</a>
-					<ul>
-						<li><a href="http://127.0.0.1/dhblog/static/cat117.html" title="">每周回顾</a></li>
-						<li><a href="http://127.0.0.1/dhblog/static/cat120.html" title="">影视合集</a></li>
-						<li><a href="http://127.0.0.1/dhblog/static/cat120.html" title="">精彩推荐</a></li>
-					</ul>
-				</li>
-				<li><a href="http://127.0.0.1/dhblog/static/cat7.html" title="">IT技术</a>
-					<ul>
-						<li><a href="http://127.0.0.1/dhblog/static/cat5.html" title="">建站技术</a></li>
-						<li><a href="http://127.0.0.1/dhblog/static/cat127.html" title=""></a>编程技术</li>
-					</ul>
-				</li>
-				<li><a href="http://127.0.0.1/dhblog/static/cat7.html" title="">其他交流</a></li>
-			</ul>
+<div style="height:32px;position:relative;border-bottom: 1px solid #252525;border-top: 1px solid #252525;">
+	<div style="position: absolute;top:5px;left:10px;">类别导航：</div>
+	<div style="position: absolute;top:0;left:90px;">
+		<div class="topnav">
+			<div class="left">
+				<ul>
+					<li><a href="%home%">影视聚焦</a>
+						<ul>
+							<li><a href="%home%/index//1.html">每周影视</a></li>
+							<li><a href="%home%/index//1.html">影视合集</a></li>
+							<li><a href="%home%/index/cE5BDB1E8A786E68EA8E88D90/1.html">影视推荐</a></li>
+						</ul>
+					</li>
+					<li><a href="%home%">IT 技术</a>
+						<ul>
+							<li><a href="%home%/index/cE5BBBAE7AB99E68A80E69CAF/1.html">建站技术</a></li>
+							<li><a href="%home%/index/cE7BD91E7BB9CE68EA8E5B9BF/1.html">编程技术</a></li>
+						</ul>
+					</li>
+					<li><a href="%home%/index/cE7BD91E7BB9CE68EA8E5B9BF/1.html">网络推广</a></li>
+					<li><a href="%home%/index/cE7BD91E7AB99E79B88E588A9/1.html">网站盈利</a></li>
+					<li><a href="%home%/index/cE585B6E4BB96E4BAA4E6B581/1.html">其他交流</a></li>
+				</ul>
+			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
-		function showWarning() //显示系统日期   
-		{   
-			var now = new Date();
-			var hour = now.getHours();
-			if(hour>=23||hour<=6)
-			{
-				var message='<div style="border:2px solid #FF3300;font-size:12px;margin:2px 20px 0 440px;background:#FFFFDF;padding:2px;">提醒: 已经是夜里 ';
-				message +=hour;
-				message +=' 点多了，为了您和家人的健康，请注意按时作息减少熬夜。</div>';
-				return message;
-			}
-			else 
-			{			
-			   return 'ddd'; 
-			}
-		}
-		document.write(showWarning());
-	</script>
 	<div id="dh_say_content" class="right" style="margin:4px 0 2px 0">
 		<p id="dh_say" title="点击可查看下一条">ddd</p>
 	</div>	
 </div>
 <!--end: menunav-->
 <div class="top_content">   
-%top_content%
+博客恢复运行，持续更新中... 20140118
 </div>

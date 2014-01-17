@@ -14,7 +14,7 @@
 
 //dh_gen_share(array(),20);
 
-function dh_gen_share($tags,$countpages)
+function dh_gen_share($lists)
 {
 	global $DH_html_path,$DH_index_url,$DH_output_path,$DH_input_path,$DH_home_url,$DH_page_store_deep,$conn;
 	
@@ -80,16 +80,23 @@ function dh_gen_share($tags,$countpages)
 		$diffecho .= $month.'月';	
 	$days = $monthc % 30;
 	if($days>0)
-		$diffecho .= $days.'天';		
+		$diffecho .= $days.'天';	
 	$tongji='<li>运行时间: <span style="font-size:12px;color:#555;">'.$diff.'天</span></li>';
 	
+	$countpages=0;
+	$countcats=0;
+	$tags=array();
+	$countupdate=0;
+	
+	dh_gen_public($lists,$countpages,$countcats,$tags,$countupdate);
+	
 	$tongji.='<li>博文总数: <span style="font-size:12px;color:#555;">'.$countpages.'篇</span></li>';
+		
+	$tongji.='<li>最近更新: <span style="font-size:12px;color:#555;">'.$countupdate.'篇</span></li>';
 	
-	$tongji.='<li>最近更新: <span style="font-size:12px;color:#555;">'.$countpages.'篇</span></li>';
+	$tongji.='<li>标签数目: <span style="font-size:12px;color:#555;">'.count($tags).'个</span></li>';
 	
-	$tongji.='<li>标签数目: <span style="font-size:12px;color:#555;">'.$countpages.'篇</span></li>';
-	
-	$tongji.='<li>分类数目: <span style="font-size:12px;color:#555;">'.$countpages.'篇</span></li>';
+	$tongji.='<li>分类数目: <span style="font-size:12px;color:#555;">'.$countcats.'个</span></li>';
     
 	//$datetoday =date("Y-m-d");
 	//$sql="select count(*) from page where updatetime >= '$datetoday'";
@@ -124,5 +131,47 @@ function dh_gen_share($tags,$countpages)
 	echo "gen side success !</br>\n";
 	
 	echo "gen cse success !</br>\n";	
+}
+
+
+function dh_gen_public($lists,&$countpages,&$countcats,&$tags,&$countupdate)
+{
+	$cats=array();
+	foreach($lists as $key=>$list)
+	{		
+		preg_match('/<\_c>(.*?)<\/\_c>/s',$list,$matchc);
+		if(!empty($matchc[1]))
+		{
+			if(empty($cats[$matchc[1]]))
+				$cats[$matchc[1]]=1;
+			else
+				$cats[$matchc[1]]++;
+		}
+
+		preg_match_all('/<\_t>(.*?)<\/\_t>/s',$list,$matchts);
+		if(!empty($matchts[1]))
+		{
+			foreach($matchts[1] as $tag)
+			{
+				if(empty($tags[$tag]))
+					$tags[$tag]=1;
+				else
+					$tags[$tag]++;
+			}
+		}
+		
+		preg_match('/<\_d>(.*?)<\/\_d>/s',$list,$matchd);
+		$dateThis = date("y-m-d",strtotime($matchd[1].'00'));
+		$dateNow=date("y-m-d",strtotime("-7 day"));
+		//echo $dateThis." --> ".$dateNow;
+		if($dateThis >= $dateNow )
+			$countupdate++;
+	}
+	
+	//print_r($cats);
+	//print_r($tags);
+	
+	$countpages=count($lists);
+	$countcats=count($cats);
 }
 ?>

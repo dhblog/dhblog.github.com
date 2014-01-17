@@ -2,16 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>%title%(DH博客)</title>
-	<meta name="keywords" content="DH博客,电影,影视,IT技术" />
-	<meta name="description" content="DH博客,电影,影视,IT技术" />
+	<title> %cat% (DH博客)</title>
+	<meta name="keywords" content="%cat% 的列表" />
+	<meta name="description" content="%cat% 的列表" />
 	%meta%
 </head>
 <body>
 <div id="wrapper">
 	%head%
 	<div id="content">
-		<div class="browse">你的位置：首页 >>  <a href="http://127.0.0.1/dhblog/static/cat125.html" title="查看分类wordpress下的所有文章">wordpress</a> </div>
+		<div class="browse">你的位置：<a href="%home%">首页</a> >>  <a href="%caturl%" title="查看 %cat% 下的所有文章">%cat%</a> </div>
 		<div id="contendlist">
 				%list_each%
 			<div class="page_navi">%pagenavi%</div>	
