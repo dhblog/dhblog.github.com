@@ -120,7 +120,7 @@ function dh_gen_share($lists)
 	{
 		$urlcode = rawurlencode($key);
 		$urlcode = 't'.str_replace("%",'',$urlcode);	
-		$tagsall.="<a href=\"$DH_index_url/$urlcode/1.html\" title=\"共有文章 $tag 篇\">$key</a>";
+		$tagsall.="<a href=\"$DH_index_url$urlcode/1.html\" title=\"共有文章 $tag 篇\">$key</a>";
 	}	
 	$DH_side_eacht= str_replace("%content%",$tagsall,$DH_side_eacht);	
 	
