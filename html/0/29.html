@@ -1,0 +1,368 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>IT求职知识:基础知识1(c++代码篇)(DH博客)</title>
+	<meta name="keywords" content="IT求职知识:基础知识1(c++代码篇)" />
+	<meta name="description" content="IT求职知识:基础知识1(c++代码篇) 详细页面" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Language" content="zh-CN">	
+	<link rel="stylesheet" type="text/css" media="all" href="http://127.0.0.1/dhblog/css/style.css"/>
+	<link rel="shortcut icon" href="http://127.0.0.1/dhblog/favicon.ico" type="image/x-icon">
+	<script type="text/javascript">
+	
+	</script>	
+</head>
+<body>
+<div id="wrapper">
+	<div id="top" style="height:30px;border-top: 1px solid #898f8f;border-bottom: 1px solid #898f8f">
+  <div class="topnav">
+    <div class="left">
+        <div>
+		<ul class="menu">
+		<li><a href="http://127.0.0.1/dhblog/">首页</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/index.html/">关于本站</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/">本站导航</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/">本站共享</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/">友情链接</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/">给我留言</a></li> 
+		</ul>
+        </div> 
+    </div>
+    <!--end: left-->
+    <div class="right">
+		<script type="text/javascript">
+			function showWarning() //显示系统日期   
+			{   
+				var now = new Date();
+				var hour = now.getHours();
+				if(hour>=23||hour<=6)
+				{
+					var message='<div style="border:2px solid #FF3300;font-size:12px;margin:2px 20px 0 440px;background:#FFFFDF;padding:2px;">提醒: 已经是夜里 ';
+					message +=hour;
+					message +=' 点多了，为了您和家人的健康，请注意按时作息减少熬夜。</div>';
+					return message;
+				}
+				else 
+				{			
+				   return 'ddd'; 
+				}
+			}
+			document.write(showWarning());
+		</script>
+    </div>
+    <!--end: right-->
+  </div>
+</div>
+<!--end: top-->
+<div id="header"> 
+  <div  class="toplink">
+    <ul>
+	  <li><a href="http://127.0.0.1/dhblog/rss.xml" target="_blank">文章RSS</a></li>
+	  <li>
+	  	<script type="text/javascript">
+		function showdate() //显示系统日期   
+		{   
+			var now = new Date();
+			var year = now.getFullYear();
+			var month = now.getMonth()+1; 
+			var day = now.getDate();
+			return year+"年"+month+"月"+day+"日";   
+		}
+		document.write(showdate());
+		</script>	
+	  </li>
+   </ul>
+  </div>
+  <div style="position:absolute;top:5px;left:35px;">
+   <object type="application/x-shockwave-flash" data="http://127.0.0.1/dhblog/images/relog.swf" WIDTH=80 HEIGHT=80>
+    <param name="movie" value="http://127.0.0.1/dhblog/images/relog.swf" />
+    <param name="WMode" value="Transparent" />
+   </object>
+  </div>
+  <div class="logo">
+    <h1 ><a href="http://127.0.0.1/dhblog/">
+      DH 博客
+      </a></h1>
+    <h2 class="description">
+      DH出品，必属精品！
+    </h2>
+  </div>
+</div>
+<!--end: header-->
+<div style="height:32px;position:relative;border-bottom: 1px solid #252525;border-top: 1px solid #252525;">
+	<div style="position: absolute;top:5px;left:10px;">类别导航：</div>
+	<div style="position: absolute;top:0;left:90px;">
+		<div class="topnav">
+			<div class="left">
+				<ul>
+					<li><a href="http://127.0.0.1/dhblog/">影视聚焦</a>
+						<ul>
+							<li><a href="http://127.0.0.1/dhblog//index//1.html">每周影视</a></li>
+							<li><a href="http://127.0.0.1/dhblog//index//1.html">影视合集</a></li>
+							<li><a href="http://127.0.0.1/dhblog//index/cE5BDB1E8A786E68EA8E88D90/1.html">影视推荐</a></li>
+						</ul>
+					</li>
+					<li><a href="http://127.0.0.1/dhblog/">IT 技术</a>
+						<ul>
+							<li><a href="http://127.0.0.1/dhblog//index/cE5BBBAE7AB99E68A80E69CAF/1.html">建站技术</a></li>
+							<li><a href="http://127.0.0.1/dhblog//index/cE7BD91E7BB9CE68EA8E5B9BF/1.html">编程技术</a></li>
+						</ul>
+					</li>
+					<li><a href="http://127.0.0.1/dhblog//index/cE7BD91E7BB9CE68EA8E5B9BF/1.html">网络推广</a></li>
+					<li><a href="http://127.0.0.1/dhblog//index/cE7BD91E7AB99E79B88E588A9/1.html">网站盈利</a></li>
+					<li><a href="http://127.0.0.1/dhblog//index/cE585B6E4BB96E4BAA4E6B581/1.html">其他交流</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="dh_say_content" class="right" style="margin:4px 0 2px 0">
+		<p id="dh_say" title="点击可查看下一条">ddd</p>
+	</div>	
+</div>
+<!--end: menunav-->
+<div class="top_content">   
+博客恢复运行，持续更新中... 20140118
+</div>
+	<div id="content">
+		<div class="browse">你的位置：<a href="http://127.0.0.1/dhblog/">首页</a> >>  <a href="http://127.0.0.1/dhblog/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> IT求职知识:基础知识1(c++代码篇) </div>
+		<div class="entry">
+			<h1>IT求职知识:基础知识1(c++代码篇)</h1><div>发表日期：2011070507 作者：DH分类：编程技术 标签： c++ </div>
+<p>又是一个暑假的到来了，虽然现在工作了，已经体验不要暑假的味道了，但是过了这个暑假，很多同学就要准备找工作了。<p>
+<p>找工作既是一个自己努力的过程，又是一个考验自己的经历，还有一些不懂得运气。<p>
+<p>对于一个it的求职者来说，现在的这个阶段，大家应该在看基础的计算机理论知识。<p>
+<p>前段时间有个兄弟问我，你找工作时候的资料，我叫他到墨鱼的博客找，他说很难找，那我就帮他整理一下，希望他能看到，并找到称心的工作。一来可以把一些觉得还有些意思的题分享给大家，同时也给自己做个备忘。<p>
+<strong>1.宏定义</strong>
+<pre lang="c"  line="1">
+#define product(x) (x*x)
+int main()
+{
+int i=3, j, k;
+j=product(i++);
+k=product(++i);
+printf("j=%d,k=%d",j,k);
+return 0;
+}
+</pre>
+Answer: 9, 49
+Explanation: 注意此处使用的是宏定义，宏定义的展开是简单的替换，所以每次i都会增2.
+
+<strong>2. 类型转换</strong>
+<pre lang="c"  line="1">
+char foo(void)
+{
+  unsigned int a = 6;
+  int  b= -20;
+  char c;
+  (a+b>6)?(c=1):(c=0);
+  return c;
+}
+</pre>
+Answer: 1
+Explanation: 类型转换在int遇到unsigned int是转换为unsigned int。
+
+<strong>3. 不适用中间变量的a,b值交换</strong>
+<pre lang="c"  line="1">
+a=a+b;b=a-b;a=a-b; 
+a=a^b;b=a^b;a=a^b;
+</pre>
+第一种解法不需要解释，但要说明的是有一个缺点就是当a,b很大时会溢出。
+关于第二个解法首先要了解异或运算满足交换律和结合律，从这个角度来看解法二可以这么理解：
+b = (a^b)^b = a^(b^b) = a^0=a;  
+a=(a^b)^a = a^(b^a)=a^(a^b)=(a^a)^b = 0^b = b;
+
+
+<strong>4. atexit函数</strong>
+<pre lang="c"  line="1">
+void fn(void);
+int main(void)
+{
+   atexit(fn);
+   printf("Hi,");
+}
+
+void fun(void)
+{
+   printf("Jack!\n");
+}
+</pre>
+
+Answer: 输出 Hi, Jack!
+Explanation:这个函数可以再main函数执行结束的时候执行指定的过程。很想消息注册的机制。下面给出个简单例子。
+注：这是程序员面试宝典37页的例子，dev c++中测试失败。
+
+<strong>5. sizeof</strong>
+<pre lang="c"  line="1">
+char ss2[] = "0123456789";
+char ss3[100]="0123456789";
+int  ss4[100]=;
+printf("%d,%d,%d\n",sizeof(ss2),sizeof(ss3),sizeof(ss4));
+</pre>
+Answer: 11,100,400
+Explanation: 11,100,4*100=400(int的大小是4个字节)
+
+<strong>6. 关于虚继承</strong>
+<pre lang="c"  line="1">
+class A
+{
+	int x;
+	......
+}
+class B: public A;
+class C: public A;
+class D: public B, public C;
+</pre>
+对于上述代码类D将拥有两个x成员，B::x和C::x。在很多情况下我们需要把两个x合并成一个，这时候就需要虚基类的帮忙。
+class A;
+class B:virtual public A;
+class C:virtual public A;
+class D:public B, public C;
+
+这而有个二义性和优先级的问题需要考虑：
+a. 如果在继承路径中最终的子类继承的是同一虚基类的成员，则无二义性
+b. 如果在继承路径中某条路径中是虚基类的成员，另一条路径中是派生类的同名成员，则派生类的优先级高于虚基类。
+c. 如果每条继承路径中出现非虚基类的同名成员，则有二义性。
+例子：
+<pre lang="c"  line="1">
+#include <iostream> 
+class B
+{ 
+   public: 
+   void print()
+  { 
+     std::cout << "B" << std::endl; 
+   } 
+}; 
+
+class D1: public virtual B
+{
+}; 
+
+class D2: public virtual B
+{ 
+   public: 
+   void print()
+  { 
+    std::cout << "D2" << std::endl; 
+   } 
+}; 
+
+class DD: public D1, public D2
+{
+}; 
+
+int main ()
+{ 
+   DD d; 
+   d.print();// 注意此处：ok: call D2::print，这是上面分析的第二种情况 
+   return 0; 
+}
+</pre>
+
+<strong>7.从M进制转换为N进制（宝典中的例子有严重错误）</strong>
+先从简单的例子着手：
+(1) M进制转换到十进制
+a1a2a3…ak(M) = a1*M^(k-1)+a2*M^(k-2) + … ak*M^0 = a1a2…a(k-1)(M)*M + ak = f(k-1)*M + ak（这一步是递归表达）
+(2)十进制转换M进制  仿照上述转换，同样得到 
+f(Num/M)*10 + Num%M(递归表示)
+(3)泛化：任意进制数转换N进制，假设Num/N结果是10进制，Num用自身的进制表示当然对于大于10的进制需要要引入其他符号表示
+f(Num/N)*10 + Num%N
+简单的例子：
+<pre lang="c"  line="1">
+int ToRadix(int num, int toRadix) 
+{ 
+    if(num/toRadix==0) 
+       return num; 
+    else 
+       return ToRadix(num/toRadix, toRadix)*10 + num%toRadix; 
+}
+int main(void) 
+{ 
+    printf("%d\n",ToRadix(0x12,4)); //注意此处的参数表示 
+    return 0; 
+}
+</pre>
+
+<strong>8.地址的类型</strong>
+<pre lang="c"  line="1">
+float a = 1.0f;
+cout << (int)a << endl;
+cout << (int&)a << endl;
+cout << boolalpha << ( (int)a == (int&)a ) << endl;
+float b = 0.0f;
+cout << (int)b << endl;
+cout << (int&)b << endl;
+cout << boolalpha << ( (int)b == (int&)b ) << endl;</pre>
+Answer: false true
+Explanation: (int&)a 和 *((int*)&a)是一样的,把&a这个地址上32位数看作int型
+
+		</div>
+		<div id="comment">
+			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
+			<!-- Duoshuo Comment BEGIN -->
+			<div class="ds-thread"></div>
+			<script type="text/javascript">
+			var duoshuoQuery = {short_name:"dhblog"};
+				(function() {
+					var ds = document.createElement('script');
+					ds.type = 'text/javascript';ds.async = true;
+					ds.src = 'http://static.duoshuo.com/embed.js';
+					ds.charset = 'UTF-8';
+					(document.getElementsByTagName('head')[0] 
+					|| document.getElementsByTagName('body')[0]).appendChild(ds);
+				})();
+			</script>
+			<!-- Duoshuo Comment END -->				
+		</div>		
+	</div>
+	<div id="sidebar">
+		<div class="singlewidget">
+	<h3>
+		广告
+	</h3>
+	<div class="box">
+		
+	</div>
+</div>
+<div class="tag_widget">
+	<h3>
+		标签
+	</h3>
+	<div class="tag_widget_box">
+	  <a href="http://127.0.0.1/dhblog/index//tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 2 篇">经验分享</a><a href="http://127.0.0.1/dhblog/index//twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://127.0.0.1/dhblog/index//tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://127.0.0.1/dhblog/index//tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://127.0.0.1/dhblog/index//tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 6 篇">友情推荐</a><a href="http://127.0.0.1/dhblog/index//tE794B5E5BDB1/1.html" title="共有文章 5 篇">电影</a><a href="http://127.0.0.1/dhblog/index//tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://127.0.0.1/dhblog/index//tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://127.0.0.1/dhblog/index//tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://127.0.0.1/dhblog/index//tphp/1.html" title="共有文章 11 篇">php</a><a href="http://127.0.0.1/dhblog/index//tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://127.0.0.1/dhblog/index//tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://127.0.0.1/dhblog/index//tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://127.0.0.1/dhblog/index//tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://127.0.0.1/dhblog/index//tcss/1.html" title="共有文章 1 篇">css</a><a href="http://127.0.0.1/dhblog/index//tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
+	</div>
+</div> <div class="doublewidget">
+	<h3>
+		网站统计
+	</h3>
+	<div class="box">
+		<ul><li>运行时间: <span style="font-size:12px;color:#555;">1074天</span></li><li>博文总数: <span style="font-size:12px;color:#555;">71篇</span></li><li>最近更新: <span style="font-size:12px;color:#555;">0篇</span></li><li>标签数目: <span style="font-size:12px;color:#555;">16个</span></li><li>分类数目: <span style="font-size:12px;color:#555;">6个</span></li></ul>
+	</div>
+</div>
+
+	</div>
+	<!--end: sidebar-->
+	<div id="footer">
+		<div id="footer-nav">
+		<a href="http://127.0.0.1/dhblog/html/aboutus.html">关于我们</a> | 
+		<a href="http://127.0.0.1/dhblog/html/mianze.html">免责声明</a> | 
+		<a href="http://127.0.0.1/dhblog/siteindex.html">网站地图索引</a> | 
+		<a href="http://127.0.0.1/dhblog/sitemap.html">最近网站地图</a> | 
+		<a href="http://127.0.0.1/dhblog/html/links.html">友情链接</a> | 
+		<a href="javascript:void(0);" onclick="AddFavorite('二手电影-影视资源搜集分享','http://127.0.0.1/dhblog/')">收藏本站</a> 
+	</div>
+	<div class="cpright">
+		Copyright &copy; 2011 &nbsp;
+		<a href="%DH_home_href%"><strong></strong>&reg;</a> &nbsp;
+		<a href="/sitemap.html">网站地图</a> &nbsp;
+		All rights reserved.56
+	<script language="javascript" type="text/javascript" src="http://js.users.51.la/4836371.js"></script>
+	<noscript><a href="http://www.51.la/?4836371" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4836371.asp" style="border:none" /></a></noscript>
+	</div>
+	</div>
+	<!--end: bottom-->
+</div>
+<!--end: wrapper-->
+</body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>wordpress主题:增加最多评论功能(DH博客)</title>
+	<meta name="keywords" content="wordpress主题:增加最多评论功能" />
+	<meta name="description" content="wordpress主题:增加最多评论功能 详细页面" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Language" content="zh-CN">	
+	<link rel="stylesheet" type="text/css" media="all" href="http://127.0.0.1/dhblog/css/style.css"/>
+	<link rel="shortcut icon" href="http://127.0.0.1/dhblog/favicon.ico" type="image/x-icon">
+	<script type="text/javascript">
+	
+	</script>	
+</head>
+<body>
+<div id="wrapper">
+	<div id="top" style="height:30px;border-top: 1px solid #898f8f;border-bottom: 1px solid #898f8f">
+  <div class="topnav">
+    <div class="left">
+        <div>
+		<ul class="menu">
+		<li><a href="http://127.0.0.1/dhblog/">首页</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/index.html/">关于本站</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/">本站导航</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/">本站共享</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/">友情链接</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/">给我留言</a></li> 
+		</ul>
+        </div> 
+    </div>
+    <!--end: left-->
+    <div class="right">
+		<script type="text/javascript">
+			function showWarning() //显示系统日期   
+			{   
+				var now = new Date();
+				var hour = now.getHours();
+				if(hour>=23||hour<=6)
+				{
+					var message='<div style="border:2px solid #FF3300;font-size:12px;margin:2px 20px 0 440px;background:#FFFFDF;padding:2px;">提醒: 已经是夜里 ';
+					message +=hour;
+					message +=' 点多了，为了您和家人的健康，请注意按时作息减少熬夜。</div>';
+					return message;
+				}
+				else 
+				{			
+				   return 'ddd'; 
+				}
+			}
+			document.write(showWarning());
+		</script>
+    </div>
+    <!--end: right-->
+  </div>
+</div>
+<!--end: top-->
+<div id="header"> 
+  <div  class="toplink">
+    <ul>
+	  <li><a href="http://127.0.0.1/dhblog/rss.xml" target="_blank">文章RSS</a></li>
+	  <li>
+	  	<script type="text/javascript">
+		function showdate() //显示系统日期   
+		{   
+			var now = new Date();
+			var year = now.getFullYear();
+			var month = now.getMonth()+1; 
+			var day = now.getDate();
+			return year+"年"+month+"月"+day+"日";   
+		}
+		document.write(showdate());
+		</script>	
+	  </li>
+   </ul>
+  </div>
+  <div style="position:absolute;top:5px;left:35px;">
+   <object type="application/x-shockwave-flash" data="http://127.0.0.1/dhblog/images/relog.swf" WIDTH=80 HEIGHT=80>
+    <param name="movie" value="http://127.0.0.1/dhblog/images/relog.swf" />
+    <param name="WMode" value="Transparent" />
+   </object>
+  </div>
+  <div class="logo">
+    <h1 ><a href="http://127.0.0.1/dhblog/">
+      DH 博客
+      </a></h1>
+    <h2 class="description">
+      DH出品，必属精品！
+    </h2>
+  </div>
+</div>
+<!--end: header-->
+<div style="height:32px;position:relative;border-bottom: 1px solid #252525;border-top: 1px solid #252525;">
+	<div style="position: absolute;top:5px;left:10px;">类别导航：</div>
+	<div style="position: absolute;top:0;left:90px;">
+		<div class="topnav">
+			<div class="left">
+				<ul>
+					<li><a href="http://127.0.0.1/dhblog/">影视聚焦</a>
+						<ul>
+							<li><a href="http://127.0.0.1/dhblog//index//1.html">每周影视</a></li>
+							<li><a href="http://127.0.0.1/dhblog//index//1.html">影视合集</a></li>
+							<li><a href="http://127.0.0.1/dhblog//index/cE5BDB1E8A786E68EA8E88D90/1.html">影视推荐</a></li>
+						</ul>
+					</li>
+					<li><a href="http://127.0.0.1/dhblog/">IT 技术</a>
+						<ul>
+							<li><a href="http://127.0.0.1/dhblog//index/cE5BBBAE7AB99E68A80E69CAF/1.html">建站技术</a></li>
+							<li><a href="http://127.0.0.1/dhblog//index/cE7BD91E7BB9CE68EA8E5B9BF/1.html">编程技术</a></li>
+						</ul>
+					</li>
+					<li><a href="http://127.0.0.1/dhblog//index/cE7BD91E7BB9CE68EA8E5B9BF/1.html">网络推广</a></li>
+					<li><a href="http://127.0.0.1/dhblog//index/cE7BD91E7AB99E79B88E588A9/1.html">网站盈利</a></li>
+					<li><a href="http://127.0.0.1/dhblog//index/cE585B6E4BB96E4BAA4E6B581/1.html">其他交流</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="dh_say_content" class="right" style="margin:4px 0 2px 0">
+		<p id="dh_say" title="点击可查看下一条">ddd</p>
+	</div>	
+</div>
+<!--end: menunav-->
+<div class="top_content">   
+博客恢复运行，持续更新中... 20140118
+</div>
+	<div id="content">
+		<div class="browse">你的位置：<a href="http://127.0.0.1/dhblog/">首页</a> >>  <a href="http://127.0.0.1/dhblog/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> wordpress主题:增加最多评论功能 </div>
+		<div class="entry">
+			<h1>wordpress主题:增加最多评论功能</h1><div>发表日期：2011080107 作者：DH分类：编程技术 标签： wordpress php </div>
+<h2>1 源起</h2>
+终于搞完了这个功能，现在上线了。这几天非常忙，在休息的时候，看看自说Me话的代码，自己随便搞搞，终于成功了。
+最初版：<a href="http://www.daqianduan.com/css3-wordpress-wall/">CSS3动画-wordpress读者墙</a>
+改进版：<a href="http://isayme.com/2011/07/css3-readerwall-sourcecode/">css3读者墙 源代码</a>
+我盗用版：<a href="http://dhblog.org/archives/9.html">本文描述</a>
+功能看点：
+a.css3效果 
+b. 激起评论者的兴趣 
+c.数字显示评论者数量，血条显示评论者生命力，简单明了。
+<h2>2 预览</h2>
+在我的<a href="http://dhblog.org">右边侧侧边栏</a>的最多评论，提醒浏览器的支持情况为：
+<a href="http://dhblog.org/wp-content/uploads/2011/07/incompatible_firefox.gif"><img src="http://dhblog.org/wp-content/uploads/2011/07/incompatible_firefox.gif" alt="" title="incompatible_firefox" width="173" height="33" class="aligncenter size-full wp-image-951" /></a>
+<h2>3 源码</h2>
+3.1 php代码
+<pre lang="php" line="1">
+<?php
+function comment_sort()
+{
+    global $wpdb;
+    $query="SELECT COUNT(comment_ID) AS cnt, comment_author, comment_author_url, comment_author_email FROM $wpdb->comments WHERE comment_author_email != 'aa@bb.com' AND comment_approved='1' GROUP BY comment_author_email ORDER BY cnt DESC LIMIT 15";
+//大家把管理员的邮箱aa@bb.com改成你的,最后的这个15是选取多少个头像，大家可以按照自己的主题进行修改,来适合主题宽度
+    $wall = $wpdb->get_results($query);	
+    $maxNum = $wall[0]->cnt;
+    foreach ($wall as $comment)
+    {
+        $width = round(36 / ($maxNum / $comment->cnt),2);//此处是对应的血条的宽度
+        if( $comment->comment_author_url )
+        $url = $comment->comment_author_url;
+        else $url="#";
+        $tmp = '<li><a target="_blank" href="'.$comment->comment_author_url.'"><span class="pic" style="background: url(http://www.gravatar.com/avatar/'.md5(strtolower($comment->comment_author_email)).'?s=36&d=monsterid&r=G) no-repeat;">pic</span><span class="num">'.$comment->cnt.'</span><span class="name">'.$comment->comment_author.'</span></a><div class="active-bg"><div class="active-degree" style="width:'.$width.'px"></div></div></li>';
+        $output .= $tmp;
+     }
+    $output = '<div class="readerwall">'.$output.'<div class="clear"></div></div>';
+    echo $output ;
+}
+?>
+</pre>
+3.2 css代码
+<pre lang="css"  line="1">
+body{overflow-x: hidden;}
+
+.readerwall{
+padding:5px 0 5px 5px;
+font-size:12px;
+overflow:visible;
+}
+
+.readerwall li{
+margin:0;
+padding:3px;
+float:left;
+list-style:none;
+border: 1px solid #DFDFDF;
+-moz-border-radius:2px;
+-khtml-border-radius: 2px;
+-webkit-border-radius: 2px;
+border-radius: 2px;
+}
+
+.readerwall .active-bg{
+height:2px;
+font-size:0;
+margin:2px 0 2px 0px;
+background:#DFDFDF; 
+}
+
+.readerwall .active-degree{
+background:red;
+height:2px;
+font-size:0;
+}
+
+.readerwall a{
+display:inline-block;
+width:36px;
+height:36px;
+position:relative;
+padding:0;
+text-decoration:none
+}
+
+.readerwall .pic{
+position:absolute;
+top:0;
+left:0;
+z-index:100;
+width:36px;
+height:36px;
+display:block;
+-webkit-transform-style:preserve-3d;
+-webkit-backface-visibility:hidden;
+-webkit-transition:all .4s ease-in-out;
+-moz-transition:all .4s ease-in-out;
+-o-transition:all .4s ease-in-out;
+border-radius:4px; 
+text-indent:-9999px
+}
+
+.readerwall .num{
+position:absolute;
+top:0;
+left:0;
+z-index:99;
+width:35px;
+height:35px;
+line-height:36px;
+color:#E02523;
+font-size:18px;
+font-weight:bold;
+display:block;
+background:#fff;
+text-align:center;
+border:#bbb 1px solid;
+box-shadow:0 0 4px #ccc;
+-webkit-transform:rotateY(-180deg);
+-webkit-transform-style:preserve-3d;
+-webkit-backface-visibility:hidden;
+transition:all .4s ease-in-out;
+-webkit-transition:all .4s ease-in-out;
+-moz-transition:all .4s ease-in-out;
+-o-transition:all .4s ease-in-out;
+border-radius:4px
+}
+
+.readerwall .name{
+position:absolute;
+top:0;
+left:0;
+color:#333;
+display:block;
+width:1px;
+height:1px;
+overflow:hidden;
+-webkit-transform-style:preserve-3d;
+-webkit-backface-visibility:hidden;
+-webkit-transition:all .2s ease-in-out;
+-moz-transition:all .2s ease-in-out;
+-o-transition:all .2s ease-in-out;
+text-align:center
+}
+
+.readerwall a:hover .pic{
+z-index:100;
+border-color:#eee;
+-webkit-transform:rotateY(180deg);
+-moz-transform:rotateY(180deg);
+-ms-transform:rotateY(180deg)
+}
+
+.readerwall a:hover .num{
+z-index:101;
+-webkit-transform:rotateY(0deg);
+-moz-transform:rotateY(0deg);
+-ms-transform:rotateY(0deg);
+opacity:.8
+}
+
+.readerwall a:hover .name{
+top:-28px;
+left:-38px;
+z-index:101;
+padding:4px 6px;
+height:20px;
+line-height:20px;
+overflow:hidden;
+background:#fff;
+border-radius:2px;
+box-shadow:0 0 3px #000;
+min-width:100px;
+opacity:.8
+}
+</pre>
+
+<h2>4 使用注意点</h2>
+1. 将psp代码部分放入到functions.php中(注意前面的php代码的前后标记符，有时候需要去掉的)，css部分添加到style.css中。
+2. 在需要显示的地方 输入<pre lang='php'><?php comment_sort(); ?></pre>
+
+<h2>5 我和自说Me话的不同点</h2>
+5.1 php改为函数调用
+5.2 修改了SQL语句，为所有评论中的排序 vs 自说Me话的 近30天的评论
+5.3 修改了大小，使能适应我的侧边栏的大小
+5.4  修改了图像的个数为15个
+
+		</div>
+		<div id="comment">
+			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
+			<!-- Duoshuo Comment BEGIN -->
+			<div class="ds-thread"></div>
+			<script type="text/javascript">
+			var duoshuoQuery = {short_name:"dhblog"};
+				(function() {
+					var ds = document.createElement('script');
+					ds.type = 'text/javascript';ds.async = true;
+					ds.src = 'http://static.duoshuo.com/embed.js';
+					ds.charset = 'UTF-8';
+					(document.getElementsByTagName('head')[0] 
+					|| document.getElementsByTagName('body')[0]).appendChild(ds);
+				})();
+			</script>
+			<!-- Duoshuo Comment END -->				
+		</div>		
+	</div>
+	<div id="sidebar">
+		<div class="singlewidget">
+	<h3>
+		广告
+	</h3>
+	<div class="box">
+		
+	</div>
+</div>
+<div class="tag_widget">
+	<h3>
+		标签
+	</h3>
+	<div class="tag_widget_box">
+	  <a href="http://127.0.0.1/dhblog/index//tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 2 篇">经验分享</a><a href="http://127.0.0.1/dhblog/index//twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://127.0.0.1/dhblog/index//tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://127.0.0.1/dhblog/index//tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://127.0.0.1/dhblog/index//tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 6 篇">友情推荐</a><a href="http://127.0.0.1/dhblog/index//tE794B5E5BDB1/1.html" title="共有文章 5 篇">电影</a><a href="http://127.0.0.1/dhblog/index//tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://127.0.0.1/dhblog/index//tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://127.0.0.1/dhblog/index//tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://127.0.0.1/dhblog/index//tphp/1.html" title="共有文章 11 篇">php</a><a href="http://127.0.0.1/dhblog/index//tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://127.0.0.1/dhblog/index//tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://127.0.0.1/dhblog/index//tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://127.0.0.1/dhblog/index//tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://127.0.0.1/dhblog/index//tcss/1.html" title="共有文章 1 篇">css</a><a href="http://127.0.0.1/dhblog/index//tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
+	</div>
+</div> <div class="doublewidget">
+	<h3>
+		网站统计
+	</h3>
+	<div class="box">
+		<ul><li>运行时间: <span style="font-size:12px;color:#555;">1074天</span></li><li>博文总数: <span style="font-size:12px;color:#555;">71篇</span></li><li>最近更新: <span style="font-size:12px;color:#555;">0篇</span></li><li>标签数目: <span style="font-size:12px;color:#555;">16个</span></li><li>分类数目: <span style="font-size:12px;color:#555;">6个</span></li></ul>
+	</div>
+</div>
+
+	</div>
+	<!--end: sidebar-->
+	<div id="footer">
+		<div id="footer-nav">
+		<a href="http://127.0.0.1/dhblog/html/aboutus.html">关于我们</a> | 
+		<a href="http://127.0.0.1/dhblog/html/mianze.html">免责声明</a> | 
+		<a href="http://127.0.0.1/dhblog/siteindex.html">网站地图索引</a> | 
+		<a href="http://127.0.0.1/dhblog/sitemap.html">最近网站地图</a> | 
+		<a href="http://127.0.0.1/dhblog/html/links.html">友情链接</a> | 
+		<a href="javascript:void(0);" onclick="AddFavorite('二手电影-影视资源搜集分享','http://127.0.0.1/dhblog/')">收藏本站</a> 
+	</div>
+	<div class="cpright">
+		Copyright &copy; 2011 &nbsp;
+		<a href="%DH_home_href%"><strong></strong>&reg;</a> &nbsp;
+		<a href="/sitemap.html">网站地图</a> &nbsp;
+		All rights reserved.56
+	<script language="javascript" type="text/javascript" src="http://js.users.51.la/4836371.js"></script>
+	<noscript><a href="http://www.51.la/?4836371" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4836371.asp" style="border:none" /></a></noscript>
+	</div>
+	</div>
+	<!--end: bottom-->
+</div>
+<!--end: wrapper-->
+</body>
+</html>

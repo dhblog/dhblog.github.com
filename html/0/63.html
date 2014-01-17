@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>wordpress:wordpress升级到3.3(DH博客)</title>
+	<meta name="keywords" content="wordpress:wordpress升级到3.3" />
+	<meta name="description" content="wordpress:wordpress升级到3.3 详细页面" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Language" content="zh-CN">	
+	<link rel="stylesheet" type="text/css" media="all" href="http://127.0.0.1/dhblog/css/style.css"/>
+	<link rel="shortcut icon" href="http://127.0.0.1/dhblog/favicon.ico" type="image/x-icon">
+	<script type="text/javascript">
+	
+	</script>	
+</head>
+<body>
+<div id="wrapper">
+	<div id="top" style="height:30px;border-top: 1px solid #898f8f;border-bottom: 1px solid #898f8f">
+  <div class="topnav">
+    <div class="left">
+        <div>
+		<ul class="menu">
+		<li><a href="http://127.0.0.1/dhblog/">首页</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/index.html/">关于本站</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/">本站导航</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/">本站共享</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/">友情链接</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/">给我留言</a></li> 
+		</ul>
+        </div> 
+    </div>
+    <!--end: left-->
+    <div class="right">
+		<script type="text/javascript">
+			function showWarning() //显示系统日期   
+			{   
+				var now = new Date();
+				var hour = now.getHours();
+				if(hour>=23||hour<=6)
+				{
+					var message='<div style="border:2px solid #FF3300;font-size:12px;margin:2px 20px 0 440px;background:#FFFFDF;padding:2px;">提醒: 已经是夜里 ';
+					message +=hour;
+					message +=' 点多了，为了您和家人的健康，请注意按时作息减少熬夜。</div>';
+					return message;
+				}
+				else 
+				{			
+				   return 'ddd'; 
+				}
+			}
+			document.write(showWarning());
+		</script>
+    </div>
+    <!--end: right-->
+  </div>
+</div>
+<!--end: top-->
+<div id="header"> 
+  <div  class="toplink">
+    <ul>
+	  <li><a href="http://127.0.0.1/dhblog/rss.xml" target="_blank">文章RSS</a></li>
+	  <li>
+	  	<script type="text/javascript">
+		function showdate() //显示系统日期   
+		{   
+			var now = new Date();
+			var year = now.getFullYear();
+			var month = now.getMonth()+1; 
+			var day = now.getDate();
+			return year+"年"+month+"月"+day+"日";   
+		}
+		document.write(showdate());
+		</script>	
+	  </li>
+   </ul>
+  </div>
+  <div style="position:absolute;top:5px;left:35px;">
+   <object type="application/x-shockwave-flash" data="http://127.0.0.1/dhblog/images/relog.swf" WIDTH=80 HEIGHT=80>
+    <param name="movie" value="http://127.0.0.1/dhblog/images/relog.swf" />
+    <param name="WMode" value="Transparent" />
+   </object>
+  </div>
+  <div class="logo">
+    <h1 ><a href="http://127.0.0.1/dhblog/">
+      DH 博客
+      </a></h1>
+    <h2 class="description">
+      DH出品，必属精品！
+    </h2>
+  </div>
+</div>
+<!--end: header-->
+<div style="height:32px;position:relative;border-bottom: 1px solid #252525;border-top: 1px solid #252525;">
+	<div style="position: absolute;top:5px;left:10px;">类别导航：</div>
+	<div style="position: absolute;top:0;left:90px;">
+		<div class="topnav">
+			<div class="left">
+				<ul>
+					<li><a href="http://127.0.0.1/dhblog/">影视聚焦</a>
+						<ul>
+							<li><a href="http://127.0.0.1/dhblog//index//1.html">每周影视</a></li>
+							<li><a href="http://127.0.0.1/dhblog//index//1.html">影视合集</a></li>
+							<li><a href="http://127.0.0.1/dhblog//index/cE5BDB1E8A786E68EA8E88D90/1.html">影视推荐</a></li>
+						</ul>
+					</li>
+					<li><a href="http://127.0.0.1/dhblog/">IT 技术</a>
+						<ul>
+							<li><a href="http://127.0.0.1/dhblog//index/cE5BBBAE7AB99E68A80E69CAF/1.html">建站技术</a></li>
+							<li><a href="http://127.0.0.1/dhblog//index/cE7BD91E7BB9CE68EA8E5B9BF/1.html">编程技术</a></li>
+						</ul>
+					</li>
+					<li><a href="http://127.0.0.1/dhblog//index/cE7BD91E7BB9CE68EA8E5B9BF/1.html">网络推广</a></li>
+					<li><a href="http://127.0.0.1/dhblog//index/cE7BD91E7AB99E79B88E588A9/1.html">网站盈利</a></li>
+					<li><a href="http://127.0.0.1/dhblog//index/cE585B6E4BB96E4BAA4E6B581/1.html">其他交流</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="dh_say_content" class="right" style="margin:4px 0 2px 0">
+		<p id="dh_say" title="点击可查看下一条">ddd</p>
+	</div>	
+</div>
+<!--end: menunav-->
+<div class="top_content">   
+博客恢复运行，持续更新中... 20140118
+</div>
+	<div id="content">
+		<div class="browse">你的位置：<a href="http://127.0.0.1/dhblog/">首页</a> >>  <a href="http://127.0.0.1/dhblog/index/cE5BBBAE7AB99E68A80E69CAF/1.html" title="查看分类 建站技术 下的所有文章">建站技术</a> >> wordpress:wordpress升级到3.3 </div>
+		<div class="entry">
+			<h1>wordpress:wordpress升级到3.3</h1><div>发表日期：2012021307 作者：DH分类：建站技术 标签： wordpress </div>
+<h2>1 序言</h2>
+升级wordpress是个非常难搞的事情，，所以我的博客是能不升级就不升级，为什么呢？主要是：
+1. 涉及的事情太多,步骤太多。
+2. 因为主题是自己的wordpress的升级很少影响对访问者的界面，影响的是自己的后台。
+3. 不知道主题、插件是否支持新的主题。
+4. 有可能会丢失资料等。
+5. 原来的正对wp的程序本身的设置会失效。
+但是，我为什么要升级呢？主要是以下的原因：
+1. 版本太低了。才是3.0
+2. 百度搜索引擎对我的网站支持不好，看看换个版本是不是有新的变化。
+3. 试验新的事物，看看3.3是不是好用。
+4. 让主题适应最新的版本。
+下面详细说明一下过程，我的过程非常偏技术，这种做法比较繁琐，其实点击wp自带的自动升级就可以了。
+为什么要这样做呢，因为我希望对wp弄的比较懂。这个艰苦而冗长的过程，记录一下过程，以便不会忘记。
+
+<h2>2 备份</h2>
+<h3>2.1 备份数据库</h3>
+备份数据库很简单，大家可以参考文章，这个也是为了以防万一。如果有每日备份的，可以选择不备份。
+<h3>2.2 备份WP目录</h3>
+这个备份比较重要，如果觉得不需要备份整个目录的话，需要备份两个：
+1.需要备份\wp-content\uploads里面的东西。这个是你上传东西的目录。如果你设置的其他的上次目录，需要备份那个目录。
+2.需要记录原来的数据库的链接信息，在一下的数据库重新设置中会使用，文件wp-config.php很重要。
+<h3>2.3 备份主题</h3>
+主题一般有备份的，但是主题的设置也要备份哦。
+有些主题的设置，比如设置的：
+1.特别是流量监控代码的设置
+2.google、百度等的广告设置
+3.无觅文章
+4.JiraThis等
+等等
+<h3>2.4 备份插件</h3>
+插件都有下载，一般不需要背包，但是需要记住了安装了哪些插件，便于以后能安装回来。还需要备份插件的设置。
+<h2>3 删除</h2>
+<h3>3.1 删除插件</h3>
+如果不删除，新的wordpress可能会出错，给后来安装插件造成影响。
+<h3>3.2 删除主题</h3>
+如果不删除，新的wordpress可能会出错，给后来安装主题造成影响。
+<h3>3.3 删除文件</h3>
+就是删除原来的wordpress的版本，需要换成新的版本，这个就是在服务器上面删除这个文件夹就可以了
+<h2>4 部署</h2>
+<h3>4.1 部署新WP</h3>
+拷贝压缩包上去，然后解压即可。
+<h3>4.2 设置数据库</h3>
+数据库的设置是需要http://dhblog.org/wp_admin，安装要求，利用2.2中的备份的wp-config.php设置数据库连接信息。
+<h3>4.3 安装插件</h3>
+安装并启动插件，要注意，利用备份的插件选项恢复插件的设置
+<h3>4.4 安装主题</h3>
+安装并启动主题，要注意，利用备份的注意选项恢复主题的设置
+<h3>4.5 恢复upload</h3>
+打包备份\wp-content\uploads里面的东西，上传到服务器，解压即可。
+<h3>4.6 固定链接</h3>
+不知什么原因，对固定链接的设置需要到设置页面保存一下才能生效。
+<h3>4.7 上传网站设置</h3>
+对已经删除的.htaccess robots.txt需要重新上传。当然，其他有什么设置的话，也要上传一下。
+<h2>5 等待</h2>
+等待
+1. 百度的收录会不会有什么变化
+2. 主题在3.3下面会不会有什么bug
+3. 博友的反应。。。
+
+		</div>
+		<div id="comment">
+			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
+			<!-- Duoshuo Comment BEGIN -->
+			<div class="ds-thread"></div>
+			<script type="text/javascript">
+			var duoshuoQuery = {short_name:"dhblog"};
+				(function() {
+					var ds = document.createElement('script');
+					ds.type = 'text/javascript';ds.async = true;
+					ds.src = 'http://static.duoshuo.com/embed.js';
+					ds.charset = 'UTF-8';
+					(document.getElementsByTagName('head')[0] 
+					|| document.getElementsByTagName('body')[0]).appendChild(ds);
+				})();
+			</script>
+			<!-- Duoshuo Comment END -->				
+		</div>		
+	</div>
+	<div id="sidebar">
+		<div class="singlewidget">
+	<h3>
+		广告
+	</h3>
+	<div class="box">
+		
+	</div>
+</div>
+<div class="tag_widget">
+	<h3>
+		标签
+	</h3>
+	<div class="tag_widget_box">
+	  <a href="http://127.0.0.1/dhblog/index//tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 2 篇">经验分享</a><a href="http://127.0.0.1/dhblog/index//twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://127.0.0.1/dhblog/index//tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://127.0.0.1/dhblog/index//tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://127.0.0.1/dhblog/index//tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 6 篇">友情推荐</a><a href="http://127.0.0.1/dhblog/index//tE794B5E5BDB1/1.html" title="共有文章 5 篇">电影</a><a href="http://127.0.0.1/dhblog/index//tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://127.0.0.1/dhblog/index//tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://127.0.0.1/dhblog/index//tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://127.0.0.1/dhblog/index//tphp/1.html" title="共有文章 11 篇">php</a><a href="http://127.0.0.1/dhblog/index//tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://127.0.0.1/dhblog/index//tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://127.0.0.1/dhblog/index//tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://127.0.0.1/dhblog/index//tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://127.0.0.1/dhblog/index//tcss/1.html" title="共有文章 1 篇">css</a><a href="http://127.0.0.1/dhblog/index//tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
+	</div>
+</div> <div class="doublewidget">
+	<h3>
+		网站统计
+	</h3>
+	<div class="box">
+		<ul><li>运行时间: <span style="font-size:12px;color:#555;">1074天</span></li><li>博文总数: <span style="font-size:12px;color:#555;">71篇</span></li><li>最近更新: <span style="font-size:12px;color:#555;">0篇</span></li><li>标签数目: <span style="font-size:12px;color:#555;">16个</span></li><li>分类数目: <span style="font-size:12px;color:#555;">6个</span></li></ul>
+	</div>
+</div>
+
+	</div>
+	<!--end: sidebar-->
+	<div id="footer">
+		<div id="footer-nav">
+		<a href="http://127.0.0.1/dhblog/html/aboutus.html">关于我们</a> | 
+		<a href="http://127.0.0.1/dhblog/html/mianze.html">免责声明</a> | 
+		<a href="http://127.0.0.1/dhblog/siteindex.html">网站地图索引</a> | 
+		<a href="http://127.0.0.1/dhblog/sitemap.html">最近网站地图</a> | 
+		<a href="http://127.0.0.1/dhblog/html/links.html">友情链接</a> | 
+		<a href="javascript:void(0);" onclick="AddFavorite('二手电影-影视资源搜集分享','http://127.0.0.1/dhblog/')">收藏本站</a> 
+	</div>
+	<div class="cpright">
+		Copyright &copy; 2011 &nbsp;
+		<a href="%DH_home_href%"><strong></strong>&reg;</a> &nbsp;
+		<a href="/sitemap.html">网站地图</a> &nbsp;
+		All rights reserved.56
+	<script language="javascript" type="text/javascript" src="http://js.users.51.la/4836371.js"></script>
+	<noscript><a href="http://www.51.la/?4836371" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4836371.asp" style="border:none" /></a></noscript>
+	</div>
+	</div>
+	<!--end: bottom-->
+</div>
+<!--end: wrapper-->
+</body>
+</html>

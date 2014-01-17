@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>wordpress安全:登录邮件提醒(防止攻击)(DH博客)</title>
+	<meta name="keywords" content="wordpress安全:登录邮件提醒(防止攻击)" />
+	<meta name="description" content="wordpress安全:登录邮件提醒(防止攻击) 详细页面" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Language" content="zh-CN">	
+	<link rel="stylesheet" type="text/css" media="all" href="http://127.0.0.1/dhblog/css/style.css"/>
+	<link rel="shortcut icon" href="http://127.0.0.1/dhblog/favicon.ico" type="image/x-icon">
+	<script type="text/javascript">
+	
+	</script>	
+</head>
+<body>
+<div id="wrapper">
+	<div id="top" style="height:30px;border-top: 1px solid #898f8f;border-bottom: 1px solid #898f8f">
+  <div class="topnav">
+    <div class="left">
+        <div>
+		<ul class="menu">
+		<li><a href="http://127.0.0.1/dhblog/">首页</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/index.html/">关于本站</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/">本站导航</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/">本站共享</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/">友情链接</a></li> 
+		<li><a href="http://127.0.0.1/dhblog/">给我留言</a></li> 
+		</ul>
+        </div> 
+    </div>
+    <!--end: left-->
+    <div class="right">
+		<script type="text/javascript">
+			function showWarning() //显示系统日期   
+			{   
+				var now = new Date();
+				var hour = now.getHours();
+				if(hour>=23||hour<=6)
+				{
+					var message='<div style="border:2px solid #FF3300;font-size:12px;margin:2px 20px 0 440px;background:#FFFFDF;padding:2px;">提醒: 已经是夜里 ';
+					message +=hour;
+					message +=' 点多了，为了您和家人的健康，请注意按时作息减少熬夜。</div>';
+					return message;
+				}
+				else 
+				{			
+				   return 'ddd'; 
+				}
+			}
+			document.write(showWarning());
+		</script>
+    </div>
+    <!--end: right-->
+  </div>
+</div>
+<!--end: top-->
+<div id="header"> 
+  <div  class="toplink">
+    <ul>
+	  <li><a href="http://127.0.0.1/dhblog/rss.xml" target="_blank">文章RSS</a></li>
+	  <li>
+	  	<script type="text/javascript">
+		function showdate() //显示系统日期   
+		{   
+			var now = new Date();
+			var year = now.getFullYear();
+			var month = now.getMonth()+1; 
+			var day = now.getDate();
+			return year+"年"+month+"月"+day+"日";   
+		}
+		document.write(showdate());
+		</script>	
+	  </li>
+   </ul>
+  </div>
+  <div style="position:absolute;top:5px;left:35px;">
+   <object type="application/x-shockwave-flash" data="http://127.0.0.1/dhblog/images/relog.swf" WIDTH=80 HEIGHT=80>
+    <param name="movie" value="http://127.0.0.1/dhblog/images/relog.swf" />
+    <param name="WMode" value="Transparent" />
+   </object>
+  </div>
+  <div class="logo">
+    <h1 ><a href="http://127.0.0.1/dhblog/">
+      DH 博客
+      </a></h1>
+    <h2 class="description">
+      DH出品，必属精品！
+    </h2>
+  </div>
+</div>
+<!--end: header-->
+<div style="height:32px;position:relative;border-bottom: 1px solid #252525;border-top: 1px solid #252525;">
+	<div style="position: absolute;top:5px;left:10px;">类别导航：</div>
+	<div style="position: absolute;top:0;left:90px;">
+		<div class="topnav">
+			<div class="left">
+				<ul>
+					<li><a href="http://127.0.0.1/dhblog/">影视聚焦</a>
+						<ul>
+							<li><a href="http://127.0.0.1/dhblog//index//1.html">每周影视</a></li>
+							<li><a href="http://127.0.0.1/dhblog//index//1.html">影视合集</a></li>
+							<li><a href="http://127.0.0.1/dhblog//index/cE5BDB1E8A786E68EA8E88D90/1.html">影视推荐</a></li>
+						</ul>
+					</li>
+					<li><a href="http://127.0.0.1/dhblog/">IT 技术</a>
+						<ul>
+							<li><a href="http://127.0.0.1/dhblog//index/cE5BBBAE7AB99E68A80E69CAF/1.html">建站技术</a></li>
+							<li><a href="http://127.0.0.1/dhblog//index/cE7BD91E7BB9CE68EA8E5B9BF/1.html">编程技术</a></li>
+						</ul>
+					</li>
+					<li><a href="http://127.0.0.1/dhblog//index/cE7BD91E7BB9CE68EA8E5B9BF/1.html">网络推广</a></li>
+					<li><a href="http://127.0.0.1/dhblog//index/cE7BD91E7AB99E79B88E588A9/1.html">网站盈利</a></li>
+					<li><a href="http://127.0.0.1/dhblog//index/cE585B6E4BB96E4BAA4E6B581/1.html">其他交流</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="dh_say_content" class="right" style="margin:4px 0 2px 0">
+		<p id="dh_say" title="点击可查看下一条">ddd</p>
+	</div>	
+</div>
+<!--end: menunav-->
+<div class="top_content">   
+博客恢复运行，持续更新中... 20140118
+</div>
+	<div id="content">
+		<div class="browse">你的位置：<a href="http://127.0.0.1/dhblog/">首页</a> >>  <a href="http://127.0.0.1/dhblog/index/cE5BBBAE7AB99E68A80E69CAF/1.html" title="查看分类 建站技术 下的所有文章">建站技术</a> >> wordpress安全:登录邮件提醒(防止攻击) </div>
+		<div class="entry">
+			<h1>wordpress安全:登录邮件提醒(防止攻击)</h1><div>发表日期：2011041822 作者：DH分类：建站技术 标签： wordpress </div>
+自己的博客被别人反复尝试登陆怎么办？有没有办法知道呢？
+本文介绍两种方法：
+前提是空间有邮件功能，测试有无邮件功能的方法：登录界面点击“忘记密码”，有邮件发到你邮箱就有邮件功能。
+一、登录成功提醒
+这种方法就像银行的登录提醒一样，如果有人登录了系统，就会发一封邮件到邮箱，提醒你有人登录了，如果当时不是你登录，就要引起警惕了。将以下代码放入主题的functions.php中：
+<pre lang="php" line="1">
+/*****************************************************
+ 函数名称：wp_login_notify v1.0 by DH.huahua. 
+ 函数作用：有登录wp后台就会email通知博主
+******************************************************/
+function wp_login_notify()
+{
+    date_default_timezone_set('PRC');
+    $admin_email = get_bloginfo ('admin_email');
+    $to = $admin_email;
+	$subject = '你的博客空间登录提醒';
+	$message = '<p>你好！你的博客空间(' . get_option("blogname") . ')有登录！</p>' . 
+	'<p>请确定是您自己的登录，以防别人攻击！登录信息如下：</p>' . 
+	'<p>登录名：' . $_POST['log'] . '<p>' .
+	'<p>登录密码：' . $_POST['pwd'] .  '<p>' .
+	'<p>登录时间：' . date("Y-m-d H:i:s") .  '<p>' .
+	'<p>登录IP：' . $_SERVER['REMOTE_ADDR'] . '<p>';	
+	$wp_email = 'no-reply@' . preg_replace('#^www\.#', '', strtolower($_SERVER['SERVER_NAME']));
+	$from = "From: \"" . get_option('blogname') . "\" <$wp_email>";
+	$headers = "$from\nContent-Type: text/html; charset=" . get_option('blog_charset') . "\n";
+	wp_mail( $to, $subject, $message, $headers );
+}
+
+add_action('wp_login', 'wp_login_notify');
+</pre>
+
+二、登录失败提醒
+第二种方法我就得比较有效，有人尝试登陆你的系统，但是没有成功，这种反复尝试的动作本身就需要被记录下来，发给博主，这样，只要有错误的登录，就会发一封邮件到自己的邮箱，将对方尝试的登录名和登录密码发送到你邮箱。将以下代码放入主题的functions.php中：
+<pre lang="php" line="1">
+/*****************************************************
+ 函数名称：wp_login_failed_notify v1.0 by DH.huahua. 
+ 函数作用：有错误登录wp后台就会email通知博主
+******************************************************/
+function wp_login_failed_notify()
+{
+    date_default_timezone_set('PRC');
+    $admin_email = get_bloginfo ('admin_email');
+    $to = $admin_email;
+	$subject = '你的博客空间登录错误警告';
+	$message = '<p>你好！你的博客空间(' . get_option("blogname") . ')有登录错误！</p>' . 
+	'<p>请确定是您自己的登录失误，以防别人攻击！登录信息如下：</p>' . 
+	'<p>登录名：' . $_POST['log'] . '<p>' .
+	'<p>登录密码：' . $_POST['pwd'] .  '<p>' .
+	'<p>登录时间：' . date("Y-m-d H:i:s") .  '<p>' .
+	'<p>登录IP：' . $_SERVER['REMOTE_ADDR'] . '<p>';	
+	$wp_email = 'no-reply@' . preg_replace('#^www\.#', '', strtolower($_SERVER['SERVER_NAME']));
+	$from = "From: \"" . get_option('blogname') . "\" <$wp_email>";
+	$headers = "$from\nContent-Type: text/html; charset=" . get_option('blog_charset') . "\n";
+	wp_mail( $to, $subject, $message, $headers );
+}
+
+add_action('wp_login_failed', 'wp_login_failed_notify');
+</pre>
+
+		</div>
+		<div id="comment">
+			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
+			<!-- Duoshuo Comment BEGIN -->
+			<div class="ds-thread"></div>
+			<script type="text/javascript">
+			var duoshuoQuery = {short_name:"dhblog"};
+				(function() {
+					var ds = document.createElement('script');
+					ds.type = 'text/javascript';ds.async = true;
+					ds.src = 'http://static.duoshuo.com/embed.js';
+					ds.charset = 'UTF-8';
+					(document.getElementsByTagName('head')[0] 
+					|| document.getElementsByTagName('body')[0]).appendChild(ds);
+				})();
+			</script>
+			<!-- Duoshuo Comment END -->				
+		</div>		
+	</div>
+	<div id="sidebar">
+		<div class="singlewidget">
+	<h3>
+		广告
+	</h3>
+	<div class="box">
+		
+	</div>
+</div>
+<div class="tag_widget">
+	<h3>
+		标签
+	</h3>
+	<div class="tag_widget_box">
+	  <a href="http://127.0.0.1/dhblog/index//tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 2 篇">经验分享</a><a href="http://127.0.0.1/dhblog/index//twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://127.0.0.1/dhblog/index//tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://127.0.0.1/dhblog/index//tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://127.0.0.1/dhblog/index//tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 6 篇">友情推荐</a><a href="http://127.0.0.1/dhblog/index//tE794B5E5BDB1/1.html" title="共有文章 5 篇">电影</a><a href="http://127.0.0.1/dhblog/index//tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://127.0.0.1/dhblog/index//tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://127.0.0.1/dhblog/index//tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://127.0.0.1/dhblog/index//tphp/1.html" title="共有文章 11 篇">php</a><a href="http://127.0.0.1/dhblog/index//tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://127.0.0.1/dhblog/index//tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://127.0.0.1/dhblog/index//tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://127.0.0.1/dhblog/index//tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://127.0.0.1/dhblog/index//tcss/1.html" title="共有文章 1 篇">css</a><a href="http://127.0.0.1/dhblog/index//tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
+	</div>
+</div> <div class="doublewidget">
+	<h3>
+		网站统计
+	</h3>
+	<div class="box">
+		<ul><li>运行时间: <span style="font-size:12px;color:#555;">1074天</span></li><li>博文总数: <span style="font-size:12px;color:#555;">71篇</span></li><li>最近更新: <span style="font-size:12px;color:#555;">0篇</span></li><li>标签数目: <span style="font-size:12px;color:#555;">16个</span></li><li>分类数目: <span style="font-size:12px;color:#555;">6个</span></li></ul>
+	</div>
+</div>
+
+	</div>
+	<!--end: sidebar-->
+	<div id="footer">
+		<div id="footer-nav">
+		<a href="http://127.0.0.1/dhblog/html/aboutus.html">关于我们</a> | 
+		<a href="http://127.0.0.1/dhblog/html/mianze.html">免责声明</a> | 
+		<a href="http://127.0.0.1/dhblog/siteindex.html">网站地图索引</a> | 
+		<a href="http://127.0.0.1/dhblog/sitemap.html">最近网站地图</a> | 
+		<a href="http://127.0.0.1/dhblog/html/links.html">友情链接</a> | 
+		<a href="javascript:void(0);" onclick="AddFavorite('二手电影-影视资源搜集分享','http://127.0.0.1/dhblog/')">收藏本站</a> 
+	</div>
+	<div class="cpright">
+		Copyright &copy; 2011 &nbsp;
+		<a href="%DH_home_href%"><strong></strong>&reg;</a> &nbsp;
+		<a href="/sitemap.html">网站地图</a> &nbsp;
+		All rights reserved.56
+	<script language="javascript" type="text/javascript" src="http://js.users.51.la/4836371.js"></script>
+	<noscript><a href="http://www.51.la/?4836371" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4836371.asp" style="border:none" /></a></noscript>
+	</div>
+	</div>
+	<!--end: bottom-->
+</div>
+<!--end: wrapper-->
+</body>
+</html>
