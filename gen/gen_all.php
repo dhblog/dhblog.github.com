@@ -107,7 +107,8 @@ function dh_gen_page()
 				$tags.=$tag.' ';
 			}
 		}
-		$entry="<h1>".$matchT[1]."</h1>"."<div>发表日期：".$matchd[1]." 作者：".$matcha[1]."分类：".$matchc[1]." 标签： ".$tags."</div>".$matchb[1];		
+		$pubtime = date("Y-m-d",strtotime($matchd[1].'00'));
+		$entry="<h1>".$matchT[1]."</h1>"."<div>发表日期：".$pubtime." 作者：".$matcha[1]."分类：".$matchc[1]." 标签： ".$tags."</div>".$matchb[1];		
 		$DH_output_content_each =  str_replace("%entry%",$entry,$DH_output_content);
 		$DH_output_content_each =  str_replace("%title%",$matchT[1],$DH_output_content_each);
 		$DH_output_content_each =  str_replace("%keywords%",$matchT[1],$DH_output_content_each);
