@@ -218,7 +218,7 @@ function gen_html_num($lists,$pagecount)
 	dh_file_put_contents($DH_output_file,$sitemaphtml);
 }
 
-//按照月份产生索引
+//按照年份产生索引
 function gen_html_date($lists)
 {
 	global $DH_html_url,$DH_home_url,$DH_output_path,$DH_src_path;
@@ -237,7 +237,7 @@ function gen_html_date($lists)
 	foreach($lists as $key=>$list)
 	{	
 		$i++;
-		$updatetimepagenew=date('Y_m',strtotime($key.'00'));
+		$updatetimepagenew=date('Y',strtotime($key.'00'));
 		//如果有变化，说明需要输出了
 		if($updatetimepageold=='')
 			$updatetimepageold = $updatetimepagenew;
@@ -245,7 +245,7 @@ function gen_html_date($lists)
 		{
 			$DH_output_file = $sitemappath.'sitemap_'.$updatetimepageold.'.html';
 			$sitemaphtml = str_replace("%pagenavi%",'',$DH_output_content);
-			$sitemaphtml = str_replace("%num%",$updatetimepageold.' 月份',$sitemaphtml);
+			$sitemaphtml = str_replace("%num%",$updatetimepageold.' 年份',$sitemaphtml);
 			$sitemaphtml = str_replace("%list%",$liout,$sitemaphtml);
 			dh_file_put_contents($DH_output_file,$sitemaphtml);
 			$updatetimepageold = $updatetimepagenew;

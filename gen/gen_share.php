@@ -64,6 +64,16 @@ function dh_gen_share($lists)
 	$DH_side_ad= str_replace("%more%",'',$DH_side_ad);
 	$DH_side_ad= str_replace("%content%",'',$DH_side_ad);
 	
+	//热门文章
+	$DH_side_hot= str_replace("%title%",'热门文章',$DH_side_each);
+	$DH_side_hot= str_replace("%more%",'',$DH_side_hot);
+	$DH_side_hot= str_replace("%content%",'<ul  class="ds-top-threads" data-range="weekly" data-num-items="5"></ul>',$DH_side_hot);	
+	
+	//最新评论
+	$DH_side_pinglun= str_replace("%title%",'最新评论',$DH_side_each);
+	$DH_side_pinglun= str_replace("%more%",'',$DH_side_pinglun);
+	$DH_side_pinglun= str_replace("%content%",'<ul class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-admin="1" data-excerpt-length="20"></ul>',$DH_side_pinglun);
+	
 	//网站统计
 	$DH_side_tongji= str_replace("%title%",'网站统计',$DH_side_each2);
 	$DH_side_tongji= str_replace("%more%",'',$DH_side_tongji);
@@ -124,7 +134,7 @@ function dh_gen_share($lists)
 	}	
 	$DH_side_eacht= str_replace("%content%",$tagsall,$DH_side_eacht);	
 	
-	$DH_side=$DH_side_ad.$DH_side_eacht.$DH_side_tongji;	
+	$DH_side=$DH_side_ad.$DH_side_hot.$DH_side_pinglun.$DH_side_eacht.$DH_side_tongji;	
 	
 	$DH_output_file = $DH_share_output_path. 'side.html';
 	dh_file_put_contents($DH_output_file,$DH_side);	
