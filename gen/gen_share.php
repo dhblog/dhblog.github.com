@@ -115,7 +115,12 @@ function dh_gen_share($lists)
 	//$tongji.="\n".'<li><span class="lt2v0">最新更新:</span>'.'<span class="rt2v0 cred">'.$count[0].' 部</span></li>';
 
 	$tongji = "<ul>".$tongji.'</ul>';
-	$DH_side_tongji= str_replace("%content%",$tongji,$DH_side_tongji);
+	$DH_output_file=$DH_input_path.'tongji.html';
+	dh_file_put_contents($DH_output_file,$tongji);	
+		
+	$tongjiframe='<iframe allowtransparency="true" src="'.$DH_home_url.'tongji.html" frameBorder="0" scrolling="no"></iframe>';
+	
+	$DH_side_tongji= str_replace("%content%",$tongjiframe,$DH_side_tongji);
 	
 	//友情链接
 	$DH_side_fl= str_replace("%title%",'友情链接',$DH_side_each);
