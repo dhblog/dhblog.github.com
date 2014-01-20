@@ -25,7 +25,7 @@
 		<li><a href="http://www.movie002.com/" title="影视网址导航">网址导航</a></li> 
 		<li><a href="http://movie002.com/" title="影视资源导航">资源导航</a></li> 
 		<li><a href="http://dhblog.org/html/links.html">友情链接</a></li> 
-		<li><a href="http://dhblog.org/html/coperation.html">给我留言</a></li> 
+		<li><a href="http://dhblog.org/html/0/1.html">给我留言</a></li> 
 		</ul>
         </div> 
     </div>
@@ -127,8 +127,32 @@
 	<div id="content">
 		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> wordpress安全:处理垃圾评论(续2)-Trackback攻击 </div>
 		<div class="entry">
-			<h1>wordpress安全:处理垃圾评论(续2)-Trackback攻击</h1><div>发表日期：2012-01-31 作者：DH分类：编程技术 标签： wordpress </div>
-<h2>1 什么是Trackback评论攻击</h2>
+			<h1>wordpress安全:处理垃圾评论(续2)-Trackback攻击</h1>
+			<div style="height:35px">发表日期：2012-01-31 作者：DH分类：编程技术 标签： wordpress </div>
+			<div style="height:40px">
+				<!-- Baidu Button BEGIN -->
+				<span id="bdshare" class="bdshare_t fl bds_tools get-codes-bdshare">
+					<span class="bds_more">分享到：</span>
+					<a class="bds_tsina"></a>
+					<a class="bds_tqq"></a>
+					<a class="bds_tieba"></a>
+					<a class="bds_douban"></a>
+					<a class="bds_hi"></a>
+					<a class="shareCount"></a>
+				</span>
+				<!-- Baidu Button END -->
+			</div>
+			<div>
+			<div id="article_index">
+					<div id="index_title"><span id="the_index_title">正文索引</span><span id="show_index" onclick="showhide('show_index','index_ul','[展开]','[隐藏]');">[ 隐藏 ]</span></div>
+					<div id="index_ul"><ul><li class="level2"><a href="#title_0" title="1 什么是Trackback评论攻击">1 什么是Trackback评论攻击</a></li>
+<li class="level2"><a href="#title_1" title="2 处理Trackback评论攻击">2 处理Trackback评论攻击</a></li>
+<li class="level3"><a href="#title_2" title="2.1 willian kan 方法">2.1 willian kan 方法</a></li>
+<li class="level3"><a href="#title_3" title="2.2 需要中文的插件">2.2 需要中文的插件</a></li>
+<li class="level3"><a href="#title_4" title="2.3 禁用Trackback">2.3 禁用Trackback</a></li>
+<li class="level3"><a href="#title_5" title="2.4 手动删除垃圾评论">2.4 手动删除垃圾评论</a></li>
+</ul></div></div>
+<h2 id="title_0">1 什么是Trackback评论攻击</h2>
 现在的垃圾评论很多，<a href="http://dhblog.org">我的博客</a>深受其害，前面有好几篇文章介绍怎么对付垃圾评论：
 <a href="http://dhblog.org/44.html">wordpress安全:被垃圾评论搞的很烦</a>
 <a href="http://dhblog.org/43.html">wordpress安全:处理垃圾评论</a>
@@ -140,13 +164,13 @@ electronic cigarettes
 there after but the consequences are devastating.... tobacco is a drug. if we ...
 驳回 | 回复 | 编辑 | 垃圾评论 | 回收站
 </pre>
-<h2>2 处理Trackback评论攻击</h2>
-<h3>2.1 willian kan 方法</h3>
+<h2 id="title_1">2 处理Trackback评论攻击</h2>
+<h3 id="title_2">2.1 willian kan 方法</h3>
 willian kan 有两个版本，记得要用功能多的版本哦，地址是：<a href="kan.willin.org/?p=1324">多樣變化的WP Anti Spam 小牆</a>，好像这个也无法对付Trackback攻击，用下面的办法会好点。
-<h3>2.2 需要中文的插件</h3>
+<h3 id="title_3">2.2 需要中文的插件</h3>
 由于基本上这种评论都是英文的，所以使用some chinese please 插件效果很不错
 安装地址：<a href="http://wordpress.org/extend/plugins/some-chinese-please/">http://wordpress.org/extend/plugins/some-chinese-please/</a>
-<h3>2.3 禁用Trackback</h3>
+<h3 id="title_4">2.3 禁用Trackback</h3>
 <strong>a. 禁用以后的文章的Trackback：</strong>
 你可以到 WordPress 后台 > 设置 > 评论设置 中，把 Allow link notifications from other blogs (pingbacks and trackbacks.) （允许接受来自其它 Blog 的链接通告（包括引用和通告） ）关闭，这一项取消。但是这样的设置只能关闭新日志的 Trackbacks 功能，那以前写的日志不是不能关闭了。
 <strong>b. 禁用以前文章的Trackback功能：</strong>
@@ -155,9 +179,10 @@ a方法能使之后的文章没有后顾之忧，但如果你需要关闭以前�
 <pre lang='sql' line='1'>
 UPDATE wp_posts SET ping_status = ‘closed’;
 </pre>
-<h3>2.4 手动删除垃圾评论</h3>
+<h3 id="title_5">2.4 手动删除垃圾评论</h3>
 如果你不想安装上面的内容，又不想关闭Trackback功能，也可以在垃圾评论有的时候，手动删除即可。
 
+			</div>
 		</div>
 		<div id="comment">
 			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
@@ -215,7 +240,7 @@ UPDATE wp_posts SET ping_status = ‘closed’;
 		<a href="http://dhblog.org/html/mianze.html">免责声明</a> | 
 		<a href="http://dhblog.org/siteindex.html">网站地图索引</a> | 
 		<a href="http://dhblog.org/sitemap.html">最近网站地图</a> | 
-		<a href="http://dhblog.org/html/links.html">友情链接</a> | 
+		<a href="http://dhblog.org/html/0/1.html">友情链接</a> | 
 		<a href="javascript:void(0);" onclick="AddFavorite('二手电影-影视资源搜集分享','http://dhblog.org/')">收藏本站</a> 
 	</div>
 	<div class="cpright">
@@ -241,5 +266,18 @@ UPDATE wp_posts SET ping_status = ‘closed’;
 	<!--end: bottom-->
 </div>
 <!--end: wrapper-->
+	<script type="text/javascript">
+	eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('f g(7,5,8,e){9 3=6.4(7);9 0=6.4(5);a(0.1.2==\'d\'){0.1.2=\'c\';3.b=8}h a(0.1.2==\'c\'){0.1.2=\'d\';3.b=e}};',18,18,'id2div|style|display|id1div|getElementById|id2|document|id1|tx1|var|if|innerHTML|none|block|tx2|function|showhide|else'.split('|'),0,{}))
+
+	</script>
+	<script type="text/javascript">
+	eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('6 7(1,0){    3{        4.9.8(0,1);    }    5(e){        3{            4.c.a(1,0,"");        }        5(e){            b("抱歉，您所使用的浏览器无法完成此操作。\\2\\2加入收藏失败，请使用d+f进行添加");        }    }};',16,16,'url|title|n|try|window|catch|function|AddFavorite|addFavorite|external|addPanel|alert|sidebar|Ctrl||D'.split('|'),0,{}))
+
+	</script>
+	<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=19224" ></script>
+	<script type="text/javascript" id="bdshell_js"></script>
+	<script type="text/javascript">
+	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+	</script>
 </body>
 </html>

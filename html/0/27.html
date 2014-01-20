@@ -25,7 +25,7 @@
 		<li><a href="http://www.movie002.com/" title="影视网址导航">网址导航</a></li> 
 		<li><a href="http://movie002.com/" title="影视资源导航">资源导航</a></li> 
 		<li><a href="http://dhblog.org/html/links.html">友情链接</a></li> 
-		<li><a href="http://dhblog.org/html/coperation.html">给我留言</a></li> 
+		<li><a href="http://dhblog.org/html/0/1.html">给我留言</a></li> 
 		</ul>
         </div> 
     </div>
@@ -127,44 +127,73 @@
 	<div id="content">
 		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE5BBBAE7AB99E68A80E69CAF/1.html" title="查看分类 建站技术 下的所有文章">建站技术</a> >> wordpress安全:应对尝试密码的攻击 </div>
 		<div class="entry">
-			<h1>wordpress安全:应对尝试密码的攻击</h1><div>发表日期：2011-06-19 作者：DH分类：建站技术 标签： wordpress </div>
-<h2>序</h2>
+			<h1>wordpress安全:应对尝试密码的攻击</h1>
+			<div style="height:35px">发表日期：2011-06-19 作者：DH分类：建站技术 标签： wordpress </div>
+			<div style="height:40px">
+				<!-- Baidu Button BEGIN -->
+				<span id="bdshare" class="bdshare_t fl bds_tools get-codes-bdshare">
+					<span class="bds_more">分享到：</span>
+					<a class="bds_tsina"></a>
+					<a class="bds_tqq"></a>
+					<a class="bds_tieba"></a>
+					<a class="bds_douban"></a>
+					<a class="bds_hi"></a>
+					<a class="shareCount"></a>
+				</span>
+				<!-- Baidu Button END -->
+			</div>
+			<div>
+			<div id="article_index">
+					<div id="index_title"><span id="the_index_title">正文索引</span><span id="show_index" onclick="showhide('show_index','index_ul','[展开]','[隐藏]');">[ 隐藏 ]</span></div>
+					<div id="index_ul"><ul><li class="level2"><a href="#title_0" title="序">序</a></li>
+<li class="level2"><a href="#title_1" title="1. 删除admin用户">1. 删除admin用户</a></li>
+<li class="level2"><a href="#title_2" title="2. 最好不要暴露你的用户名">2. 最好不要暴露你的用户名</a></li>
+<li class="level2"><a href="#title_3" title="3. 将密码设置复杂">3. 将密码设置复杂</a></li>
+<li class="level2"><a href="#title_4" title="4. 得到尝试密码的痕迹">4. 得到尝试密码的痕迹</a></li>
+<li class="level2"><a href="#title_5" title="5. 安装 Login LockDown 插件">5. 安装 Login LockDown 插件</a></li>
+<li class="level2"><a href="#title_6" title="6. 更改登录地址，并不要在你的网页中显示这些地址">6. 更改登录地址，并不要在你的网页中显示这些地址</a></li>
+<li class="level2"><a href="#title_7" title="7. 唯一浏览器、唯一ip地址登录">7. 唯一浏览器、唯一ip地址登录</a></li>
+<li class="level2"><a href="#title_8" title="8. 定期备份">8. 定期备份</a></li>
+<li class="level2"><a href="#title_9" title="9. 结束语">9. 结束语</a></li>
+</ul></div></div>
+<h2 id="title_0">序</h2>
 前一段时间<a href="http://dhblog.org/archives/915.html">博客被攻击</a>了，自从发了文章之后，得到了很多人得关心，也得到了有史以来的最多的评论数目：>50。很多博友提出了很多有方法，这里特别感谢：
 <a href="http://blog.30c.org/">Clove</a>，<a href="http://014.cc/">Dianso</a>，<a href="http://ixwebhosting.us">ixwebhosting</a>,根据他们的建议，我总结了一下，应对这类攻击的方法：
-<h2>1. 删除admin用户</h2> 
+<h2 id="title_1">1. 删除admin用户</h2> 
 针对前两次的攻击：<a href="http://dhblog.org/archives/915.html">博客被攻击</a>和<a href="http://awy.me/2011/06/six-person-sending-a-gift/">某人送的六一“礼物”</a>，攻击者都是使用admin为用户名尝试密码的，如果将admin用户删除，用自己设置的用户名访问，那么攻击者再怎么尝试都是无效的。博主可以在 wp后台的用户-->用户 里面删除。删除之前要注意新建另一个自己的管理员用户哦。
 
-<h2>2. 最好不要暴露你的用户名</h2>
+<h2 id="title_2">2. 最好不要暴露你的用户名</h2>
 虽然没有了admin用户，但是攻击者如果聪明，就可以从你网站的信息中得到你的用户名，一样尝试密码，比如说下面的将用户名直接暴露在外面的做法是极为不妥的。
 除了这点，还要注意，可以把自己的用户名设置复杂一点，这样攻击者还需要知道你的用户名，增加难度。
 <a href="http://dhblog.org/wp-content/uploads/2011/06/selfuser.png"><img src="http://dhblog.org/wp-content/uploads/2011/06/selfuser.png" alt="" title="selfuser" width="516" height="217" class="aligncenter size-full wp-image-925" /></a>
 
-<h2>3. 将密码设置复杂</h2>
+<h2 id="title_3">3. 将密码设置复杂</h2>
 这个不用说，是对付这种尝试密码的最有效的屏障，也是最好的关卡。
 密码设置的复杂至少包括：
 有：大小写、数字、特殊字符、长度不小于6等。
 没有：太多相同的字符、字典词汇、生日等。
 
-<h2>4. 得到尝试密码的痕迹</h2>
+<h2 id="title_4">4. 得到尝试密码的痕迹</h2>
 但有人在尝试登陆的时候，给你的邮箱发一封信。这里使用 <a href="http://dhblog.org/archives/888.html">wordpress登录邮件提醒(防止攻击)</a>可以通知。同时kan.willin的 <a href="http://kan.willin.org/?p=1335">my_visitor</a>也有此功能。
 
-<h2>5. 安装 Login LockDown 插件</h2>
+<h2 id="title_5">5. 安装 Login LockDown 插件</h2>
 虽然知道别人在尝试登陆你的后台，但是比较麻烦的是他一直在登陆，这很可能是利用机器人在登录，如果没有防护措施，就会一直收到登陆登陆错误提醒，这样不免会心急如焚，如果组织这种行径呢？这里推荐使用Login LockDown ，插件可以设定登陆错误的次数，超过这个次数，就不允许登陆。这样可以很好阻止这样的机器人攻击。
 <a href="http://dhblog.org/wp-content/uploads/2011/06/lockdown.png"><img src="http://dhblog.org/wp-content/uploads/2011/06/lockdown.png" alt="" title="lockdown" width="326" height="248" class="aligncenter size-full wp-image-928" /></a>
 
-<h2>6. 更改登录地址，并不要在你的网页中显示这些地址</h2>
+<h2 id="title_6">6. 更改登录地址，并不要在你的网页中显示这些地址</h2>
 管理目录永远都是wp- admin，所以对于攻击者来说，省了个步骤来搞定一个WordPress博客，不管博主是不是觉得有必要更改这个地址，文章<a href="http://www.54wuhen.com/post-1323.html">【转载】WordPress后台登录地址更改方法（更改wp-admin目录名）</a>已经讲述了更改这个地址的方法，更改之后，那就不要在页面中显示这个地址，这样就白改了，呵呵。所以，自己需要记住这个地址很有必要，这样就觉得使用不方便了吧，是的。还有一个方法：<a href="http://imluren.com/2011/07/hidden-manage.html">http://imluren.com/2011/07/hidden-manage.html</a> 安全和方便总是对立的。
 
-<h2>7. 唯一浏览器、唯一ip地址登录</h2>
+<h2 id="title_7">7. 唯一浏览器、唯一ip地址登录</h2>
 kan.willin对此有独特的研究，并给出了很好的解决方法，具体使用方法见：<a href="http://kan.willin.org/?p=1336">WordPress 最安全登入</a>。使用登入检查和独一无二的user agent，使用这种方法是绝对安全了，但是如果想在其他电脑登陆，或者IP经常变化的使用比较不方便。 
 
-<h2>8. 定期备份</h2>
+<h2 id="title_8">8. 定期备份</h2>
 这个方法就是留一手，即使在被攻击得逞之后，也不会丢失数据，等恢复之后，又是一条好汉。备份的插件很多，这里推荐的还是kan.willin的 <a href="http://kan.willin.org/?p=1335">my_visitor</a>等
 <a href="http://dhblog.org/wp-content/uploads/2011/06/beifeng.png"><img src="http://dhblog.org/wp-content/uploads/2011/06/beifeng.png" alt="" title="beifeng" width="494" height="196" class="aligncenter size-full wp-image-926" /></a>
 
-<h2>9. 结束语</h2>
+<h2 id="title_9">9. 结束语</h2>
 尝试密码的攻击，只要密码设置比较复杂，是不会造成什么伤害的，基本上不会攻击成功，但是不排除有小孩喜欢这样尝试，尝试多了也会对服务器造成伤害，所以，在博客出名之后，适当防止也是必要的。
 
+			</div>
 		</div>
 		<div id="comment">
 			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
@@ -222,7 +251,7 @@ kan.willin对此有独特的研究，并给出了很好的解决方法，具体�
 		<a href="http://dhblog.org/html/mianze.html">免责声明</a> | 
 		<a href="http://dhblog.org/siteindex.html">网站地图索引</a> | 
 		<a href="http://dhblog.org/sitemap.html">最近网站地图</a> | 
-		<a href="http://dhblog.org/html/links.html">友情链接</a> | 
+		<a href="http://dhblog.org/html/0/1.html">友情链接</a> | 
 		<a href="javascript:void(0);" onclick="AddFavorite('二手电影-影视资源搜集分享','http://dhblog.org/')">收藏本站</a> 
 	</div>
 	<div class="cpright">
@@ -248,5 +277,18 @@ kan.willin对此有独特的研究，并给出了很好的解决方法，具体�
 	<!--end: bottom-->
 </div>
 <!--end: wrapper-->
+	<script type="text/javascript">
+	eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('f g(7,5,8,e){9 3=6.4(7);9 0=6.4(5);a(0.1.2==\'d\'){0.1.2=\'c\';3.b=8}h a(0.1.2==\'c\'){0.1.2=\'d\';3.b=e}};',18,18,'id2div|style|display|id1div|getElementById|id2|document|id1|tx1|var|if|innerHTML|none|block|tx2|function|showhide|else'.split('|'),0,{}))
+
+	</script>
+	<script type="text/javascript">
+	eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('6 7(1,0){    3{        4.9.8(0,1);    }    5(e){        3{            4.c.a(1,0,"");        }        5(e){            b("抱歉，您所使用的浏览器无法完成此操作。\\2\\2加入收藏失败，请使用d+f进行添加");        }    }};',16,16,'url|title|n|try|window|catch|function|AddFavorite|addFavorite|external|addPanel|alert|sidebar|Ctrl||D'.split('|'),0,{}))
+
+	</script>
+	<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=19224" ></script>
+	<script type="text/javascript" id="bdshell_js"></script>
+	<script type="text/javascript">
+	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+	</script>
 </body>
 </html>

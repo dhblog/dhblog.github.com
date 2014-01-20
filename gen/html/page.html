@@ -13,7 +13,24 @@
 	<div id="content">
 		<div class="browse">你的位置：<a href="%home%">首页</a> >>  <a href="%caturl%" title="查看分类 %cat% 下的所有文章">%cat%</a> >> %title% </div>
 		<div class="entry">
+			<h1>%title%</h1>
+			<div style="height:35px">%metas%</div>
+			<div style="height:40px">
+				<!-- Baidu Button BEGIN -->
+				<span id="bdshare" class="bdshare_t fl bds_tools get-codes-bdshare">
+					<span class="bds_more">分享到：</span>
+					<a class="bds_tsina"></a>
+					<a class="bds_tqq"></a>
+					<a class="bds_tieba"></a>
+					<a class="bds_douban"></a>
+					<a class="bds_hi"></a>
+					<a class="shareCount"></a>
+				</span>
+				<!-- Baidu Button END -->
+			</div>
+			<div>
 			%entry%
+			</div>
 		</div>
 		<div id="comment">
 			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
@@ -32,5 +49,16 @@
 	<!--end: bottom-->
 </div>
 <!--end: wrapper-->
+	<script type="text/javascript">
+	%page.js%
+	</script>
+	<script type="text/javascript">
+	%footjs%
+	</script>
+	<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=19224" ></script>
+	<script type="text/javascript" id="bdshell_js"></script>
+	<script type="text/javascript">
+	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+	</script>
 </body>
 </html>

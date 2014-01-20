@@ -15,6 +15,7 @@ require("compressJS.class.php");
 require("page_navi.php");
 require("gen_share.php");
 require("sitemap/gen.php");
+require("article_index.php");
 set_time_limit(600); 
 
 //预定义
@@ -109,8 +110,10 @@ function dh_gen_page()
 			}
 		}
 		$pubtime = date("Y-m-d",strtotime($matchd[1].'00'));
-		$entry="<h1>".$matchT[1]."</h1>"."<div>发表日期：".$pubtime." 作者：".$matcha[1]."分类：".$matchc[1]." 标签： ".$tags."</div>".$matchb[1];		
-		$DH_output_content_each =  str_replace("%entry%",$entry,$DH_output_content);
+		$metas="发表日期：".$pubtime." 作者：".$matcha[1]."分类：".$matchc[1]." 标签： ".$tags;		
+		$DH_output_content_each =  str_replace("%metas%",$metas,$DH_output_content);
+		$article_index=article_index($matchb[1]);
+		$DH_output_content_each =  str_replace("%entry%",$article_index,$DH_output_content_each);
 		$DH_output_content_each =  str_replace("%title%",$matchT[1],$DH_output_content_each);
 		$DH_output_content_each =  str_replace("%keywords%",$matchT[1],$DH_output_content_each);
 		$DH_output_content_each =  str_replace("%description%",$matchT[1].' 详细页面',$DH_output_content_each);
@@ -269,6 +272,7 @@ function dh_gen_each_list($eachlist,$urlname,$name,$listeach,$content)
 			$content_new =  str_replace("%cat%",$name,$content_new);
 			$caturl = $DH_index_url.$urlname.'/1.html';
 			$content_new =  str_replace("%caturl%",$caturl,$content_new);			
+			$content_new =  str_replace("%page%",$catpage,$content_new);
 			
 			$DH_output_file = $DH_output_file_dir.$catpage.'.html';
 			dh_file_put_contents($DH_output_file,$content_new);
@@ -287,7 +291,8 @@ function dh_gen_each_list($eachlist,$urlname,$name,$listeach,$content)
 		$content_new =  str_replace("%cat%",$name,$content_new);
 		$caturl = $DH_index_url.$urlname.'/1.html';
 		$content_new =  str_replace("%caturl%",$caturl,$content_new);
-			
+		$content_new =  str_replace("%page%",$catpage,$content_new);
+		
 		$DH_output_file = $DH_output_file_dir.$catpage.'.html';
 		dh_file_put_contents($DH_output_file,$content_new);
 	}

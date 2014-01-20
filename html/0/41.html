@@ -25,7 +25,7 @@
 		<li><a href="http://www.movie002.com/" title="影视网址导航">网址导航</a></li> 
 		<li><a href="http://movie002.com/" title="影视资源导航">资源导航</a></li> 
 		<li><a href="http://dhblog.org/html/links.html">友情链接</a></li> 
-		<li><a href="http://dhblog.org/html/coperation.html">给我留言</a></li> 
+		<li><a href="http://dhblog.org/html/0/1.html">给我留言</a></li> 
 		</ul>
         </div> 
     </div>
@@ -127,8 +127,33 @@
 	<div id="content">
 		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> wordpress ajax之一:一个简单的例子 </div>
 		<div class="entry">
-			<h1>wordpress ajax之一:一个简单的例子</h1><div>发表日期：2011-08-08 作者：DH分类：编程技术 标签： wordpress ajax </div>
-<h2>序言</h2>
+			<h1>wordpress ajax之一:一个简单的例子</h1>
+			<div style="height:35px">发表日期：2011-08-08 作者：DH分类：编程技术 标签： wordpress ajax </div>
+			<div style="height:40px">
+				<!-- Baidu Button BEGIN -->
+				<span id="bdshare" class="bdshare_t fl bds_tools get-codes-bdshare">
+					<span class="bds_more">分享到：</span>
+					<a class="bds_tsina"></a>
+					<a class="bds_tqq"></a>
+					<a class="bds_tieba"></a>
+					<a class="bds_douban"></a>
+					<a class="bds_hi"></a>
+					<a class="shareCount"></a>
+				</span>
+				<!-- Baidu Button END -->
+			</div>
+			<div>
+			<div id="article_index">
+					<div id="index_title"><span id="the_index_title">正文索引</span><span id="show_index" onclick="showhide('show_index','index_ul','[展开]','[隐藏]');">[ 隐藏 ]</span></div>
+					<div id="index_ul"><ul><li class="level2"><a href="#title_0" title="序言">序言</a></li>
+<li class="level2"><a href="#title_1" title="ajax的优缺点">ajax的优缺点</a></li>
+<li class="level2"><a href="#title_2" title="ajax的需要的元素">ajax的需要的元素</a></li>
+<li class="level2"><a href="#title_3" title="例子的运行情况">例子的运行情况</a></li>
+<li class="level2"><a href="#title_4" title="html部分">html部分</a></li>
+<li class="level2"><a href="#title_5" title="js部分">js部分</a></li>
+<li class="level2"><a href="#title_6" title="后台php部分">后台php部分</a></li>
+</ul></div></div>
+<h2 id="title_0">序言</h2>
 今天是星期一，是我发文章的日子。最近在搞一个东西，就是将ajax运用到wordpress中，大家可以看我的博客，里面有很多的ajax的东西，包括：
 1.首页的分页的ajax
 2.评论分页的ajax
@@ -136,7 +161,7 @@
 4.评论ajax提交
 后面的文章将逐步介绍如何实现上面的ajax功能，这篇文章的主要目的是让大家了解ajax的用法，用一个简单的例子说明ajax的使用，让大家能很快上手ajax，写出自己需要的ajax程序。
 
-<h2>ajax的优缺点</h2>
+<h2 id="title_1">ajax的优缺点</h2>
 缺点：
 1. 各个浏览器对XMLHttpRequest对象的支持度不足(兼容性问题)
 2. 破坏浏览器的前进,后退功能。
@@ -149,7 +174,7 @@
 2. 使用使用时的体验较好
 3. 可以装一下，毕竟主题支持动态加载，nb啊，呵呵
 
-<h2>ajax的需要的元素</h2>
+<h2 id="title_2">ajax的需要的元素</h2>
 元素包括：
 1. 一个html页面，这里包含了有css标记的元素，比如a，可以供js来寻找，在用户点击的时候发出ajax请求
 2. jquery.js，下载地址为:http://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js
@@ -168,7 +193,7 @@
 </pre>
 4.functions.php中添加行数即可
 
-<h2>例子的运行情况</h2>
+<h2 id="title_3">例子的运行情况</h2>
 <div class="test_response">
 <div> 返回结果的位置 </div>
 <div class="test_navi">
@@ -177,7 +202,7 @@
 </div>
 请点击上面的“第一页”等，后台会返回你的请求之后的处理结果
 
-<h2>html部分</h2>
+<h2 id="title_4">html部分</h2>
 你随便写一个文章，用html模式，把下面的代码贴进去就可以了。注意将
 http://dhblog.org/?navi=2 换成你的http://自己域名/?navi=2
 <pre lang="html" line="1">
@@ -189,7 +214,7 @@ http://dhblog.org/?navi=2 换成你的http://自己域名/?navi=2
 </div>
 </pre>
 
-<h2>js部分</h2>
+<h2 id="title_5">js部分</h2>
 下面的代码保存为 test.js文件，放到模板里面，记得在header.php中包含哦
 <pre lang="js" line="1">
 var tnavi='.test_navi';
@@ -227,7 +252,7 @@ $(document).ready(function test_navi(){
 })
 </pre>
 
-<h2>后台php部分</h2>
+<h2 id="title_6">后台php部分</h2>
 下面的代码放到functiongs.php中，http://dhblog.org/?navi=2 换成你的http://自己域名/?navi=2
 <pre lang="php" line="1">
 /*****************************************************
@@ -257,6 +282,7 @@ add_action('template_redirect', 'test_action_do');
 
 希望大家通过上面的例子能够理解ajax的工作过程，能做好ajax学习的第一步！
 
+			</div>
 		</div>
 		<div id="comment">
 			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
@@ -314,7 +340,7 @@ add_action('template_redirect', 'test_action_do');
 		<a href="http://dhblog.org/html/mianze.html">免责声明</a> | 
 		<a href="http://dhblog.org/siteindex.html">网站地图索引</a> | 
 		<a href="http://dhblog.org/sitemap.html">最近网站地图</a> | 
-		<a href="http://dhblog.org/html/links.html">友情链接</a> | 
+		<a href="http://dhblog.org/html/0/1.html">友情链接</a> | 
 		<a href="javascript:void(0);" onclick="AddFavorite('二手电影-影视资源搜集分享','http://dhblog.org/')">收藏本站</a> 
 	</div>
 	<div class="cpright">
@@ -340,5 +366,18 @@ add_action('template_redirect', 'test_action_do');
 	<!--end: bottom-->
 </div>
 <!--end: wrapper-->
+	<script type="text/javascript">
+	eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('f g(7,5,8,e){9 3=6.4(7);9 0=6.4(5);a(0.1.2==\'d\'){0.1.2=\'c\';3.b=8}h a(0.1.2==\'c\'){0.1.2=\'d\';3.b=e}};',18,18,'id2div|style|display|id1div|getElementById|id2|document|id1|tx1|var|if|innerHTML|none|block|tx2|function|showhide|else'.split('|'),0,{}))
+
+	</script>
+	<script type="text/javascript">
+	eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('6 7(1,0){    3{        4.9.8(0,1);    }    5(e){        3{            4.c.a(1,0,"");        }        5(e){            b("抱歉，您所使用的浏览器无法完成此操作。\\2\\2加入收藏失败，请使用d+f进行添加");        }    }};',16,16,'url|title|n|try|window|catch|function|AddFavorite|addFavorite|external|addPanel|alert|sidebar|Ctrl||D'.split('|'),0,{}))
+
+	</script>
+	<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=19224" ></script>
+	<script type="text/javascript" id="bdshell_js"></script>
+	<script type="text/javascript">
+	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+	</script>
 </body>
 </html>

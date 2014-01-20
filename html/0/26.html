@@ -25,7 +25,7 @@
 		<li><a href="http://www.movie002.com/" title="影视网址导航">网址导航</a></li> 
 		<li><a href="http://movie002.com/" title="影视资源导航">资源导航</a></li> 
 		<li><a href="http://dhblog.org/html/links.html">友情链接</a></li> 
-		<li><a href="http://dhblog.org/html/coperation.html">给我留言</a></li> 
+		<li><a href="http://dhblog.org/html/0/1.html">给我留言</a></li> 
 		</ul>
         </div> 
     </div>
@@ -127,10 +127,33 @@
 	<div id="content">
 		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> 网页中显示当前日期(php/jsp/javascript/flash) </div>
 		<div class="entry">
-			<h1>网页中显示当前日期(php/jsp/javascript/flash)</h1><div>发表日期：2011-06-13 作者：DH分类：编程技术 标签： wordpress php </div>
+			<h1>网页中显示当前日期(php/jsp/javascript/flash)</h1>
+			<div style="height:35px">发表日期：2011-06-13 作者：DH分类：编程技术 标签： wordpress php </div>
+			<div style="height:40px">
+				<!-- Baidu Button BEGIN -->
+				<span id="bdshare" class="bdshare_t fl bds_tools get-codes-bdshare">
+					<span class="bds_more">分享到：</span>
+					<a class="bds_tsina"></a>
+					<a class="bds_tqq"></a>
+					<a class="bds_tieba"></a>
+					<a class="bds_douban"></a>
+					<a class="bds_hi"></a>
+					<a class="shareCount"></a>
+				</span>
+				<!-- Baidu Button END -->
+			</div>
+			<div>
+			<div id="article_index">
+					<div id="index_title"><span id="the_index_title">正文索引</span><span id="show_index" onclick="showhide('show_index','index_ul','[展开]','[隐藏]');">[ 隐藏 ]</span></div>
+					<div id="index_ul"><ul><li class="level2"><a href="#title_0" title="1. php的服务器端方法">1. php的服务器端方法</a></li>
+<li class="level2"><a href="#title_1" title="2. jsp的服务器端方法">2. jsp的服务器端方法</a></li>
+<li class="level2"><a href="#title_2" title="3. 服务器端方法的缺点">3. 服务器端方法的缺点</a></li>
+<li class="level2"><a href="#title_3" title="4. js方法">4. js方法</a></li>
+<li class="level2"><a href="#title_4" title="5. flash方法">5. flash方法</a></li>
+</ul></div></div>
 上次发了文章<a href="http://dhblog.org/archives/907.html">javascript 熬夜提醒</a>，用的不是服务器计算当前时间的方法，是用的浏览器在本地运行javascript的方法，这里说明一下各种方法和区别吧。
 我的网站上的时间就是用js方法显示的。
-<h2>1. php的服务器端方法</h2>
+<h2 id="title_0">1. php的服务器端方法</h2>
 <pre lang="php" line="1">
 <?php
 	$hourdiff = "15"; /* 这是服务器时区和客户本地时区差 */
@@ -142,7 +165,7 @@
 详细使用方法见：
 <a href="http://php.net/manual/en/function.date.php">http://php.net/manual/en/function.date.php</a>
 
-<h2>2. jsp的服务器端方法</h2>
+<h2 id="title_1">2. jsp的服务器端方法</h2>
 <pre lang="jsp" line="1">
 <%@ page import="java.util.Date"%>
 <%
@@ -153,13 +176,13 @@
 详细使用方法见：
 <a href="http://bbs.blueidea.com/viewthread.php?tid=989464&page=">jsp中的日期问题及其它</a>
 
-<h2>3. 服务器端方法的缺点</h2>
+<h2 id="title_2">3. 服务器端方法的缺点</h2>
 缺点：
 1 不是客户端的时间，是服务器的时间，服务器可能在美国，这个时间对在不同时区的客户端是一样的，对每个客户端需要单独计算。而且换了不同时区的服务器，需要更改这些时区设置。
 2 服务器端计算，需要占用服务器的时间。
 所以，给出使用js的方法:
 
-<h2>4. js方法</h2>
+<h2 id="title_3">4. js方法</h2>
 <pre lang='javascript' line="1">
 <script type="text/javascript">
 function showdate() //显示系统日期   
@@ -181,7 +204,7 @@ document.write(showdate());
 3 不同地区的客户能拿到他们的自己的当前时间，符合他们的需求
 4 js代码可以在任何环境中使用，不管是php、jsp还是asp
 
-<h2>5. flash方法</h2>
+<h2 id="title_4">5. flash方法</h2>
 最后介绍的，当然是最厉害的，但这个方法最简单，也最有效果。就和我的网页上top上的圆形时钟和数字时钟一样，这些flash网上有，只要加入到html中就可以了。有需要可以在我的网站下载，找到我网站代码里面的flash地址，下载即可。
 <pre lang='html' line="1">
 <div style="position:absolute;top:30px;right:10px;">
@@ -197,6 +220,7 @@ document.write(showdate());
 3. 互动的。
 
 
+			</div>
 		</div>
 		<div id="comment">
 			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
@@ -254,7 +278,7 @@ document.write(showdate());
 		<a href="http://dhblog.org/html/mianze.html">免责声明</a> | 
 		<a href="http://dhblog.org/siteindex.html">网站地图索引</a> | 
 		<a href="http://dhblog.org/sitemap.html">最近网站地图</a> | 
-		<a href="http://dhblog.org/html/links.html">友情链接</a> | 
+		<a href="http://dhblog.org/html/0/1.html">友情链接</a> | 
 		<a href="javascript:void(0);" onclick="AddFavorite('二手电影-影视资源搜集分享','http://dhblog.org/')">收藏本站</a> 
 	</div>
 	<div class="cpright">
@@ -280,5 +304,18 @@ document.write(showdate());
 	<!--end: bottom-->
 </div>
 <!--end: wrapper-->
+	<script type="text/javascript">
+	eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('f g(7,5,8,e){9 3=6.4(7);9 0=6.4(5);a(0.1.2==\'d\'){0.1.2=\'c\';3.b=8}h a(0.1.2==\'c\'){0.1.2=\'d\';3.b=e}};',18,18,'id2div|style|display|id1div|getElementById|id2|document|id1|tx1|var|if|innerHTML|none|block|tx2|function|showhide|else'.split('|'),0,{}))
+
+	</script>
+	<script type="text/javascript">
+	eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('6 7(1,0){    3{        4.9.8(0,1);    }    5(e){        3{            4.c.a(1,0,"");        }        5(e){            b("抱歉，您所使用的浏览器无法完成此操作。\\2\\2加入收藏失败，请使用d+f进行添加");        }    }};',16,16,'url|title|n|try|window|catch|function|AddFavorite|addFavorite|external|addPanel|alert|sidebar|Ctrl||D'.split('|'),0,{}))
+
+	</script>
+	<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=19224" ></script>
+	<script type="text/javascript" id="bdshell_js"></script>
+	<script type="text/javascript">
+	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+	</script>
 </body>
 </html>

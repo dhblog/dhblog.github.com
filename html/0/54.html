@@ -25,7 +25,7 @@
 		<li><a href="http://www.movie002.com/" title="影视网址导航">网址导航</a></li> 
 		<li><a href="http://movie002.com/" title="影视资源导航">资源导航</a></li> 
 		<li><a href="http://dhblog.org/html/links.html">友情链接</a></li> 
-		<li><a href="http://dhblog.org/html/coperation.html">给我留言</a></li> 
+		<li><a href="http://dhblog.org/html/0/1.html">给我留言</a></li> 
 		</ul>
         </div> 
     </div>
@@ -127,13 +127,35 @@
 	<div id="content">
 		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> wordpress主题:纯静态文件文章归档 </div>
 		<div class="entry">
-			<h1>wordpress主题:纯静态文件文章归档</h1><div>发表日期：2011-11-07 作者：DH分类：编程技术 标签： wordpress </div>
-<h2>功能宣言</h2>
+			<h1>wordpress主题:纯静态文件文章归档</h1>
+			<div style="height:35px">发表日期：2011-11-07 作者：DH分类：编程技术 标签： wordpress </div>
+			<div style="height:40px">
+				<!-- Baidu Button BEGIN -->
+				<span id="bdshare" class="bdshare_t fl bds_tools get-codes-bdshare">
+					<span class="bds_more">分享到：</span>
+					<a class="bds_tsina"></a>
+					<a class="bds_tqq"></a>
+					<a class="bds_tieba"></a>
+					<a class="bds_douban"></a>
+					<a class="bds_hi"></a>
+					<a class="shareCount"></a>
+				</span>
+				<!-- Baidu Button END -->
+			</div>
+			<div>
+			<div id="article_index">
+					<div id="index_title"><span id="the_index_title">正文索引</span><span id="show_index" onclick="showhide('show_index','index_ul','[展开]','[隐藏]');">[ 隐藏 ]</span></div>
+					<div id="index_ul"><ul><li class="level2"><a href="#title_0" title="功能宣言">功能宣言</a></li>
+<li class="level2"><a href="#title_1" title="1 缘起">1 缘起</a></li>
+<li class="level2"><a href="#title_2" title="2 预览">2 预览</a></li>
+<li class="level2"><a href="#title_3" title="3 实现方法">3 实现方法</a></li>
+</ul></div></div>
+<h2 id="title_0">功能宣言</h2>
 <font color="red">我要给读者一个纯净的空间，因为你们有权利要求！</font>
 为什么要这么说呢？现在我的博客，已经很臃肿了，功能是不少，但是加载速度确实很慢，不仅仅对读者，对搜索引擎也不是很合理。冗余的广告代码、统计代码、第三方推广代码、客户登陆cookit、每页都有相关的统计频繁访问数据库、加载用户的评论。这些已经让读者的浏览器不堪重负！
 于是，就诞生了这个功能和这篇文章！如果你访问了<a href="http://dhblog.org/archivers">这个链接</a>，你会感觉不一样！对吧，不但快、日常分类、分页功能也有！就连评论也有！有木有！
 最重要的是！丢失了3个月的百度搜索来了！不行你看看，都是archivers里面的链接！<a href="http://www.baidu.com/s?wd=site%3Adhblog.org&pn=0&tn=baiduhome_pg">http://www.baidu.com/s?wd=site%3Adhblog.org&pn=0&tn=baiduhome_pg</a>
-<h2>1 缘起</h2>
+<h2 id="title_1">1 缘起</h2>
 无意中逛博客，看到别人的博客有归档页面。这个归档页面和wordpress的归档页面不一样，是存静态的归档页面。大家可以在WordPress插件发布<a href="http://liucheng.name/947/">:Lc.Archivers(WP博客的无图版、简洁版)</a>这篇文章中看到，这个利用插件实现页面的静态归档。
 静态归档有哪些好处呢？简单列举3、4条吧：
 1. 是博客的站点地图，也是文章存档，方便搜索引擎查找。
@@ -145,9 +167,9 @@
 1. 自己的主题有这个功能，到时候有人用我的主题的时候，不需要安装插件，做到零插件
 2. 自己的主题可以配置成自己喜欢的风格。
 3. 可以了解原理，增加自己细化的元素。
-<h2>2 预览</h2>
+<h2 id="title_2">2 预览</h2>
 大家可以访问这个链接访问哦  <a href="http://dhblog.org/archivers">http://dhblog.org/archivers</a>
-<h2>3 实现方法</h2>
+<h2 id="title_3">3 实现方法</h2>
 实现方法的文件比较大，包含了很多的文件，我就打了一个包。<a href='http://dhblog.org/wp-content/uploads/2011/12/archivers.zip'>点此下载 archivers</a>。安装需要做的事情是；
 1. 下载之后，将archivers文件夹放到自己的主题下面。我的是房子我自己建的目录functions下面。
 2. 在functions.php中添加
@@ -163,6 +185,7 @@ $Lc_archivers_src_path= ABSPATH . 'wp-content/themes/dhchannel/functions/archive
 $Lc_archivers_url= get_bloginfo('url'). '/archivers/';</pre>
 4.里面的额style都是我配置的和我的网站类似的，需要配置成自己喜欢的。
 
+			</div>
 		</div>
 		<div id="comment">
 			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
@@ -220,7 +243,7 @@ $Lc_archivers_url= get_bloginfo('url'). '/archivers/';</pre>
 		<a href="http://dhblog.org/html/mianze.html">免责声明</a> | 
 		<a href="http://dhblog.org/siteindex.html">网站地图索引</a> | 
 		<a href="http://dhblog.org/sitemap.html">最近网站地图</a> | 
-		<a href="http://dhblog.org/html/links.html">友情链接</a> | 
+		<a href="http://dhblog.org/html/0/1.html">友情链接</a> | 
 		<a href="javascript:void(0);" onclick="AddFavorite('二手电影-影视资源搜集分享','http://dhblog.org/')">收藏本站</a> 
 	</div>
 	<div class="cpright">
@@ -246,5 +269,18 @@ $Lc_archivers_url= get_bloginfo('url'). '/archivers/';</pre>
 	<!--end: bottom-->
 </div>
 <!--end: wrapper-->
+	<script type="text/javascript">
+	eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('f g(7,5,8,e){9 3=6.4(7);9 0=6.4(5);a(0.1.2==\'d\'){0.1.2=\'c\';3.b=8}h a(0.1.2==\'c\'){0.1.2=\'d\';3.b=e}};',18,18,'id2div|style|display|id1div|getElementById|id2|document|id1|tx1|var|if|innerHTML|none|block|tx2|function|showhide|else'.split('|'),0,{}))
+
+	</script>
+	<script type="text/javascript">
+	eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('6 7(1,0){    3{        4.9.8(0,1);    }    5(e){        3{            4.c.a(1,0,"");        }        5(e){            b("抱歉，您所使用的浏览器无法完成此操作。\\2\\2加入收藏失败，请使用d+f进行添加");        }    }};',16,16,'url|title|n|try|window|catch|function|AddFavorite|addFavorite|external|addPanel|alert|sidebar|Ctrl||D'.split('|'),0,{}))
+
+	</script>
+	<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=19224" ></script>
+	<script type="text/javascript" id="bdshell_js"></script>
+	<script type="text/javascript">
+	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+	</script>
 </body>
 </html>
