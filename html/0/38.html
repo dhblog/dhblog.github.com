@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>wordpress ajax之一:一个简单的例子</title>
-	<meta name="keywords" content="wordpress ajax之一:一个简单的例子,DH博客" />
-	<meta name="description" content="wordpress ajax之一:一个简单的例子 详细页面,DH博客" />
+	<title>域名空间:域名被劫持,恐怖啊</title>
+	<meta name="keywords" content="域名空间:域名被劫持,恐怖啊,DH博客" />
+	<meta name="description" content="域名空间:域名被劫持,恐怖啊 详细页面,DH博客" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="Content-Language" content="zh-CN">	
@@ -125,143 +125,44 @@
 博客恢复运行，持续更新中... 20140118
 </div>
 	<div id="content">
-		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> wordpress ajax之一:一个简单的例子 </div>
+		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE5BBBAE7AB99E68A80E69CAF/1.html" title="查看分类 建站技术 下的所有文章">建站技术</a> >> 域名空间:域名被劫持,恐怖啊 </div>
 		<div class="entry">
-			<h1>wordpress ajax之一:一个简单的例子</h1><div>发表日期：2011-08-08 作者：DH分类：编程技术 标签： wordpress ajax </div>
-<h2>序言</h2>
-今天是星期一，是我发文章的日子。最近在搞一个东西，就是将ajax运用到wordpress中，大家可以看我的博客，里面有很多的ajax的东西，包括：
-1.首页的分页的ajax
-2.评论分页的ajax
-3.侧边栏评论的最近评论ajax
-4.评论ajax提交
-后面的文章将逐步介绍如何实现上面的ajax功能，这篇文章的主要目的是让大家了解ajax的用法，用一个简单的例子说明ajax的使用，让大家能很快上手ajax，写出自己需要的ajax程序。
+			<h1>域名空间:域名被劫持,恐怖啊</h1><div>发表日期：2011-07-24 作者：DH分类：建站技术 标签： 域名 </div>
+<h2>1 可怕的现象</h2>
+今天访问我的博客，发现老是无法访问，弹出上海电信的114 网址纠错，第一个就是我的博客，但是继续点击这个，还是不行。我就知道出问题了。
+<a href="http://dhblog.org/wp-content/uploads/2011/07/wufafagnwen.png"><img src="http://dhblog.org/wp-content/uploads/2011/07/wufafagnwen.png" alt="" title="wufafagnwen" width="600" height="400" class="aligncenter size-full wp-image-946" /></a>
+但是我访问内页就不会出错。
 
-<h2>ajax的优缺点</h2>
-缺点：
-1. 各个浏览器对XMLHttpRequest对象的支持度不足(兼容性问题)
-2. 破坏浏览器的前进,后退功能。
-3. 对搜索引擎支持不足。
-4. 调试工具支持不足。
-5. 编程比较复杂
-6. 需要多加载jquery.js和自定义的js,第一次加载会影响速度
-优点：
-1. 加载需要的页面，避免重复加载
-2. 使用使用时的体验较好
-3. 可以装一下，毕竟主题支持动态加载，nb啊，呵呵
+<h2>2 原因：</h2>
+114劫持
 
-<h2>ajax的需要的元素</h2>
-元素包括：
-1. 一个html页面，这里包含了有css标记的元素，比如a，可以供js来寻找，在用户点击的时候发出ajax请求
-2. jquery.js，下载地址为:http://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js
-3. 定义的js文件，规定请求的动作，和接受数据之后的动作
-4. 后台模板中的functions.php定义一个函数，用了规定接受到ajax请求之后后台要做的动作。
-
-元素的位置：
-1. html就在文章中写即可
-2. jquery.js在header.php中包含
-<pre lang="php">
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js"></script>
+<h2>3 解决方法</h2>
+硬着头皮找资料，找了几个方法解决这个问题。
+<h3>3.1 最简单的办法，改DNS设置。</h3>
+这个比较好使： 208.67.222.222
+另外还有：61.152.82.18 8.8.8.8 8.8.4.4等
+<h3>3.2 改Hosts文件</h3>
+在文件位置：C:\WINDOWS\system32\drivers\etc 中添加：
+<pre lang="txt">
+204.74.210.128 dhblog.org
 </pre>
-3.把自己定义的js保存为 test.js,同样在header.php中包含
-<pre lang="php">
-<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/functions/test.js"></script>
-</pre>
-4.functions.php中添加行数即可
+<h3>3.3 屏蔽掉上海电信 </h3>
+这个方法我没有试过。
+直接到Internet选项——安全——受限制的站点（最后那个红色的）——站点——添加——vnet.cn，继续添加218.30.64.193（121），222.68.193.81。然后把自定义级别中所有项目禁用。
+再打开Internet选项——隐私——站点——输入vnet.cn——拒绝，继续拒绝218.30.64.193（121），222.68.193.81。 
 
-<h2>例子的运行情况</h2>
-<div class="test_response">
-<div> 返回结果的位置 </div>
-<div class="test_navi">
-<a href="http://dhblog.org/?navi=1">第一页</a> <a href="http://dhblog.org/?navi=2">第二页</a> <a href="http://dhblog.org/?navi=3">第三页</a>
-</div>
-</div>
-请点击上面的“第一页”等，后台会返回你的请求之后的处理结果
+<h3>3.4 注意点</h3>
+第一，但这些办法只能对自己使用，别人还是被劫持，还是不能访问我的网站。第二，我用的是360极速浏览器，这个会记录dns的，所以要清楚缓存之后这些方法才能有效。
 
-<h2>html部分</h2>
-你随便写一个文章，用html模式，把下面的代码贴进去就可以了。注意将
-http://dhblog.org/?navi=2 换成你的http://自己域名/?navi=2
-<pre lang="html" line="1">
-<div class="test_response">
-<div> 返回结果的位置 </div>
-<div class="test_navi">
-<a href="http://127.0.0.1/dhblog/?navi=1">第一页</a> <a href="http://dhblog.org/?navi=2">第二页</a> <a href="http://127.0.0.1/dhblog/?navi=3">第三页</a>
-</div>
-</div>
-</pre>
+<h2>4 我无奈和害怕</h2>
+还是要备案啊，要不然，迟早要被消灭掉的。
 
-<h2>js部分</h2>
-下面的代码保存为 test.js文件，放到模板里面，记得在header.php中包含哦
-<pre lang="js" line="1">
-var tnavi='.test_navi';
-var tnavi_a='.test_navi a';
-var tresponse='.test_response';
-
-$(document).ready(function test_navi(){
-	$(tnavi_a).click(function() {
-		var z = $(this).attr("href");
-		$.ajax({
-			url: z,
-			type:"POST",
-			data:"action=test_action",
-			beforeSend:function()
-			{
-				document.body.style.cursor = 'wait';
-				var C=0.7;
-				$(tresponse).css({opacity:C,MozOpacity:C,KhtmlOpacity:C,filter:'alpha(opacity=' + C * 100 + ')'});				
-				$(tnavi).html('<a>载入中...</a>');
-			},
-			error:function (xhr, textStatus, thrownError){ 
-				alert("readyState: " + xhr.readyState + " status:" + xhr.status + " statusText:" + xhr.statusText +" responseText:" +xhr.responseText + " responseXML:" + xhr.responseXML + " onreadystatechange" +xhr.onreadystatechange); 		
-				alert(thrownError); 
-			},	
-			success: function (data)
-			{
-				//alert(data);
-				$(tresponse).html(data);				
-				document.body.style.cursor = 'auto';
-				test_navi();//翻页后DOM变化了,需要重新绑定函数
-			}
-		});
-		return false;
-		});
-})
-</pre>
-
-<h2>后台php部分</h2>
-下面的代码放到functiongs.php中，http://dhblog.org/?navi=2 换成你的http://自己域名/?navi=2
-<pre lang="php" line="1">
-/*****************************************************
- 函数名称：test_action_do
- 函数作用：简单的ajax的例子
- 行数作者：dhblog
-******************************************************/
-
-function test_action_do(){
-	if( isset($_POST['action'])&& $_POST['action'] == 'test_action'){
-		$navi=$_GET['navi'];
-		echo '<div class="test_response">';
-		echo '<div> 我是ajax返回的结果哦！您选择的第'. $navi .'页</div>';
-		echo '<div class="test_navi">';
-		echo '<a href="http://127.0.0.1/dhblog/?navi=1">第一页</a> ';
-		echo '<a href="http://127.0.0.1/dhblog/?navi=2">第二页</a> ';
-		echo '<a href="http://127.0.0.1/dhblog/?navi=3">第三页</a>';
-		echo '</div>';
-		echo '</div>';		
-		die();
-	}else{
-		return;
-	}
-}
-add_action('template_redirect', 'test_action_do');
-</pre>
-
-希望大家通过上面的例子能够理解ajax的工作过程，能做好ajax学习的第一步！
 
 		</div>
 		<div id="comment">
 			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
 			<!-- Duoshuo Comment BEGIN -->
-			<div class="ds-thread" data-thread-key="38" data-title="wordpress ajax之一:一个简单的例子"></div>
+			<div class="ds-thread" data-thread-key="38" data-title="域名空间:域名被劫持,恐怖啊"></div>
 			<!-- Duoshuo Comment END -->		
 		</div>		
 	</div>
@@ -295,7 +196,7 @@ add_action('template_redirect', 'test_action_do');
 		标签
 	</h3>
 	<div class="tag_widget_box">
-	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 6 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 5 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 1 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
+	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 7 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 6 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 2 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
 	</div>
 </div> <div class="doublewidget">
 	<h3>
@@ -326,7 +227,7 @@ add_action('template_redirect', 'test_action_do');
 	<noscript><a href="http://www.51.la/?4836371" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4836371.asp" style="border:none" /></a></noscript>
 	</div>
 	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"dhblog"};
+	var duoshuoQuery = {short_name:"dhblog2"};
 		(function() {
 			var ds = document.createElement('script');
 			ds.type = 'text/javascript';ds.async = true;

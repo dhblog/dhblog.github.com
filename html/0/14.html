@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>wordpress定时任务之三:主题中控制WP-Cron任务</title>
-	<meta name="keywords" content="wordpress定时任务之三:主题中控制WP-Cron任务,DH博客" />
-	<meta name="description" content="wordpress定时任务之三:主题中控制WP-Cron任务 详细页面,DH博客" />
+	<title>域名申请攻略(以godaddy+支付宝为例)</title>
+	<meta name="keywords" content="域名申请攻略(以godaddy+支付宝为例),DH博客" />
+	<meta name="description" content="域名申请攻略(以godaddy+支付宝为例) 详细页面,DH博客" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="Content-Language" content="zh-CN">	
@@ -125,57 +125,115 @@
 博客恢复运行，持续更新中... 20140118
 </div>
 	<div id="content">
-		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> wordpress定时任务之三:主题中控制WP-Cron任务 </div>
+		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE5BBBAE7AB99E68A80E69CAF/1.html" title="查看分类 建站技术 下的所有文章">建站技术</a> >> 域名申请攻略(以godaddy+支付宝为例) </div>
 		<div class="entry">
-			<h1>wordpress定时任务之三:主题中控制WP-Cron任务</h1><div>发表日期：2011-05-21 作者：DH分类：编程技术 标签： wordpress php </div>
-上一篇文章讲到如何<a href="http://www.dhblog.org/archives/897.html">插件中控制WP-Cron任务</a>，在插件代码里面自己使用WP-Cron。但是代码中的register_activation_hook无法在主题中，使用
-使用WP-Cron要解决的几个要点：
-(1)如何定义时间间隔
-(2)如何在插件启动的时候创建hook
-(3)如何在插件停止的时候删除hook
-如何在主题中实现的呢？
-本文用以下的代码举例，说明如何在主题中使用WP-Cron，希望给在主题中直接使用定时功能的coder起到抛砖引玉的作用。
+			<h1>域名申请攻略(以godaddy+支付宝为例)</h1><div>发表日期：2011-05-03 作者：DH分类：建站技术 标签： 域名 </div>
+域名申请攻略(以godaddy+支付宝为例)
 
-将以下代码添加到主题中的functions.php中即可，但是需要修改dh_task_function中wp_mail函数参数中的邮件名。
-使用时注意使用 wp-crontrol来查看是否已经成功添加hook和schedule。
-<pre lang='php'>
-//增加schedule,自定义的时间间隔循环的时间间隔 每周一次和每两周一次
-function dh_more_reccurences() 
-{
-	return array(
-		'weekly' => array('interval' => 604800, 'display' => 'Once Weekly'),
-		'fortnightly' => array('interval' => 1209600, 'display' => 'Once Fortnightly'),
-	);
-}
-add_filter('cron_schedules', 'dh_more_reccurences');
+前一阵子想申请一个域名，听大家说godaddy比较好，就尝试着申请一下。费了不少劲走完了整个流程，有些经验希望能给需要域名的朋友们一些帮助，少走一些弯路：
 
-//看有没有定义hook，没有就定义
-if (!wp_next_scheduled('dh_task_hook')) {
-	wp_schedule_event( time(), 'fortnightly', 'dh_task_hook' );
-}
-//在主题被切换的时候，清除hook
-function dh_theme_switch(){
-    if (wp_next_scheduled('dh_task_hook'))
-	wp_clear_scheduled_hook('dh_task_hook');
-    //由于在dh_task_function更新，这里需要删除
-    delete_option('dh_last_check');
-}
-add_action('switch_theme',dh_theme_switch);
+<strong>1. 挑选合适的域名</strong>
 
-//函数dh_task_function向某个邮箱发个信，其内容可以中添加自己要执行东西
-function dh_task_function() {
-	//这里运行你定时执行的代码，我这里将option里面dh_last_check更改为执行此操作的时间
-	update_option('dh_last_check', $now);
-}
-add_action( 'dh_task_weekly', 'dh_task_function' );
-</pre>
-注：如果在使用的过程中发现任何bug，真心希望您能留言告诉我，谢谢你的试用和分享！让我们更加熟悉wordpress！
+(1) 域名的后缀
+当然是com和net比较好了，实在没有了这两个了，而且我是给自己用的，不考虑升值，就用了一个org的域名，<a href="http://www.dhblog.org">www.dhblog.org</a>。
+如果要便宜，可以考虑info的域名(国内卖的贵，国外便宜)。但是！！！不要考虑免费的域名，不考虑中文域名，更不要考虑的是cn域名，这个域名解析的可信度和可靠度。我不说了。
+
+(2) 域名的意义
+能记忆，能显示你的网站的风格。我的定位就是博客，我的别人叫DH，那么就叫<a href="http://www.dhblog.org">dhblog.org</a> 好了，也没有多想。
+
+(3) 域名的由来
+翻字典，找出一些能组合的词；当然这个每个人有自己的独特意义的域名，最终能申请到自己喜欢又比较好记的域名最好了。
+
+<strong>2. 查看域名是否被注册</strong>
+这个随便找个域名商就可以查出来
+
+<strong>3. 价比三家</strong>
+总之，国外比国内好，国外的我比较了一下org域名，godaddy还是比较便宜一点。下表是我申请时候的价格比较结果：
+<table border="1" cellspacing="0" cellpadding="0" width="650">
+<tbody>
+<tr>
+<td>域名后缀</td>
+<td>国内万网</td>
+<td>美橙</td>
+<td>国外name/domainsite</td>
+<td>国外godaddy</td>
+</tr>
+<tr>
+<td>org</td>
+<td>￥139</td>
+<td>￥68/￥78</td>
+<td>$9.99</td>
+<td>第一年$9.99</td>
+</tr>
+<tr>
+<td>com</td>
+<td>￥139</td>
+<td>￥68/￥78</td>
+<td>$9.99</td>
+<td>第一年$11.99</td>
+</tr>
+<tr>
+<td>net</td>
+<td>￥139</td>
+<td>￥68/￥78</td>
+<td>$9.99</td>
+<td>第一年$12.99</td>
+</tr>
+<tr>
+<td>info</td>
+<td>￥220</td>
+<td>￥200</td>
+<td>$4.99/$9.99</td>
+<td>第一年$1.99</td>
+</tr>
+</tbody>
+</table>
+ps：
+1. 现在RMB升值快，相对来说国外的域名越来越便宜
+2. 以上表格只做参考，请参考相关网址查看最新的价格
+3. 表中只是一个参考，其中有很多优惠的，比如Godaddy的域名计算很复杂，加上其有优惠，不用的需求使用特定的优惠码可以得到比较好的优惠。
+4. 对自己喜欢的域名，要比较一下，再下手，看看有什么优惠活动，可以省一点是一点。
+5. 注意买第一年的付费和买几年的付费时不一样的，以后续费的价格也是不一样的，所以要计算好之后再决定哪个更便宜。
+
+<strong>4. 到所选的域名商注册</strong>
+填写信息的时候要注意填写自己的真实信息。
+
+<strong>5. 利用优惠</strong>
+由于Godaddy在会给出一些优惠码，可以打折，比如org域名可以卖到7.5美元，在一些特殊的时候会有更低价格的域名出来，比如说1美元域名、优惠35%等。所以要及时关注域名情况，介绍一下一个网站，<a href="http://www.usaidc.com.cn/blog/tag/godaddy">http://www.usaidc.com.cn/blog/tag/godaddy</a> 里面有很多的优惠码信息，我利用的是cjctld749码买到了7.67美元的org域名，这个码好像长久有效。
+<a href="http://www.dhblog.org/wp-content/uploads/2011/05/1.png"><img class="aligncenter size-full wp-image-890" title="godaddy-youhuima" src="http://www.dhblog.org/wp-content/uploads/2011/05/1.png" alt="" width="484" height="138" /></a>
+其他域名商肯定也有优惠措施，这个一个要看信誉，看做的大不大，不要到时候像国内的域名商，说不解析就不解析，没的商量，这样不好，很不好。
+
+<strong>6. PayPal or 支付宝</strong>
+对于国外的域名，大都支持Paypal支付，需要申请一个PayPal账号，按步骤完成即可。
+有些国外的域名商支持支付宝，比如Godaddy是支持支付宝支付的，这样，我们国内的就可以采用支付宝支付。按照步骤就可以操作完成
+
+<strong>7. 设置域名转向</strong>
+新的界面的Godaddy的域名转向设置还真的比较麻烦，辛辛苦苦终于找到了。路径是：MyAcount--&gt;MYPRODUCTS-Domains-Domain Manager--&gt;点击所选域名--&gt;在信息中选择DNS Manager部分，点击Launch--&gt;自己设置。
+
+<strong>8. 关于退款</strong>
+在Godaddy买到域名5天之内，可以退款。我发信billing@godaddy.com去问了一下，下面是邮件原文：
+去信：
+<pre lang="xml">Dear,sir
+    Due to some mistake,I registered a domain name of *** for x years ,(the reason to cancel...)
+    Please help me apply a refund to my Alipay account, which is ***
+    My id is *** , and i registered  the domian on ***.
+    The Reciept is:
+     ...</pre>
+解释一下中文的意思：就是我不小心以种种原因买错了域名(本来想买x，现在买了y;本来想买2年，现在买了5年)，我已经把域名删除了，希望能从我的支付宝账户拿到钱。
+回信：
+<pre lang="xml">Thank you for contacting Online Support.
+    We would be happy to request a refund for your order.
+    However, we will need you to first cancel the item(s) in question within 5 days (120 hours)
+    of the purchase or renewal date.
+    Once canceled, please reply to this email and we will submit your refund request.
+    ...</pre>
+解释一下中文的意思：需要在5天120小时内删除域名，并发信给billing@godaddy.com即可
 
 		</div>
 		<div id="comment">
 			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
 			<!-- Duoshuo Comment BEGIN -->
-			<div class="ds-thread" data-thread-key="14" data-title="wordpress定时任务之三:主题中控制WP-Cron任务"></div>
+			<div class="ds-thread" data-thread-key="14" data-title="域名申请攻略(以godaddy+支付宝为例)"></div>
 			<!-- Duoshuo Comment END -->		
 		</div>		
 	</div>
@@ -209,7 +267,7 @@ add_action( 'dh_task_weekly', 'dh_task_function' );
 		标签
 	</h3>
 	<div class="tag_widget_box">
-	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 6 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 5 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 1 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
+	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 7 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 6 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 2 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
 	</div>
 </div> <div class="doublewidget">
 	<h3>
@@ -240,7 +298,7 @@ add_action( 'dh_task_weekly', 'dh_task_function' );
 	<noscript><a href="http://www.51.la/?4836371" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4836371.asp" style="border:none" /></a></noscript>
 	</div>
 	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"dhblog"};
+	var duoshuoQuery = {short_name:"dhblog2"};
 		(function() {
 			var ds = document.createElement('script');
 			ds.type = 'text/javascript';ds.async = true;

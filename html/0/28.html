@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>wordpress安全:处理垃圾评论</title>
-	<meta name="keywords" content="wordpress安全:处理垃圾评论,DH博客" />
-	<meta name="description" content="wordpress安全:处理垃圾评论 详细页面,DH博客" />
+	<title>wordpress提高速度之五:主题中数据库定时优化(访问触发篇)</title>
+	<meta name="keywords" content="wordpress提高速度之五:主题中数据库定时优化(访问触发篇),DH博客" />
+	<meta name="description" content="wordpress提高速度之五:主题中数据库定时优化(访问触发篇) 详细页面,DH博客" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="Content-Language" content="zh-CN">	
@@ -125,84 +125,57 @@
 博客恢复运行，持续更新中... 20140118
 </div>
 	<div id="content">
-		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE5BBBAE7AB99E68A80E69CAF/1.html" title="查看分类 建站技术 下的所有文章">建站技术</a> >> wordpress安全:处理垃圾评论 </div>
+		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> wordpress提高速度之五:主题中数据库定时优化(访问触发篇) </div>
 		<div class="entry">
-			<h1>wordpress安全:处理垃圾评论</h1><div>发表日期：2011-07-01 作者：DH分类：建站技术 标签： wordpress </div>
-<div style="color: #f00; font-size: 16px; font-weight: 700;">以此文献给 中国共产党建党90周年！</div>
-最近看到很多电视剧、电影都给党的生日献礼，我也不例外，献礼一篇文章吧！本来呢，以我的风格，肯定是之一、之二之类的。像这篇文章，会分为四个篇章。但是既然是献礼文章，就不能马虎，一气呵成，不拖泥带水。
-上一篇文章讲到<a href="http://dhblog.org/archives/932.html"> wordpress安全:被垃圾评论搞的很烦</a>，不少博友提出了很多的解决方法，在此表示非常的感谢，也知道大部分博友也遇到这个非常烦人的问题，垃圾评论就像前面的一坨屎一样，恶习却只能视而不见。彻底阻止它们来访问你，并试图利用wp_comment.php是不可能的，只能屏蔽掉，视而不见。如果不断有垃圾评论，利用很多的ip访问你，就等于一种DOS攻击，从这个角度讲，是威胁到博客的安全。所以tag就是wordpress安全。
-上一篇中给出了暂时应对垃圾评论的方法，老是这样应对，绝对不是办法，所以给出了我总结了对付垃圾评论的办法：
-<h2>1 前台客户端验证</h2>
-<h3>1.1 验证码验证</h3>
-输入验证码的方法是最常用的，我接触的wordpress博客使用验证码验证的不多，我没有使用验证码方法，觉得这个会影响博友们的体验，打击大家的评论激情，但是这里给出willin大师的搞笑验证码总结：
-<a href="http://kan.willin.org/?p=1063">網上千奇百怪的驗証碼設計</a>
-<h3>1.2 算术验证</h3>
-这个输入的数字不多，用户体验比较好。
-这里推荐可以见<a href="http://www.ninthday.net/">星期九</a>的博客，同时他的一篇文章 ：<a href="http://www.ninthday.net/2010/11/adding-calculation-checking.html">继续折腾之添加代码实现评论算术验证</a>很具有参考价值。
-<h3>1.3 js动作验证</h3>
-js动作验证好处就是用户体验，不用输入难以辨别的数字，通过鼠标动作验证即可。坏处就是加载js比较大。速度会慢一点。
-a. QapTcha：只要拉一下即可，这种用户的体验比较好，只要动一动鼠标即可，这里推荐示例：<a href="http://www.iceray.net/">空空裤兜的博客</a>，<a href="http://blog.30c.org/">三十岁</a>
-b. 除了QapTcha还有很多其他的js方法见：<a href="http://www.iwanpc.com/8505.html">精选10种用户友好验证码—帮您实现更好的用户验证体验</a>
-<h2>2. 后台wordpress验证</h2>
-<h3>2.1 Akismet插件</h3>
-wordpress自带的发垃圾插件，需要到wordpress.com注册一个激活码后才能使用。如果博客碰到垃圾评论的时候，建议不要立即删除，而是把它评为垃圾评论。这样Akismet会自动学习去辨认更多的垃圾评论，直到把所有的垃圾评论都干掉为止。
-由于智能，但是还是不够智能，Akismet对于spam的辨别能力还不是很好，很有可能把正常的留言拦截成spam。
-<h3>2.2 WP Anti Spam</h3>
-我现在使用的就是这个，这个虽然没有前面的能挡住所有的垃圾评论，但是已经去除了绝大数的自动评论，而且不需要用户做任何的动作，比较友好。这里给出链接，willin大师使用代码解决的，安装难度其实不大。<a href="http://kan.willin.org/?p=1324">WP Anti Spam 小牆</a>
-<h2>3. 挥刀自宫wordpress功能</h2>
-<h3>3.1 去除评论功能</h3>
-如果你觉得垃圾评论实在太烦，甚至很厌恶了，不妨可以考虑把评论功能去除，去除的方法右轻到重有三种：
-a. 关闭时间比较长久的评论，时间按比较长的文章，很少有人关注了。呵呵，这种文章绝大多数情况下只有垃圾评论才能光顾，所以关掉这些评论功能，就给垃圾评论减少了很多的空间。
-b. 关闭每个文章的评论，这个在wp后台文章选项里面有。
-c. 删除wp-comments-post.php 和 wp-trackback.php，这个太狠了。呵呵
-<h3>3.2 关闭Pingbacks and trackbacks</h3>
-Pingbacks and trackbacks 最容易招来垃圾评论，可以把这个选项勾掉。
-<h3>3.3 先注册再评论</h3>
-注册才有资格评论，这样最容易挡掉垃圾评论，但是用户体验很不好，特别是小博客，很少有人会为了给你评论而注册。
-<h2>4. 服务器级别限制</h2>
-<h3>4.1 屏蔽IP地址</h3>
-过滤垃圾评论实在wordpress级别的过滤，这种屏蔽不能使垃圾评论源停止对你博客的攻击，这样就必须通过服务器级别的ip屏蔽来屏蔽此地址的访问来达到不影响博客性能的目的。如果有某个IP发了大量的垃圾评论，你可以屏蔽某个ip地址，如果你的空间是cpanel的话，在面板里面就有选项直接屏蔽，如果没有的话，也可以修改.htaccess文件来实现，这个文件不能随便修改，最好是有经验的人来做，否则网站可能就打不开了哦
-<pre lang="txt">
-Order allow,deny
-Deny from 123.123.123.123
-Allow from all
+			<h1>wordpress提高速度之五:主题中数据库定时优化(访问触发篇)</h1><div>发表日期：2011-06-22 作者：DH分类：编程技术 标签： wordpress php </div>
+之前讲到 <a href="http://dhblog.org/archives/902.html">利用访客访问页面的触发来执行优化数据库的插件</a>，这篇将使用定期优化集成到主题中的方法。
+将以下代码添加到主题中的functions.php中即可
+<pre lang='php'>
+<?php
+$options = get_option('dh_optimize_db');
+//如果没有定义options就定义
+if (!$options) {
+	$interal = 3600*24*7; //定义一个礼拜执行一次
+	//执行的时间按照第一次执行的时间为基础，因为无法精确，所以不定义具体执行的时间点
+	$options = array($interal,time());//0:多长时间执行一次，以秒为单位。1:最后一次执行的日期
+	update_option('dh_optimize_db', $options);	
+}
+ 
+//在主题被切换的时候，清除hook
+function dh_theme_switch(){
+	delete_option('dh_optimize_db');
+}
+ 
+add_action('switch_theme',dh_theme_switch);
+ 
+$now = time(); // 现在
+$last_check = $options[1];
+$interal = $options[0];
+$next_check = $last_check + $interal;
+ 
+//如果到了时间执行的时间
+if ($next_check <= $now) 
+{
+	//优化数据库
+	global $wpdb;
+  	$sql = 'SHOW TABLE STATUS FROM ' . DB_NAME . ' WHERE Data_free > 0';
+	$res = $wpdb->get_results($sql);
+	foreach($res as $r) 
+	{
+		$sql = 'OPTIMIZE TABLE '.$r->Name;
+		$res2 = $wpdb->query($sql);
+	}  	
+	$options[1]=$now;
+	update_option('dh_optimize_db', $options);
+}
+?>
 </pre>
-你可以把123.123.123.123改成你想屏蔽的地址
-<h3>4.2 自定义屏蔽IP</h3>
-但是很多垃圾评论就比较麻烦了，这里说说我的方法了，仍然是数据库，仍然是SQL，大家不要害怕。
-用了willin的小墙之后，小墙会将垃圾评论标记为 spam，然后我们利用下面的sql语句选出有哪些ip盯上你了。
-<pre lang="sql">
-SELECT comment_author_IP, COUNT( * )
-FROM  `wp_comments`
-WHERE comment_approved =  'spam'
-GROUP BY comment_author_IP
-ORDER BY COUNT( * ) DESC
-</pre>
-我选出来的如图：总共选出了141个(太恐怖了)，不能全部禁掉，只能将几个比较活跃的干掉！
-<a href="http://dhblog.org/wp-content/uploads/2011/07/spam_sql.png"><img class="aligncenter size-full wp-image-934" title="spam_sql" src="http://dhblog.org/wp-content/uploads/2011/07/spam_sql.png" alt="" width="254" height="441" /></a>
-将这些大于5的拷贝添加到.htaccess即可
-<h3>4.3 利用别人提供的攻击ip列表</h3>
-一个一个屏蔽垃圾评论，当遇到大规模的垃圾评论的时候，可以用这个<a href="http://perishablepress.com/" target="_blank">Perishable Press</a>。jeff从很多垃圾评论里面总结出了一个黑名单。你可以从中选择你想要的来加入到你的.htaccess文件中去。下面是三个记录这些IP的网址：
-a. <a href="http://perishablepress.com/press/2009/03/16/the-perishable-press-4g-blacklist/">The Perishable Press 4G Blacklist</a>
-b. <a title="Permalink for this article" href="http://perishablepress.com/press/2009/04/21/4g-ultimate-referrer-blacklist/">4G Series: The Ultimate Referrer Blacklist, Featuring Over 8000 Banned Referrers</a>
-c. <a href="http://perishablepress.com/press/2009/03/29/4g-ultimate-user-agent-blacklist/">4G Series: The Ultimate User-Agent Blacklist, Featuring Over 1200 Bad Bots</a>
-<h3>4.4 拒绝没有上线的IP的评论</h3>
-这个方法还是 .htaccess 文件有关，在 .htaccess 文件里面。换句话说如果评论并没有到你的博客，而是用机器人来发表垃圾评论的话，把他的链接给为你的博客的URL。所用代码如下：
-<pre lang='txt'>
-RewriteEngine On
-RewriteCond %{REQUEST_METHOD} POST
-RewriteCond %{REQUEST_URI} .wp-comments-post\.php*
-RewriteCond %{HTTP_REFERER} !.*yourblog.com.* [OR]
-RewriteCond %{HTTP_USER_AGENT} ^$
-RewriteRule (.*) ^http://%{REMOTE_ADDR}/$ [R=301,L]
-</pre>
-这篇文章到此结束，太长了，希望能读完，呵呵。并选择适合于自己的方法
 
 		</div>
 		<div id="comment">
 			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
 			<!-- Duoshuo Comment BEGIN -->
-			<div class="ds-thread" data-thread-key="28" data-title="wordpress安全:处理垃圾评论"></div>
+			<div class="ds-thread" data-thread-key="28" data-title="wordpress提高速度之五:主题中数据库定时优化(访问触发篇)"></div>
 			<!-- Duoshuo Comment END -->		
 		</div>		
 	</div>
@@ -236,7 +209,7 @@ RewriteRule (.*) ^http://%{REMOTE_ADDR}/$ [R=301,L]
 		标签
 	</h3>
 	<div class="tag_widget_box">
-	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 6 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 5 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 1 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
+	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 7 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 6 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 2 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
 	</div>
 </div> <div class="doublewidget">
 	<h3>
@@ -267,7 +240,7 @@ RewriteRule (.*) ^http://%{REMOTE_ADDR}/$ [R=301,L]
 	<noscript><a href="http://www.51.la/?4836371" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4836371.asp" style="border:none" /></a></noscript>
 	</div>
 	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"dhblog"};
+	var duoshuoQuery = {short_name:"dhblog2"};
 		(function() {
 			var ds = document.createElement('script');
 			ds.type = 'text/javascript';ds.async = true;

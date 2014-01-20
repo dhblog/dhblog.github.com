@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>wordpress定时任务之四:页面访问触发执行(插件篇)</title>
-	<meta name="keywords" content="wordpress定时任务之四:页面访问触发执行(插件篇),DH博客" />
-	<meta name="description" content="wordpress定时任务之四:页面访问触发执行(插件篇) 详细页面,DH博客" />
+	<title>wordpress定时任务之一:利用wp-crontrol控制WP-Cron任务</title>
+	<meta name="keywords" content="wordpress定时任务之一:利用wp-crontrol控制WP-Cron任务,DH博客" />
+	<meta name="description" content="wordpress定时任务之一:利用wp-crontrol控制WP-Cron任务 详细页面,DH博客" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="Content-Language" content="zh-CN">	
@@ -125,66 +125,49 @@
 博客恢复运行，持续更新中... 20140118
 </div>
 	<div id="content">
-		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> wordpress定时任务之四:页面访问触发执行(插件篇) </div>
+		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> wordpress定时任务之一:利用wp-crontrol控制WP-Cron任务 </div>
 		<div class="entry">
-			<h1>wordpress定时任务之四:页面访问触发执行(插件篇)</h1><div>发表日期：2011-05-24 作者：DH分类：编程技术 标签： wordpress php </div>
+			<h1>wordpress定时任务之一:利用wp-crontrol控制WP-Cron任务</h1><div>发表日期：2011-05-11 作者：DH分类：编程技术 标签： wordpress php </div>
+<strong>1. WP-Cron简介</strong>
 我要定时发邮件！我要定时清理数据库！我要定时备份！我们怎么在wordpress之中执行定时任务呢？
-<a href="http://www.dhblog.org/?p=892">wordpress定时任务一</a>、<a href="http://dhblog.org/?p=897">wordpress定时任务二</a>、<a href="http://dhblog.org/?p=898">wordpress定时任务三</a>介绍利用WP-Cron来控制定时任务，本文介绍另外一种方法，利用访客访问页面的触发来执行定时任务。
-页面触发定时任务的大体思想是：将定时信息存储在数据库中，的当访客访问页面时，如果已经等于或者过了应该定时执行的时间，就执行定时任务。
-这个方法的优点是不需要wp_cron，不占用太多的资源，缺点是不准确，在有访客访问的时候错发，不能再一个没有访问访问的深夜做，使得执行时可能访客的体验不好。
-这里介绍如何在插件中使用，将以下代码保存为一个php，打包成一个插件就可以直接安装在wp中运行。
-<pre lang='php'>
-<?php
-/*
-Plugin Name: DH Recycle Example
-Plugin URI: http://dhblog.org
-Description: a example for loop timing task
-Version: 1.0
-Author: DH.huahua
-Author URI: http://dhblog.org
-*/
+本文介绍第一种方法，实用WP-Cron，用插件wp-crontrol来控制WP-Cron。
+Scott Merrill 曾在2005年开发过一个插件叫做 wp-cron 的插件。在 WordPress 2.0 发布之后，在 wp-hachers 邮件列表有个关于在 WordPress 核心代码中添加 cron 类型的时序安排特性的讨论，最后这个特性在 2.1 版本中成形,被WordPress采用。wp-cron并不是打算去取代 Linux 操作系统内建的真正的 Cron 特性，也达不到那种精确。它所提供的是允许插件开发者能够定义事件发生在特定的时间内通过页面被导入的时候，检测当前的时间是否在安排任务的时间上来实现这个功能。如果一个设定的时间刚好通过，一个任务（一个回调函数）就会被完成。用户可以在主题和插件中利用 actions 等定时实现自己定义的函数。
 
-//声明插件启用时候的动作
-register_activation_hook( __FILE__, 'dh_recycle_activate' );
-//声明插件停用时候的动作
-register_deactivation_hook( __FILE__, 'dh_recycle_deactivate' );
+开始使用安排任务需要你拥有关于 WordPress 的 hooks, actions 和 filters 的相关知识。<a href="http://www.dhblog.org/?p=892">WP-Cron插件化定义任务</a> 就简单介绍如何使用插件来使用wp-cron。对于初学者，不需要对此了解太多，比较容易上手。
 
-//插件启用时候定义hook
-function dh_recycle_activate()
+<strong>2. 用插件使用WP-cron</strong>
+很多插件可以查找wp-cron，我遇到的是WP-Cron Dashboard和wp-crontrol。WP-Cron Dashboard只能查看和删除WP-Cron hook，推荐使用wp-crontrol，可以添加、查看、删除，很容易控制WP-Cron。
+
+<strong>3. wp-crontrol安装</strong>
+1. 可以使用wordpress自定义的搜索插件的功能，搜索关键字:wp-crontrol
+2. 也可下载后上传安装，下载地址：<a href="http://wordpress.org/extend/plugins/wp-crontrol/">http://wordpress.org/extend/plugins/wp-crontrol/</a>
+
+<strong>4. 添加schedule(定义多长时间执行一次)</strong>
+点击 设置--&gt;Crontrol。主要是添加一个定时执行的时间间隔。
+<a href="http://www.dhblog.org/wp-content/uploads/2011/05/wp-crontrol1.png"><img class="aligncenter size-full wp-image-893" title="wp-crontrol1" src="http://www.dhblog.org/wp-content/uploads/2011/05/wp-crontrol11.png" alt="" width="629" height="384" /></a>
+<strong>5. 添加Entry(定义hook,基于上面的schedule)</strong>
+点击 工具--&gt;Crontrol。主要是添加一个hook，利用schedule中定义的间隔、每次执行的时间、执行时的参数来初始化。
+<a href="http://www.dhblog.org/wp-content/uploads/2011/05/wp-crontrol2.png"><img class="aligncenter size-full wp-image-894" title="wp-crontrol2" src="http://dhblog.org/wp-content/uploads/2011/05/wp-crontrol2.png" alt="" width="586" height="408" /></a>
+<strong>6. 添加定时任务</strong>
+对于以上定义的hook,利用add_action将自己要执行的函数，绑定上，到时候就能够定期执行。
+<pre lang="php">
+add_action( 'dh_task_weekly', 'dh_task_function' );
+//函数dh_task_function可以中添加自己要执行东西,这里给自己的邮箱发一封邮件
+function dh_task_function()
 {
-	$interal = 3600*24*7; //定义一个礼拜执行一次
-	//执行的时间按照第一次执行的时间为基础，因为无法精确，所以不定义具体执行的时间点
-	$options = array($interal,time());//0:多长时间执行一次，以秒为单位。1:最后一次执行的日期
-	update_option('dh_recycle', $options);
-}
-
-//插件停用时候擦屁股
-function dh_recycle_deactivate()
-{    
-	delete_option('dh_recycle');
-}
-
-$options = get_option('dh_recycle');
-$now = time(); // 现在
-$last_check = $options[1];
-$interal = $options[0];
-$next_check = $last_check + $interal;
-
-//如果到了时间执行的时间
-if ($next_check <= $now) 
-{
-	//这里运行你定时执行的代码，我这里将option里面dh_last_check更改为执行此操作的时间
-	$options[1]=$now;
-	update_option('dh_recycle', $options);
-}
-?>
-</pre>
+    wp_mail('aa@bb.cc', 'Automatic email', 'Hello, mail weekly');
+}</pre>
+<strong>7. 删除Entry</strong>
+由于系统不会自动删除hook，所以需要手动删除，利用插件wp-Crontrol在 工具–>Crontrol 即可删除自己定义hook<a href="http://www.dhblog.org/wp-content/uploads/2011/05/wp-crontrol3.png"><img class="aligncenter size-full wp-image-895" title="wp-crontrol3" src="http://www.dhblog.org/wp-content/uploads/2011/05/wp-crontrol3.png" alt="" width="650" height="160" /></a>
+<strong>8. 删除schedule</strong>
+同理可以在 点击 设置--&gt;Crontrol 中删除自己定义的schedule。
+<a href="http://www.dhblog.org/wp-content/uploads/2011/05/wp-crontrol4.png"><img class="aligncenter size-full wp-image-896" title="wp-crontrol4" src="http://www.dhblog.org/wp-content/uploads/2011/05/wp-crontrol4.png" alt="" width="598" height="138" /></a>
 
 		</div>
 		<div id="comment">
 			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
 			<!-- Duoshuo Comment BEGIN -->
-			<div class="ds-thread" data-thread-key="15" data-title="wordpress定时任务之四:页面访问触发执行(插件篇)"></div>
+			<div class="ds-thread" data-thread-key="15" data-title="wordpress定时任务之一:利用wp-crontrol控制WP-Cron任务"></div>
 			<!-- Duoshuo Comment END -->		
 		</div>		
 	</div>
@@ -218,7 +201,7 @@ if ($next_check <= $now)
 		标签
 	</h3>
 	<div class="tag_widget_box">
-	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 6 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 5 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 1 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
+	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 7 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 6 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 2 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
 	</div>
 </div> <div class="doublewidget">
 	<h3>
@@ -249,7 +232,7 @@ if ($next_check <= $now)
 	<noscript><a href="http://www.51.la/?4836371" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4836371.asp" style="border:none" /></a></noscript>
 	</div>
 	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"dhblog"};
+	var duoshuoQuery = {short_name:"dhblog2"};
 		(function() {
 			var ds = document.createElement('script');
 			ds.type = 'text/javascript';ds.async = true;

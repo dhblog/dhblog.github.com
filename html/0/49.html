@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>wordpress数据库:定期备份邮寄数据库</title>
-	<meta name="keywords" content="wordpress数据库:定期备份邮寄数据库,DH博客" />
-	<meta name="description" content="wordpress数据库:定期备份邮寄数据库 详细页面,DH博客" />
+	<title>wordpress主题:非插件post_view</title>
+	<meta name="keywords" content="wordpress主题:非插件post_view,DH博客" />
+	<meta name="description" content="wordpress主题:非插件post_view 详细页面,DH博客" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="Content-Language" content="zh-CN">	
@@ -125,182 +125,115 @@
 博客恢复运行，持续更新中... 20140118
 </div>
 	<div id="content">
-		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE5BBBAE7AB99E68A80E69CAF/1.html" title="查看分类 建站技术 下的所有文章">建站技术</a> >> wordpress数据库:定期备份邮寄数据库 </div>
+		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> wordpress主题:非插件post_view </div>
 		<div class="entry">
-			<h1>wordpress数据库:定期备份邮寄数据库</h1><div>发表日期：2011-10-24 作者：DH分类：建站技术 标签： wordpress </div>
+			<h1>wordpress主题:非插件post_view</h1><div>发表日期：2011-10-01 作者：DH分类：编程技术 标签： wordpress </div>
 <h2>1 序言</h2>
+首先祝大家国庆快乐！
 最近准备抛弃willian大师的my_visitor，因为占用数据库实在是太大，但是其很好用的三个功能：
 1. 简易post_view
 2. 定期备份
 3. 登录失败提醒
-还是很好用的，这里我自己参考他的代码，写了简易的定期备份数据库，希望能给大家帮助
+还是很好用的，这里我自己参考他的代码，写了简易的post_view，用于统计，代码很少，希望能给大家帮助
 <h2>2 方法</h2>
-将下面的代码保存为dh_backup_db.php
+<h3>2.2 dh_post_views.php</h3>
+将下面的代码保存为dh_post_views.php
 <pre lang="php" line="1">
 <?php
-/// 函数名称：dh_backup_db 
-/// 函数作用：定时备份数据库
+/// 函数名称：dh_post_views 
+/// 函数作用：记录文章读的次数
 /// 函数作者: DH
-/// 作者地址: http://dhblog.org/
+/// 作者地址: http://dhblog.org/ 
 
-$dh_backup_db = get_option('dh_backup_db');
-$interal = 3600*24*2; //定义一个礼拜执行一次
-//如果没有定义options就定义
-if (!$dh_backup_db) {
-	//执行的时间按照第一次执行的时间为基础，因为无法精确，所以不定义具体执行的时间点
-	$dh_backup_db = time();//最后一次执行的日期
-	update_option('dh_backup_db', $dh_backup_db);	
-}
- 
-//在主题被切换的时候，清除hook
-function dh_del_backup_db(){
-	delete_option('dh_backup_db');
-} 
-add_action('switch_theme',dh_del_backup_db);
-
-$now = time(); // 现在
-$next_check = (int)$dh_backup_db + $interal;
-
-//如果到了时间执行的时间
-if ($next_check <= $now) 
+/* 访问计数 */
+function record_visitors()
 {
-    // 备份路径
-    $key = substr(md5(DB_NAME), -10);
-    $file_dir = ABSPATH . "wp-content/themes/dhchannel/functions/backup_$key/";
-	if(!file_exists($file_dir))//判断文件夹是否存在
+	if (is_singular()) 
 	{
-		mkdir($file_dir,0777);
-		@chmod($file_dir,0777);
+	  global $post;
+	  $post_ID = $post->ID;
+	  if($post_ID) 
+	  {
+		  $post_views = (int)get_post_meta($post_ID, 'views', true);
+		  if(!update_post_meta($post_ID, 'views', ($post_views+1))) 
+		  {
+			add_post_meta($post_ID, 'views', 1, true);
+		  }
+	  }
 	}
-    $filename = DB_NAME . '-' . gmdate('ymd', time() + get_option('gmt_offset')*3600) . '-'. time().'.sql';
-    if (@function_exists('gzencode')) $filename .= '.gz'; // gzip
-
-    if (!is_file($file_dir.$filename)) 
-	{    
-		// 导出数据库
-		$table_name_array = $wpdb->get_col('SHOW TABLES'); // 查询所有表名
-		include('dh_backup_db_sql-dump.php'); 
-
-		// 邮寄数据库备份
-		global $phpmailer; // 採用 phpmailer 方式
-		class_exists('PHPMailer') or require(ABSPATH . WPINC . '/class-phpmailer.php');
-		$phpmailer = new PHPMailer();
-		$phpmailer->AddAddress( get_option('admin_email') ); // 可改另一個郵箱
-		$phpmailer->AddAttachment("$file_dir$filename");
-		$phpmailer->Body = '这是由 dhchannel backup_db 功能自动生成的数据库备份.';
-		$phpmailer->CharSet = 'UTF-8';
-		$phpmailer->ContentType = 'text/plain';
-		$phpmailer->FromName = html_entity_decode(get_option('blogname'), ENT_QUOTES);
-		$phpmailer->From = 'no-reply@' . preg_replace('#^www\.#', '', strtolower($_SERVER['SERVER_NAME']));
-		$phpmailer->Subject = "数据库备份- $filename";
-		; // 寄出
-		if($phpmailer->Send())
-		{
-			echo "糟糕，没有发送出去哦！";
-			unlink($file_dir.$filename);
-		}
-//unlink($file_dir.$filename);
-    }
-	update_option('dh_backup_db', $now);
 }
-?>
+add_action('wp_head', 'record_visitors');  
+
+/// 函数名称：post_views 
+/// 函数作用：取得文章的阅读次数
+function post_views($before = '(点击 ', $after = ' 次)', $echo = 1)
+{
+  global $post;
+  $post_ID = $post->ID;
+  $views = (int)get_post_meta($post_ID, 'views', true);
+  if ($echo) echo $before, number_format($views), $after;
+  else return $views;
+}
+
+/// get_most_viewed_format 
+/// 函数作用：取得阅读最多的文章
+function get_most_viewed_format($mode = '', $limit = 10, $show_date = 0, $term_id = 0, $beforetitle= '(', $aftertitle = ')', $beforedate= '(', $afterdate = ')', $beforecount= '(', $aftercount = ')') {
+  global $wpdb, $post;
+  $output = '';
+  $mode = ($mode == '') ? 'post' : $mode;
+  $type_sql = ($mode != 'both') ? "AND post_type='$mode'" : '';
+  $term_sql = (is_array($term_id)) ? "AND $wpdb->term_taxonomy.term_id IN (" . join(',', $term_id) . ')' : ($term_id != 0 ? "AND $wpdb->term_taxonomy.term_id = $term_id" : '');
+  $term_sql.= $term_id ? " AND $wpdb->term_taxonomy.taxonomy != 'link_category'" : '';
+  $inr_join = $term_id ? "INNER JOIN $wpdb->term_relationships ON ($wpdb->posts.ID = $wpdb->term_relationships.object_id) INNER JOIN $wpdb->term_taxonomy ON ($wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id)" : '';
+
+  // database query
+  $most_viewed = $wpdb->get_results("SELECT ID, post_date, post_title, (meta_value+0) AS views FROM $wpdb->posts LEFT JOIN $wpdb->postmeta ON ($wpdb->posts.ID = $wpdb->postmeta.post_id) $inr_join WHERE post_status = 'publish' AND post_password = '' $term_sql $type_sql AND meta_key = 'views' GROUP BY ID ORDER BY views DESC LIMIT $limit");
+  if ($most_viewed) {
+   foreach ($most_viewed as $viewed) {
+    $post_ID    = $viewed->ID;
+    $post_views = number_format($viewed->views);
+    $post_title = esc_attr($viewed->post_title);
+    $get_permalink = esc_attr(get_permalink($post_ID));
+    $output .= "<li>$beforetitle<a href='$get_permalink' title='$post_title'>$post_title</a>$aftertitle";
+    if ($show_date) {
+      $posted = date(get_option('date_format'), strtotime($viewed->post_date));
+      $output .= "$beforedate $posted $afterdate";
+    }
+    $output .= "$beforecount $post_views $aftercount</li>";
+   }   
+  } else {
+   $output = "<li>N/A</li>\n";
+  }
+  echo $output;
+}
+
+function get_totalviews($echo = 1) {
+  global $wpdb;
+  $total_views = $wpdb->get_var("SELECT SUM(meta_value+0) FROM $wpdb->postmeta WHERE meta_key = 'views'");
+  if ($echo) echo $total_views;
+  else return $total_views;
+ }
 ?>
 </pre>
+<h3>2.2 引用位置</h3>
 在functions.php中引用
 <pre lang="php">
-include("dh_backup_db.php");
+include("dh_post_views.php");
 </pre>
-<h2>3 数据备份操作文件</h2>
-讲一下文件保存为 dh_backup_db_sql-dump.php，此文件引用willian的my_visitor
-<pre lang="php" line="1">
-<?php
-/**
- * 導出數據 -- 用於 my-visitors.php 和 option.php
- * @param array  $table_name_array 導出的表名
- * @param string $file_dir         備份路徑
- * @param string $filename         備份文件名
- * @return       $success          儲存數量
- */
-defined('ABSPATH') or die('This file can not be loaded directly.');
-
-$fp = fopen($file_dir.$filename, 'w');
-
-/* write to file */
-function sql_dump($fp, $buffer) {
- global $success;
- if (@function_exists('gzencode')) $buffer = gzencode($buffer); // gzip
- $success = fwrite($fp, $buffer);
-}
-
-$date_gmt  = gmdate('Y-m-d H:i:s', time() + get_option('gmt_offset')*3600);
-$gm_date   = gmdate('Y-m-d H:i:s', time());
-$mysql_ver = mysql_get_server_info();
-$php_ver   = PHP_VERSION;
-
-$max_limit = 49152; // 48KB
-
-$buffer = "-- My Visitors SQL Dump version 1.3
--- Author: willin kan
--- URI: http://kan.willin.org/\n--
--- 主機: " . DB_HOST . "
--- 生成日期: $date_gmt ($gm_date GMT)
--- 服務器版本: $mysql_ver
--- PHP 版本: $php_ver\n
-SET SQL_MODE=\"NO_AUTO_VALUE_ON_ZERO\";\n
---\n-- 數據庫: `" . DB_NAME . "`
---\n\n-- " . str_repeat('-', 56);
-sql_dump($fp, $buffer);
-
-foreach ($table_name_array as $table) {
-$buffer = "\n
-# 表的結構: `$table`\n
-DROP TABLE IF EXISTS `$table`;\n";
-$row = $wpdb->get_row("SHOW CREATE TABLE $table");
-$buffer.= $row->{'Create Table'}.";\n
-# 導出表中的數據 `$table`\n";
-sql_dump($fp, $buffer);
-
-$limit_start = 0;
-$status = $wpdb->get_row("SHOW TABLE STATUS LIKE '$table'");
-$limit = (int)(($max_limit / (($status->Data_length + 1) / ($status->Rows + 1)))); // 以 max_limit 切割長度 (ROWS_PER_SEGMENT)
-
- do {
-   $buffer = '';
-   $dbs = $wpdb->get_results("SELECT * FROM $table LIMIT $limit_start, $limit", ARRAY_A);
-   if (count($dbs)) {
-     $buffer .= "\nINSERT INTO `$table` VALUES";
-     foreach ($dbs as $db) {
-       foreach ($db as $str) {
-         $str = strtr($str, array("'" => "''", "\\" => "\\\\", "\x00" => "\\0", "\x0a" => "\\n", "\x0d" => "\\r", "\x1a" => "\\Z")); // 修改版 mysql_real_escape_string()
-         $fild[] = is_numeric($str) ? $str : "'" . $str . "'";
-       }
-       $fild = implode(", ", $fild);
-       $buffer .= "\n($fild),";
-       unset($fild);
-     }
-   $buffer = rtrim($buffer, ',') . ";";
-  }
-  sql_dump($fp, $buffer);
-  $limit_start += $limit;
- } while (count($dbs));
-
- $buffer = "\n
-# `$table` 結束
-\n-- " . str_repeat('-', 56);
-sql_dump($fp, $buffer);
-}
-
-fclose($fp);
-
- $dump_peak_usage = round(memory_get_peak_usage()/1024/1024, 2);
-?>
+<h2>3 说明</h2>
+<h3>3.1 需要在要使用的地方使用函数</h3>
+<pre lang="php" >
+阅读：<?php post_views(' ', ' 次'); ?>
 </pre>
+<h3>3.2 这里还提供了两个函数</h3>
+(1)get_most_viewed_format 得到最多阅读的文章，列出5个。
+(2)get_totalviews 得到评论的总数
 
 		</div>
 		<div id="comment">
 			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
 			<!-- Duoshuo Comment BEGIN -->
-			<div class="ds-thread" data-thread-key="49" data-title="wordpress数据库:定期备份邮寄数据库"></div>
+			<div class="ds-thread" data-thread-key="49" data-title="wordpress主题:非插件post_view"></div>
 			<!-- Duoshuo Comment END -->		
 		</div>		
 	</div>
@@ -334,7 +267,7 @@ fclose($fp);
 		标签
 	</h3>
 	<div class="tag_widget_box">
-	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 6 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 5 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 1 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
+	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 7 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 6 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 2 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
 	</div>
 </div> <div class="doublewidget">
 	<h3>
@@ -365,7 +298,7 @@ fclose($fp);
 	<noscript><a href="http://www.51.la/?4836371" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4836371.asp" style="border:none" /></a></noscript>
 	</div>
 	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"dhblog"};
+	var duoshuoQuery = {short_name:"dhblog2"};
 		(function() {
 			var ds = document.createElement('script');
 			ds.type = 'text/javascript';ds.async = true;

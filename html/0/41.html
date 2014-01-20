@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>wordpress ajax之三:评论ajax分页</title>
-	<meta name="keywords" content="wordpress ajax之三:评论ajax分页,DH博客" />
-	<meta name="description" content="wordpress ajax之三:评论ajax分页 详细页面,DH博客" />
+	<title>wordpress ajax之一:一个简单的例子</title>
+	<meta name="keywords" content="wordpress ajax之一:一个简单的例子,DH博客" />
+	<meta name="description" content="wordpress ajax之一:一个简单的例子 详细页面,DH博客" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="Content-Language" content="zh-CN">	
@@ -125,129 +125,91 @@
 博客恢复运行，持续更新中... 20140118
 </div>
 	<div id="content">
-		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> wordpress ajax之三:评论ajax分页 </div>
+		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> wordpress ajax之一:一个简单的例子 </div>
 		<div class="entry">
-			<h1>wordpress ajax之三:评论ajax分页</h1><div>发表日期：2011-08-29 作者：DH分类：编程技术 标签： wordpress ajax </div>
-<h2>1 序言</h2>
-上一遍讲到利用一个简单的例子说明了如何<a href="http://dhblog.org/archives/9.html">使用简单的ajax</a>。这里说明一个应用：评论页的ajax分页应用。关于这方面的文章：
-(1)<a href="http://winysky.com/wordpress-plug-ins-to-achieve-non-ajax-flip-comment">WordPress评论非插件实现ajax翻页</a>，我在测试的时候，发现里面虽然有一些地方有一点问题，但是这些可以参考一下哦。
-(2)<a href="http://www.ninthday.net/2011/08/comment-pages-ajax.html">非插件实现评论AJAX翻页</a>,这个是Harid的方法。
-各种方法基于的原理基本上一样，大家可以多多参考，希望能给自己折腾主题，又需要实现ajax效果的童鞋有一些帮助。
-如果要评论ajax分页，必须首先评论分页，代码中包含了评论分页的内容，大家参考即可。
+			<h1>wordpress ajax之一:一个简单的例子</h1><div>发表日期：2011-08-08 作者：DH分类：编程技术 标签： wordpress ajax </div>
+<h2>序言</h2>
+今天是星期一，是我发文章的日子。最近在搞一个东西，就是将ajax运用到wordpress中，大家可以看我的博客，里面有很多的ajax的东西，包括：
+1.首页的分页的ajax
+2.评论分页的ajax
+3.侧边栏评论的最近评论ajax
+4.评论ajax提交
+后面的文章将逐步介绍如何实现上面的ajax功能，这篇文章的主要目的是让大家了解ajax的用法，用一个简单的例子说明ajax的使用，让大家能很快上手ajax，写出自己需要的ajax程序。
 
-<h2>2 需要的元素</h2>
-和上篇讲到的一样，元素包括：
-1. 一个客户端页面，这里包含了有css标记的元素，比如a，可以供js来寻找，在用户点击的时候发出ajax请求
+<h2>ajax的优缺点</h2>
+缺点：
+1. 各个浏览器对XMLHttpRequest对象的支持度不足(兼容性问题)
+2. 破坏浏览器的前进,后退功能。
+3. 对搜索引擎支持不足。
+4. 调试工具支持不足。
+5. 编程比较复杂
+6. 需要多加载jquery.js和自定义的js,第一次加载会影响速度
+优点：
+1. 加载需要的页面，避免重复加载
+2. 使用使用时的体验较好
+3. 可以装一下，毕竟主题支持动态加载，nb啊，呵呵
+
+<h2>ajax的需要的元素</h2>
+元素包括：
+1. 一个html页面，这里包含了有css标记的元素，比如a，可以供js来寻找，在用户点击的时候发出ajax请求
 2. jquery.js，下载地址为:http://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js
 3. 定义的js文件，规定请求的动作，和接受数据之后的动作
 4. 后台模板中的functions.php定义一个函数，用了规定接受到ajax请求之后后台要做的动作。
 
 元素的位置：
-1. 对于wordpress，评论页面的就是comments.php
+1. html就在文章中写即可
 2. jquery.js在header.php中包含
 <pre lang="php">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js"></script>
 </pre>
-3.把自己定义的js保存为index_ajax_navi.js,同样在header.php中包含
+3.把自己定义的js保存为 test.js,同样在header.php中包含
 <pre lang="php">
-<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/comment_ajax_navi.js"></script>
+<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/functions/test.js"></script>
 </pre>
 4.functions.php中添加行数即可
 
-<h2>3 例子的运行情况</h2>
-具体可以参考<a href="http://dhblog.org">我的博客</a>的评论的分页ajax情况。
-
-<h2>4 comments.php部分</h2>
-把comments.php写成两个文件，把comments.php中列出评论的部分分出成一个文件，实际上就是wp_list_comments函数和分页的函数。分出来为comment_list.php。是ajax请求需要重新加载的页面。
-index里面需要用到wp_list_comments和分页的地方写成：
-<pre lang="php" line="1">
-...
-<div id="comment_list">
-<?php include_once TEMPLATEPATH.'/comment_list.php'; ?>
+<h2>例子的运行情况</h2>
+<div class="test_response">
+<div> 返回结果的位置 </div>
+<div class="test_navi">
+<a href="http://dhblog.org/?navi=1">第一页</a> <a href="http://dhblog.org/?navi=2">第二页</a> <a href="http://dhblog.org/?navi=3">第三页</a>
 </div>
-...
-</pre>
-comment_list.php写成这个样子：
-<pre lang="php" line="1">
-<?php
-$page = get_query_var('cpage');
+</div>
+请点击上面的“第一页”等，后台会返回你的请求之后的处理结果
 
-global $post,$wp_query;
-$comments = get_comments(array('post_id' => $post->ID, 'status' => 'approve', 'order' => 'ASC'));
-if ( $comments )
-{ 
-?>
-<div class="comments-box">
-	<div class="comments-title">
-		<span>
-			<?php comments_number('0', '1', '%' );?>条评论
-		</span>
-		<span>
-			<a href="<?php the_permalink() ?>#comment">我要发表评论!</a>
-		</span> 
-	</div>		
-	<ol class="commentlist">
-		<?php 
-			wp_list_comments('avatar_size=48&page='. $page, $comments); 
-		?>
-	</ol> 
-</div>   
-<?php
-}
-else
-{
-
-}
-dh_commentnavi();
-
-function dh_commentnavi()
-{
-    // 如果用户在后台选择要显示评论分页
-    if (get_option('page_comments')) 
-	{
-        // 获取评论分页的 html
-      //$comment_pages = paginate_comments_links('echo=0');
-	 	$baseLink = '';  	
-		$baseLink = '&base=' . add_query_arg('cpage','%#%');
-		$page = get_query_var('cpage');
-		$comment_pages=paginate_comments_links('current=' . $page . $baseLink . '&echo=0');
-       // 如果评论分页的 html 不为空, 显示导航式分页
-       if ($comment_pages)
-	   {
-	       echo "<div class='page_navi'>";
-           echo $comment_pages;
-		   echo "</div>";
-       }
-    }
- }
-?>
+<h2>html部分</h2>
+你随便写一个文章，用html模式，把下面的代码贴进去就可以了。注意将
+http://dhblog.org/?navi=2 换成你的http://自己域名/?navi=2
+<pre lang="html" line="1">
+<div class="test_response">
+<div> 返回结果的位置 </div>
+<div class="test_navi">
+<a href="http://127.0.0.1/dhblog/?navi=1">第一页</a> <a href="http://dhblog.org/?navi=2">第二页</a> <a href="http://127.0.0.1/dhblog/?navi=3">第三页</a>
+</div>
+</div>
 </pre>
 
-<h2>5 js部分</h2>
-下面的代码保存为comment_ajax_navi.js文件，放到模板里面，记得在header.php中包含哦
+<h2>js部分</h2>
+下面的代码保存为 test.js文件，放到模板里面，记得在header.php中包含哦
 <pre lang="js" line="1">
-var navi='.page_navi';
-var navi_a='.page_navi a';
-var content='#comment_list';
+var tnavi='.test_navi';
+var tnavi_a='.test_navi a';
+var tresponse='.test_response';
 
-$(document).ready(function comment_ajax_navi (){
-	$(navi_a).click(function() {
+$(document).ready(function test_navi(){
+	$(tnavi_a).click(function() {
 		var z = $(this).attr("href");
 		$.ajax({
 			url: z,
 			type:"POST",
-			data:"action=comment_ajax_navi",
+			data:"action=test_action",
 			beforeSend:function()
 			{
 				document.body.style.cursor = 'wait';
 				var C=0.7;
-				$(content).css({opacity:C,MozOpacity:C,KhtmlOpacity:C,filter:'alpha(opacity=' + C * 100 + ')'});				
-				$(navi).html('<a>载入中...</a>');
+				$(tresponse).css({opacity:C,MozOpacity:C,KhtmlOpacity:C,filter:'alpha(opacity=' + C * 100 + ')'});				
+				$(tnavi).html('<a>载入中...</a>');
 			},
-			//error: function(request) 
-			//{
-			//	alert(request.responseText);
-			//},
 			error:function (xhr, textStatus, thrownError){ 
 				alert("readyState: " + xhr.readyState + " status:" + xhr.status + " statusText:" + xhr.statusText +" responseText:" +xhr.responseText + " responseXML:" + xhr.responseXML + " onreadystatechange" +xhr.onreadystatechange); 		
 				alert(thrownError); 
@@ -255,12 +217,9 @@ $(document).ready(function comment_ajax_navi (){
 			success: function (data)
 			{
 				//alert(data);
-				$(content).html(data);				
+				$(tresponse).html(data);				
 				document.body.style.cursor = 'auto';
-				var C=1; 
-				$(content).css({opacity:C,MozOpacity:C,KhtmlOpacity:C,filter:'alpha(opacity=' + C * 100 + ')'});
-				comment_ajax_navi();//翻页后DOM变化了,需要重新绑定函数
-				jQuery('html, body').animate({scrollTop:$(content).offset().top - 100}, 'slow');
+				test_navi();//翻页后DOM变化了,需要重新绑定函数
 			}
 		});
 		return false;
@@ -268,33 +227,41 @@ $(document).ready(function comment_ajax_navi (){
 })
 </pre>
 
-<h2>6 后台php部分</h2>
-下面的代码放到functiongs.php中，
+<h2>后台php部分</h2>
+下面的代码放到functiongs.php中，http://dhblog.org/?navi=2 换成你的http://自己域名/?navi=2
 <pre lang="php" line="1">
-<?php
-function comment_ajax_navi(){
-	if( isset($_POST['action'])&& $_POST['action'] == 'comment_ajax_navi'){
-		include_once TEMPLATEPATH.'/comment_list.php';  //注意修改为你自己的文件的位置
+/*****************************************************
+ 函数名称：test_action_do
+ 函数作用：简单的ajax的例子
+ 行数作者：dhblog
+******************************************************/
+
+function test_action_do(){
+	if( isset($_POST['action'])&& $_POST['action'] == 'test_action'){
+		$navi=$_GET['navi'];
+		echo '<div class="test_response">';
+		echo '<div> 我是ajax返回的结果哦！您选择的第'. $navi .'页</div>';
+		echo '<div class="test_navi">';
+		echo '<a href="http://127.0.0.1/dhblog/?navi=1">第一页</a> ';
+		echo '<a href="http://127.0.0.1/dhblog/?navi=2">第二页</a> ';
+		echo '<a href="http://127.0.0.1/dhblog/?navi=3">第三页</a>';
+		echo '</div>';
+		echo '</div>';		
 		die();
 	}else{
 		return;
 	}
 }
-add_action('template_redirect', 'comment_ajax_navi');
-?>
+add_action('template_redirect', 'test_action_do');
 </pre>
 
-<h2>7 寄语</h2>
-希望大家通过上面的例子能够成功实现评论的ajax翻页效果。有几个注意点：
-(1)每个人的主题设置不同，需要根据自己的主题设置自己的参数。特别是包含分页链接的div的class。我这里是.page_navi。还有就是包含index_list.php的 div id="comment_list"，需要在js中填入这两个关键的div。
-(2)喜欢折腾的主题中wp_list_comments一般都有callback函数，来重新写评论列表的部分，这时需要在comment_list.php中的wp_list_comments参数有所调整哦。
-本文提供一个思想，要想学好这个，还需要自己摸索一下下。
+希望大家通过上面的例子能够理解ajax的工作过程，能做好ajax学习的第一步！
 
 		</div>
 		<div id="comment">
 			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
 			<!-- Duoshuo Comment BEGIN -->
-			<div class="ds-thread" data-thread-key="41" data-title="wordpress ajax之三:评论ajax分页"></div>
+			<div class="ds-thread" data-thread-key="41" data-title="wordpress ajax之一:一个简单的例子"></div>
 			<!-- Duoshuo Comment END -->		
 		</div>		
 	</div>
@@ -328,7 +295,7 @@ add_action('template_redirect', 'comment_ajax_navi');
 		标签
 	</h3>
 	<div class="tag_widget_box">
-	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 6 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 5 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 1 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
+	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 7 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 6 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 2 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
 	</div>
 </div> <div class="doublewidget">
 	<h3>
@@ -359,7 +326,7 @@ add_action('template_redirect', 'comment_ajax_navi');
 	<noscript><a href="http://www.51.la/?4836371" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4836371.asp" style="border:none" /></a></noscript>
 	</div>
 	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"dhblog"};
+	var duoshuoQuery = {short_name:"dhblog2"};
 		(function() {
 			var ds = document.createElement('script');
 			ds.type = 'text/javascript';ds.async = true;

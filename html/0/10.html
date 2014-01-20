@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>wordpress安全:登录邮件提醒(防止攻击)</title>
-	<meta name="keywords" content="wordpress安全:登录邮件提醒(防止攻击),DH博客" />
-	<meta name="description" content="wordpress安全:登录邮件提醒(防止攻击) 详细页面,DH博客" />
+	<title>wordpress提高速度之一(数据库清理)</title>
+	<meta name="keywords" content="wordpress提高速度之一(数据库清理),DH博客" />
+	<meta name="description" content="wordpress提高速度之一(数据库清理) 详细页面,DH博客" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="Content-Language" content="zh-CN">	
@@ -125,73 +125,139 @@
 博客恢复运行，持续更新中... 20140118
 </div>
 	<div id="content">
-		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE5BBBAE7AB99E68A80E69CAF/1.html" title="查看分类 建站技术 下的所有文章">建站技术</a> >> wordpress安全:登录邮件提醒(防止攻击) </div>
+		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE5BBBAE7AB99E68A80E69CAF/1.html" title="查看分类 建站技术 下的所有文章">建站技术</a> >> wordpress提高速度之一(数据库清理) </div>
 		<div class="entry">
-			<h1>wordpress安全:登录邮件提醒(防止攻击)</h1><div>发表日期：2011-04-18 作者：DH分类：建站技术 标签： wordpress </div>
-自己的博客被别人反复尝试登陆怎么办？有没有办法知道呢？
-本文介绍两种方法：
-前提是空间有邮件功能，测试有无邮件功能的方法：登录界面点击“忘记密码”，有邮件发到你邮箱就有邮件功能。
-一、登录成功提醒
-这种方法就像银行的登录提醒一样，如果有人登录了系统，就会发一封邮件到邮箱，提醒你有人登录了，如果当时不是你登录，就要引起警惕了。将以下代码放入主题的functions.php中：
-<pre lang="php" line="1">
-/*****************************************************
- 函数名称：wp_login_notify v1.0 by DH.huahua. 
- 函数作用：有登录wp后台就会email通知博主
-******************************************************/
-function wp_login_notify()
-{
-    date_default_timezone_set('PRC');
-    $admin_email = get_bloginfo ('admin_email');
-    $to = $admin_email;
-	$subject = '你的博客空间登录提醒';
-	$message = '<p>你好！你的博客空间(' . get_option("blogname") . ')有登录！</p>' . 
-	'<p>请确定是您自己的登录，以防别人攻击！登录信息如下：</p>' . 
-	'<p>登录名：' . $_POST['log'] . '<p>' .
-	'<p>登录密码：' . $_POST['pwd'] .  '<p>' .
-	'<p>登录时间：' . date("Y-m-d H:i:s") .  '<p>' .
-	'<p>登录IP：' . $_SERVER['REMOTE_ADDR'] . '<p>';	
-	$wp_email = 'no-reply@' . preg_replace('#^www\.#', '', strtolower($_SERVER['SERVER_NAME']));
-	$from = "From: \"" . get_option('blogname') . "\" <$wp_email>";
-	$headers = "$from\nContent-Type: text/html; charset=" . get_option('blog_charset') . "\n";
-	wp_mail( $to, $subject, $message, $headers );
-}
+			<h1>wordpress提高速度之一(数据库清理)</h1><div>发表日期：2011-02-26 作者：DH分类：建站技术 标签： wordpress </div>
+在使用wordpress的时候，新手往往不会关注数据库，但是如果使用时间长了，不免会因为速度的问题会去优化数据库，需要提高数据库的效率。这里介绍两种类型的数据库优化：
+一种是删除wordpress的无用数据或者不重要的数据，这里叫做数据库清理，需要对wordpress的数据库有一定的了解，这样减少数据量，可以使得数据库查找快。
+另一种是不删除数据库数据，只是将数据库的结构优化一下，就像整理电脑磁盘一样，这样让数据库结构合理，增加数据库查询效率。这里先说第一种，文章  中说明第二种方式。
 
-add_action('wp_login', 'wp_login_notify');
+<h2>1 wordpress数据库表</h2>
+首先我们需要了解wordpress各个数据库表（3.0以上）的作用，这样删除的时候心里有底。
+(1)wp_commentmeta: 用于保存评论的元信息，在将评论放入回收站等操作时会将数据放入此表，Akismet等插件也会生成此表的数据。此表不太重要。
+(2)wp_comments: 用于保存评论信息的表。
+(3)wp_links: 用于保存用户输入到Wordpress中的链接(通过Link Manager)的表。
+(4)wp_options: 用于保存Wordpress相关设置、参数的表，里面包括了大量的重要信息。
+(5)wp_postmeta: 用于保存文章的元信息(meta)的表。此表不太重要。
+(6)wp_posts: 用于保存你所有的文章相关信息的表，非常的重要。一般它存储的数据是最多的。
+(7)wp_terms: 文章和链接分类以及文章的tag分类可以在表里找到。
+(8)wp_term_relationships: 日志与wp_terms中的类别与标签联合起来共同存储在wp_terms_relationships表中。类别相关链接也存储在wp_terms_relationships中。
+(9)wp_term_taxonomy: 该表格对wp_terms表中的条目分类（类别、链接以及标签）进行说明。
+(10)wp_usermeta : 用于保存用户元信息(meta)的表。
+(11)wp_users:用于保存Wordpress使用者的相关信息的表。
+
+<h2>2. wordpress数据库清理涉及到的表</h2>
+更换主题，删除插件会在将数据留在数据库中，在卸载后无法被清理。除此之外，在由于一些操作，会导致数据库的冗余，比如已经没有的评论，不应该在评论元数据表中有记录，由于没有外键的约束，这些记录没有被删除，会造成数据的冗余。本文的宗旨是删除掉不必要的数据库内容，提高wordpress的效率，在此，主要涉及到一下几张表：wp_options， wp_posts， wp_postmeta，wp_commentmeta。注意清理之前进行备份。
+
+<h2>3. wp_options的清理</h2>
+wp_options 这个数据表是wordpress设置的全局数据，这个表会经常有数据膨胀。主要原因是：
+(1)以前用过的一些插件、主题在删除之后没有进行设置的清理，造成残留数据。
+(2)占用数据的大户--RSS缓存，后台的数据调用竟然会放到数据库里面。
+处理方法：
+(1)网上对RSS处理方法有两种一个是修改后台的文件直接不去调用，这个是我不喜欢的毕竟修改了程序，其实这个很容
+易忘记WP升级是太频繁的哪次更新覆盖了新文件还是照样缓存.另外一种就是在配置文件里面填写define('MAGPIE_CACHE_ON', '0'); 这个是管用的,添加以后后台首页的调用明显变慢。
+(2)使用插件clean options
+(3)费力但是简单的清除方法：删除wp_options表，会删除一些设置，需要重新设置wordpress，推荐新手使用
+<pre lang="sql" line="1"> 
+truncate table wp_options;
 </pre>
 
-二、登录失败提醒
-第二种方法我就得比较有效，有人尝试登陆你的系统，但是没有成功，这种反复尝试的动作本身就需要被记录下来，发给博主，这样，只要有错误的登录，就会发一封邮件到自己的邮箱，将对方尝试的登录名和登录密码发送到你邮箱。将以下代码放入主题的functions.php中：
-<pre lang="php" line="1">
-/*****************************************************
- 函数名称：wp_login_failed_notify v1.0 by DH.huahua. 
- 函数作用：有错误登录wp后台就会email通知博主
-******************************************************/
-function wp_login_failed_notify()
-{
-    date_default_timezone_set('PRC');
-    $admin_email = get_bloginfo ('admin_email');
-    $to = $admin_email;
-	$subject = '你的博客空间登录错误警告';
-	$message = '<p>你好！你的博客空间(' . get_option("blogname") . ')有登录错误！</p>' . 
-	'<p>请确定是您自己的登录失误，以防别人攻击！登录信息如下：</p>' . 
-	'<p>登录名：' . $_POST['log'] . '<p>' .
-	'<p>登录密码：' . $_POST['pwd'] .  '<p>' .
-	'<p>登录时间：' . date("Y-m-d H:i:s") .  '<p>' .
-	'<p>登录IP：' . $_SERVER['REMOTE_ADDR'] . '<p>';	
-	$wp_email = 'no-reply@' . preg_replace('#^www\.#', '', strtolower($_SERVER['SERVER_NAME']));
-	$from = "From: \"" . get_option('blogname') . "\" <$wp_email>";
-	$headers = "$from\nContent-Type: text/html; charset=" . get_option('blog_charset') . "\n";
-	wp_mail( $to, $subject, $message, $headers );
-}
+<h2>4.wp_posts清理</h2>
+wordpress的文章有好多：wp_posts表中包括
+文章种类：文章、修订版本、页面、文章的附件、菜单。
+其中每种文章又会有很多状态：继承、发布、私有、草稿、自动草稿、回收站中。
 
-add_action('wp_login_failed', 'wp_login_failed_notify');
+冗余原因：
+(1)在博主写文章的时候，系统会保存很多的中间状态，在文章发布之后其很多的中间状态没有被删除。
+
+解决办法：
+(1)使用插件：WP Cleaner，使用插件的好处就是有保护机制，无论怎么操作都无法影响已发布的贴子，请放心使用^^
+(2)自己动手删除，数据库中的标志删除文章，注意备份。
+说明：wp_posts的重要字段含义：
+post_type：文章类型，post表示为文章，revision表示为修订版本，page为页面，attachment是文章的附件信息，nav_menu_item是菜单。这里我们需要的是文章、页面、和菜单。
+post_status：文章状态，inherit是继承的附件和文章的附带信息，publish是已经发布、private是私有的，draft是草稿，auto-draft是自动草稿，trash是在回收站。这里我们需要的是publish的状态的。
+这里我们主要是要 已经发布的文章、页面和菜单，除此之外的都可以删除，当然可以根据自己的需求选择删除哪些
+<pre lang="sql" line="1"> 
+DELETE FROM  wp_posts 
+WHERE not(post_status = 'publish' and post_type in('post','nav_menu_item','page'));
 </pre>
+
+<h2>5.wp_postmeta清理</h2>
+wp_postmeta是文章的元信息表，其数据是系统或者插件使用。
+冗余原因：
+(1)文章被删除之后，其在wp_postmeta中的数据理应被删除，在系统中多数情况是系统自动删除，但是由于人为删除文章，系统不知道被删除，就不会删除wp_postmeta表中的数据，造成冗余。
+(2)很多主题、插件没有做好及时清除的工作。
+
+解决办法：
+(1) 手动删除
+(1.1)规矩删除
+删除文章中不存在文章的元信息，这种删除比较安全，文章不存在了，其meta也肯定没有作用了。
+<pre lang="sql" line="1"> 
+DELETE FROM wp_postmeta WHERE post_id NOT IN (SELECT post_id FROM wp_posts);
+</pre>
+(1.1)安全删除
+删除_edit_lock和_edit_last条目是安全的，所以这里给出SQL语句
+<pre lang="sql" line="1"> 
+DELETE FROM wp_postmeta WHERE meta_key = '_edit_lock';
+DELETE FROM wp_postmeta WHERE meta_key = '_edit_last';
+</pre>
+(1.2)风险删除
+除了这两条还执行了一些其他语句由于有些风险：自己酌情考虑
+<pre lang="sql" line="1"> 
+DELETE FROM wp_postmeta WHERE meta_key = '_wp_old_slug';
+DELETE FROM wp_postmeta WHERE meta_key = '_revision-control';
+DELETE FROM wp_postmeta WHERE meta_value = '{{unknown}}';
+</pre>
+(1.3)特殊插件删除
+postnav插件会记录每个文章的访问数，如果不需要，可以删除
+<pre lang="sql" line="1"> 
+DELETE FROM wp_postmeta WHERE meta_key = 'views';
+</pre>
+(1.4)特殊操作删除
+在WordPress的后台上传图片或者附件后会在wp_postmeta中生成_wp_attached_file和_wp_attachment_metadata两个项，wp_posts也会记录附件的信息。如果使用FTP工具上传文件，表中就不会有这些信息。
+<pre lang="sql" line="1"> 
+DELETE FROM wp_postmeta WHERE meta_key = '_wp_attached_file';
+DELETE FROM wp_postmeta WHERE meta_key = '_wp_attachment_metadata';
+</pre>
+(1.5)洁癖删除
+这几条条语句执行完毕能够删除掉95%以上的数据，算的上是极限优化了，最后考虑到这个数据表并不是很重要，有洁
+净癖的人可以尝试清空这个表，当然我测试清空表会让一些原本的数据丢失。
+<pre lang="sql" line="1"> 
+TRUNCATE TABLE wp_postmeta;
+</pre>
+(2)插件
+尚未发现比较好用的插件，希望读者推荐
+
+<h2>6. wp_commentmeta清理</h2>
+冗余原因：
+(1)评论被删除之后，其在wp_commentmeta中的数据理应被删除，在系统中多数情况是系统自动删除，但是由于人为删除文章，系统不知道被删除，就不会删除wp_commentmeta表中的数据，造成冗余。
+(2)很多主题、插件没有做好及时清除的工作。比如akismet插件会生成记录，评论被移到回收站中有记录生成。
+解决办法：
+一下语句去除没有用的数据，如果评论中没有此条评论，那么在wp_commentmeta也没有意义，好像wordpress在清空回收站的时候会删除wp_commentmeta相应的数据。如果不出意外，下面的操作我们应该不需要做。
+<pre lang="sql" line="1"> 
+DELETE  FROM wp_comments WHERE comment_approved = 'trash';
+DELETE  FROM wp_comments WHERE comment_approved = 'spam';
+DELETE FROM wp_commentmeta WHERE comment_id NOT IN (SELECT comment_id FROM wp_comments);
+</pre>
+
+插件和回收站的记录删除，因为akismet插件本身就是在线拦截垃圾评论的，所以直接清空应该也是没有什么问题的。
+<pre lang="sql" line="1"> 
+DELETE  FROM wp_commentmeta WHERE meta_key like '%trash%' or  meta_key like '%akismet%' ;
+</pre>
+
+如果直接全部删除wp_commentmeta，影响不会太大，这里面不会涉及重要的数据
+<pre lang="sql" line="1"> 
+TRUNCATE TABLE wp_commentmeta
+</pre>
+
+<h2>7. 总结</h2>
+其实大部分无用的数据均在这几张表中，清理过后应该不会又太多的冗余数据了。但这里没有针对特殊插件或主题做数据库清理，有时这些插件和主题会悄悄动了一些数据库表，这样给清理带来很大难度，需要看代码才知道哦
 
 		</div>
 		<div id="comment">
 			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
 			<!-- Duoshuo Comment BEGIN -->
-			<div class="ds-thread" data-thread-key="10" data-title="wordpress安全:登录邮件提醒(防止攻击)"></div>
+			<div class="ds-thread" data-thread-key="10" data-title="wordpress提高速度之一(数据库清理)"></div>
 			<!-- Duoshuo Comment END -->		
 		</div>		
 	</div>
@@ -225,7 +291,7 @@ add_action('wp_login_failed', 'wp_login_failed_notify');
 		标签
 	</h3>
 	<div class="tag_widget_box">
-	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 6 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 5 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 1 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
+	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 7 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 6 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 2 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
 	</div>
 </div> <div class="doublewidget">
 	<h3>
@@ -256,7 +322,7 @@ add_action('wp_login_failed', 'wp_login_failed_notify');
 	<noscript><a href="http://www.51.la/?4836371" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4836371.asp" style="border:none" /></a></noscript>
 	</div>
 	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"dhblog"};
+	var duoshuoQuery = {short_name:"dhblog2"};
 		(function() {
 			var ds = document.createElement('script');
 			ds.type = 'text/javascript';ds.async = true;

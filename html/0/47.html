@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>wordpress主题:添加文章目录</title>
-	<meta name="keywords" content="wordpress主题:添加文章目录,DH博客" />
-	<meta name="description" content="wordpress主题:添加文章目录 详细页面,DH博客" />
+	<title>wordpress ajax之六:评论表情动态加载</title>
+	<meta name="keywords" content="wordpress ajax之六:评论表情动态加载,DH博客" />
+	<meta name="description" content="wordpress ajax之六:评论表情动态加载 详细页面,DH博客" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="Content-Language" content="zh-CN">	
@@ -125,143 +125,205 @@
 博客恢复运行，持续更新中... 20140118
 </div>
 	<div id="content">
-		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> wordpress主题:添加文章目录 </div>
+		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> wordpress ajax之六:评论表情动态加载 </div>
 		<div class="entry">
-			<h1>wordpress主题:添加文章目录</h1><div>发表日期：2011-10-08 作者：DH分类：编程技术 标签： wordpress </div>
-<h2>1 缘起</h2>
-有一次，我在逛博客，看到有个博客(<a href="http://shieffan.me/">清水稀饭</a>)很有意思，竟然像百度百科一样，有标题！这种标题wiki也有，是一种有助于读者快速掌握文章内容，方便读者在篇幅较长的文章中找到他们想看的内容，这个也就相当于索引。作者也提供了方法，我学着做了一个，扩展了一些功能。支持双层的标题。参考文章有：
-<a href="http://www.ludou.org/wordpress-content-index-plugin.html">WordPress文章目录插件</a>
-<h2>2 示例</h2>
-看我的博客文章的右上角的目录索引，可以隐藏的那个。具体如图：
-<a href="http://dhblog.org/wp-content/uploads/2011/09/content.png"><img class="aligncenter size-full wp-image-60" title="content" src="http://dhblog.org/wp-content/uploads/2011/09/content.png" alt="" width="600" height="300" /></a>
-<h2>3 代码</h2>
-要完成这个功能，需要有前台的css支持和后台的代码。这里以我的为例说明，各位看官需要更具自己的情况修改代码和css。
-<h3>3.1 后台部分</h3>
-后台主要实现的是对content的过滤，需要替换字符和添加目录。代码是这样的。保存为article_index.php
-<pre lang="php" line='1'>
-<?php
-function article_index($content) 
-{
-    $matches = array();
-    $ul_li = '';
-    $r = "/<(h[2-5])>([^<]+)<\/(h[2-5])>/im";
-    if(preg_match_all($r, $content, $matches)) 
-	{
-        foreach($matches[2] as $num => $title) 
-		{
-			//if($num==0)
-			if(true)
-			{
-				$content = str_replace($matches[0][$num], '<'.$matches[1][$num].' id="title-'.$num.'">'.$title.'</'.$matches[3][$num].'>', $content);
-			}
-			else
-			{
-				$content = str_replace($matches[0][$num], '<div id="content_title"><'.$matches[1][$num].' id="title-'.$num.'">'.$title.'</'.$matches[3][$num].'><span id="article-index-top"><a href="#article-index">top</a></span></div>', $content);
-			}
-			if($matches[1][$num] == 'h2')
-				$ul_li .= '<li class="level2"><a href="#title-'.$num.'" title="'.$title.'">'.$title."</a></li>\n";
-			else if($matches[1][$num] == 'h3')
-				$ul_li .= '<li class="level3"><a href="#title-'.$num.'" title="'.$title.'">'.$title."</a></li>\n";
-        }
-        $content = '<div id="article-index">
-					<div id="index-title"><span id="the-index-title">正文索引</span><span id="show-index">[ 隐藏 ]</span></div>
-					<div id="index-ul"><ul>' . $ul_li . '</ul></div></div>' . $content;
+			<h1>wordpress ajax之六:评论表情动态加载</h1><div>发表日期：2011-09-19 作者：DH分类：编程技术 标签： wordpress ajax </div>
+<h2>1 序言</h2>
+上一遍讲到利用一个简单的例子说明了如何<a href="http://dhblog.org/archives/9.html">使用简单的ajax</a>。这里说明一个应用：评论表情动态加载。什么是表情动态加载呢?就是文章页面不加载表情，节省带宽，要知道加载很多表情符号，很费力的，在用户点击评论框之后，才动态加载表情，这样针对性更强，加快页面的转载速度。其效果就是点击评论框试试。效果如图：
+<a href="http://dhblog.org/wp-content/uploads/2011/09/biaoqing.png"><img src="http://dhblog.org/wp-content/uploads/2011/09/biaoqing.png" alt="表情动态加载" title="biaoqing" width="629" height="355" class="aligncenter size-full wp-image-59" /></a>
+这个例子不仅仅讲诉的是表情分页的问题，代码中还告诉大家dhchannel主题如何写出自定义表情符号。
+
+<h2>2 需要的元素</h2>
+和上篇讲到的一样，元素包括：
+1. jquery.js，下载地址为:http://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js
+2. 定义的js文件，规定请求的动作，和接受数据之后的动作 smiley_ajax.js
+3. 定义点击评论框的操作smiley_ajax.php
+4. 表情显示和点击显示符号的页面 smiley.php
+5. 如果需要自己定义自己的表情，需要修改wp-includes\images\smilies的表情为自己的哦
+6. 表情符号定义的需要的页面 smiley_settings.php
+
+元素的位置：
+1. jquery.js在header.php中包含
+<pre lang="php">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js"></script>
+</pre>
+2.把自己定义的js保存为smiley_ajax.js,同样在header.php中包含
+<pre lang="php">
+<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/smiley_ajax.js"></script>
+</pre>
+3. 定义点击评论框的操作smiley_ajax.php
+放在主题下面即可，我是放在自己建立的functions/目录下
+4. 表情显示和点击显示符号的页面 smiley.php
+放在主题下面即可，我是放在自己建立的functions/目录下
+5. 如果需要自己定义自己的表情，需要修改wp-includes\images\smilies的表情为自己的哦
+这个自己到网上去找一写主题的表情哦
+6. 表情符号定义的需要的页面 smiley_settings.php
+放在主题下面即可，我是放在自己建立的functions/目录下
+
+<h2>3 例子的运行情况</h2>
+具体可以参考<a href="http://dhblog.org">我的博客</a>的评论效果。
+
+<h2>4 smiley.php</h2>
+将一下保存为smiley.php文件
+<pre lang="php" line="1">
+<script type="text/javascript" language="javascript">
+/* <![CDATA[ */
+    function grin(tag) {
+    	var myField;
+    	tag = ' ' + tag + ' ';
+        if (document.getElementById('comment') && document.getElementById('comment').type == 'textarea') {
+    		myField = document.getElementById('comment');
+    	} else {
+    		return false;
+    	}
+    	if (document.selection) {
+    		myField.focus();
+    		sel = document.selection.createRange();
+    		sel.text = tag;
+    		myField.focus();
+    	}
+    	else if (myField.selectionStart || myField.selectionStart == '0') {
+    		var startPos = myField.selectionStart;
+    		var endPos = myField.selectionEnd;
+    		var cursorPos = endPos;
+    		myField.value = myField.value.substring(0, startPos)
+    					  + tag
+    					  + myField.value.substring(endPos, myField.value.length);
+    		cursorPos += tag.length;
+    		myField.focus();
+    		myField.selectionStart = cursorPos;
+    		myField.selectionEnd = cursorPos;
+    	}
+    	else {
+    		myField.value += tag;
+    		myField.focus();
+    	}
     }
-    return $content;
-}
-add_filter( "the_content", "article_index" );
+/* ]]> */
+</script>
+<br/>
+<a href="javascript:grin('[渴望]')" title ="渴望"><img src="<?php echo get_option('siteurl')?>/wp-includes/images/smilies/i_01kewan.gif" alt="" /></a>
+<a href="javascript:grin('[很酷]')" title ="很酷"><img src="<?php echo get_option('siteurl')?>/wp-includes/images/smilies/i_02cool.gif" alt="" /></a>
+<a href="javascript:grin('[鄙视]')" title ="鄙视"><img src="<?php echo get_option('siteurl')?>/wp-includes/images/smilies/i_03bishi.gif" alt="" /></a>
+<a href="javascript:grin('[囧囧]')" title ="囧囧"><img src="<?php echo get_option('siteurl')?>/wp-includes/images/smilies/i_04jiong.gif" alt="" /></a>
+<a href="javascript:grin('[微笑]')" title ="微笑"><img src="<?php echo get_option('siteurl')?>/wp-includes/images/smilies/i_05weixiao.gif" alt="" /></a>
+<a href="javascript:grin('[大笑]')" title ="大笑"><img src="<?php echo get_option('siteurl')?>/wp-includes/images/smilies/i_06daxiao.gif" alt="" /></a>
+<a href="javascript:grin('[奸笑]')" title ="奸笑"><img src="<?php echo get_option('siteurl')?>/wp-includes/images/smilies/i_07jianxiao.gif" alt="" /></a>
+<a href="javascript:grin('[伤心]')" title ="伤心"><img src="<?php echo get_option('siteurl')?>/wp-includes/images/smilies/i_08shangxin.gif" alt="" /></a>
+<a href="javascript:grin('[大哭]')" title ="大哭"><img src="<?php echo get_option('siteurl')?>/wp-includes/images/smilies/i_09cry.gif" alt="" /></a>
+<a href="javascript:grin('[大汗]')" title ="大汗"><img src="<?php echo get_option('siteurl')?>/wp-includes/images/smilies/i_10han.gif" alt="" /></a>
+<a href="javascript:grin('[折磨]')" title ="折磨"><img src="<?php echo get_option('siteurl')?>/wp-includes/images/smilies/i_11zhemo.gif" alt="" /></a>
+<a href="javascript:grin('[大怒]')" title ="大怒"><img src="<?php echo get_option('siteurl')?>/wp-includes/images/smilies/i_12danu.gif" alt="" /></a>
+<a href="javascript:grin('[疑问]')" title ="疑问"><img src="<?php echo get_option('siteurl')?>/wp-includes/images/smilies/i_13yiwen.gif" alt="" /></a>
+<a href="javascript:grin('[晕了]')" title ="晕了"><img src="<?php echo get_option('siteurl')?>/wp-includes/images/smilies/i_14yunle.gif" alt="" /></a>
+<a href="javascript:grin('[害怕]')" title ="害怕"><img src="<?php echo get_option('siteurl')?>/wp-includes/images/smilies/i_15haipa.gif" alt="" /></a>
+<a href="javascript:grin('[满意]')" title ="满意"><img src="<?php echo get_option('siteurl')?>/wp-includes/images/smilies/i_16manyi.gif" alt="" /></a>
+<a href="javascript:grin('[努力]')" title ="努力"><img src="<?php echo get_option('siteurl')?>/wp-includes/images/smilies/i_17nuli.gif" alt="" /></a>
+<a href="javascript:grin('[闭嘴]')" title ="闭嘴"><img src="<?php echo get_option('siteurl')?>/wp-includes/images/smilies/i_18bizui.gif" alt="" /></a>
+<br/>
+</pre>
+注意自己保存的表情文件需要和以上的同名！！
+
+<h2>5 smiley_settings.php</h2>
+此文件和上面的smiley.php对应，规定哪些表情使用wp-includes\images\smilies中的哪个文件
+<pre lang="php" line="1">
+<?php
+    global $wpsmiliestrans;
+	$wpsmiliestrans = array(
+	   '[渴望]' => 'i_01kewan.gif',
+	   '[很酷]' => 'i_02cool.gif',
+	   '[鄙视]' => 'i_03bishi.gif',
+	   '[囧囧]' => 'i_04jiong.gif',	   
+	   '[微笑]' => 'i_05weixiao.gif',
+	   '[大笑]' => 'i_06daxiao.gif',
+	   '[奸笑]' => 'i_07jianxiao.gif',	   
+	   '[伤心]' => 'i_0shangxin.gif',
+	   '[大哭]' => 'i_09cry.gif',	   
+	   '[大汗]' => 'i_10han.gif',
+	   '[折磨]' => 'i_11zhemo.gif',
+	   '[大怒]' => 'i_12danu.gif',
+	   '[疑问]' => 'i_13yiwen.gif',
+	   '[晕了]' => 'i_14yunle.gif',
+	   '[害怕]' => 'i_15haipa.gif',
+	   '[满意]' => 'i_16manyi.gif',
+	   '[努力]' => 'i_17nuli.gif',
+	   '[闭嘴]' => 'i_18bizui.gif',
+	);	
 ?>
 </pre>
-这个文件需要在functions.php中include一下哦
-<pre lang="php">#生成目录
-include("article_index.php");</pre>
-<h3>3.2 前台css部分</h3>
-css是调整显示的，让这个好看一点。保存为article_index.css。
-<pre lang="css"  line='1'>
-#article-index {
-float: right;
-position: relative;
-margin:0 0 10px 10px;
-width:180px;
-border-radius: 6px;
--webkit-border-radius:6px;
--khtml-border-radius:6px;
--moz-border-radius:6px;
-border: 1px solid #aaa
-}
-#index-title{
-border-radius: 7px 7px 0 0;
-padding: 0 0 1px 8px;
-border-bottom: 1px solid #aaa;
-background-color: #EEE
-}
-#the-index-title {
-line-height: 1.6;
-color: #019858;
-font-weight: bold
-}
-#show-index{
-cursor: pointer;
-margin-left:8px;
-margin-right:8px
-}
-#index-ul {
-list-style: none;
-padding: 4px 5px 4px 7px;
-margin: 0
-}
+在functions.php中需要引用这个文件
+<pre lang="php" line="1">
+include("smiley_settings.php");
+</pre>
 
-#level2{
-padding-left: 10px;
-}
-#level3{
-padding-left: 25px;
-}
+<h2>6 js部分</h2>
+下面的代码保存为 smiley_ajax.js文件，放到模板里面，记得在header.php中包含哦
+<pre lang="js" line="1">
+var sresponse='#smiley_ajax';
+$(document).ready(function smiley_ajax(){
+	$('textarea').focus(function() {
+		$.ajax({
+			url: "",
+			type:"POST",
+			data:"action=smiley_ajax_action",
+			beforeSend:function()
+			{
+			},
+			error:function (xhr, textStatus, thrownError){ 
+				alert("readyState: " + xhr.readyState + " status:" + xhr.status + " statusText:" + xhr.statusText +" responseText:" +xhr.responseText + " responseXML:" + xhr.responseXML + " onreadystatechange" +xhr.onreadystatechange); 		
+				alert(thrownError); 
+			},	
+			success: function (data)
+			{
+				$(sresponse).html(data);
+			}
+		});
+		return false;
+		});
+})
+</pre>
 
-#content_title{
-position:relative
+<h2>7 smiley_ajax.php</h2>
+js调用后台的函数应该这样写
+<pre lang="css" line="1">
+<div id="smiley_ajax"></div>
+</pre>
+
+<h2>8 comment.php的小小改动</h2>
+comment.php需要告诉js，在哪个地方放表情哦。在合适的地方放上以下的代码，就会在哪里显示表情。
+<pre lang="css" line="1">
+<?php
+/*****************************************************
+ 函数名称：smiley_ajax_action_do
+ 函数作用：动态加载表情符号
+ 函数作者：DH
+ 作者地址：http://dhblog.org
+******************************************************/
+
+function smiley_ajax_action_do(){
+	if( isset($_POST['action'])&& $_POST['action'] == 'smiley_ajax_action'){
+		include_once TEMPLATEPATH.'/functions/smiley.php';
+		die();
+	}else{
+		return;
+	}
 }
-#article-index-top{
-position:absolute;
-top:5px;
-right:10px
-z-index: 111;
-}</pre>
-需要在header.php中包含
-<h3>3.2 前台js部分</h3>
-js是用来隐藏目录和显示目录使用的。保存为article_index.js。
-<pre lang="js"  line='1'>
-$(document).ready(function(){
-	$("#show-index").click(function()
-	{
-		if($("#show-index").html()=="[ 隐藏 ]")
-		{
-			$("#index-ul").fadeOut("normal");
-			$("#show-index").html("[ 展开 ]");
-		}else if($("#show-index").html()=="[ 展开 ]")
-		{
-			$("#index-ul").fadeIn("normal");
-			$("#show-index").html("[ 隐藏 ]");
-		}
-		else
-		{
-			return false;
-		}
-	});
-});</pre>
-需要在header.php中包含
-<pre lang="php"><script src="&lt;?php bloginfo('template_directory'); ?" type="text/javascript"></script></pre>
-<h2>4 注意点</h2>
-<h3>4.1 文章写法</h3>
-写文章需要有条理，需要用h2 作为二级标题，h3作为三级标题。在编辑文章的时候，切换到HTML模式，将需要添加到目录中的标题用&lt;h2&gt;和&lt;/h2&gt;括起来就可以了，如&lt;h2&gt;序言&lt;/h2&gt;。当然你也可以用其他标签，如&lt;h4&gt;&lt;/h4&gt;等，需要自己修改代码哦。
-<h3>4.2 与前人的不同</h3>
-我这里支持二级标题，但是支持二级标题需要有很多的限制，如果需要研究的读者可以读一下代码研究一下。
+add_action('template_redirect', 'smiley_ajax_action_do');
+?>
+</pre>
+在functions.php中需要引用这个文件
+<pre lang="php" line="1">
+include("smiley_ajax.php");
+</pre>
+
+<h2>7 寄语</h2>
+希望大家成功
 
 		</div>
 		<div id="comment">
 			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
 			<!-- Duoshuo Comment BEGIN -->
-			<div class="ds-thread" data-thread-key="47" data-title="wordpress主题:添加文章目录"></div>
+			<div class="ds-thread" data-thread-key="47" data-title="wordpress ajax之六:评论表情动态加载"></div>
 			<!-- Duoshuo Comment END -->		
 		</div>		
 	</div>
@@ -295,7 +357,7 @@ $(document).ready(function(){
 		标签
 	</h3>
 	<div class="tag_widget_box">
-	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 6 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 5 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 1 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
+	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 7 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 6 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 2 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
 	</div>
 </div> <div class="doublewidget">
 	<h3>
@@ -326,7 +388,7 @@ $(document).ready(function(){
 	<noscript><a href="http://www.51.la/?4836371" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4836371.asp" style="border:none" /></a></noscript>
 	</div>
 	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"dhblog"};
+	var duoshuoQuery = {short_name:"dhblog2"};
 		(function() {
 			var ds = document.createElement('script');
 			ds.type = 'text/javascript';ds.async = true;

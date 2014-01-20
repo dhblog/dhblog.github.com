@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>wordpress主题:纯静态文件文章归档</title>
-	<meta name="keywords" content="wordpress主题:纯静态文件文章归档,DH博客" />
-	<meta name="description" content="wordpress主题:纯静态文件文章归档 详细页面,DH博客" />
+	<title>wordpress安全:处理垃圾评论(续)-前台管理评论</title>
+	<meta name="keywords" content="wordpress安全:处理垃圾评论(续)-前台管理评论,DH博客" />
+	<meta name="description" content="wordpress安全:处理垃圾评论(续)-前台管理评论 详细页面,DH博客" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="Content-Language" content="zh-CN">	
@@ -125,49 +125,87 @@
 博客恢复运行，持续更新中... 20140118
 </div>
 	<div id="content">
-		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> wordpress主题:纯静态文件文章归档 </div>
+		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE5BBBAE7AB99E68A80E69CAF/1.html" title="查看分类 建站技术 下的所有文章">建站技术</a> >> wordpress安全:处理垃圾评论(续)-前台管理评论 </div>
 		<div class="entry">
-			<h1>wordpress主题:纯静态文件文章归档</h1><div>发表日期：2011-11-07 作者：DH分类：编程技术 标签： wordpress </div>
-<h2>功能宣言</h2>
-<font color="red">我要给读者一个纯净的空间，因为你们有权利要求！</font>
-为什么要这么说呢？现在我的博客，已经很臃肿了，功能是不少，但是加载速度确实很慢，不仅仅对读者，对搜索引擎也不是很合理。冗余的广告代码、统计代码、第三方推广代码、客户登陆cookit、每页都有相关的统计频繁访问数据库、加载用户的评论。这些已经让读者的浏览器不堪重负！
-于是，就诞生了这个功能和这篇文章！如果你访问了<a href="http://dhblog.org/archivers">这个链接</a>，你会感觉不一样！对吧，不但快、日常分类、分页功能也有！就连评论也有！有木有！
-最重要的是！丢失了3个月的百度搜索来了！不行你看看，都是archivers里面的链接！<a href="http://www.baidu.com/s?wd=site%3Adhblog.org&pn=0&tn=baiduhome_pg">http://www.baidu.com/s?wd=site%3Adhblog.org&pn=0&tn=baiduhome_pg</a>
-<h2>1 缘起</h2>
-无意中逛博客，看到别人的博客有归档页面。这个归档页面和wordpress的归档页面不一样，是存静态的归档页面。大家可以在WordPress插件发布<a href="http://liucheng.name/947/">:Lc.Archivers(WP博客的无图版、简洁版)</a>这篇文章中看到，这个利用插件实现页面的静态归档。
-静态归档有哪些好处呢？简单列举3、4条吧：
-1. 是博客的站点地图，也是文章存档，方便搜索引擎查找。
-2. 访问速度很快，这样对用户和搜索引擎体验较好，如果遇到网络不好，访问静态页面也是不错的选择。
-3. 定期备份静态页面，可以不用备份数据库。
-4. 页面简单，下载制作成册方便，以后可以自己在没有安装网站服务器和数据库的情况下浏览自己的文章哦。
-
-后来我参考了这个插件，简化了代码，并把这个功能集成到我的主题里面。这样出于几点考虑：
-1. 自己的主题有这个功能，到时候有人用我的主题的时候，不需要安装插件，做到零插件
-2. 自己的主题可以配置成自己喜欢的风格。
-3. 可以了解原理，增加自己细化的元素。
-<h2>2 预览</h2>
-大家可以访问这个链接访问哦  <a href="http://dhblog.org/archivers">http://dhblog.org/archivers</a>
-<h2>3 实现方法</h2>
-实现方法的文件比较大，包含了很多的文件，我就打了一个包。<a href='http://dhblog.org/wp-content/uploads/2011/12/archivers.zip'>点此下载 archivers</a>。安装需要做的事情是；
-1. 下载之后，将archivers文件夹放到自己的主题下面。我的是房子我自己建的目录functions下面。
-2. 在functions.php中添加
-<pre lang="php">#生成静态文件
-include("functions/archivers/dh_archivers_gen.php");</pre>
-其中注意自己放置archivers的目录哦
-3. 在解压之后，修改文件中的配置哦
-<pre lang="php">//这个是访问静态页面生成之后的静态文件的绝对路径位置，我的就是子目录archivers
-$Lc_archivers_path= ABSPATH . 'archivers/';
-//这个是解压的archivers的目录
-$Lc_archivers_src_path= ABSPATH . 'wp-content/themes/dhchannel/functions/archivers/';
-//这个是访问静态页面生成之后的地址，我的是我的网站域名/archivers/
-$Lc_archivers_url= get_bloginfo('url'). '/archivers/';</pre>
-4.里面的额style都是我配置的和我的网站类似的，需要配置成自己喜欢的。
+			<h1>wordpress安全:处理垃圾评论(续)-前台管理评论</h1><div>发表日期：2011-10-17 作者：DH分类：建站技术 标签： wordpress </div>
+<h2>1 序言</h2>
+上次讲到<a href="http://dhblog.org/43.html">处理垃圾评论</a>，很多方法，但是没有办法处理手动录入的评论如：
+<a href="http://dhblog.org/wp-content/uploads/2011/09/lajipingl.png"><img src="http://dhblog.org/wp-content/uploads/2011/09/lajipingl.png" alt="" title="lajipingl" width="241" height="351" class="aligncenter size-full wp-image-62" /></a>
+先谈谈其他人的方法：
+1. 没有头像不给评论，这个willin的小墙的新功能。
+2. 制定策略，可以看看<a href="http://www.ninthday.net/2011/09/spam-comments-list.html">那些永远不会出现在评论里面的垃圾评论</a>
+3. 如果发现了，可以<a href="http://www.ninthday.net/2011/08/magement-comments-front.html">手动删除垃圾评论</a>
+这里我说说如何添加手动删除垃圾评论的功能，此方法从星期九那里学来，自己修改了一些，我觉得很好用，平常我用这个手动删除，我垃圾评论的鉴定方法比较宽容，所以基本上一个礼拜出现一条这样，所以我使用这个方法可以很快很轻松地管理评论。
+<h2>2 示例</h2>
+使用方法是这样的，在使用管理员账户登录之后，就会出现以下界面，点击“删除”，确认时候就可以删除垃圾评论了。点击“编辑”，可以到后台管理这个评论。
+<a href="http://dhblog.org/wp-content/uploads/2011/09/lajipl.png"><img src="http://dhblog.org/wp-content/uploads/2011/09/lajipl.png" alt="" title="lajipl" width="618" height="257" class="aligncenter size-full wp-image-63" /></a>
+<h2>3 代码</h2>
+<h3>3.1 评论显示需要有callback函数</h3>
+这个就是自定义评论的显示方法的函数，在函数wp_list_comments调用这个callback函数。这个函数的使用可以google一下。
+<h3>3.2 我的callback函数</h3>
+这里我给出我的callback函数，dh_commentnavi，在33-41行，就是这个代码，可以拷贝利用这个
+<pre lang='php' line='1'>
+<?php
+/*****************************************************
+ 函数名称：mytheme_comment 
+ 函数作用：重写wp_listcomment的输出，在中间加入楼层号
+******************************************************/
+function dhchannel_comment($comment, $args, $depth)
+{
+    $GLOBALS['comment'] = $comment;
+    //主评论计数器初始化 begin
+	global $commentcount;
+	if(!$commentcount) { //初始化楼层计数器
+		$page = get_query_var('cpage')-1;
+		if($page<0)
+		{
+		  	$page = abs(intval($_GET['page']))-1;
+		}
+		$cpp=get_option('comments_per_page');//获取每页评论数
+		$commentcount = $cpp * $page;
+	}
+    //主评论计数器初始化 end
+?>
+<li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
+	<div id="comment-<?php comment_ID(); ?>"  class="comment-body">
+		<div class="comment-author vcard">
+		<?php echo get_avatar($comment,$size='48',$default='<path_to_url>' ); ?>
+		<?php comment_g_title($comment->comment_author_email); ?>
+		<?php printf(__('<cite class="fn">%s</cite> <span class="says">says:</span>'), get_comment_author_link()) ?>
+		</div>
+		<?php if ($comment->comment_approved == '0') : ?>
+			<em><?php _e('Your comment is awaiting moderation.') ?></em>
+			<br />
+		<?php endif; ?>		
+		<div class="comment-meta commentmetadata">
+			<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php printf('%1$s %2$s', get_comment_date(),  get_comment_time()) ?></a>
+			<?php edit_comment_link('[ 编辑 ]','  ','');
+			echo " ";
+			if ( is_user_logged_in() ) 
+			{
+				echo '[ <a href="'.wp_nonce_url(get_bloginfo('url').'/wp-admin/comment.php?action=deletecomment&amp;p='.$comment->comment_post_ID . '&amp;c=' . $comment->comment_ID, 'delete-comment_' . $comment->comment_ID) . '" onclick="return confirm(\'你真的想删除这个评论吗?\')" >删除</a> ]';
+			}?>	
+		</div>
+		<?php comment_text() ?>
+		<div class="reply">
+			<?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+		</div>
+		<div class="floor">
+			<?php if(!$parent_id = $comment->comment_parent) {printf('%1$s楼', ++$commentcount);} ?>
+		</div>
+	</div>
+<?php 
+}
+?>
+</pre>
+<h2>4 注意点</h2>
+基本上没有什么注意点。呵呵
 
 		</div>
 		<div id="comment">
 			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
 			<!-- Duoshuo Comment BEGIN -->
-			<div class="ds-thread" data-thread-key="51" data-title="wordpress主题:纯静态文件文章归档"></div>
+			<div class="ds-thread" data-thread-key="51" data-title="wordpress安全:处理垃圾评论(续)-前台管理评论"></div>
 			<!-- Duoshuo Comment END -->		
 		</div>		
 	</div>
@@ -201,7 +239,7 @@ $Lc_archivers_url= get_bloginfo('url'). '/archivers/';</pre>
 		标签
 	</h3>
 	<div class="tag_widget_box">
-	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 6 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 5 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 1 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
+	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 7 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 6 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 2 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
 	</div>
 </div> <div class="doublewidget">
 	<h3>
@@ -232,7 +270,7 @@ $Lc_archivers_url= get_bloginfo('url'). '/archivers/';</pre>
 	<noscript><a href="http://www.51.la/?4836371" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4836371.asp" style="border:none" /></a></noscript>
 	</div>
 	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"dhblog"};
+	var duoshuoQuery = {short_name:"dhblog2"};
 		(function() {
 			var ds = document.createElement('script');
 			ds.type = 'text/javascript';ds.async = true;

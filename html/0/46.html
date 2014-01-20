@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>wordpress主题:非插件post_view</title>
-	<meta name="keywords" content="wordpress主题:非插件post_view,DH博客" />
-	<meta name="description" content="wordpress主题:非插件post_view 详细页面,DH博客" />
+	<title>wordpress ajax之五:最近评论ajax分页</title>
+	<meta name="keywords" content="wordpress ajax之五:最近评论ajax分页,DH博客" />
+	<meta name="description" content="wordpress ajax之五:最近评论ajax分页 详细页面,DH博客" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="Content-Language" content="zh-CN">	
@@ -125,115 +125,314 @@
 博客恢复运行，持续更新中... 20140118
 </div>
 	<div id="content">
-		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> wordpress主题:非插件post_view </div>
+		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> wordpress ajax之五:最近评论ajax分页 </div>
 		<div class="entry">
-			<h1>wordpress主题:非插件post_view</h1><div>发表日期：2011-10-01 作者：DH分类：编程技术 标签： wordpress </div>
+			<h1>wordpress ajax之五:最近评论ajax分页</h1><div>发表日期：2011-09-12 作者：DH分类：编程技术 标签： wordpress ajax </div>
 <h2>1 序言</h2>
-首先祝大家国庆快乐！
-最近准备抛弃willian大师的my_visitor，因为占用数据库实在是太大，但是其很好用的三个功能：
-1. 简易post_view
-2. 定期备份
-3. 登录失败提醒
-还是很好用的，这里我自己参考他的代码，写了简易的post_view，用于统计，代码很少，希望能给大家帮助
-<h2>2 方法</h2>
-<h3>2.2 dh_post_views.php</h3>
-将下面的代码保存为dh_post_views.php
+上一遍讲到利用一个简单的例子说明了如何<a href="http://dhblog.org/archives/9.html">使用简单的ajax</a>。这里说明一个应用：最近评论的ajax分页应用。其效果就是右边的最近评论框，点击下一页和上一页可以不刷新整体页面而查看以前的评论。效果如图：
+<a href="http://dhblog.org/wp-content/uploads/2011/09/zuijpl.jpg"><img class="aligncenter" src="http://dhblog.org/wp-content/uploads/2011/09/zuijpl.jpg" alt="最近评论" title="zuijpl" width="251" height="356" class="size-full wp-image-56" /></a>
+这个例子不经讲诉的是ajax分页的问题，代码中还告诉大家dhchannel主题如何写出最近评论以及其css代码。
+
+<h2>2 需要的元素</h2>
+和上篇讲到的一样，元素包括：
+1. 最近评论的设计页面，和引用其的地方
+2. jquery.js，下载地址为:http://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js
+3. 定义的js文件，规定请求的动作，和接受数据之后的动作
+4. css页面
+
+元素的位置：
+1. 最近评论的设计页面，我封装了一下，为comment_recent_cache.php
+2. jquery.js在header.php中包含
+<pre lang="php">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js"></script>
+</pre>
+3.把自己定义的js保存为index_ajax_navi.js,同样在header.php中包含
+<pre lang="php">
+<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/comment_recent_cache.js"></script>
+</pre>
+4.css页面，在header.php中也必须要这个
+<pre lang="php">
+<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/comment_recent_cache.css" />
+</pre>
+
+<h2>3 例子的运行情况</h2>
+具体可以参考<a href="http://dhblog.org">我的博客</a>的侧边栏的最近评论。
+
+<h2>4 comment_recent_cache.php</h2>
+将一下保存为comment_recent_cache.php文件
 <pre lang="php" line="1">
 <?php
-/// 函数名称：dh_post_views 
-/// 函数作用：记录文章读的次数
-/// 函数作者: DH
-/// 作者地址: http://dhblog.org/ 
+/*****************************************************
+ 文件名称：comment_recent_cache
+ 文件作用：最新评论、留言，并使用ajax效果
+******************************************************/
 
-/* 访问计数 */
-function record_visitors()
-{
-	if (is_singular()) 
-	{
-	  global $post;
-	  $post_ID = $post->ID;
-	  if($post_ID) 
-	  {
-		  $post_views = (int)get_post_meta($post_ID, 'views', true);
-		  if(!update_post_meta($post_ID, 'views', ($post_views+1))) 
-		  {
-			add_post_meta($post_ID, 'views', 1, true);
-		  }
-	  }
+//ajax后台执行的函数
+function comment_recent_navi(){
+	if( isset($_POST['action'])&& $_POST['action'] == 'comment_recent_navi'){
+		//$comment_recent_navi = get_query_var('comment_recent_navi');
+		$comment_recent_navi=$_GET['comment_recent_navi'];
+		//echo $comment_recent_navi;
+		echo get_comment_recent($comment_recent_navi);
+		die();
+	}else{
+		return;
 	}
 }
-add_action('wp_head', 'record_visitors');  
+add_action('template_redirect', 'comment_recent_navi');
 
-/// 函数名称：post_views 
-/// 函数作用：取得文章的阅读次数
-function post_views($before = '(点击 ', $after = ' 次)', $echo = 1)
-{
-  global $post;
-  $post_ID = $post->ID;
-  $views = (int)get_post_meta($post_ID, 'views', true);
-  if ($echo) echo $before, number_format($views), $after;
-  else return $views;
-}
 
-/// get_most_viewed_format 
-/// 函数作用：取得阅读最多的文章
-function get_most_viewed_format($mode = '', $limit = 10, $show_date = 0, $term_id = 0, $beforetitle= '(', $aftertitle = ')', $beforedate= '(', $afterdate = ')', $beforecount= '(', $aftercount = ')') {
-  global $wpdb, $post;
-  $output = '';
-  $mode = ($mode == '') ? 'post' : $mode;
-  $type_sql = ($mode != 'both') ? "AND post_type='$mode'" : '';
-  $term_sql = (is_array($term_id)) ? "AND $wpdb->term_taxonomy.term_id IN (" . join(',', $term_id) . ')' : ($term_id != 0 ? "AND $wpdb->term_taxonomy.term_id = $term_id" : '');
-  $term_sql.= $term_id ? " AND $wpdb->term_taxonomy.taxonomy != 'link_category'" : '';
-  $inr_join = $term_id ? "INNER JOIN $wpdb->term_relationships ON ($wpdb->posts.ID = $wpdb->term_relationships.object_id) INNER JOIN $wpdb->term_taxonomy ON ($wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id)" : '';
-
-  // database query
-  $most_viewed = $wpdb->get_results("SELECT ID, post_date, post_title, (meta_value+0) AS views FROM $wpdb->posts LEFT JOIN $wpdb->postmeta ON ($wpdb->posts.ID = $wpdb->postmeta.post_id) $inr_join WHERE post_status = 'publish' AND post_password = '' $term_sql $type_sql AND meta_key = 'views' GROUP BY ID ORDER BY views DESC LIMIT $limit");
-  if ($most_viewed) {
-   foreach ($most_viewed as $viewed) {
-    $post_ID    = $viewed->ID;
-    $post_views = number_format($viewed->views);
-    $post_title = esc_attr($viewed->post_title);
-    $get_permalink = esc_attr(get_permalink($post_ID));
-    $output .= "<li>$beforetitle<a href='$get_permalink' title='$post_title'>$post_title</a>$aftertitle";
-    if ($show_date) {
-      $posted = date(get_option('date_format'), strtotime($viewed->post_date));
-      $output .= "$beforedate $posted $afterdate";
-    }
-    $output .= "$beforecount $post_views $aftercount</li>";
-   }   
-  } else {
-   $output = "<li>N/A</li>\n";
-  }
-  echo $output;
-}
-
-function get_totalviews($echo = 1) {
-  global $wpdb;
-  $total_views = $wpdb->get_var("SELECT SUM(meta_value+0) FROM $wpdb->postmeta WHERE meta_key = 'views'");
-  if ($echo) echo $total_views;
-  else return $total_views;
+//显示缓存后的最新留言
+function dh_comment_recent(){
+ $cached = get_option('dh_comment_recent');//从options表中获取已缓存的最新留言
+  $cached = get_comment_recent();
+     if($cached){    //如果最新留言已缓存，直接显示，否则获取最新留言并缓存到options表中。
+         echo $cached; 
+     }else{
+         $cached = set_comment_recent();
+         echo $cached;
+     }
  }
+
+ //获取最新留言
+ function get_comment_recent($page=1) {
+    $comment_post_ID=0; 
+	$get_total=5; 
+	$show_author_url=1;
+	$limit_b = ($page-1)*$get_total;
+	global $wpdb;
+	$request="SELECT comment_ID,comment_post_ID, comment_content, comment_author_email, comment_author, comment_author_url, comment_date FROM $wpdb->comments where comment_approved = '1' and comment_author <> 'DH' ORDER BY comment_ID DESC LIMIT $limit_b,$get_total";
+	$comments=$wpdb->get_results($request);
+	$before='<li>';
+	$after='</li>';
+    $output .= '<ul>'."\n";	
+	if ($comments) {
+		foreach ($comments as $comment) {
+			$email=$comment->comment_author_email;
+			$grav_url="http://www.gravatar.com/avatar/".md5($email)."?s=40&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2fad516503a11cd5ca435acc9bb6523536%3fs%3D32";
+			$comment_author=stripslashes(strip_tags($comment->comment_author));
+			$comment_content=utf8Substr(stripslashes(strip_tags($comment->comment_content)),0,150);
+			$comment_content = str_replace("\"", "'", $comment_content);
+			if ($show_author_url == 1 && strlen($comment->comment_author_url) > 12) $comment_author='<a target="_blank" rel="nofollow" title="访问 '.$comment_author. '的网站" href="' . $comment->comment_author_url . '">' . $comment_author . '</a>';
+			$comment_date=date("m-d H:i",strtotime($comment->comment_date));
+			$permalink=get_permalink($comment->comment_post_ID)."#comment-".$comment->comment_ID;
+               
+			$output .= $before."\n";
+			$output .= '<span class="avatar"><img src="'.$grav_url.'" alt="" /></span>'."\n";
+			$output .= '<span class="fn">'.$comment_author.'</span>'."\n";
+			$output .= '<span class="date">'.$comment_date.'</span>'."\n";
+			$output .= '<span class="txt"><a href="'.$permalink.'" title="'.$comment_content.'">'.$comment_content.'</a></span>'."\n";
+			$output .= $after."\n";
+		}
+	}	
+	$output .=  '<li class="last"><div class="comment_recent_navi">';
+	$url = get_option('siteurl');
+	$page_p = $page-1;
+	$page_n = $page+1;
+	if($page_p!=0)
+	{
+		$output .=  '<a class="left" href="'.$url.'/?comment_recent_navi=' .$page_p .'">上一页</a>';
+	}
+	$output .=  '<a class="right" href="'.$url.'/?comment_recent_navi=' .$page_n .'">下一页</a>';
+	$output .=  '</div> </li>';	
+	$output .=  '</ul>'."\n"; 
+    return $output;
+ }
+ 
+//中文工具箱的函数，用于砍掉汉字截断尾巴可能存在的乱码。
+function utf8Substr($str,$from,$len)
+{ 
+ return preg_replace('#^(?:[\x00-\x7F]|[\xC0-\xFF][\x80-\xBF]+){0,'.$from.'}'.'((?:[\x00-\x7F]|[\xC0-\xFF][\x80-\xBF]+){0,'.$len.'}).*#s','$1',$str); 
+}
+
+//缓存到options表中
+function set_comment_recent()
+{
+	$output = get_comment_recent();
+    update_option('dh_comment_recent', $output); //更新缓存在options表中的最新留言
+	return $output;
+}
+
+//通过此添加此Hook以保证最新留言能够被缓存到options表中。
+add_action('comment_post', 'set_comment_recent');
 ?>
 </pre>
-<h3>2.2 引用位置</h3>
-在functions.php中引用
-<pre lang="php">
-include("dh_post_views.php");
+在functions.php中需要引用这个文件
+<pre lang="php" line="1">
+#最近留言
+include("comment_recent_cache.php");
 </pre>
-<h2>3 说明</h2>
-<h3>3.1 需要在要使用的地方使用函数</h3>
-<pre lang="php" >
-阅读：<?php post_views(' ', ' 次'); ?>
+sidebar.php中需要引用这个函数，各位可以视自己情况而定：
+<pre lang="php" line="1">
+  <div class="singlewidget">
+    <h3>
+      最近评论
+    </h3>
+    <div class="box">
+      <div class="lastest_comments"><?php if (function_exists('dh_comment_recent')) dh_comment_recent(); ?></div>
+    </div>
+  </div>
 </pre>
-<h3>3.2 这里还提供了两个函数</h3>
-(1)get_most_viewed_format 得到最多阅读的文章，列出5个。
-(2)get_totalviews 得到评论的总数
+
+<h2>5 js部分</h2>
+下面的代码保存为 comment_recent_cache.js文件，放到模板里面，记得在header.php中包含哦
+<pre lang="js" line="1">
+var cnavi='.comment_recent_navi';
+var cnavi_a='.comment_recent_navi a';
+var ccontent='.lastest_comments';
+
+$(document).ready(function comment_recent_navi (){
+	$(cnavi_a).click(function() {
+		var z = $(this).attr("href");
+		$.ajax({
+			url: z,
+			type:"POST",
+			data:"action=comment_recent_navi",
+			beforeSend:function()
+			{
+				document.body.style.cursor = 'wait';
+				var C=0.7;
+				$(ccontent).css({opacity:C,MozOpacity:C,KhtmlOpacity:C,filter:'alpha(opacity=' + C * 100 + ')'});				
+				$(cnavi).html('<a class="left">载入中...</a>');
+			},
+			error:function (xhr, textStatus, thrownError){ 
+				alert("readyState: " + xhr.readyState + " status:" + xhr.status + " statusText:" + xhr.statusText +" responseText:" +xhr.responseText + " responseXML:" + xhr.responseXML + " onreadystatechange" +xhr.onreadystatechange); 		
+				alert(thrownError); 
+			},	
+			success: function (data)
+			{
+				//alert(data);
+				$(ccontent).html(data);				
+				document.body.style.cursor = 'auto';
+				var C=1; 
+				$(ccontent).css({opacity:C,MozOpacity:C,KhtmlOpacity:C,filter:'alpha(opacity=' + C * 100 + ')'});
+				comment_recent_navi();//翻页后DOM变化了,需要重新绑定函数
+			}
+		});
+		return false;
+		});
+})
+</pre>
+
+<h2>6 css部分</h2>
+以下保存为comment_recent_cache.css文件，记得在header.php中引用哦
+<pre lang="css" line="1">
+.lastest_comments {
+margin:0;
+padding:0
+}
+
+.lastest_comments ul {
+list-style-type:none;
+list-style-position:outside;
+margin:0;
+padding:0
+}
+
+.lastest_comments ul li {
+position:relative;
+height:47px;
+padding:5px 0
+}
+
+.lastest_comments ul .last {
+position:relative;
+height:25px;
+padding:5px 0
+}
+
+.comment_recent_navi {
+width:100%;
+text-align:left;
+overflow:hidden;
+margin:5px 0;
+padding:0
+}
+
+.comment_recent_navi a{
+text-decoration:none;
+color:#888;
+border:1px solid #ccf;
+-moz-border-radius:3px;
+-webkit-border-radius:3px;
+margin:2px;
+padding:3px 8px
+}
+
+.comment_recent_navi a:hover {
+border:1px solid #3c8266;
+background:#dddddd;
+text-decoration:none;
+-webkit-transition: all .25s linear;
+transition: all .25s linear;
+}
+
+.lastest_comments li .avatar {
+position:absolute;
+left:0;
+background:#f7f3ed;
+border:1px solid #ddd;
+padding:2px
+}
+
+.lastest_comments li .avatar img {
+width:40px;
+height:40px;
+border:1px solid #ddd
+}
+
+.lastest_comments li .fn {
+position:absolute;
+left:47px;
+top:8px;
+overflow:hidden;
+white-space:nowrap;
+-o-text-overflow:ellipsis;
+text-overflow:ellipsis;
+width:100px;
+font-weight:700;
+color:#555;
+margin:0 0 0 5px
+}
+
+.lastest_comments li .fn a {
+color:#333
+}
+
+.lastest_comments li .date {
+position:absolute;
+right:5px;
+top:8px;
+text-align:right;
+color:#999;
+font-size:10px
+}
+
+.lastest_comments li .txt {
+position:absolute;
+left:47px;
+top:32px;
+width:180px;
+overflow:hidden;
+white-space:nowrap;
+-o-text-overflow:ellipsis;
+text-overflow:ellipsis;
+margin:0 0 0 5px
+}
+
+.lastest_comments li .txt a {
+color:#666
+}
+</pre>
+
+<h2>7 寄语</h2>
+希望大家成功
 
 		</div>
 		<div id="comment">
 			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
 			<!-- Duoshuo Comment BEGIN -->
-			<div class="ds-thread" data-thread-key="46" data-title="wordpress主题:非插件post_view"></div>
+			<div class="ds-thread" data-thread-key="46" data-title="wordpress ajax之五:最近评论ajax分页"></div>
 			<!-- Duoshuo Comment END -->		
 		</div>		
 	</div>
@@ -267,7 +466,7 @@ include("dh_post_views.php");
 		标签
 	</h3>
 	<div class="tag_widget_box">
-	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 6 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 5 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 1 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
+	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 7 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 6 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 2 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
 	</div>
 </div> <div class="doublewidget">
 	<h3>
@@ -298,7 +497,7 @@ include("dh_post_views.php");
 	<noscript><a href="http://www.51.la/?4836371" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4836371.asp" style="border:none" /></a></noscript>
 	</div>
 	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"dhblog"};
+	var duoshuoQuery = {short_name:"dhblog2"};
 		(function() {
 			var ds = document.createElement('script');
 			ds.type = 'text/javascript';ds.async = true;

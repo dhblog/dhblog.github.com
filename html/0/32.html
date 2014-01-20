@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>wordpress主题:增加帅哥认证标识</title>
-	<meta name="keywords" content="wordpress主题:增加帅哥认证标识,DH博客" />
-	<meta name="description" content="wordpress主题:增加帅哥认证标识 详细页面,DH博客" />
+	<title>IT求职知识:基础知识1(c++代码篇)</title>
+	<meta name="keywords" content="IT求职知识:基础知识1(c++代码篇),DH博客" />
+	<meta name="description" content="IT求职知识:基础知识1(c++代码篇) 详细页面,DH博客" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="Content-Language" content="zh-CN">	
@@ -125,58 +125,182 @@
 博客恢复运行，持续更新中... 20140118
 </div>
 	<div id="content">
-		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> wordpress主题:增加帅哥认证标识 </div>
+		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> IT求职知识:基础知识1(c++代码篇) </div>
 		<div class="entry">
-			<h1>wordpress主题:增加帅哥认证标识</h1><div>发表日期：2011-07-15 作者：DH分类：编程技术 标签： wordpress php </div>
-<h2>1 起源</h2>
-首先感谢自说me话：<a href="http://isayme.com/2011/06/handsome-in-my-blog/">http://isayme.com/2011/06/handsome-in-my-blog/</a>
-这篇文章讲了它弄了个帅哥认证，虽然我没有被评为帅哥，但是这不妨碍我学习并定义我这里的帅哥。
-<h2>2 方法</h2>
-方法很简单,在functions.php中添加如下语句
-<pre lang="php">
-function comment_g_title($email = '')
+			<h1>IT求职知识:基础知识1(c++代码篇)</h1><div>发表日期：2011-07-05 作者：DH分类：编程技术 标签： c++ </div>
+<p>又是一个暑假的到来了，虽然现在工作了，已经体验不要暑假的味道了，但是过了这个暑假，很多同学就要准备找工作了。<p>
+<p>找工作既是一个自己努力的过程，又是一个考验自己的经历，还有一些不懂得运气。<p>
+<p>对于一个it的求职者来说，现在的这个阶段，大家应该在看基础的计算机理论知识。<p>
+<p>前段时间有个兄弟问我，你找工作时候的资料，我叫他到墨鱼的博客找，他说很难找，那我就帮他整理一下，希望他能看到，并找到称心的工作。一来可以把一些觉得还有些意思的题分享给大家，同时也给自己做个备忘。<p>
+<strong>1.宏定义</strong>
+<pre lang="c"  line="1">
+#define product(x) (x*x)
+int main()
 {
-	if(empty($email))return;
-	$handsome=array(
-	'1'=>'aa@bb.com', 
-	'2'=>'cc@dd.com');
-
-	$adminEmail = get_option('admin_email');
-	if($email==$adminEmail)
-	echo " <div class='admin' title='博主'>博主</div>";
-	elseif(in_array($email,$handsome))
-	echo " <div class='handsome' title='帅哥'>帅哥</div>";
+int i=3, j, k;
+j=product(i++);
+k=product(++i);
+printf("j=%d,k=%d",j,k);
+return 0;
 }
 </pre>
-aa@bb.com 为需要添加帅哥的人的邮件。另外需要在评论的显示评论者名字的地方加上一句
-<pre lang="php">
-<?php comment_g_title($comment->comment_author_email); ?>
+Answer: 9, 49
+Explanation: 注意此处使用的是宏定义，宏定义的展开是简单的替换，所以每次i都会增2.
+
+<strong>2. 类型转换</strong>
+<pre lang="c"  line="1">
+char foo(void)
+{
+  unsigned int a = 6;
+  int  b= -20;
+  char c;
+  (a+b>6)?(c=1):(c=0);
+  return c;
+}
+</pre>
+Answer: 1
+Explanation: 类型转换在int遇到unsigned int是转换为unsigned int。
+
+<strong>3. 不适用中间变量的a,b值交换</strong>
+<pre lang="c"  line="1">
+a=a+b;b=a-b;a=a-b; 
+a=a^b;b=a^b;a=a^b;
+</pre>
+第一种解法不需要解释，但要说明的是有一个缺点就是当a,b很大时会溢出。
+关于第二个解法首先要了解异或运算满足交换律和结合律，从这个角度来看解法二可以这么理解：
+b = (a^b)^b = a^(b^b) = a^0=a;  
+a=(a^b)^a = a^(b^a)=a^(a^b)=(a^a)^b = 0^b = b;
+
+
+<strong>4. atexit函数</strong>
+<pre lang="c"  line="1">
+void fn(void);
+int main(void)
+{
+   atexit(fn);
+   printf("Hi,");
+}
+
+void fun(void)
+{
+   printf("Jack!\n");
+}
 </pre>
 
-<h2>3 帅哥评选原则</h2>
-在我这里评论不小于10条的为帅哥，iSayMe虽然只有9个，但是用了他的东西，所以给他例外。
-这里给出评选的SQL语句：
-<pre lang="sql">
-SELECT comment_author, comment_author_email, COUNT( * ) 
-FROM `wp_comments` 
-where comment_approved = '1'
-GROUP BY comment_author
-ORDER BY COUNT( * ) DESC 
-LIMIT 0 , 30
-</pre>
-SQL语句执行结果图：
-<a href="http://dhblog.org/wp-content/uploads/2011/08/handsome1.png"><img src="http://dhblog.org/wp-content/uploads/2011/08/handsome1.png" alt="" title="handsome" width="372" height="443" class="aligncenter size-full wp-image-941" /></a>
-很激动 松哥在我这里的留言超过10条了。
-<h2>4 效果图</h2>
-以iSayMe为例：
-<a href="http://dhblog.org/wp-content/uploads/2011/08/handsome2.png"><img src="http://dhblog.org/wp-content/uploads/2011/08/handsome2.png" alt="" title="handsome2" width="632" height="359" class="aligncenter size-full wp-image-942" /></a>
+Answer: 输出 Hi, Jack!
+Explanation:这个函数可以再main函数执行结束的时候执行指定的过程。很想消息注册的机制。下面给出个简单例子。
+注：这是程序员面试宝典37页的例子，dev c++中测试失败。
 
+<strong>5. sizeof</strong>
+<pre lang="c"  line="1">
+char ss2[] = "0123456789";
+char ss3[100]="0123456789";
+int  ss4[100]=;
+printf("%d,%d,%d\n",sizeof(ss2),sizeof(ss3),sizeof(ss4));
+</pre>
+Answer: 11,100,400
+Explanation: 11,100,4*100=400(int的大小是4个字节)
+
+<strong>6. 关于虚继承</strong>
+<pre lang="c"  line="1">
+class A
+{
+	int x;
+	......
+}
+class B: public A;
+class C: public A;
+class D: public B, public C;
+</pre>
+对于上述代码类D将拥有两个x成员，B::x和C::x。在很多情况下我们需要把两个x合并成一个，这时候就需要虚基类的帮忙。
+class A;
+class B:virtual public A;
+class C:virtual public A;
+class D:public B, public C;
+
+这而有个二义性和优先级的问题需要考虑：
+a. 如果在继承路径中最终的子类继承的是同一虚基类的成员，则无二义性
+b. 如果在继承路径中某条路径中是虚基类的成员，另一条路径中是派生类的同名成员，则派生类的优先级高于虚基类。
+c. 如果每条继承路径中出现非虚基类的同名成员，则有二义性。
+例子：
+<pre lang="c"  line="1">
+#include <iostream> 
+class B
+{ 
+   public: 
+   void print()
+  { 
+     std::cout << "B" << std::endl; 
+   } 
+}; 
+
+class D1: public virtual B
+{
+}; 
+
+class D2: public virtual B
+{ 
+   public: 
+   void print()
+  { 
+    std::cout << "D2" << std::endl; 
+   } 
+}; 
+
+class DD: public D1, public D2
+{
+}; 
+
+int main ()
+{ 
+   DD d; 
+   d.print();// 注意此处：ok: call D2::print，这是上面分析的第二种情况 
+   return 0; 
+}
+</pre>
+
+<strong>7.从M进制转换为N进制（宝典中的例子有严重错误）</strong>
+先从简单的例子着手：
+(1) M进制转换到十进制
+a1a2a3…ak(M) = a1*M^(k-1)+a2*M^(k-2) + … ak*M^0 = a1a2…a(k-1)(M)*M + ak = f(k-1)*M + ak（这一步是递归表达）
+(2)十进制转换M进制  仿照上述转换，同样得到 
+f(Num/M)*10 + Num%M(递归表示)
+(3)泛化：任意进制数转换N进制，假设Num/N结果是10进制，Num用自身的进制表示当然对于大于10的进制需要要引入其他符号表示
+f(Num/N)*10 + Num%N
+简单的例子：
+<pre lang="c"  line="1">
+int ToRadix(int num, int toRadix) 
+{ 
+    if(num/toRadix==0) 
+       return num; 
+    else 
+       return ToRadix(num/toRadix, toRadix)*10 + num%toRadix; 
+}
+int main(void) 
+{ 
+    printf("%d\n",ToRadix(0x12,4)); //注意此处的参数表示 
+    return 0; 
+}
+</pre>
+
+<strong>8.地址的类型</strong>
+<pre lang="c"  line="1">
+float a = 1.0f;
+cout << (int)a << endl;
+cout << (int&)a << endl;
+cout << boolalpha << ( (int)a == (int&)a ) << endl;
+float b = 0.0f;
+cout << (int)b << endl;
+cout << (int&)b << endl;
+cout << boolalpha << ( (int)b == (int&)b ) << endl;</pre>
+Answer: false true
+Explanation: (int&)a 和 *((int*)&a)是一样的,把&a这个地址上32位数看作int型
 
 		</div>
 		<div id="comment">
 			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
 			<!-- Duoshuo Comment BEGIN -->
-			<div class="ds-thread" data-thread-key="32" data-title="wordpress主题:增加帅哥认证标识"></div>
+			<div class="ds-thread" data-thread-key="32" data-title="IT求职知识:基础知识1(c++代码篇)"></div>
 			<!-- Duoshuo Comment END -->		
 		</div>		
 	</div>
@@ -210,7 +334,7 @@ SQL语句执行结果图：
 		标签
 	</h3>
 	<div class="tag_widget_box">
-	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 6 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 5 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 1 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
+	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 7 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 6 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 2 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
 	</div>
 </div> <div class="doublewidget">
 	<h3>
@@ -241,7 +365,7 @@ SQL语句执行结果图：
 	<noscript><a href="http://www.51.la/?4836371" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4836371.asp" style="border:none" /></a></noscript>
 	</div>
 	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"dhblog"};
+	var duoshuoQuery = {short_name:"dhblog2"};
 		(function() {
 			var ds = document.createElement('script');
 			ds.type = 'text/javascript';ds.async = true;

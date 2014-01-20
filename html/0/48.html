@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>wordpress安全:处理垃圾评论(续)-前台管理评论</title>
-	<meta name="keywords" content="wordpress安全:处理垃圾评论(续)-前台管理评论,DH博客" />
-	<meta name="description" content="wordpress安全:处理垃圾评论(续)-前台管理评论 详细页面,DH博客" />
+	<title>wordpress主题:博客主题新功能</title>
+	<meta name="keywords" content="wordpress主题:博客主题新功能,DH博客" />
+	<meta name="description" content="wordpress主题:博客主题新功能 详细页面,DH博客" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="Content-Language" content="zh-CN">	
@@ -125,87 +125,32 @@
 博客恢复运行，持续更新中... 20140118
 </div>
 	<div id="content">
-		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE5BBBAE7AB99E68A80E69CAF/1.html" title="查看分类 建站技术 下的所有文章">建站技术</a> >> wordpress安全:处理垃圾评论(续)-前台管理评论 </div>
+		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE5BBBAE7AB99E68A80E69CAF/1.html" title="查看分类 建站技术 下的所有文章">建站技术</a> >> wordpress主题:博客主题新功能 </div>
 		<div class="entry">
-			<h1>wordpress安全:处理垃圾评论(续)-前台管理评论</h1><div>发表日期：2011-10-17 作者：DH分类：建站技术 标签： wordpress </div>
+			<h1>wordpress主题:博客主题新功能</h1><div>发表日期：2011-09-26 作者：DH分类：建站技术 标签： wordpress </div>
 <h2>1 序言</h2>
-上次讲到<a href="http://dhblog.org/43.html">处理垃圾评论</a>，很多方法，但是没有办法处理手动录入的评论如：
-<a href="http://dhblog.org/wp-content/uploads/2011/09/lajipingl.png"><img src="http://dhblog.org/wp-content/uploads/2011/09/lajipingl.png" alt="" title="lajipingl" width="241" height="351" class="aligncenter size-full wp-image-62" /></a>
-先谈谈其他人的方法：
-1. 没有头像不给评论，这个willin的小墙的新功能。
-2. 制定策略，可以看看<a href="http://www.ninthday.net/2011/09/spam-comments-list.html">那些永远不会出现在评论里面的垃圾评论</a>
-3. 如果发现了，可以<a href="http://www.ninthday.net/2011/08/magement-comments-front.html">手动删除垃圾评论</a>
-这里我说说如何添加手动删除垃圾评论的功能，此方法从星期九那里学来，自己修改了一些，我觉得很好用，平常我用这个手动删除，我垃圾评论的鉴定方法比较宽容，所以基本上一个礼拜出现一条这样，所以我使用这个方法可以很快很轻松地管理评论。
-<h2>2 示例</h2>
-使用方法是这样的，在使用管理员账户登录之后，就会出现以下界面，点击“删除”，确认时候就可以删除垃圾评论了。点击“编辑”，可以到后台管理这个评论。
-<a href="http://dhblog.org/wp-content/uploads/2011/09/lajipl.png"><img src="http://dhblog.org/wp-content/uploads/2011/09/lajipl.png" alt="" title="lajipl" width="618" height="257" class="aligncenter size-full wp-image-63" /></a>
-<h2>3 代码</h2>
-<h3>3.1 评论显示需要有callback函数</h3>
-这个就是自定义评论的显示方法的函数，在函数wp_list_comments调用这个callback函数。这个函数的使用可以google一下。
-<h3>3.2 我的callback函数</h3>
-这里我给出我的callback函数，dh_commentnavi，在33-41行，就是这个代码，可以拷贝利用这个
-<pre lang='php' line='1'>
-<?php
-/*****************************************************
- 函数名称：mytheme_comment 
- 函数作用：重写wp_listcomment的输出，在中间加入楼层号
-******************************************************/
-function dhchannel_comment($comment, $args, $depth)
-{
-    $GLOBALS['comment'] = $comment;
-    //主评论计数器初始化 begin
-	global $commentcount;
-	if(!$commentcount) { //初始化楼层计数器
-		$page = get_query_var('cpage')-1;
-		if($page<0)
-		{
-		  	$page = abs(intval($_GET['page']))-1;
-		}
-		$cpp=get_option('comments_per_page');//获取每页评论数
-		$commentcount = $cpp * $page;
-	}
-    //主评论计数器初始化 end
-?>
-<li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
-	<div id="comment-<?php comment_ID(); ?>"  class="comment-body">
-		<div class="comment-author vcard">
-		<?php echo get_avatar($comment,$size='48',$default='<path_to_url>' ); ?>
-		<?php comment_g_title($comment->comment_author_email); ?>
-		<?php printf(__('<cite class="fn">%s</cite> <span class="says">says:</span>'), get_comment_author_link()) ?>
-		</div>
-		<?php if ($comment->comment_approved == '0') : ?>
-			<em><?php _e('Your comment is awaiting moderation.') ?></em>
-			<br />
-		<?php endif; ?>		
-		<div class="comment-meta commentmetadata">
-			<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php printf('%1$s %2$s', get_comment_date(),  get_comment_time()) ?></a>
-			<?php edit_comment_link('[ 编辑 ]','  ','');
-			echo " ";
-			if ( is_user_logged_in() ) 
-			{
-				echo '[ <a href="'.wp_nonce_url(get_bloginfo('url').'/wp-admin/comment.php?action=deletecomment&amp;p='.$comment->comment_post_ID . '&amp;c=' . $comment->comment_ID, 'delete-comment_' . $comment->comment_ID) . '" onclick="return confirm(\'你真的想删除这个评论吗?\')" >删除</a> ]';
-			}?>	
-		</div>
-		<?php comment_text() ?>
-		<div class="reply">
-			<?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
-		</div>
-		<div class="floor">
-			<?php if(!$parent_id = $comment->comment_parent) {printf('%1$s楼', ++$commentcount);} ?>
-		</div>
-	</div>
-<?php 
-}
-?>
-</pre>
-<h2>4 注意点</h2>
-基本上没有什么注意点。呵呵
+很长时间没有在博客上面活动了，也不经常去大家的博客看看了。最近比较忙，前段时间搞了ajax基本上可以告一个段落了。ajax的文章其实早就写好了，压着一直没有发表，按照固定的频率，一周一篇地发表。现在主题又有一些新的功能，当然也是早就搞好了的。今天上线新功能了。
+<h2>2 哪些新功能</h2>
+功能的出发点就是使大家比较方便访问博客，增加友好度。主要有：
+1.  非插件实现postview
+2.  为每个文章添加目录。
+3.  前台手动一键删除垃圾评论
+4.  非插件实现备份邮寄数据库
+5.  实现纯静态的归档页面
+
+<h2>3 新功能在哪里</h2>
+我想大家只能去发现了，在访问博客的时候注意一下，有bug很希望大家能给我提示，这样我就会修改。
+如果觉得还可以，后续将会写教程，如何实现这些。
+<h2>4 后续</h2>
+由于这次文章很水，所以附录一个笑话，希望大家开心开心：
+
+一领导招聘秘书，考题是：女人上下两口的区别？1号答：一横一竖！2号：有牙无牙！3号：有舌无舌！4号：有毛无毛！5号：有话无话！6号：上面吃喝，下面玩乐！7号：上面谈情说爱，下面传宗接代！8号：上面歌颂三个代表，下面满足各位领导！——8号入选！
 
 		</div>
 		<div id="comment">
 			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
 			<!-- Duoshuo Comment BEGIN -->
-			<div class="ds-thread" data-thread-key="48" data-title="wordpress安全:处理垃圾评论(续)-前台管理评论"></div>
+			<div class="ds-thread" data-thread-key="48" data-title="wordpress主题:博客主题新功能"></div>
 			<!-- Duoshuo Comment END -->		
 		</div>		
 	</div>
@@ -239,7 +184,7 @@ function dhchannel_comment($comment, $args, $depth)
 		标签
 	</h3>
 	<div class="tag_widget_box">
-	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 6 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 5 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 1 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
+	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 7 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 6 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 2 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
 	</div>
 </div> <div class="doublewidget">
 	<h3>
@@ -270,7 +215,7 @@ function dhchannel_comment($comment, $args, $depth)
 	<noscript><a href="http://www.51.la/?4836371" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4836371.asp" style="border:none" /></a></noscript>
 	</div>
 	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"dhblog"};
+	var duoshuoQuery = {short_name:"dhblog2"};
 		(function() {
 			var ds = document.createElement('script');
 			ds.type = 'text/javascript';ds.async = true;

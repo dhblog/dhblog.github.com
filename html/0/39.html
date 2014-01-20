@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>wordpress主题:增加帅哥认证标识(续)</title>
-	<meta name="keywords" content="wordpress主题:增加帅哥认证标识(续),DH博客" />
-	<meta name="description" content="wordpress主题:增加帅哥认证标识(续) 详细页面,DH博客" />
+	<title>拿福能:观影《变形金刚3:月黑之夜》</title>
+	<meta name="keywords" content="拿福能:观影《变形金刚3:月黑之夜》,DH博客" />
+	<meta name="description" content="拿福能:观影《变形金刚3:月黑之夜》 详细页面,DH博客" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="Content-Language" content="zh-CN">	
@@ -125,67 +125,26 @@
 博客恢复运行，持续更新中... 20140118
 </div>
 	<div id="content">
-		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> wordpress主题:增加帅哥认证标识(续) </div>
+		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE7BD91E7AB99E79B88E588A9/1.html" title="查看分类 网站盈利 下的所有文章">网站盈利</a> >> 拿福能:观影《变形金刚3:月黑之夜》 </div>
 		<div class="entry">
-			<h1>wordpress主题:增加帅哥认证标识(续)</h1><div>发表日期：2011-08-15 作者：DH分类：编程技术 标签： wordpress </div>
-<h2>1 序言</h2>
-自从上次推出<a href="http://dhblog.org/archives/1.html">帅哥认证</a>以来，<a href="http://www.initers.com/">IT圈中人</a>便锲而不舍地在我这里留言，希望能得到一个帅哥认证。但是就是没有看到自己的头像有帅哥标识，原因是我上次的全部是手动填的，这次把这个修改成自动的了，只要评论超过10条就有帅哥标识，于是乎，IT圈中人现在终于可以有了帅哥标识了。
-
-<h2>2 方法</h2>
-将下面的代码保存为comment_g_title.php文件，并在functions.php中引用之。
-<pre lang="php" line="1">
-<?php
-/// 函数名称：dcomment_g_title
-/// 函数作用：帅哥认证标识
-/// 函数作者: DH
-/// 作者地址: http://dhblog.org/ 
-function comment_g_title($email = '')
-{
-	if(empty($email))return;
-	$handsome = get_option('dh_comment_g_title');
-	if(!$handsome)
-	{
-		$handsome = get_comment_g_title();
-	}
-	$adminEmail = get_option('admin_email');
-	if($email==$adminEmail)
-	echo " <div class='admin' title='博主'>博主</div>";
-	elseif(in_array($email,$handsome))
-	echo " <div class='handsome' title='帅哥'>帅哥</div>";
-}
-
-function get_comment_g_title()
-{
-	global $wpdb;
-	$adminEmail = get_option('admin_email');
-	$request="SELECT comment_author_email FROM $wpdb->comments WHERE comment_author_email != '$adminEmail' AND comment_approved='1' GROUP BY comment_author_email having count(*) > 10";
-	$handsomes=$wpdb->get_results($request);
-	$handsome = array();
-	foreach ($handsomes as $handsomei)
-	{
-		array_push($handsome,$handsomei->comment_author_email);
-	}		
-	update_option('dh_comment_g_title', $handsome);
-	return $handsome;
-}
-
-add_action('comment_post', 'get_comment_g_title');
-?>
-</pre>
-在functions.php中引用
-<pre lang="php" line="1">
-include("comment_g_title.php");
-</pre>
-<h2>3 几点说明</h2>
-1. 使用了将帅哥保存到option表中的技巧。减少数据库的读写。
-2. 帅哥评选原则是 累计评论超过10条，系统自动评出帅哥
-3. 需要在显示图像的下面引用这个函数comment_g_title($comment->comment_author_email)，一般在wp_list_comments的callback函数中，关于wp_list_comments的callback函数如何写，就要google了。
+			<h1>拿福能:观影《变形金刚3:月黑之夜》</h1><div>发表日期：2011-07-26 作者：DH分类：网站盈利 标签： 电影 </div>
+<h2>序言</h2>
+我右边的侧边栏广告是拿福能的。本来不想写这篇文章的，免得有做广告的嫌疑，看了知蚁博客的<a href="http://www.letuknowit.com/archives/114">拿福能观影之《变形金刚3》归来</a>，还是觉得要写一下感受吧，要不然对不起那电影，还发了T-shirt。我在<a href="http://dhblog.org/archives/908.html">首次接触拿福能(感受篇)</a>中说，活动多，希望在上海举办一点，这个终于来了。
+<h2>发起</h2>
+<p>知晓：本来不知道有这个活动，是rachel到我这里留言才知道了。</p>
+<p>登记：到拿福能的页面登记你的信息。</p>
+<p>确认：然后给我短信确认，我忘记回了，又打电话给我确认，感动的我不得不答应。</p>
+<p>通知：短信通知观影时间和地点。</p>
+<h2>高潮</h2>
+就这样，来看电影，虽然摸了很长时间猜到新天地，但是还是按时找到了。找到rachel比较简单，就在门口，电影的剧情 不说...
+<h2>尾声</h2>
+看完就回家了...
 
 		</div>
 		<div id="comment">
 			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
 			<!-- Duoshuo Comment BEGIN -->
-			<div class="ds-thread" data-thread-key="39" data-title="wordpress主题:增加帅哥认证标识(续)"></div>
+			<div class="ds-thread" data-thread-key="39" data-title="拿福能:观影《变形金刚3:月黑之夜》"></div>
 			<!-- Duoshuo Comment END -->		
 		</div>		
 	</div>
@@ -219,7 +178,7 @@ include("comment_g_title.php");
 		标签
 	</h3>
 	<div class="tag_widget_box">
-	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 6 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 5 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 1 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
+	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 7 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 6 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 2 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
 	</div>
 </div> <div class="doublewidget">
 	<h3>
@@ -250,7 +209,7 @@ include("comment_g_title.php");
 	<noscript><a href="http://www.51.la/?4836371" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4836371.asp" style="border:none" /></a></noscript>
 	</div>
 	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"dhblog"};
+	var duoshuoQuery = {short_name:"dhblog2"};
 		(function() {
 			var ds = document.createElement('script');
 			ds.type = 'text/javascript';ds.async = true;

@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>wordpress数据库:表posts清理和整理</title>
-	<meta name="keywords" content="wordpress数据库:表posts清理和整理,DH博客" />
-	<meta name="description" content="wordpress数据库:表posts清理和整理 详细页面,DH博客" />
+	<title>wordpress数据库:定期备份邮寄数据库</title>
+	<meta name="keywords" content="wordpress数据库:定期备份邮寄数据库,DH博客" />
+	<meta name="description" content="wordpress数据库:定期备份邮寄数据库 详细页面,DH博客" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="Content-Language" content="zh-CN">	
@@ -125,126 +125,182 @@
 博客恢复运行，持续更新中... 20140118
 </div>
 	<div id="content">
-		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE5BBBAE7AB99E68A80E69CAF/1.html" title="查看分类 建站技术 下的所有文章">建站技术</a> >> wordpress数据库:表posts清理和整理 </div>
+		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE5BBBAE7AB99E68A80E69CAF/1.html" title="查看分类 建站技术 下的所有文章">建站技术</a> >> wordpress数据库:定期备份邮寄数据库 </div>
 		<div class="entry">
-			<h1>wordpress数据库:表posts清理和整理</h1><div>发表日期：2011-11-14 作者：DH分类：建站技术 标签： wordpress </div>
-<h2>1 缘起</h2>
-wordpress的posts表是非常重要的表，所有的文章都放在里面，但是有时候内容很多，仔细检查表发现，还有很多的重复的内容，让人看起来非常不爽，而且数据量的增多会导致维护麻烦，而且会是数据库访问变慢。
-<h2>2 原因</h2>
-wp默认的配置会写草稿和修订版，这样会导致文章很多，占用数据空间。
-<h2>3 方法</h2>
-1. 清理posts表,清理掉草稿和修订版本 文章wordpress提高速度之一(数据库清理)已经提及了。http://dhblog.org/18.html
-2. 禁止草稿、修订,这样就不会生成多余的内容了
-3. 重新排序，删除之后会导致序号缺失，洁癖者需要重新整理数据，这样使得文章的序号非常整齐。
-
-<h2>4 清理posts表</h2>
-wordpress的文章有好多：wp_posts表中包括
-文章种类：文章、修订版本、页面、文章的附件、菜单。
-其中每种文章又会有很多状态：继承、发布、私有、草稿、自动草稿、回收站中。
-
-冗余原因：
-(1)在博主写文章的时候，系统会保存很多的中间状态，在文章发布之后其很多的中间状态没有被删除。
-
-解决办法：
-(1)使用插件：WP Cleaner，使用插件的好处就是有保护机制，无论怎么操作都无法影响已发布的贴子，请放心使用^^
-(2)自己动手删除，数据库中的标志删除文章，注意备份。
-说明：wp_posts的重要字段含义：
-post_type：文章类型，post表示为文章，revision表示为修订版本，page为页面，attachment是文章的附件信息，nav_menu_item是菜单。这里我们需要的是文章、页面、和菜单。
-post_status：文章状态，inherit是继承的附件和文章的附带信息，publish是已经发布、private是私有的，draft是草稿，auto-draft是自动草稿，trash是在回收站。这里我们需要的是publish的状态的。
-这里我们主要是要 已经发布的文章、页面和菜单，除此之外的都可以删除，当然可以根据自己的需求选择删除哪些
-
-<pre lang="sql" line="1">
-DELETE FROM  wp_posts 
-WHERE NOT(post_status = 'publish' AND post_type IN('post','nav_menu_item','page'));
-</pre>
-
-<h2>5 禁止草稿、修订</h2>
-在 网站根目录下的 wp-config.php中添加：
+			<h1>wordpress数据库:定期备份邮寄数据库</h1><div>发表日期：2011-10-24 作者：DH分类：建站技术 标签： wordpress </div>
+<h2>1 序言</h2>
+最近准备抛弃willian大师的my_visitor，因为占用数据库实在是太大，但是其很好用的三个功能：
+1. 简易post_view
+2. 定期备份
+3. 登录失败提醒
+还是很好用的，这里我自己参考他的代码，写了简易的定期备份数据库，希望能给大家帮助
+<h2>2 方法</h2>
+将下面的代码保存为dh_backup_db.php
 <pre lang="php" line="1">
-/** 不会生成历史版本 */
-#define('WP_POST_REVISIONS',false);
+<?php
+/// 函数名称：dh_backup_db 
+/// 函数作用：定时备份数据库
+/// 函数作者: DH
+/// 作者地址: http://dhblog.org/
 
-/** 不会自动保存 */
-#define('AUTOSAVE_INTERVAL', false);
-</pre>
-或者在function.php中添加
-<pre  lang="php" line="1">
-/* 移除自动保存和修订版本 */
-remove_action('pre_post_update', 'wp_save_post_revision' );
-add_action( 'wp_print_scripts', 'disable_autosave' );
-function disable_autosave() {
-	wp_deregister_script('autosave');
+$dh_backup_db = get_option('dh_backup_db');
+$interal = 3600*24*2; //定义一个礼拜执行一次
+//如果没有定义options就定义
+if (!$dh_backup_db) {
+	//执行的时间按照第一次执行的时间为基础，因为无法精确，所以不定义具体执行的时间点
+	$dh_backup_db = time();//最后一次执行的日期
+	update_option('dh_backup_db', $dh_backup_db);	
 }
-</pre>
-这样就不会保存草稿和自动修订版了。
-<h2>6 重新排序</h2>
-清理之后，还有很多重要的问题没有解决：
-1. 就是新文章的序号很大，还不能设置过小，因为已经有很大的文章号出现了。
-2. 旧文章的序号空缺很大，让人很不舒服。
-下面就是解决这个问题的，这是Lee的代码，我使用了一下，没有问题。
-将一下代码保存为config.php,放在网站的根目录。执行即可。注意：
-1. 在执行之前需要备份好数据库
-2. 需要将http://dhblog.org/archives/修改为你需要的固定文章的地址。
-3. 推荐方法，建议在本机安装php环境和数据库，把网站数据导入到本地数据库之后，用执行完之后的数据恢复网上的数据。
+ 
+//在主题被切换的时候，清除hook
+function dh_del_backup_db(){
+	delete_option('dh_backup_db');
+} 
+add_action('switch_theme',dh_del_backup_db);
 
+$now = time(); // 现在
+$next_check = (int)$dh_backup_db + $interal;
+
+//如果到了时间执行的时间
+if ($next_check <= $now) 
+{
+    // 备份路径
+    $key = substr(md5(DB_NAME), -10);
+    $file_dir = ABSPATH . "wp-content/themes/dhchannel/functions/backup_$key/";
+	if(!file_exists($file_dir))//判断文件夹是否存在
+	{
+		mkdir($file_dir,0777);
+		@chmod($file_dir,0777);
+	}
+    $filename = DB_NAME . '-' . gmdate('ymd', time() + get_option('gmt_offset')*3600) . '-'. time().'.sql';
+    if (@function_exists('gzencode')) $filename .= '.gz'; // gzip
+
+    if (!is_file($file_dir.$filename)) 
+	{    
+		// 导出数据库
+		$table_name_array = $wpdb->get_col('SHOW TABLES'); // 查询所有表名
+		include('dh_backup_db_sql-dump.php'); 
+
+		// 邮寄数据库备份
+		global $phpmailer; // 採用 phpmailer 方式
+		class_exists('PHPMailer') or require(ABSPATH . WPINC . '/class-phpmailer.php');
+		$phpmailer = new PHPMailer();
+		$phpmailer->AddAddress( get_option('admin_email') ); // 可改另一個郵箱
+		$phpmailer->AddAttachment("$file_dir$filename");
+		$phpmailer->Body = '这是由 dhchannel backup_db 功能自动生成的数据库备份.';
+		$phpmailer->CharSet = 'UTF-8';
+		$phpmailer->ContentType = 'text/plain';
+		$phpmailer->FromName = html_entity_decode(get_option('blogname'), ENT_QUOTES);
+		$phpmailer->From = 'no-reply@' . preg_replace('#^www\.#', '', strtolower($_SERVER['SERVER_NAME']));
+		$phpmailer->Subject = "数据库备份- $filename";
+		; // 寄出
+		if($phpmailer->Send())
+		{
+			echo "糟糕，没有发送出去哦！";
+			unlink($file_dir.$filename);
+		}
+//unlink($file_dir.$filename);
+    }
+	update_option('dh_backup_db', $now);
+}
+?>
+?>
+</pre>
+在functions.php中引用
+<pre lang="php">
+include("dh_backup_db.php");
+</pre>
+<h2>3 数据备份操作文件</h2>
+讲一下文件保存为 dh_backup_db_sql-dump.php，此文件引用willian的my_visitor
 <pre lang="php" line="1">
 <?php
 /**
- * WordPress重新排列不连续的文章ID
- * 作者 ：小拼(Lee)
- * Email：xpsem2010@gmail.com
- * Blog ：http://www.xp-sem.com/
- * 文章出处：http://www.xp-sem.com/wordpress-clear-post-id-continuity/
- * 最后修改：2010年11月08日 14：47
- * post_id作为固定链接或是使用投票等关联文章的插件勿用
- * 3.0.1版本亲测，理论上其它版本也适用，操作前请备份好数据库，放心去干吧！
+ * 導出數據 -- 用於 my-visitors.php 和 option.php
+ * @param array  $table_name_array 導出的表名
+ * @param string $file_dir         備份路徑
+ * @param string $filename         備份文件名
+ * @return       $success          儲存數量
  */
+defined('ABSPATH') or die('This file can not be loaded directly.');
 
-/** 引入网站配置文件，这里主要获得数据库连接信息及常规操作类 */
-require_once( './wp-config.php' );
+$fp = fopen($file_dir.$filename, 'w');
 
-function change_post_id($id)
-{
- global $convertedrows, $wpdb;
- /** 修改文章ID关联的类别、标签、自定义字段、评论各表，prefix是您安装时设置的数据库表前缀 */
- $wpdb->query( 'update ' . $wpdb->prefix .'posts set ID = ' . $convertedrows . ' where ID = ' . $id );
- $wpdb->query( 'update ' . $wpdb->prefix .'posts set guid = "http://dhblog.org/archives/' . $id . '.html" where ID = ' . $id);
- $wpdb->query( 'update ' . $wpdb->prefix .'term_relationships set object_id = ' . $convertedrows . ' where object_id = ' . $id );
- $wpdb->query( 'update ' . $wpdb->prefix .'postmeta set post_id = ' . $convertedrows . ' where post_id = ' . $id );
- $wpdb->query( 'update ' . $wpdb->prefix .'comments set comment_post_ID = ' . $convertedrows . ' where comment_post_ID = ' . $id); 
- $convertedrows++;
-}
-/** ID默认由1开始 */
-$convertedrows = 1;
-
-/** 查询数据库文章表所有记录 */
-$sql_query = 'SELECT ID FROM ' . $table_prefix . 'posts ORDER BY ID ASC';
-$all_post_ids = $wpdb->get_results( $sql_query );
-
-/** 有返回值时则执行循环 */
-if ( is_array( $all_post_ids ) ) {
- foreach ( $all_post_ids as $post_id ) {
-  change_post_id( $post_id->ID );
- }
+/* write to file */
+function sql_dump($fp, $buffer) {
+ global $success;
+ if (@function_exists('gzencode')) $buffer = gzencode($buffer); // gzip
+ $success = fwrite($fp, $buffer);
 }
 
-/** 重新设置文章ID自动增加的起点 */
-$wpdb->query('alter table ' . $table_prefix .'posts AUTO_INCREMENT = ' . $convertedrows);
-echo 'Total:'. $convertedrows .', It\'s ok! ';
+$date_gmt  = gmdate('Y-m-d H:i:s', time() + get_option('gmt_offset')*3600);
+$gm_date   = gmdate('Y-m-d H:i:s', time());
+$mysql_ver = mysql_get_server_info();
+$php_ver   = PHP_VERSION;
+
+$max_limit = 49152; // 48KB
+
+$buffer = "-- My Visitors SQL Dump version 1.3
+-- Author: willin kan
+-- URI: http://kan.willin.org/\n--
+-- 主機: " . DB_HOST . "
+-- 生成日期: $date_gmt ($gm_date GMT)
+-- 服務器版本: $mysql_ver
+-- PHP 版本: $php_ver\n
+SET SQL_MODE=\"NO_AUTO_VALUE_ON_ZERO\";\n
+--\n-- 數據庫: `" . DB_NAME . "`
+--\n\n-- " . str_repeat('-', 56);
+sql_dump($fp, $buffer);
+
+foreach ($table_name_array as $table) {
+$buffer = "\n
+# 表的結構: `$table`\n
+DROP TABLE IF EXISTS `$table`;\n";
+$row = $wpdb->get_row("SHOW CREATE TABLE $table");
+$buffer.= $row->{'Create Table'}.";\n
+# 導出表中的數據 `$table`\n";
+sql_dump($fp, $buffer);
+
+$limit_start = 0;
+$status = $wpdb->get_row("SHOW TABLE STATUS LIKE '$table'");
+$limit = (int)(($max_limit / (($status->Data_length + 1) / ($status->Rows + 1)))); // 以 max_limit 切割長度 (ROWS_PER_SEGMENT)
+
+ do {
+   $buffer = '';
+   $dbs = $wpdb->get_results("SELECT * FROM $table LIMIT $limit_start, $limit", ARRAY_A);
+   if (count($dbs)) {
+     $buffer .= "\nINSERT INTO `$table` VALUES";
+     foreach ($dbs as $db) {
+       foreach ($db as $str) {
+         $str = strtr($str, array("'" => "''", "\\" => "\\\\", "\x00" => "\\0", "\x0a" => "\\n", "\x0d" => "\\r", "\x1a" => "\\Z")); // 修改版 mysql_real_escape_string()
+         $fild[] = is_numeric($str) ? $str : "'" . $str . "'";
+       }
+       $fild = implode(", ", $fild);
+       $buffer .= "\n($fild),";
+       unset($fild);
+     }
+   $buffer = rtrim($buffer, ',') . ";";
+  }
+  sql_dump($fp, $buffer);
+  $limit_start += $limit;
+ } while (count($dbs));
+
+ $buffer = "\n
+# `$table` 結束
+\n-- " . str_repeat('-', 56);
+sql_dump($fp, $buffer);
+}
+
+fclose($fp);
+
+ $dump_peak_usage = round(memory_get_peak_usage()/1024/1024, 2);
 ?>
 </pre>
-
-但是这样很危险：如果执行了"重新排序"之后，后果还是很严重的，主要有：
-1. 会导致搜索引擎的不友好，不收录新的网页，被认为是抄袭。
-2. 会导致你以前网页的链接没有了，应为改名字了。
-3. 会让收藏你以前网页的网友不知道新的地址了。
-总之要慎重。不管你们慎重不慎重，反正我是做了，而且收录下降了，但是我的主要流量不是搜索引擎，而且我不出名，所以删了就删了，无所谓。呵呵。
 
 		</div>
 		<div id="comment">
 			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
 			<!-- Duoshuo Comment BEGIN -->
-			<div class="ds-thread" data-thread-key="52" data-title="wordpress数据库:表posts清理和整理"></div>
+			<div class="ds-thread" data-thread-key="52" data-title="wordpress数据库:定期备份邮寄数据库"></div>
 			<!-- Duoshuo Comment END -->		
 		</div>		
 	</div>
@@ -278,7 +334,7 @@ echo 'Total:'. $convertedrows .', It\'s ok! ';
 		标签
 	</h3>
 	<div class="tag_widget_box">
-	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 6 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 5 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 1 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
+	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 7 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 6 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 2 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
 	</div>
 </div> <div class="doublewidget">
 	<h3>
@@ -309,7 +365,7 @@ echo 'Total:'. $convertedrows .', It\'s ok! ';
 	<noscript><a href="http://www.51.la/?4836371" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4836371.asp" style="border:none" /></a></noscript>
 	</div>
 	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"dhblog"};
+	var duoshuoQuery = {short_name:"dhblog2"};
 		(function() {
 			var ds = document.createElement('script');
 			ds.type = 'text/javascript';ds.async = true;

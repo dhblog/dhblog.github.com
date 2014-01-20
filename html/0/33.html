@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>博客总结(2011年上半年总结篇)</title>
-	<meta name="keywords" content="博客总结(2011年上半年总结篇),DH博客" />
-	<meta name="description" content="博客总结(2011年上半年总结篇) 详细页面,DH博客" />
+	<title>IT求职知识:基础知识2(c++理论篇)</title>
+	<meta name="keywords" content="IT求职知识:基础知识2(c++理论篇),DH博客" />
+	<meta name="description" content="IT求职知识:基础知识2(c++理论篇) 详细页面,DH博客" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="Content-Language" content="zh-CN">	
@@ -125,54 +125,83 @@
 博客恢复运行，持续更新中... 20140118
 </div>
 	<div id="content">
-		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE5BBBAE7AB99E68A80E69CAF/1.html" title="查看分类 建站技术 下的所有文章">建站技术</a> >> 博客总结(2011年上半年总结篇) </div>
+		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE7BC96E7A88BE68A80E69CAF/1.html" title="查看分类 编程技术 下的所有文章">编程技术</a> >> IT求职知识:基础知识2(c++理论篇) </div>
 		<div class="entry">
-			<h1>博客总结(2011年上半年总结篇)</h1><div>发表日期：2011-07-18 作者：DH分类：建站技术 标签： 总结 </div>
-<h2>1 开场白</h2>
-做学生，半年要一次期中考试；开公司，半年要举行一次活动；做职工，半年要做一次年中总结；同样，写博客，半年要做一次半年总结；博客已经6各月大了，需要对这段时间的点点滴滴重新回顾一下，不仅为了纪念过去，还需要给博友分享经验，少走冤枉路，共同提高
+			<h1>IT求职知识:基础知识2(c++理论篇)</h1><div>发表日期：2011-07-07 作者：DH分类：编程技术 标签： c++ </div>
+上一篇文章给大家分享了<a href="http://dhblog.org/archives/3.html">涉及C++代码的有趣的题目</a>，这一章节给出遇到的一些理论性的C++问题，给大家分享一下。
 
-<h2>2 立足点</h2>
-一般做SEO的都需要博客专一注意，但是我的博客很难在主题上有专业。这里先做个大概吧：
-博客的内容：如何做好一个博客，如何推广一个博客，如何盈利一个博客。
-博客的目标：都是经验分享，做好一个博客从技术层面探讨如何搞好基于wordpress博客的应用性的解决方案，目前博客出于第一个阶段。推广一个博客向通过对seo等知识的学习，想将自己的博客弄的让知道的人多一点。盈利博客主要想实践一下如何利用这个博客赚一点点钱。
-博客的风格：技术为王，推广为皇。
-博客的宗旨：交流为主，友情唯尚。
+<strong>1. #include <> 和#include " "的区别？</strong>
+Answer: 前者从标准库路径开始搜索头文件，后者从用户工作目录开始。
 
-目前博客出于第一个阶段。主要做了三个系列：
-1. wordpress 提高速度 (系列1-5)
-2. wordpress 定时任务 (系列1-4)
-3. wordpress 安全 (4篇文章)
-4. 程序员it求职 (刚刚做了两篇文章)
-这些还没有做完，以后逐渐完善。
+<strong>2. 如何判断一段程序是由C编译程序还是由C++编译程序编译的？</strong>
+Answer: C++编译时定义了_cplusplus，C编译时定义了_STDC_
 
-<h2>3 博客数据</h2>
-<h5>1 google PR: 2</h5>
-<h5>2 alera数据</h5>
-<a href="http://dhblog.org/wp-content/uploads/2011/07/alera.png"><img src="http://dhblog.org/wp-content/uploads/2011/07/alera.png" alt="" title="alera" width="534" height="132" class="aligncenter size-full wp-image-944" /></a>
+<strong>3. 关于结构体的sizeof计算</strong>
+当结构体的元素的长度都小于处理器的位数的时候，便以结构体里面最长的数据元素为对齐单位。如果结构体内存在长度大于处理器位数的元素，那么就以处理器的位数为对齐单位。
+更具体的解释参考：http://blog.csdn.net/jimmy_w/archive/2007/10/14/1824176.aspx
 
-<h2>4 总结的好的地方</h2>
-博客经过了风风雨雨，也让我有了一些提高，特别是以下几个方便：
-1. 认识了领域的大牛。
-2. 找到了很多志同道合的博友。
-3. 学习了关于做博客的很多方面的知识。
-4. 了解了一个wordpress系统的基本方面，能写出一个主题。
+<strong>4. 八皇后问题 </strong>
+http://lolorosa.blogbus.com/logs/45693335.html
 
-<h2>5 犯的错误</h2>
-但是在博客建立推广的过程中，遇到了很多的挫折，包括：
-1. 域名申请的晚了，开始在别人的二级域名下，后来换成了自己的域名，不仅以前的成果泡汤，而且还影响到后来的域名的
-2. 域名更换频繁，从dh.eyesay.org 到 www.dhblog.org 到 dhblog.org，每次更换域名几乎就是重新来过。
-3. 功夫花的不少，成绩太低。pr值太低，看到别人是3，我才是2，不知道还要2到什么时候。这个就需要向各位seo大哥们学习，争取在推广方面能给力点。
+<strong>5. 0 1背包</strong>
+输入两个数m,n, 从数列1，2，3，。。。，n中随意去几个数使其和等于m，求出所有组合。
+（0 1背包的原型是，容积为m的箱子，有1，2，3.。。。n体积的物品，请问将箱子装满有多少种组合，不考虑物品放置空隙）
+分析：
+	a. 对于n>m的情况m+1...n之间的数都不考虑，也就是将n换成m考虑
+    b. 对于（n+1)n/2<m的情况无解
+    c. 递归分析，1. 将最大的n填入箱子，然后求解（m-n,n-1)
+                 2.最大的n不填入箱子，求解 （m,n-1)
+    注：在求解过程中需要设置一个掩码数组来标记选择了那些数放入箱子
 
-<h2>6 需要警示的</h2>
-虽然博客现在运行很好，但是还是内忧外患，未雨绸缪以下吧：
-1. 域名是国外的，空间是国外的，在白名单制度的黑暗之前，没有做好充足的准备
-2. 域名没有备案。备案，比较麻烦，说错了话要喝茶。不备案，白名单下必死无疑。备，难；不备，更难！
+<strong>6. 析构函数可以是虚函数，构造函数为什么不可以是虚函数呢？</strong>
+Answer:析构函数是虚函数主要考虑的是多态的问题，当用父类指针指向子类对象的时候，如果析构函数不是虚函数的话，那么从指针删除对象的时候子类的资源就不能自动得到释放。所以这也是大多数编译器在创建新类时的默认行为：将析构函数置为虚函数。
+在包含虚函数的类中，都维持一个虚函数表vTable，而类本身还包含一个隐藏变量vPointer来指向虚表。这个vPointer的赋值是在构造函数中隐式完成的。也就是说构造函数调用前是无法使用虚表的。所以如果构造函数本身都是虚函数的话，无法产生正确调用。另一个考虑是构造函数本身没有任何多态的需求，这也就没必要让其成为虚函数。虚函数的出现是有开销的，一个无任何虚函数的类不需要虚表也不需要虚表指针。而有了虚函数这两个就都需要了。
+
+<strong>7. override 和overload</strong>
+override是用来重写虚函数的，overload是同名函数参数表不同。
+
+<strong>8. 悬浮指针和空指针</strong>
+当用delete删除一个对象时，删除的知识对象的内容而非指针的内容，指针的指向仍未改变，只是指向的地址处的对象已经不存在了。这种指针称为悬浮指针。
+当把指针显示的赋值为0或NULL时指针变为空指针。
+
+<strong>9. 关于public, protected, private继承</strong>
+(1) public继承
+    基类的public成员， 在派生类中成为public成员。
+    基类的protected成员，在派生类中成为protected成员。
+    基类的private成员，在派生类中成为不可直接使用的成员。
+(2) private继承
+    基类的public成员， 在派生类中成为private成员。
+    基类的protected成员，在派生类中成为private成员。
+    基类的private成员，在派生类中成为不可直接使用的成员。
+(3) protected继承
+    基类的public成员， 在派生类中成为protected成员。
+    基类的protected成员，在派生类中成为protected成员。
+    基类的private成员，在派生类中成为不可直接使用的成员。
+关于集中继承方式，所谓的宝典中有很多处解释都不很确切。尤其值得关注的是任何继承中父类的私有成员在子类中都不可使用，而其他两种成员在子类都可以使用，只是继承后这些成员的可访问性会由于类继承的修饰符而修改。
+另外个人的理解protected变量是为了给子类继承用的，所以如果一个类有被继承的可能那么应该把会被子类用的变量都设置成protected，而那些一定不会有子类的类中的属性应该都设置成private的，比如java中的String类。
+
+<strong>10. 一般在什么时候构造函数被声明称private呢</strong>
+宝典中解释是：比如要阻止编译器生成默认的copy constructor的时候。
+个人观点：构造函数被声明成private不能阻止编译器生成copy constructor，除非你也写一个private的copy constructor。我觉得使用private构造函数至少有两种情况
+a.单例模式，在这种模式下所有的构造函数（初始化构造函数，拷贝构造函数，包括operator=）都要声明为private的，否则这些操作会破坏单例性。
+b.工具类，有些工具类只提供静态函数调用，并且没有非静态类变量，比如Java中Math类，对于这种情况，构造函数也都要声明为private，因为不需要出现类的实例。
+
+<strong>11. volatile</strong>
+一个定义为volatile的变量是说这变量可能会被意想不到地改变，这样，编译器就不会去假设这个变量的值了。精确地说就是，优化器在用到这个变量时必须每次都小心地重新读取这个变量的值，而不是使用保存在寄存器里的备份。下面是volatile变量的几个例子： 
+1). 并行设备的硬件寄存器（如：状态寄存器） 
+2). 多线程应用中被几个任务共享的变量
+
+<strong>12. 使用内部类的若干原因</strong>
+内部类对象能够访问创建它的对象的实现
+内部类能够隐藏起来，不为同一包中的其他类所见
+匿名内部类可以方便地定义运行时回调
+内部类在编写事件驱动的程序时很方便
 
 		</div>
 		<div id="comment">
 			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
 			<!-- Duoshuo Comment BEGIN -->
-			<div class="ds-thread" data-thread-key="33" data-title="博客总结(2011年上半年总结篇)"></div>
+			<div class="ds-thread" data-thread-key="33" data-title="IT求职知识:基础知识2(c++理论篇)"></div>
 			<!-- Duoshuo Comment END -->		
 		</div>		
 	</div>
@@ -206,7 +235,7 @@
 		标签
 	</h3>
 	<div class="tag_widget_box">
-	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 6 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 5 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 1 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
+	  <a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="共有文章 3 篇">经验分享</a><a href="http://dhblog.org/index/twordpress/1.html" title="共有文章 43 篇">wordpress</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="共有文章 2 篇">联盟</a><a href="http://dhblog.org/index/tE7BBBCE889BA/1.html" title="共有文章 1 篇">综艺</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="共有文章 7 篇">友情推荐</a><a href="http://dhblog.org/index/tE794B5E5BDB1/1.html" title="共有文章 6 篇">电影</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="共有文章 1 篇">空间</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="共有文章 1 篇">搜索引擎</a><a href="http://dhblog.org/index/tajax/1.html" title="共有文章 6 篇">ajax</a><a href="http://dhblog.org/index/tphp/1.html" title="共有文章 11 篇">php</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="共有文章 2 篇">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="共有文章 1 篇">总结</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="共有文章 2 篇">c++</a><a href="http://dhblog.org/index/tjavascript/1.html" title="共有文章 3 篇">javascript</a><a href="http://dhblog.org/index/tcss/1.html" title="共有文章 2 篇">css</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="共有文章 1 篇">友情链接</a>
 	</div>
 </div> <div class="doublewidget">
 	<h3>
@@ -237,7 +266,7 @@
 	<noscript><a href="http://www.51.la/?4836371" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4836371.asp" style="border:none" /></a></noscript>
 	</div>
 	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"dhblog"};
+	var duoshuoQuery = {short_name:"dhblog2"};
 		(function() {
 			var ds = document.createElement('script');
 			ds.type = 'text/javascript';ds.async = true;
