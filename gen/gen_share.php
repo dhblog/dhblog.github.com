@@ -114,7 +114,10 @@ function dh_gen_share($lists)
 	//$count = mysql_fetch_array($results);	
 	//$tongji.="\n".'<li><span class="lt2v0">最新更新:</span>'.'<span class="rt2v0 cred">'.$count[0].' 部</span></li>';
 
-	$tongji = "<ul>".$tongji.'</ul>';
+	//$tongji = "<ul>".$tongji.'</ul>';
+	
+	$tongji = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body leftmargin="0" topmargin="0" style="background-color:transparent"><ul>'.$tongji.'</ul></body></html>';
+	
 	$DH_output_file=$DH_input_path.'tongji.html';
 	dh_file_put_contents($DH_output_file,$tongji);	
 		
