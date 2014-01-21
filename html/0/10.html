@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>wordpress提高速度之一(数据库清理)</title>
+	<title>wordpress提高速度之一(数据库清理) (DH博客)</title>
 	<meta name="keywords" content="wordpress提高速度之一(数据库清理),DH博客" />
 	<meta name="description" content="wordpress提高速度之一(数据库清理) 详细页面,DH博客" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
@@ -131,33 +131,26 @@
 			<div style="height:35px">发表日期：2011-02-26 作者：DH分类：建站技术 标签： wordpress </div>
 			<div style="height:40px">
 				<!-- Baidu Button BEGIN -->
-				<span id="bdshare" class="bdshare_t fl bds_tools get-codes-bdshare">
-					<span class="bds_more">分享到：</span>
-					<a class="bds_tsina"></a>
-					<a class="bds_tqq"></a>
-					<a class="bds_tieba"></a>
-					<a class="bds_douban"></a>
-					<a class="bds_hi"></a>
-					<a class="shareCount"></a>
-				</span>
+				<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_mshare" data-cmd="mshare" title="分享到一键分享">一键分享</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧">百度贴吧</a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网">豆瓣网</a><a href="#" class="bds_hi" data-cmd="hi" title="分享到百度空间">百度空间</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a></div>
 				<!-- Baidu Button END -->
 			</div>
 			<div>
-			<div id="article_index">
-					<div id="index_title"><span id="the_index_title">正文索引</span><span id="show_index" onclick="showhide('show_index','index_ul','[展开]','[隐藏]');">[ 隐藏 ]</span></div>
-					<div id="index_ul"><ul><li class="level2"><a href="#title_0" title="1 wordpress数据库表">1 wordpress数据库表</a></li>
+			<div id="article_index" style="right: 5px;">
+					<div id="index_title"><span id="the_index_title">正文索引</span><span id="show_index" onclick="showhide('show_index','index_ul','[ 展开 ]','[ 隐藏 ]');">[ 隐藏 ]</span></div>
+					<div id="index_ul" style="display:block"><ul><li class="level2"><a href="#title_0" title="1 wordpress数据库表">1 wordpress数据库表</a></li>
 <li class="level2"><a href="#title_1" title="2. wordpress数据库清理涉及到的表">2. wordpress数据库清理涉及到的表</a></li>
 <li class="level2"><a href="#title_2" title="3. wp_options的清理">3. wp_options的清理</a></li>
 <li class="level2"><a href="#title_3" title="4.wp_posts清理">4.wp_posts清理</a></li>
 <li class="level2"><a href="#title_4" title="5.wp_postmeta清理">5.wp_postmeta清理</a></li>
 <li class="level2"><a href="#title_5" title="6. wp_commentmeta清理">6. wp_commentmeta清理</a></li>
 <li class="level2"><a href="#title_6" title="7. 总结">7. 总结</a></li>
+<li class="level2"><a href="#comment" title="留言">x. 留言</a></li>
 </ul></div></div>
 在使用wordpress的时候，新手往往不会关注数据库，但是如果使用时间长了，不免会因为速度的问题会去优化数据库，需要提高数据库的效率。这里介绍两种类型的数据库优化：
 一种是删除wordpress的无用数据或者不重要的数据，这里叫做数据库清理，需要对wordpress的数据库有一定的了解，这样减少数据量，可以使得数据库查找快。
 另一种是不删除数据库数据，只是将数据库的结构优化一下，就像整理电脑磁盘一样，这样让数据库结构合理，增加数据库查询效率。这里先说第一种，文章  中说明第二种方式。
 
-<h2 id="title_0">1 wordpress数据库表</h2>
+<h2 id="title_0">1 wordpress数据库表<span style="float:right"><a href="#top">∧</a></span></h2>
 首先我们需要了解wordpress各个数据库表（3.0以上）的作用，这样删除的时候心里有底。
 (1)wp_commentmeta: 用于保存评论的元信息，在将评论放入回收站等操作时会将数据放入此表，Akismet等插件也会生成此表的数据。此表不太重要。
 (2)wp_comments: 用于保存评论信息的表。
@@ -171,10 +164,10 @@
 (10)wp_usermeta : 用于保存用户元信息(meta)的表。
 (11)wp_users:用于保存Wordpress使用者的相关信息的表。
 
-<h2 id="title_1">2. wordpress数据库清理涉及到的表</h2>
+<h2 id="title_1">2. wordpress数据库清理涉及到的表<span style="float:right"><a href="#top">∧</a></span></h2>
 更换主题，删除插件会在将数据留在数据库中，在卸载后无法被清理。除此之外，在由于一些操作，会导致数据库的冗余，比如已经没有的评论，不应该在评论元数据表中有记录，由于没有外键的约束，这些记录没有被删除，会造成数据的冗余。本文的宗旨是删除掉不必要的数据库内容，提高wordpress的效率，在此，主要涉及到一下几张表：wp_options， wp_posts， wp_postmeta，wp_commentmeta。注意清理之前进行备份。
 
-<h2 id="title_2">3. wp_options的清理</h2>
+<h2 id="title_2">3. wp_options的清理<span style="float:right"><a href="#top">∧</a></span></h2>
 wp_options 这个数据表是wordpress设置的全局数据，这个表会经常有数据膨胀。主要原因是：
 (1)以前用过的一些插件、主题在删除之后没有进行设置的清理，造成残留数据。
 (2)占用数据的大户--RSS缓存，后台的数据调用竟然会放到数据库里面。
@@ -187,7 +180,7 @@ wp_options 这个数据表是wordpress设置的全局数据，这个表会经常
 truncate table wp_options;
 </pre>
 
-<h2 id="title_3">4.wp_posts清理</h2>
+<h2 id="title_3">4.wp_posts清理<span style="float:right"><a href="#top">∧</a></span></h2>
 wordpress的文章有好多：wp_posts表中包括
 文章种类：文章、修订版本、页面、文章的附件、菜单。
 其中每种文章又会有很多状态：继承、发布、私有、草稿、自动草稿、回收站中。
@@ -207,7 +200,7 @@ DELETE FROM  wp_posts
 WHERE not(post_status = 'publish' and post_type in('post','nav_menu_item','page'));
 </pre>
 
-<h2 id="title_4">5.wp_postmeta清理</h2>
+<h2 id="title_4">5.wp_postmeta清理<span style="float:right"><a href="#top">∧</a></span></h2>
 wp_postmeta是文章的元信息表，其数据是系统或者插件使用。
 冗余原因：
 (1)文章被删除之后，其在wp_postmeta中的数据理应被删除，在系统中多数情况是系统自动删除，但是由于人为删除文章，系统不知道被删除，就不会删除wp_postmeta表中的数据，造成冗余。
@@ -253,7 +246,7 @@ TRUNCATE TABLE wp_postmeta;
 (2)插件
 尚未发现比较好用的插件，希望读者推荐
 
-<h2 id="title_5">6. wp_commentmeta清理</h2>
+<h2 id="title_5">6. wp_commentmeta清理<span style="float:right"><a href="#top">∧</a></span></h2>
 冗余原因：
 (1)评论被删除之后，其在wp_commentmeta中的数据理应被删除，在系统中多数情况是系统自动删除，但是由于人为删除文章，系统不知道被删除，就不会删除wp_commentmeta表中的数据，造成冗余。
 (2)很多主题、插件没有做好及时清除的工作。比如akismet插件会生成记录，评论被移到回收站中有记录生成。
@@ -275,13 +268,13 @@ DELETE  FROM wp_commentmeta WHERE meta_key like '%trash%' or  meta_key like '%ak
 TRUNCATE TABLE wp_commentmeta
 </pre>
 
-<h2 id="title_6">7. 总结</h2>
+<h2 id="title_6">7. 总结<span style="float:right"><a href="#top">∧</a></span></h2>
 其实大部分无用的数据均在这几张表中，清理过后应该不会又太多的冗余数据了。但这里没有针对特殊插件或主题做数据库清理，有时这些插件和主题会悄悄动了一些数据库表，这样给清理带来很大难度，需要看代码才知道哦
 
 			</div>
 		</div>
+		<div style="height:30px"> <a href="#top" style="float:right"> 回到顶部 ∧ </a></div>
 		<div id="comment">
-			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
 			<!-- Duoshuo Comment BEGIN -->
 			<div class="ds-thread" data-thread-key="10" data-title="wordpress提高速度之一(数据库清理)"></div>
 			<!-- Duoshuo Comment END -->		
@@ -309,7 +302,7 @@ TRUNCATE TABLE wp_commentmeta
 		最新评论
 	</h3>
 	<div class="box">
-		<ul class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-admin="1" data-excerpt-length="20"></ul>
+		<ul class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="0" data-show-admin="1" data-excerpt-length="20"></ul>
 	</div>
 </div>
 <div class="tag_widget">
@@ -337,7 +330,8 @@ TRUNCATE TABLE wp_commentmeta
 		<a href="http://dhblog.org/siteindex.html">网站地图索引</a> | 
 		<a href="http://dhblog.org/sitemap.html">最近网站地图</a> | 
 		<a href="http://dhblog.org/html/0/1.html">友情链接</a> | 
-		<a href="javascript:void(0);" onclick="AddFavorite('二手电影-影视资源搜集分享','http://dhblog.org/')">收藏本站</a> 
+		<a href="javascript:void(0);" onclick="AddFavorite('二手电影-影视资源搜集分享','http://dhblog.org/')">收藏本站</a> | 
+		<a href="#top">回到顶部</a> 
 	</div>
 	<div class="cpright">
 		Copyright &copy; 2011 &nbsp;
@@ -370,10 +364,6 @@ TRUNCATE TABLE wp_commentmeta
 	eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('6 7(1,0){    3{        4.9.8(0,1);    }    5(e){        3{            4.c.a(1,0,"");        }        5(e){            b("抱歉，您所使用的浏览器无法完成此操作。\\2\\2加入收藏失败，请使用d+f进行添加");        }    }};',16,16,'url|title|n|try|window|catch|function|AddFavorite|addFavorite|external|addPanel|alert|sidebar|Ctrl||D'.split('|'),0,{}))
 
 	</script>
-	<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=19224" ></script>
-	<script type="text/javascript" id="bdshell_js"></script>
-	<script type="text/javascript">
-	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
-	</script>
+	<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 </body>
 </html>

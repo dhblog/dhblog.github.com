@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>wordpress主题:增加帅哥认证标识</title>
+	<title>wordpress主题:增加帅哥认证标识 (DH博客)</title>
 	<meta name="keywords" content="wordpress主题:增加帅哥认证标识,DH博客" />
 	<meta name="description" content="wordpress主题:增加帅哥认证标识 详细页面,DH博客" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
@@ -131,29 +131,22 @@
 			<div style="height:35px">发表日期：2011-07-15 作者：DH分类：编程技术 标签： wordpress php </div>
 			<div style="height:40px">
 				<!-- Baidu Button BEGIN -->
-				<span id="bdshare" class="bdshare_t fl bds_tools get-codes-bdshare">
-					<span class="bds_more">分享到：</span>
-					<a class="bds_tsina"></a>
-					<a class="bds_tqq"></a>
-					<a class="bds_tieba"></a>
-					<a class="bds_douban"></a>
-					<a class="bds_hi"></a>
-					<a class="shareCount"></a>
-				</span>
+				<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_mshare" data-cmd="mshare" title="分享到一键分享">一键分享</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧">百度贴吧</a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网">豆瓣网</a><a href="#" class="bds_hi" data-cmd="hi" title="分享到百度空间">百度空间</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a></div>
 				<!-- Baidu Button END -->
 			</div>
 			<div>
-			<div id="article_index">
-					<div id="index_title"><span id="the_index_title">正文索引</span><span id="show_index" onclick="showhide('show_index','index_ul','[展开]','[隐藏]');">[ 隐藏 ]</span></div>
-					<div id="index_ul"><ul><li class="level2"><a href="#title_0" title="1 起源">1 起源</a></li>
+			<div id="article_index" style="right: 5px;">
+					<div id="index_title"><span id="the_index_title">正文索引</span><span id="show_index" onclick="showhide('show_index','index_ul','[ 展开 ]','[ 隐藏 ]');">[ 隐藏 ]</span></div>
+					<div id="index_ul" style="display:block"><ul><li class="level2"><a href="#title_0" title="1 起源">1 起源</a></li>
 <li class="level2"><a href="#title_1" title="2 方法">2 方法</a></li>
 <li class="level2"><a href="#title_2" title="3 帅哥评选原则">3 帅哥评选原则</a></li>
 <li class="level2"><a href="#title_3" title="4 效果图">4 效果图</a></li>
+<li class="level2"><a href="#comment" title="留言">x. 留言</a></li>
 </ul></div></div>
-<h2 id="title_0">1 起源</h2>
+<h2 id="title_0">1 起源<span style="float:right"><a href="#top">∧</a></span></h2>
 首先感谢自说me话：<a href="http://isayme.com/2011/06/handsome-in-my-blog/">http://isayme.com/2011/06/handsome-in-my-blog/</a>
 这篇文章讲了它弄了个帅哥认证，虽然我没有被评为帅哥，但是这不妨碍我学习并定义我这里的帅哥。
-<h2 id="title_1">2 方法</h2>
+<h2 id="title_1">2 方法<span style="float:right"><a href="#top">∧</a></span></h2>
 方法很简单,在functions.php中添加如下语句
 <pre lang="php">
 function comment_g_title($email = '')
@@ -175,7 +168,7 @@ aa@bb.com 为需要添加帅哥的人的邮件。另外需要在评论的显示�
 <?php comment_g_title($comment->comment_author_email); ?>
 </pre>
 
-<h2 id="title_2">3 帅哥评选原则</h2>
+<h2 id="title_2">3 帅哥评选原则<span style="float:right"><a href="#top">∧</a></span></h2>
 在我这里评论不小于10条的为帅哥，iSayMe虽然只有9个，但是用了他的东西，所以给他例外。
 这里给出评选的SQL语句：
 <pre lang="sql">
@@ -189,15 +182,15 @@ LIMIT 0 , 30
 SQL语句执行结果图：
 <a href="http://dhblog.org/wp-content/uploads/2011/08/handsome1.png"><img src="http://dhblog.org/wp-content/uploads/2011/08/handsome1.png" alt="" title="handsome" width="372" height="443" class="aligncenter size-full wp-image-941" /></a>
 很激动 松哥在我这里的留言超过10条了。
-<h2 id="title_3">4 效果图</h2>
+<h2 id="title_3">4 效果图<span style="float:right"><a href="#top">∧</a></span></h2>
 以iSayMe为例：
 <a href="http://dhblog.org/wp-content/uploads/2011/08/handsome2.png"><img src="http://dhblog.org/wp-content/uploads/2011/08/handsome2.png" alt="" title="handsome2" width="632" height="359" class="aligncenter size-full wp-image-942" /></a>
 
 
 			</div>
 		</div>
+		<div style="height:30px"> <a href="#top" style="float:right"> 回到顶部 ∧ </a></div>
 		<div id="comment">
-			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
 			<!-- Duoshuo Comment BEGIN -->
 			<div class="ds-thread" data-thread-key="35" data-title="wordpress主题:增加帅哥认证标识"></div>
 			<!-- Duoshuo Comment END -->		
@@ -225,7 +218,7 @@ SQL语句执行结果图：
 		最新评论
 	</h3>
 	<div class="box">
-		<ul class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-admin="1" data-excerpt-length="20"></ul>
+		<ul class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="0" data-show-admin="1" data-excerpt-length="20"></ul>
 	</div>
 </div>
 <div class="tag_widget">
@@ -253,7 +246,8 @@ SQL语句执行结果图：
 		<a href="http://dhblog.org/siteindex.html">网站地图索引</a> | 
 		<a href="http://dhblog.org/sitemap.html">最近网站地图</a> | 
 		<a href="http://dhblog.org/html/0/1.html">友情链接</a> | 
-		<a href="javascript:void(0);" onclick="AddFavorite('二手电影-影视资源搜集分享','http://dhblog.org/')">收藏本站</a> 
+		<a href="javascript:void(0);" onclick="AddFavorite('二手电影-影视资源搜集分享','http://dhblog.org/')">收藏本站</a> | 
+		<a href="#top">回到顶部</a> 
 	</div>
 	<div class="cpright">
 		Copyright &copy; 2011 &nbsp;
@@ -286,10 +280,6 @@ SQL语句执行结果图：
 	eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('6 7(1,0){    3{        4.9.8(0,1);    }    5(e){        3{            4.c.a(1,0,"");        }        5(e){            b("抱歉，您所使用的浏览器无法完成此操作。\\2\\2加入收藏失败，请使用d+f进行添加");        }    }};',16,16,'url|title|n|try|window|catch|function|AddFavorite|addFavorite|external|addPanel|alert|sidebar|Ctrl||D'.split('|'),0,{}))
 
 	</script>
-	<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=19224" ></script>
-	<script type="text/javascript" id="bdshell_js"></script>
-	<script type="text/javascript">
-	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
-	</script>
+	<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 </body>
 </html>

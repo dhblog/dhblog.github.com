@@ -72,7 +72,7 @@ function dh_gen_share($lists)
 	//最新评论
 	$DH_side_pinglun= str_replace("%title%",'最新评论',$DH_side_each);
 	$DH_side_pinglun= str_replace("%more%",'',$DH_side_pinglun);
-	$DH_side_pinglun= str_replace("%content%",'<ul class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-admin="1" data-excerpt-length="20"></ul>',$DH_side_pinglun);
+	$DH_side_pinglun= str_replace("%content%",'<ul class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="0" data-show-admin="1" data-excerpt-length="20"></ul>',$DH_side_pinglun);
 	
 	//网站统计
 	$DH_side_tongji= str_replace("%title%",'网站统计',$DH_side_each2);

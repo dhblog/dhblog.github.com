@@ -4225,7 +4225,7 @@ UPDATE wp_posts SET ping_status = ‘closed’;
 </_e>
 <_e><_d>2012022007</_d><_T>wordpress ajax之七:随机动态显示名言</_T><_c>编程技术</_c><_t>wordpress</_t><_a>DH</_a>
 <_b><!--
-<h2>1 序言</h2>
+<h2>1. 序言</h2>
 对于如何使用ajax写主题请参考：
 1. <a href="http://dhblog.org/9.html" target="_blank">wordpress ajax之一:一个简单的例子</a>
 2. <a href="http://dhblog.org/46.html" title="wordpress ajax之二:首页ajax分页" target="_blank">wordpress ajax之二:首页ajax分页</a>
@@ -4235,13 +4235,13 @@ UPDATE wp_posts SET ping_status = ‘closed’;
 6. <a href="http://dhblog.org/57.html" title="wordpress ajax之六:评论表情动态加载" target="_blank">wordpress ajax之六:评论表情动态加载</a>
 这里再弄一个有趣的实例：动态的名言显示，点击显示下一个名言。
 效果如本博客，可以看到在博客的右上部分有名言的显示，点击，等一会儿就可以看到下一个随机名言。
-<h2>2 需要的元素</h2>
+<h2>2. 需要的元素</h2>
 和上篇讲到的一样，元素包括：
 1. jquery.js，下载地址为:http://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js
 2. 定义的js文件，规定请求的动作，和接受数据之后的动作 dh_say_ajax.js
 3. 定义点击评论框的操作dh_say_ajax.php
 4. 放名言的页面 header.php
-<h2>3 元素的位置</h2>
+<h2>3. 元素的位置</h2>
 1. jquery.js在header.php中包含,结算比较好的加载方法
 <pre lang="php">
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
@@ -4252,14 +4252,14 @@ UPDATE wp_posts SET ping_status = ‘closed’;
  <?php bloginfo('template_directory'); ?>/functions/jquery.min.js 
 </pre>
 是自己的路径，注意填写自己的路径哦。
-2.把自己定义的js保存为 dh_say_ajax.js,同样在header.php中包含
+2. 把自己定义的js保存为 dh_say_ajax.js,同样在header.php中包含
 <pre lang="php">
 <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/dh_say_ajax.js"></script>
 </pre>
 3. 定义点击评论框的操作dh_say_ajax.php
 放在主题下面即可，我是放在自己建立的functions/目录下
 4. header.php里面写入调用代码
-<h2>4 dh_say_ajax.js</h2>
+<h2>4. dh_say_ajax.js</h2>
 将一下保存为dh_say_ajax.js文件
 <pre lang="js" line="1">
 var dh_say_click='#dh_say';
@@ -4299,7 +4299,7 @@ $(document).ready(function dh_say_ajax(){
 })
 </pre>
 js需要根据自己的网页中的css元素变化的哦。
-<h2>5 dh_say_ajax.php</h2>
+<h2>5. dh_say_ajax.php</h2>
 下面的代码保存为 dh_say_ajax.php文件，需要在functions.php中需要引用这个文件
 <pre lang="php" line="1">
 <?php
@@ -4344,19 +4344,19 @@ include("dh_say_ajax.php");
 </_e>
 <_e><_d>2012022701</_d><_T>wordpress安全:处理垃圾评论(续3)-未经评论表格</_T><_c>编程技术</_c><_t>wordpress</_t><_a>DH</_a>
 <_b><!--
-<h2>1 原因</h2>
+<h2>1. 原因</h2>
 垃圾评论一直是我们独立博客主讨厌的，因为这个需要浪费很多的数据库空间，造成不必要的浪费，而且，这个就像脚气一样，很难根除，实属讨厌之极!下面有几个规则：
 规则1：如果你的博客可以留下垃圾评论, 那这个垃圾评论还会再來, 而且越来越多.不仅spam如此, 人肉AD也是如此。这样，即使屏蔽掉这个垃圾评论，也没有办法，因为它们仍然回来。
 规则2：大多数垃圾评论是经过 wp-comments-post.php 注入的。小墙在报垃圾评论的时候会报送这个：
 <a href="http://dhblog.org/wp-content/uploads/2012/02/lajipinglu.jpg"><img src="http://dhblog.org/wp-content/uploads/2012/02/lajipinglu.jpg" alt="" title="lajipinglu" width="606" height="271" class="aligncenter size-full wp-image-101" /></a>
 根据这些规则，看来必须屏蔽wp-comments-post.php是比较好的选择，让这些垃圾留言没有切入点。
-<h2>2 解决方法1</h2>
+<h2>2. 解决方法1</h2>
 这个方法比较单纯，在没有使用任何其他评论提交方法的情况下，比较适用。
 操作手法：<a href="http://linhun.com/1290.html" target="_blank">修改wp-comments-post.php来防垃圾评论的方法</a>
-<h2>3 解决方法2</h2>
+<h2>3. 解决方法2</h2>
 我使用的 Ajax comments 评论提交方法，这个比较简单了，不需要wp-comments-post.php提交评论，所以只要去除wp-comments-post.php即可。
 操作手法：进入wordpress的目录，手动将wp-comments-post.php改名字即可
-<h2>4 升级探讨</h2>
+<h2>4. 升级探讨</h2>
 在3的方法中，使用了
 <h3>4.1 修改一个</h3>
 如果使用 Ajax comments, 可以将 comments-ajax.php 修改为 my-comments.php, 然后在 comments-ajaxjs 头部的ajax_php_url = js_url.replace('-ajax.js','-ajax.php'),
@@ -4369,7 +4369,7 @@ ajax_php_url = js_url.replace('comments-ajax.js','my-comments.php'),
 2. 将header.php中调用comments-ajax.js的地方修改为调用my-comments-ajax.js
 3. 在my-comments-ajax.js内部，将comments-ajax.js 修改 my-comments-ajax.js，位置在第九行左右
 
-<h2>5 结果</h2>
+<h2>5. 结果</h2>
 果然，小墙不会报wp-comments-post.php注入的垃圾评论了。
 --></_b>
 </_e>
@@ -4465,14 +4465,14 @@ google分析、百度分析、51.la、淘宝分析
 </_e>
 <_e><_d>2013011607</_d><_T>经验总结:PR值终于熬到3了</_T><_c>网络推广</_c><_t>经验分享</_t><_a>DH</_a>
 <_b><!--
-<h2>1 PR的追求</h2>
+<h2>1. PR的追求</h2>
 时间太有限，我的博客没有在pr上面太多的关注，知识寻找一些志同道合的博友链接一下，偶尔在wordoress.org.cn上面贴贴我的文章，但是这样对pr值的贡献太小了，所以pr值一直很低。
-<h2>2 技术的追求</h2>
+<h2>2. 技术的追求</h2>
 纯粹技术的追求是没有止境的，而且是孤单的，所以很少有人会知道你，没有推广，很少有人知道你博客的存在，我的博客上的技术文章基本上是我尝试过之后才发出来的，里面我的经验和分享，但是我知道，这样没有前途。可是，我依然会做下去。。。。
 <a href="http://dhblog.org/wp-content/uploads/2011/11/PR.jpg"><img src="http://dhblog.org/wp-content/uploads/2011/11/PR.jpg" alt="" title="PR" width="249" height="300" class="aligncenter size-full wp-image-75" /></a>
-<h2>3 我的办法</h2>
+<h2>3. 我的办法</h2>
 我的办法就是一个字： 熬！
-<h2>4 PR历史</h2>
+<h2>4. PR历史</h2>
 2011-11-08 3
 2011-08-07 2
 2011-08-06 0
@@ -4482,9 +4482,9 @@ google分析、百度分析、51.la、淘宝分析
 </_e>
 <_e><_d>2015111407</_d><_T>经验总结:我的推广方法</_T><_c>网络推广</_c><_t>经验分享</_t><_a>DH</_a>
 <_b><!--
-1 评论推广
+1. 评论推广
 
-2.导航推广
+2. 导航推广
    页面导航、程序导航、权威网站导航 
 
 3. 搜索引擎优化
@@ -4498,7 +4498,7 @@ google分析、百度分析、51.la、淘宝分析
 
 4.1 论坛推广
 
-4.2.无觅文章推广
+4.2 无觅文章推广
 
 4.3 JiaThis社交化网络推广
   微博、校内、开心、googlereader、豆瓣等

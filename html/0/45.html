@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>wordpress ajax之四:archive页面ajax分页</title>
+	<title>wordpress ajax之四:archive页面ajax分页 (DH博客)</title>
 	<meta name="keywords" content="wordpress ajax之四:archive页面ajax分页,DH博客" />
 	<meta name="description" content="wordpress ajax之四:archive页面ajax分页 详细页面,DH博客" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
@@ -131,33 +131,26 @@
 			<div style="height:35px">发表日期：2011-09-05 作者：DH分类：编程技术 标签： wordpress ajax </div>
 			<div style="height:40px">
 				<!-- Baidu Button BEGIN -->
-				<span id="bdshare" class="bdshare_t fl bds_tools get-codes-bdshare">
-					<span class="bds_more">分享到：</span>
-					<a class="bds_tsina"></a>
-					<a class="bds_tqq"></a>
-					<a class="bds_tieba"></a>
-					<a class="bds_douban"></a>
-					<a class="bds_hi"></a>
-					<a class="shareCount"></a>
-				</span>
+				<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_mshare" data-cmd="mshare" title="分享到一键分享">一键分享</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧">百度贴吧</a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网">豆瓣网</a><a href="#" class="bds_hi" data-cmd="hi" title="分享到百度空间">百度空间</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a></div>
 				<!-- Baidu Button END -->
 			</div>
 			<div>
-			<div id="article_index">
-					<div id="index_title"><span id="the_index_title">正文索引</span><span id="show_index" onclick="showhide('show_index','index_ul','[展开]','[隐藏]');">[ 隐藏 ]</span></div>
-					<div id="index_ul"><ul><li class="level2"><a href="#title_0" title="1 序言">1 序言</a></li>
+			<div id="article_index" style="right: 5px;">
+					<div id="index_title"><span id="the_index_title">正文索引</span><span id="show_index" onclick="showhide('show_index','index_ul','[ 展开 ]','[ 隐藏 ]');">[ 隐藏 ]</span></div>
+					<div id="index_ul" style="display:block"><ul><li class="level2"><a href="#title_0" title="1 序言">1 序言</a></li>
 <li class="level2"><a href="#title_1" title="2 需要的元素">2 需要的元素</a></li>
 <li class="level2"><a href="#title_2" title="3 例子的运行情况">3 例子的运行情况</a></li>
 <li class="level2"><a href="#title_3" title="4 archive.php页面">4 archive.php页面</a></li>
 <li class="level2"><a href="#title_4" title="5 js部分">5 js部分</a></li>
 <li class="level2"><a href="#title_5" title="6 后台php部分">6 后台php部分</a></li>
 <li class="level2"><a href="#title_6" title="7 寄语">7 寄语</a></li>
+<li class="level2"><a href="#comment" title="留言">x. 留言</a></li>
 </ul></div></div>
-<h2 id="title_0">1 序言</h2>
+<h2 id="title_0">1 序言<span style="float:right"><a href="#top">∧</a></span></h2>
 上一遍讲到利用一个简单的例子说明了如何<a href="http://dhblog.org/archives/9.html">使用简单的ajax</a>。这里说明一个应用：archive页面的ajax分页应用。用户可以点击 信息应用 标签来体验这个archive页面的分页。如图：
 <a href="http://dhblog.org/wp-content/uploads/2011/09/archive.png"><img class="aligncenter" src="http://dhblog.org/wp-content/uploads/2011/09/archive.png" alt="archive 分页" title="archive" width="600" height="400" class="alignnone size-full wp-image-55" /></a>
 点击分页页码就会出现ajax分页效果哦
-<h2 id="title_1">2 需要的元素</h2>
+<h2 id="title_1">2 需要的元素<span style="float:right"><a href="#top">∧</a></span></h2>
 和上篇讲到的一样，元素包括：
 1. 一个客户端页面，这里包含了有css标记的元素，比如a，可以供js来寻找，在用户点击的时候发出ajax请求
 2. jquery.js，下载地址为:http://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js
@@ -171,9 +164,9 @@
 3.把自己定义的js保存为index_ajax_navi.js,同样在header.php中包含
 <pre lang="php"><script src="&lt;?php bloginfo('template_directory'); ?" type="text/javascript"></script></pre>
 4.functions.php中添加行数即可
-<h2 id="title_2">3 例子的运行情况</h2>
+<h2 id="title_2">3 例子的运行情况<span style="float:right"><a href="#top">∧</a></span></h2>
 具体可以参考<a href="http://dhblog.org">我的博客</a>的分类也的分页ajax情况。
-<h2 id="title_3">4 archive.php页面</h2>
+<h2 id="title_3">4 archive.php页面<span style="float:right"><a href="#top">∧</a></span></h2>
 把archive.php写成两个文件，把原来主题中的list分类页面的的部分提出来，组成另一个页面：是list.php页面。
 archive.php用到list的地方写成：
 <pre lang="php">
@@ -205,7 +198,7 @@ list.php写成这个样子：(自己写成什么样子就是什么样子，没�
 </div>
 <div class="page_navi"><?php dh_pagenavi(9); ?></div>
 </pre>
-<h2 id="title_4">5 js部分</h2>
+<h2 id="title_4">5 js部分<span style="float:right"><a href="#top">∧</a></span></h2>
 下面的代码保存为 index_ajax_navi.js文件，放到模板里面，记得在header.php中包含哦
 <pre lang="js">var navi='.page_navi';
 var navi_a='.page_navi a';
@@ -242,7 +235,7 @@ $(document).ready(function archive_ajax_navi(){
 		return false;
 		});
 })</pre>
-<h2 id="title_5">6 后台php部分</h2>
+<h2 id="title_5">6 后台php部分<span style="float:right"><a href="#top">∧</a></span></h2>
 下面的代码放到functiongs.php中，
 <pre lang="php">
 function archive_ajax_navi()
@@ -259,13 +252,13 @@ function archive_ajax_navi()
 }
 add_action('template_redirect', 'archive_ajax_navi'); 
 </pre>
-<h2 id="title_6">7 寄语</h2>
+<h2 id="title_6">7 寄语<span style="float:right"><a href="#top">∧</a></span></h2>
 希望大家通过上面的例子能够成功实现archive页面的ajax翻页效果。每个人的主题设置不同，需要根据自己的主题设置自己的参数。特别是包含分页链接的div的class。我这里是.page_navi。还有就是包含index_list.php的 div id="content_list"，需要在js中填入这两个关键的div
 
 			</div>
 		</div>
+		<div style="height:30px"> <a href="#top" style="float:right"> 回到顶部 ∧ </a></div>
 		<div id="comment">
-			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
 			<!-- Duoshuo Comment BEGIN -->
 			<div class="ds-thread" data-thread-key="45" data-title="wordpress ajax之四:archive页面ajax分页"></div>
 			<!-- Duoshuo Comment END -->		
@@ -293,7 +286,7 @@ add_action('template_redirect', 'archive_ajax_navi');
 		最新评论
 	</h3>
 	<div class="box">
-		<ul class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-admin="1" data-excerpt-length="20"></ul>
+		<ul class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="0" data-show-admin="1" data-excerpt-length="20"></ul>
 	</div>
 </div>
 <div class="tag_widget">
@@ -321,7 +314,8 @@ add_action('template_redirect', 'archive_ajax_navi');
 		<a href="http://dhblog.org/siteindex.html">网站地图索引</a> | 
 		<a href="http://dhblog.org/sitemap.html">最近网站地图</a> | 
 		<a href="http://dhblog.org/html/0/1.html">友情链接</a> | 
-		<a href="javascript:void(0);" onclick="AddFavorite('二手电影-影视资源搜集分享','http://dhblog.org/')">收藏本站</a> 
+		<a href="javascript:void(0);" onclick="AddFavorite('二手电影-影视资源搜集分享','http://dhblog.org/')">收藏本站</a> | 
+		<a href="#top">回到顶部</a> 
 	</div>
 	<div class="cpright">
 		Copyright &copy; 2011 &nbsp;
@@ -354,10 +348,6 @@ add_action('template_redirect', 'archive_ajax_navi');
 	eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('6 7(1,0){    3{        4.9.8(0,1);    }    5(e){        3{            4.c.a(1,0,"");        }        5(e){            b("抱歉，您所使用的浏览器无法完成此操作。\\2\\2加入收藏失败，请使用d+f进行添加");        }    }};',16,16,'url|title|n|try|window|catch|function|AddFavorite|addFavorite|external|addPanel|alert|sidebar|Ctrl||D'.split('|'),0,{}))
 
 	</script>
-	<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=19224" ></script>
-	<script type="text/javascript" id="bdshell_js"></script>
-	<script type="text/javascript">
-	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
-	</script>
+	<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 </body>
 </html>

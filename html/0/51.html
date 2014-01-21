@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>wordpress安全:处理垃圾评论(续)-前台管理评论</title>
+	<title>wordpress安全:处理垃圾评论(续)-前台管理评论 (DH博客)</title>
 	<meta name="keywords" content="wordpress安全:处理垃圾评论(续)-前台管理评论,DH博客" />
 	<meta name="description" content="wordpress安全:处理垃圾评论(续)-前台管理评论 详细页面,DH博客" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
@@ -131,28 +131,21 @@
 			<div style="height:35px">发表日期：2011-10-17 作者：DH分类：建站技术 标签： wordpress </div>
 			<div style="height:40px">
 				<!-- Baidu Button BEGIN -->
-				<span id="bdshare" class="bdshare_t fl bds_tools get-codes-bdshare">
-					<span class="bds_more">分享到：</span>
-					<a class="bds_tsina"></a>
-					<a class="bds_tqq"></a>
-					<a class="bds_tieba"></a>
-					<a class="bds_douban"></a>
-					<a class="bds_hi"></a>
-					<a class="shareCount"></a>
-				</span>
+				<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_mshare" data-cmd="mshare" title="分享到一键分享">一键分享</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧">百度贴吧</a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网">豆瓣网</a><a href="#" class="bds_hi" data-cmd="hi" title="分享到百度空间">百度空间</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a></div>
 				<!-- Baidu Button END -->
 			</div>
 			<div>
-			<div id="article_index">
-					<div id="index_title"><span id="the_index_title">正文索引</span><span id="show_index" onclick="showhide('show_index','index_ul','[展开]','[隐藏]');">[ 隐藏 ]</span></div>
-					<div id="index_ul"><ul><li class="level2"><a href="#title_0" title="1 序言">1 序言</a></li>
+			<div id="article_index" style="right: 5px;">
+					<div id="index_title"><span id="the_index_title">正文索引</span><span id="show_index" onclick="showhide('show_index','index_ul','[ 展开 ]','[ 隐藏 ]');">[ 隐藏 ]</span></div>
+					<div id="index_ul" style="display:block"><ul><li class="level2"><a href="#title_0" title="1 序言">1 序言</a></li>
 <li class="level2"><a href="#title_1" title="2 示例">2 示例</a></li>
 <li class="level2"><a href="#title_2" title="3 代码">3 代码</a></li>
 <li class="level3"><a href="#title_3" title="3.1 评论显示需要有callback函数">3.1 评论显示需要有callback函数</a></li>
 <li class="level3"><a href="#title_4" title="3.2 我的callback函数">3.2 我的callback函数</a></li>
 <li class="level2"><a href="#title_5" title="4 注意点">4 注意点</a></li>
+<li class="level2"><a href="#comment" title="留言">x. 留言</a></li>
 </ul></div></div>
-<h2 id="title_0">1 序言</h2>
+<h2 id="title_0">1 序言<span style="float:right"><a href="#top">∧</a></span></h2>
 上次讲到<a href="http://dhblog.org/43.html">处理垃圾评论</a>，很多方法，但是没有办法处理手动录入的评论如：
 <a href="http://dhblog.org/wp-content/uploads/2011/09/lajipingl.png"><img src="http://dhblog.org/wp-content/uploads/2011/09/lajipingl.png" alt="" title="lajipingl" width="241" height="351" class="aligncenter size-full wp-image-62" /></a>
 先谈谈其他人的方法：
@@ -160,13 +153,13 @@
 2. 制定策略，可以看看<a href="http://www.ninthday.net/2011/09/spam-comments-list.html">那些永远不会出现在评论里面的垃圾评论</a>
 3. 如果发现了，可以<a href="http://www.ninthday.net/2011/08/magement-comments-front.html">手动删除垃圾评论</a>
 这里我说说如何添加手动删除垃圾评论的功能，此方法从星期九那里学来，自己修改了一些，我觉得很好用，平常我用这个手动删除，我垃圾评论的鉴定方法比较宽容，所以基本上一个礼拜出现一条这样，所以我使用这个方法可以很快很轻松地管理评论。
-<h2 id="title_1">2 示例</h2>
+<h2 id="title_1">2 示例<span style="float:right"><a href="#top">∧</a></span></h2>
 使用方法是这样的，在使用管理员账户登录之后，就会出现以下界面，点击“删除”，确认时候就可以删除垃圾评论了。点击“编辑”，可以到后台管理这个评论。
 <a href="http://dhblog.org/wp-content/uploads/2011/09/lajipl.png"><img src="http://dhblog.org/wp-content/uploads/2011/09/lajipl.png" alt="" title="lajipl" width="618" height="257" class="aligncenter size-full wp-image-63" /></a>
-<h2 id="title_2">3 代码</h2>
-<h3 id="title_3">3.1 评论显示需要有callback函数</h3>
+<h2 id="title_2">3 代码<span style="float:right"><a href="#top">∧</a></span></h2>
+<h3 id="title_3">3.1 评论显示需要有callback函数<span style="float:right"><a href="#top">∧</a></span></h3>
 这个就是自定义评论的显示方法的函数，在函数wp_list_comments调用这个callback函数。这个函数的使用可以google一下。
-<h3 id="title_4">3.2 我的callback函数</h3>
+<h3 id="title_4">3.2 我的callback函数<span style="float:right"><a href="#top">∧</a></span></h3>
 这里我给出我的callback函数，dh_commentnavi，在33-41行，就是这个代码，可以拷贝利用这个
 <pre lang='php' line='1'>
 <?php
@@ -222,13 +215,13 @@ function dhchannel_comment($comment, $args, $depth)
 }
 ?>
 </pre>
-<h2 id="title_5">4 注意点</h2>
+<h2 id="title_5">4 注意点<span style="float:right"><a href="#top">∧</a></span></h2>
 基本上没有什么注意点。呵呵
 
 			</div>
 		</div>
+		<div style="height:30px"> <a href="#top" style="float:right"> 回到顶部 ∧ </a></div>
 		<div id="comment">
-			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
 			<!-- Duoshuo Comment BEGIN -->
 			<div class="ds-thread" data-thread-key="51" data-title="wordpress安全:处理垃圾评论(续)-前台管理评论"></div>
 			<!-- Duoshuo Comment END -->		
@@ -256,7 +249,7 @@ function dhchannel_comment($comment, $args, $depth)
 		最新评论
 	</h3>
 	<div class="box">
-		<ul class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-admin="1" data-excerpt-length="20"></ul>
+		<ul class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="0" data-show-admin="1" data-excerpt-length="20"></ul>
 	</div>
 </div>
 <div class="tag_widget">
@@ -284,7 +277,8 @@ function dhchannel_comment($comment, $args, $depth)
 		<a href="http://dhblog.org/siteindex.html">网站地图索引</a> | 
 		<a href="http://dhblog.org/sitemap.html">最近网站地图</a> | 
 		<a href="http://dhblog.org/html/0/1.html">友情链接</a> | 
-		<a href="javascript:void(0);" onclick="AddFavorite('二手电影-影视资源搜集分享','http://dhblog.org/')">收藏本站</a> 
+		<a href="javascript:void(0);" onclick="AddFavorite('二手电影-影视资源搜集分享','http://dhblog.org/')">收藏本站</a> | 
+		<a href="#top">回到顶部</a> 
 	</div>
 	<div class="cpright">
 		Copyright &copy; 2011 &nbsp;
@@ -317,10 +311,6 @@ function dhchannel_comment($comment, $args, $depth)
 	eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('6 7(1,0){    3{        4.9.8(0,1);    }    5(e){        3{            4.c.a(1,0,"");        }        5(e){            b("抱歉，您所使用的浏览器无法完成此操作。\\2\\2加入收藏失败，请使用d+f进行添加");        }    }};',16,16,'url|title|n|try|window|catch|function|AddFavorite|addFavorite|external|addPanel|alert|sidebar|Ctrl||D'.split('|'),0,{}))
 
 	</script>
-	<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=19224" ></script>
-	<script type="text/javascript" id="bdshell_js"></script>
-	<script type="text/javascript">
-	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
-	</script>
+	<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 </body>
 </html>

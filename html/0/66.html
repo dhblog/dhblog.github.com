@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>wordpress:wordpress升级到3.3</title>
+	<title>wordpress:wordpress升级到3.3 (DH博客)</title>
 	<meta name="keywords" content="wordpress:wordpress升级到3.3,DH博客" />
 	<meta name="description" content="wordpress:wordpress升级到3.3 详细页面,DH博客" />
 		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
@@ -131,21 +131,13 @@
 			<div style="height:35px">发表日期：2012-02-13 作者：DH分类：建站技术 标签： wordpress </div>
 			<div style="height:40px">
 				<!-- Baidu Button BEGIN -->
-				<span id="bdshare" class="bdshare_t fl bds_tools get-codes-bdshare">
-					<span class="bds_more">分享到：</span>
-					<a class="bds_tsina"></a>
-					<a class="bds_tqq"></a>
-					<a class="bds_tieba"></a>
-					<a class="bds_douban"></a>
-					<a class="bds_hi"></a>
-					<a class="shareCount"></a>
-				</span>
+				<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_mshare" data-cmd="mshare" title="分享到一键分享">一键分享</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧">百度贴吧</a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网">豆瓣网</a><a href="#" class="bds_hi" data-cmd="hi" title="分享到百度空间">百度空间</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a></div>
 				<!-- Baidu Button END -->
 			</div>
 			<div>
-			<div id="article_index">
-					<div id="index_title"><span id="the_index_title">正文索引</span><span id="show_index" onclick="showhide('show_index','index_ul','[展开]','[隐藏]');">[ 隐藏 ]</span></div>
-					<div id="index_ul"><ul><li class="level2"><a href="#title_0" title="1 序言">1 序言</a></li>
+			<div id="article_index" style="right: 5px;">
+					<div id="index_title"><span id="the_index_title">正文索引</span><span id="show_index" onclick="showhide('show_index','index_ul','[ 展开 ]','[ 隐藏 ]');">[ 隐藏 ]</span></div>
+					<div id="index_ul" style="display:block"><ul><li class="level2"><a href="#title_0" title="1 序言">1 序言</a></li>
 <li class="level2"><a href="#title_1" title="2 备份">2 备份</a></li>
 <li class="level3"><a href="#title_2" title="2.1 备份数据库">2.1 备份数据库</a></li>
 <li class="level3"><a href="#title_3" title="2.2 备份WP目录">2.2 备份WP目录</a></li>
@@ -164,8 +156,9 @@
 <li class="level3"><a href="#title_16" title="4.6 固定链接">4.6 固定链接</a></li>
 <li class="level3"><a href="#title_17" title="4.7 上传网站设置">4.7 上传网站设置</a></li>
 <li class="level2"><a href="#title_18" title="5 等待">5 等待</a></li>
+<li class="level2"><a href="#comment" title="留言">x. 留言</a></li>
 </ul></div></div>
-<h2 id="title_0">1 序言</h2>
+<h2 id="title_0">1 序言<span style="float:right"><a href="#top">∧</a></span></h2>
 升级wordpress是个非常难搞的事情，，所以我的博客是能不升级就不升级，为什么呢？主要是：
 1. 涉及的事情太多,步骤太多。
 2. 因为主题是自己的wordpress的升级很少影响对访问者的界面，影响的是自己的后台。
@@ -180,14 +173,14 @@
 下面详细说明一下过程，我的过程非常偏技术，这种做法比较繁琐，其实点击wp自带的自动升级就可以了。
 为什么要这样做呢，因为我希望对wp弄的比较懂。这个艰苦而冗长的过程，记录一下过程，以便不会忘记。
 
-<h2 id="title_1">2 备份</h2>
-<h3 id="title_2">2.1 备份数据库</h3>
+<h2 id="title_1">2 备份<span style="float:right"><a href="#top">∧</a></span></h2>
+<h3 id="title_2">2.1 备份数据库<span style="float:right"><a href="#top">∧</a></span></h3>
 备份数据库很简单，大家可以参考文章，这个也是为了以防万一。如果有每日备份的，可以选择不备份。
-<h3 id="title_3">2.2 备份WP目录</h3>
+<h3 id="title_3">2.2 备份WP目录<span style="float:right"><a href="#top">∧</a></span></h3>
 这个备份比较重要，如果觉得不需要备份整个目录的话，需要备份两个：
 1.需要备份\wp-content\uploads里面的东西。这个是你上传东西的目录。如果你设置的其他的上次目录，需要备份那个目录。
 2.需要记录原来的数据库的链接信息，在一下的数据库重新设置中会使用，文件wp-config.php很重要。
-<h3 id="title_4">2.3 备份主题</h3>
+<h3 id="title_4">2.3 备份主题<span style="float:right"><a href="#top">∧</a></span></h3>
 主题一般有备份的，但是主题的设置也要备份哦。
 有些主题的设置，比如设置的：
 1.特别是流量监控代码的设置
@@ -195,31 +188,31 @@
 3.无觅文章
 4.JiraThis等
 等等
-<h3 id="title_5">2.4 备份插件</h3>
+<h3 id="title_5">2.4 备份插件<span style="float:right"><a href="#top">∧</a></span></h3>
 插件都有下载，一般不需要背包，但是需要记住了安装了哪些插件，便于以后能安装回来。还需要备份插件的设置。
-<h2 id="title_6">3 删除</h2>
-<h3 id="title_7">3.1 删除插件</h3>
+<h2 id="title_6">3 删除<span style="float:right"><a href="#top">∧</a></span></h2>
+<h3 id="title_7">3.1 删除插件<span style="float:right"><a href="#top">∧</a></span></h3>
 如果不删除，新的wordpress可能会出错，给后来安装插件造成影响。
-<h3 id="title_8">3.2 删除主题</h3>
+<h3 id="title_8">3.2 删除主题<span style="float:right"><a href="#top">∧</a></span></h3>
 如果不删除，新的wordpress可能会出错，给后来安装主题造成影响。
-<h3 id="title_9">3.3 删除文件</h3>
+<h3 id="title_9">3.3 删除文件<span style="float:right"><a href="#top">∧</a></span></h3>
 就是删除原来的wordpress的版本，需要换成新的版本，这个就是在服务器上面删除这个文件夹就可以了
-<h2 id="title_10">4 部署</h2>
-<h3 id="title_11">4.1 部署新WP</h3>
+<h2 id="title_10">4 部署<span style="float:right"><a href="#top">∧</a></span></h2>
+<h3 id="title_11">4.1 部署新WP<span style="float:right"><a href="#top">∧</a></span></h3>
 拷贝压缩包上去，然后解压即可。
-<h3 id="title_12">4.2 设置数据库</h3>
+<h3 id="title_12">4.2 设置数据库<span style="float:right"><a href="#top">∧</a></span></h3>
 数据库的设置是需要http://dhblog.org/wp_admin，安装要求，利用2.2中的备份的wp-config.php设置数据库连接信息。
-<h3 id="title_13">4.3 安装插件</h3>
+<h3 id="title_13">4.3 安装插件<span style="float:right"><a href="#top">∧</a></span></h3>
 安装并启动插件，要注意，利用备份的插件选项恢复插件的设置
-<h3 id="title_14">4.4 安装主题</h3>
+<h3 id="title_14">4.4 安装主题<span style="float:right"><a href="#top">∧</a></span></h3>
 安装并启动主题，要注意，利用备份的注意选项恢复主题的设置
-<h3 id="title_15">4.5 恢复upload</h3>
+<h3 id="title_15">4.5 恢复upload<span style="float:right"><a href="#top">∧</a></span></h3>
 打包备份\wp-content\uploads里面的东西，上传到服务器，解压即可。
-<h3 id="title_16">4.6 固定链接</h3>
+<h3 id="title_16">4.6 固定链接<span style="float:right"><a href="#top">∧</a></span></h3>
 不知什么原因，对固定链接的设置需要到设置页面保存一下才能生效。
-<h3 id="title_17">4.7 上传网站设置</h3>
+<h3 id="title_17">4.7 上传网站设置<span style="float:right"><a href="#top">∧</a></span></h3>
 对已经删除的.htaccess robots.txt需要重新上传。当然，其他有什么设置的话，也要上传一下。
-<h2 id="title_18">5 等待</h2>
+<h2 id="title_18">5 等待<span style="float:right"><a href="#top">∧</a></span></h2>
 等待
 1. 百度的收录会不会有什么变化
 2. 主题在3.3下面会不会有什么bug
@@ -227,8 +220,8 @@
 
 			</div>
 		</div>
+		<div style="height:30px"> <a href="#top" style="float:right"> 回到顶部 ∧ </a></div>
 		<div id="comment">
-			<div class="anchor"><a name="title_8" id="title_8">&nbsp;</a></div>
 			<!-- Duoshuo Comment BEGIN -->
 			<div class="ds-thread" data-thread-key="66" data-title="wordpress:wordpress升级到3.3"></div>
 			<!-- Duoshuo Comment END -->		
@@ -256,7 +249,7 @@
 		最新评论
 	</h3>
 	<div class="box">
-		<ul class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-admin="1" data-excerpt-length="20"></ul>
+		<ul class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="0" data-show-admin="1" data-excerpt-length="20"></ul>
 	</div>
 </div>
 <div class="tag_widget">
@@ -284,7 +277,8 @@
 		<a href="http://dhblog.org/siteindex.html">网站地图索引</a> | 
 		<a href="http://dhblog.org/sitemap.html">最近网站地图</a> | 
 		<a href="http://dhblog.org/html/0/1.html">友情链接</a> | 
-		<a href="javascript:void(0);" onclick="AddFavorite('二手电影-影视资源搜集分享','http://dhblog.org/')">收藏本站</a> 
+		<a href="javascript:void(0);" onclick="AddFavorite('二手电影-影视资源搜集分享','http://dhblog.org/')">收藏本站</a> | 
+		<a href="#top">回到顶部</a> 
 	</div>
 	<div class="cpright">
 		Copyright &copy; 2011 &nbsp;
@@ -317,10 +311,6 @@
 	eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('6 7(1,0){    3{        4.9.8(0,1);    }    5(e){        3{            4.c.a(1,0,"");        }        5(e){            b("抱歉，您所使用的浏览器无法完成此操作。\\2\\2加入收藏失败，请使用d+f进行添加");        }    }};',16,16,'url|title|n|try|window|catch|function|AddFavorite|addFavorite|external|addPanel|alert|sidebar|Ctrl||D'.split('|'),0,{}))
 
 	</script>
-	<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=19224" ></script>
-	<script type="text/javascript" id="bdshell_js"></script>
-	<script type="text/javascript">
-	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
-	</script>
+	<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 </body>
 </html>
