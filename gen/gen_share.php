@@ -116,12 +116,14 @@ function dh_gen_share($lists)
 
 	//$tongji = "<ul>".$tongji.'</ul>';
 	
-	$tongji = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body leftmargin="0" topmargin="0" style="background-color:transparent"><ul>'.$tongji.'</ul></body></html>';
+	//$tongji = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">display:inline;float:left;overflow:hidden;width:110px;text-align:left;border:1px solid #f7f3ed;border-bottom:1px solid #ddd;margin:0;padding:5px 0 5px 5px;</style></head><body leftmargin="0"	topmargin="0" style="background-color:transparent"><ul>'.$tongji.'</ul></body></html>';
+	
+	$tongji = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">ul li{list-style: none;display:inline;float:left;overflow:hidden;width:110px;text-align:left;border:1px solid #f7f3ed;border-bottom:1px solid #ddd;margin:0;padding:5px 0 5px 5px;}</style></head><body leftmargin="0" topmargin="0" style="background-color:transparent;font-size:14px"><ul style="padding:0">'.$tongji.'</ul></body></html>';	
 	
 	$DH_output_file=$DH_input_path.'tongji.html';
 	dh_file_put_contents($DH_output_file,$tongji);	
 		
-	$tongjiframe='<iframe allowtransparency="true" src="'.$DH_home_url.'tongji.html" frameBorder="0" scrolling="no"></iframe>';
+	$tongjiframe='<iframe allowtransparency="true" src="'.$DH_home_url.'tongji.html" frameBorder="0" scrolling="no" height="90px"></iframe>';
 	
 	$DH_side_tongji= str_replace("%content%",$tongjiframe,$DH_side_tongji);
 	
