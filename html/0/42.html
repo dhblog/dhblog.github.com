@@ -16,27 +16,27 @@
 </head>
 <body>
 <div id="wrapper">
-	<div id="top" style="height:30px;border-top: 1px solid #898f8f;border-bottom: 1px solid #898f8f">
+	<div id="top" style="height:30px;border-top: 1px solid #898f8f;border-bottom: 1px solid #898f8f;position:relative;">
   <div class="topnav">
     <div class="left">
         <div>
-		<ul class="menu">
-		<li><a href="http://dhblog.org/" title="博客首页">博客首页</a></li> 
-		<li><a href="http://www.movie002.com/" title="影视网址导航">网址导航</a></li> 
-		<li><a href="http://movie002.com/" title="影视资源导航">资源导航</a></li> 
-		<li><a href="http://dhblog.org/html/links.html">友情链接</a></li> 
-		<li><a href="http://dhblog.org/html/0/1.html">给我留言</a></li> 
-		</ul>
+			<ul class="menu">
+			<li><a href="http://dhblog.org/" title="博客首页">博客首页</a></li> 
+			<li><a href="http://www.movie002.com/" title="影视网址导航">网址导航</a></li> 
+			<li><a href="http://movie002.com/" title="影视资源导航">资源导航</a></li> 
+			<li><a href="http://dhblog.org/html/links.html">友情链接</a></li> 
+			<li><a href="http://dhblog.org/html/0/1.html">给我留言</a></li> 
+			</ul>
         </div> 
     </div>
     <!--end: left-->
-    <div class="right">
+    <div style="position:absolute;top:0;left:0;">
 		<script type="text/javascript">
 			function showWarning() //显示系统日期   
 			{   
 				var now = new Date();
 				var hour = now.getHours();
-				if(hour>=23||hour<=6)
+				if(hour>=22||hour<=6)
 				{
 					var message='<div style="border:2px solid #FF3300;font-size:12px;margin:2px 20px 0 440px;background:#FFFFDF;padding:2px;">提醒: 已经是夜里 ';
 					message +=hour;
@@ -45,7 +45,7 @@
 				}
 				else 
 				{			
-				   return 'ddd'; 
+				   return ''; 
 				}
 			}
 			document.write(showWarning());
@@ -117,7 +117,7 @@
 		</div>
 	</div>
 	<div id="dh_say_content" class="right" style="margin:4px 0 2px 0">
-		<p id="dh_say" title="点击可查看下一条">ddd</p>
+		<p id="dh_say" title="点击可查看下一条">自己不勇敢就没人替你坚强。</p>
 	</div>	
 </div>
 <!--end: menunav-->
@@ -135,7 +135,7 @@
 				<!-- Baidu Button END -->
 			</div>
 			<div>
-			<div id="article_index" style="right: 5px;">
+			<div id="article_index" style="right:10px;top:15px">
 					<div id="index_title"><span id="the_index_title">正文索引</span><span id="show_index" onclick="showhide('show_index','index_ul','[ 展开 ]','[ 隐藏 ]');">[ 隐藏 ]</span></div>
 					<div id="index_ul" style="display:block"><ul><li class="level2"><a href="#title_0" title="1 序言">1 序言</a></li>
 <li class="level2"><a href="#title_1" title="2 方法">2 方法</a></li>

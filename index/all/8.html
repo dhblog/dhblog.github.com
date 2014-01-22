@@ -16,27 +16,27 @@
 </head>
 <body>
 <div id="wrapper">
-	<div id="top" style="height:30px;border-top: 1px solid #898f8f;border-bottom: 1px solid #898f8f">
+	<div id="top" style="height:30px;border-top: 1px solid #898f8f;border-bottom: 1px solid #898f8f;position:relative;">
   <div class="topnav">
     <div class="left">
         <div>
-		<ul class="menu">
-		<li><a href="http://dhblog.org/" title="博客首页">博客首页</a></li> 
-		<li><a href="http://www.movie002.com/" title="影视网址导航">网址导航</a></li> 
-		<li><a href="http://movie002.com/" title="影视资源导航">资源导航</a></li> 
-		<li><a href="http://dhblog.org/html/links.html">友情链接</a></li> 
-		<li><a href="http://dhblog.org/html/0/1.html">给我留言</a></li> 
-		</ul>
+			<ul class="menu">
+			<li><a href="http://dhblog.org/" title="博客首页">博客首页</a></li> 
+			<li><a href="http://www.movie002.com/" title="影视网址导航">网址导航</a></li> 
+			<li><a href="http://movie002.com/" title="影视资源导航">资源导航</a></li> 
+			<li><a href="http://dhblog.org/html/links.html">友情链接</a></li> 
+			<li><a href="http://dhblog.org/html/0/1.html">给我留言</a></li> 
+			</ul>
         </div> 
     </div>
     <!--end: left-->
-    <div class="right">
+    <div style="position:absolute;top:0;left:0;">
 		<script type="text/javascript">
 			function showWarning() //显示系统日期   
 			{   
 				var now = new Date();
 				var hour = now.getHours();
-				if(hour>=23||hour<=6)
+				if(hour>=22||hour<=6)
 				{
 					var message='<div style="border:2px solid #FF3300;font-size:12px;margin:2px 20px 0 440px;background:#FFFFDF;padding:2px;">提醒: 已经是夜里 ';
 					message +=hour;
@@ -45,7 +45,7 @@
 				}
 				else 
 				{			
-				   return 'ddd'; 
+				   return ''; 
 				}
 			}
 			document.write(showWarning());
@@ -117,7 +117,7 @@
 		</div>
 	</div>
 	<div id="dh_say_content" class="right" style="margin:4px 0 2px 0">
-		<p id="dh_say" title="点击可查看下一条">ddd</p>
+		<p id="dh_say" title="点击可查看下一条">自己不勇敢就没人替你坚强。</p>
 	</div>	
 </div>
 <!--end: menunav-->
@@ -218,7 +218,7 @@
 					<div class="info"> 	首页链接标准：	1.  网站符合国家法律规定，不存在法律禁止内容	2.　一级域名，并正确解析	3.　网站PR值、权重相同	4.　链接页没有木马病毒、自动弹窗等	5.　每日更新，且内容符合国家相关规定	6.　没有伪造ALEXA流量、堆积关键词等作弊行为	7 </div>
 				</div>
 			</div>
-			<div class="page_navi"><a href='D:/PHPnow-1.5.6/Package/htdocs/dhblog/index/all/1.html' class='extend' title='跳转到首页'> 返回首页 </a><a href='D:/PHPnow-1.5.6/Package/htdocs/dhblog/index/all/7.html' class='extend' title='上一页'> 上一页 </a> ... <a href='D:/PHPnow-1.5.6/Package/htdocs/dhblog/index/all/3.html'>3</a><a href='D:/PHPnow-1.5.6/Package/htdocs/dhblog/index/all/4.html'>4</a><a href='D:/PHPnow-1.5.6/Package/htdocs/dhblog/index/all/5.html'>5</a><a href='D:/PHPnow-1.5.6/Package/htdocs/dhblog/index/all/6.html'>6</a><a href='D:/PHPnow-1.5.6/Package/htdocs/dhblog/index/all/7.html'>7</a><a href='D:/PHPnow-1.5.6/Package/htdocs/dhblog/index/all/8.html' class='current'>8</a><a href='D:/PHPnow-1.5.6/Package/htdocs/dhblog/index/all/8.html' class='extend' title='跳转到最后一页'> 最后一页(8 页) </a></div>	
+			<div class="page_navi"><a href='http://dhblog.org/index/all/1.html' class='extend' title='跳转到首页'> 返回首页 </a><a href='http://dhblog.org/index/all/7.html' class='extend' title='上一页'> 上一页 </a> ... <a href='http://dhblog.org/index/all/3.html'>3</a><a href='http://dhblog.org/index/all/4.html'>4</a><a href='http://dhblog.org/index/all/5.html'>5</a><a href='http://dhblog.org/index/all/6.html'>6</a><a href='http://dhblog.org/index/all/7.html'>7</a><a href='http://dhblog.org/index/all/8.html' class='current'>8</a><a href='http://dhblog.org/index/all/8.html' class='extend' title='跳转到最后一页'> 最后一页(8 页) </a></div>	
 		</div>
 	</div>	
 	<div id="sidebar">

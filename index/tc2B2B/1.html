@@ -16,27 +16,27 @@
 </head>
 <body>
 <div id="wrapper">
-	<div id="top" style="height:30px;border-top: 1px solid #898f8f;border-bottom: 1px solid #898f8f">
+	<div id="top" style="height:30px;border-top: 1px solid #898f8f;border-bottom: 1px solid #898f8f;position:relative;">
   <div class="topnav">
     <div class="left">
         <div>
-		<ul class="menu">
-		<li><a href="http://dhblog.org/" title="博客首页">博客首页</a></li> 
-		<li><a href="http://www.movie002.com/" title="影视网址导航">网址导航</a></li> 
-		<li><a href="http://movie002.com/" title="影视资源导航">资源导航</a></li> 
-		<li><a href="http://dhblog.org/html/links.html">友情链接</a></li> 
-		<li><a href="http://dhblog.org/html/0/1.html">给我留言</a></li> 
-		</ul>
+			<ul class="menu">
+			<li><a href="http://dhblog.org/" title="博客首页">博客首页</a></li> 
+			<li><a href="http://www.movie002.com/" title="影视网址导航">网址导航</a></li> 
+			<li><a href="http://movie002.com/" title="影视资源导航">资源导航</a></li> 
+			<li><a href="http://dhblog.org/html/links.html">友情链接</a></li> 
+			<li><a href="http://dhblog.org/html/0/1.html">给我留言</a></li> 
+			</ul>
         </div> 
     </div>
     <!--end: left-->
-    <div class="right">
+    <div style="position:absolute;top:0;left:0;">
 		<script type="text/javascript">
 			function showWarning() //显示系统日期   
 			{   
 				var now = new Date();
 				var hour = now.getHours();
-				if(hour>=23||hour<=6)
+				if(hour>=22||hour<=6)
 				{
 					var message='<div style="border:2px solid #FF3300;font-size:12px;margin:2px 20px 0 440px;background:#FFFFDF;padding:2px;">提醒: 已经是夜里 ';
 					message +=hour;
@@ -45,7 +45,7 @@
 				}
 				else 
 				{			
-				   return 'ddd'; 
+				   return ''; 
 				}
 			}
 			document.write(showWarning());
@@ -117,7 +117,7 @@
 		</div>
 	</div>
 	<div id="dh_say_content" class="right" style="margin:4px 0 2px 0">
-		<p id="dh_say" title="点击可查看下一条">ddd</p>
+		<p id="dh_say" title="点击可查看下一条">自己不勇敢就没人替你坚强。</p>
 	</div>	
 </div>
 <!--end: menunav-->
@@ -164,7 +164,7 @@
 					<div class="info"> 又是一个暑假的到来了，虽然现在工作了，已经体验不要暑假的味道了，但是过了这个暑假，很多同学就要准备找工作了。找工作既是一个自己努力的过程，又是一个考验自己的经历，还有一些不懂得运气。对于一个it的求职者来说，现在的这个阶段，大家应该在看基础的计算机理论知识 </div>
 				</div>
 			</div>
-			<div class="page_navi"><a href='D:/PHPnow-1.5.6/Package/htdocs/dhblog/index/tc2B2B/1.html' class='extend' title='跳转到首页'> 返回首页 </a><a href='D:/PHPnow-1.5.6/Package/htdocs/dhblog/index/tc2B2B/1.html' class='current'>1</a><a href='D:/PHPnow-1.5.6/Package/htdocs/dhblog/index/tc2B2B/1.html' class='extend' title='跳转到最后一页'> 最后一页(1 页) </a></div>	
+			<div class="page_navi"><a href='http://dhblog.org/index/tc2B2B/1.html' class='extend' title='跳转到首页'> 返回首页 </a><a href='http://dhblog.org/index/tc2B2B/1.html' class='current'>1</a><a href='http://dhblog.org/index/tc2B2B/1.html' class='extend' title='跳转到最后一页'> 最后一页(1 页) </a></div>	
 		</div>
 	</div>	
 	<div id="sidebar">

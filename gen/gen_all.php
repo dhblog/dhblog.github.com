@@ -16,6 +16,7 @@ require("page_navi.php");
 require("gen_share.php");
 require("sitemap/gen.php");
 require("article_index.php");
+require("genrss/gen.php");
 set_time_limit(600); 
 
 //预定义
@@ -68,6 +69,8 @@ gen_xml(date("Y-m-d H:i:s"),'weekly',$lists,$pagecount);
 gen_siteindex(date("Y-m-d H:i:s"));
 gen_sitemapall();
 
+//生成rss
+gen_rss($lists,10);
 
 //将搞定的date和count写入文件保存
 $endcount=end($lists);
@@ -282,7 +285,7 @@ function dh_gen_each_list($eachlist,$urlname,$name,$listeach,$content)
 	if($count%$pagecount!=0)
 	{
 		$catpage = ceil($count/$pagecount);
-		$pagenavi = dh_pagenavi(5,$pages,$DH_output_file_dir,$catpage);
+		$pagenavi = dh_pagenavi(5,$pages,$DH_index_url.$urlname.'/',$catpage);
 		echo 'genpage:'.$catpage."</br>\n";				
 		$content_new = str_replace("%pagenavi%",$pagenavi,$content);
 		$content_new = str_replace("%list_each%",$liout,$content_new);
