@@ -22,3 +22,16 @@ function AddFavorite(title, url)
 //{
 //	iframe_say.window.location.reload();
 //};
+
+window.onscroll = function()
+{
+	var h =document.body.scrollTop,top = document.getElementById('goTopButton');
+	if(h>0)
+	{
+		top.style.display = 'block';
+	}
+	else
+	{
+		top.style.display = 'none';
+	}
+}
