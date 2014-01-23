@@ -73,8 +73,8 @@
 </div>
 <!--end: header-->
 <div style="height:32px;position:relative;border-bottom: 1px solid #252525;border-top: 1px solid #252525;">
-	<div style="position: absolute;top:5px;left:10px;">类别导航：</div>
-	<div style="position: absolute;top:0;left:90px;">
+	<div style="position:absolute;top:5px;left:10px;">类别导航：</div>
+	<div style="position:absolute;top:0;left:90px;">
 		<div class="topnav">
 			<div class="left">
 				<ul>
@@ -98,9 +98,10 @@
 			</div>
 		</div>
 	</div>
-	<div id="dh_say_content" class="right" style="margin:4px 0 2px 0">
-		<p id="dh_say" title="点击可查看下一条">自己不勇敢就没人替你坚强。</p>
-	</div>	
+	<div id="dh_say_content" style="position:absolute;top:7px;right:50px;width:400px">
+		<iframe id="iframe_say" allowtransparency="true" width="400px" height="20px" src="http://movie002.com/dh_say.php" frameBorder="0" scrolling="no" style="float:right"></iframe>
+	</div>
+	<div onclick="iframe_say.window.location.reload();" style="position:absolute;top:5px;right:0;font-size:12px">下一条</div>
 </div>
 <!--end: menunav-->
 <div class="top_content">

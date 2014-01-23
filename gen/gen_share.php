@@ -72,7 +72,13 @@ function dh_gen_share($lists)
 	//最新评论
 	$DH_side_pinglun= str_replace("%title%",'最新评论',$DH_side_each);
 	$DH_side_pinglun= str_replace("%more%",'',$DH_side_pinglun);
-	$DH_side_pinglun= str_replace("%content%",'<ul class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="0" data-show-admin="1" data-excerpt-length="20"></ul>',$DH_side_pinglun);
+	$DH_side_pinglun= str_replace("%content%",'<ul class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="0" data-show-admin="1" data-excerpt-length="20"></ul>
+',$DH_side_pinglun);
+
+	//最新访客
+	$DH_side_visitor= str_replace("%title%",'最新访客',$DH_side_each);
+	$DH_side_visitor= str_replace("%more%",'',$DH_side_visitor);
+	$DH_side_visitor= str_replace("%content%",'<ul style="margin:3px 0" class="ds-recent-visitors" data-num-items="10"></ul>',$DH_side_visitor);
 	
 	//网站统计
 	$DH_side_tongji= str_replace("%title%",'网站统计',$DH_side_each2);
@@ -118,7 +124,7 @@ function dh_gen_share($lists)
 	
 	//$tongji = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">display:inline;float:left;overflow:hidden;width:110px;text-align:left;border:1px solid #f7f3ed;border-bottom:1px solid #ddd;margin:0;padding:5px 0 5px 5px;</style></head><body leftmargin="0"	topmargin="0" style="background-color:transparent"><ul>'.$tongji.'</ul></body></html>';
 	
-	$tongji = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">ul li{list-style: none;display:inline;float:left;overflow:hidden;width:110px;text-align:left;border:1px solid #f7f3ed;border-bottom:1px solid #ddd;margin:0;padding:5px 0 5px 5px;}</style></head><body leftmargin="0" topmargin="0" style="background-color:transparent;font-size:14px"><ul style="padding:0">'.$tongji.'</ul></body></html>';	
+	$tongji = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">ul li{list-style: none;display:inline;float:left;overflow:hidden;width:110px;text-align:left;border:1px solid #f7f3ed;border-bottom:1px solid #ddd;margin:0;padding:5px 0 5px 5px;}</style></head><body leftmargin="0" topmargin="0" style="background-color:transparent;font-size:14px"><ul style="padding:0">'.$tongji.'</ul></body></html>';
 	
 	$DH_output_file=$DH_input_path.'tongji.html';
 	dh_file_put_contents($DH_output_file,$tongji);	
@@ -144,7 +150,7 @@ function dh_gen_share($lists)
 	}	
 	$DH_side_eacht= str_replace("%content%",$tagsall,$DH_side_eacht);	
 	
-	$DH_side=$DH_side_ad.$DH_side_hot.$DH_side_pinglun.$DH_side_eacht.$DH_side_tongji;	
+	$DH_side=$DH_side_ad.$DH_side_hot.$DH_side_pinglun.$DH_side_visitor.$DH_side_eacht.$DH_side_tongji;	
 	
 	$DH_output_file = $DH_share_output_path. 'side.html';
 	dh_file_put_contents($DH_output_file,$DH_side);	

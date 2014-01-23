@@ -17,3 +17,8 @@ function AddFavorite(title, url)
         }
     }
 };
+
+//window.onload = function ()
+//{
+//	iframe_say.window.location.reload();
+//};
