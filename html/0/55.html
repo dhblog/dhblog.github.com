@@ -146,16 +146,16 @@
 <li class="level2"><a href="#title_5" title="6 重新排序">6 重新排序</a></li>
 <li class="level2"><a href="#comment" title="留言">x. 留言</a></li>
 </ul></div></div>
-<h2 id="title_0">1 缘起<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_0">1 缘起</h2>
 wordpress的posts表是非常重要的表，所有的文章都放在里面，但是有时候内容很多，仔细检查表发现，还有很多的重复的内容，让人看起来非常不爽，而且数据量的增多会导致维护麻烦，而且会是数据库访问变慢。
-<h2 id="title_1">2 原因<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_1">2 原因</h2>
 wp默认的配置会写草稿和修订版，这样会导致文章很多，占用数据空间。
-<h2 id="title_2">3 方法<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_2">3 方法</h2>
 1. 清理posts表,清理掉草稿和修订版本 文章wordpress提高速度之一(数据库清理)已经提及了。http://dhblog.org/18.html
 2. 禁止草稿、修订,这样就不会生成多余的内容了
 3. 重新排序，删除之后会导致序号缺失，洁癖者需要重新整理数据，这样使得文章的序号非常整齐。
 
-<h2 id="title_3">4 清理posts表<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_3">4 清理posts表</h2>
 wordpress的文章有好多：wp_posts表中包括
 文章种类：文章、修订版本、页面、文章的附件、菜单。
 其中每种文章又会有很多状态：继承、发布、私有、草稿、自动草稿、回收站中。
@@ -176,7 +176,7 @@ DELETE FROM  wp_posts
 WHERE NOT(post_status = 'publish' AND post_type IN('post','nav_menu_item','page'));
 </pre>
 
-<h2 id="title_4">5 禁止草稿、修订<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_4">5 禁止草稿、修订</h2>
 在 网站根目录下的 wp-config.php中添加：
 <pre lang="php" line="1">
 /** 不会生成历史版本 */
@@ -195,7 +195,7 @@ function disable_autosave() {
 }
 </pre>
 这样就不会保存草稿和自动修订版了。
-<h2 id="title_5">6 重新排序<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_5">6 重新排序</h2>
 清理之后，还有很多重要的问题没有解决：
 1. 就是新文章的序号很大，还不能设置过小，因为已经有很大的文章号出现了。
 2. 旧文章的序号空缺很大，让人很不舒服。
@@ -260,7 +260,7 @@ echo 'Total:'. $convertedrows .', It\'s ok! ';
 
 			</div>
 		</div>
-		<div style="height:30px"> <a href="#top" style="float:right"> 回到顶部 ∧ </a></div>
+		<div style="height:30px"> <a href="#top" style="float:right"> ∧回到顶部∧ </a></div>
 		<div id="comment">
 			<!-- Duoshuo Comment BEGIN -->
 			<div class="ds-thread" data-thread-key="55" data-title="wordpress数据库:表posts清理和整理"></div>
@@ -320,7 +320,7 @@ echo 'Total:'. $convertedrows .', It\'s ok! ';
 	</div>
 	<!--end: sidebar-->
 	<div id="footer">
-		<a href="#top" class="gotop_btn" id="goTopButton">∧</br>∧</br>∧</br></a>	
+		<a href="#top" title="回到顶部" class="gotop_btn" id="goTopButton">∧</br>∧</br>∧</br></a>	
 	<div id="footer-nav">
 		<a href="http://dhblog.org/html/aboutus.html">关于我们</a> | 
 		<a href="http://dhblog.org/html/mianze.html">免责声明</a> | 

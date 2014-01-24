@@ -160,35 +160,35 @@
 最近看到很多电视剧、电影都给党的生日献礼，我也不例外，献礼一篇文章吧！本来呢，以我的风格，肯定是之一、之二之类的。像这篇文章，会分为四个篇章。但是既然是献礼文章，就不能马虎，一气呵成，不拖泥带水。
 上一篇文章讲到<a href="http://dhblog.org/archives/932.html"> wordpress安全:被垃圾评论搞的很烦</a>，不少博友提出了很多的解决方法，在此表示非常的感谢，也知道大部分博友也遇到这个非常烦人的问题，垃圾评论就像前面的一坨屎一样，恶习却只能视而不见。彻底阻止它们来访问你，并试图利用wp_comment.php是不可能的，只能屏蔽掉，视而不见。如果不断有垃圾评论，利用很多的ip访问你，就等于一种DOS攻击，从这个角度讲，是威胁到博客的安全。所以tag就是wordpress安全。
 上一篇中给出了暂时应对垃圾评论的方法，老是这样应对，绝对不是办法，所以给出了我总结了对付垃圾评论的办法：
-<h2 id="title_0">1 前台客户端验证<span style="float:right"><a href="#top">∧</a></span></h2>
-<h3 id="title_1">1.1 验证码验证<span style="float:right"><a href="#top">∧</a></span></h3>
+<h2 id="title_0">1 前台客户端验证</h2>
+<h3 id="title_1">1.1 验证码验证</h3>
 输入验证码的方法是最常用的，我接触的wordpress博客使用验证码验证的不多，我没有使用验证码方法，觉得这个会影响博友们的体验，打击大家的评论激情，但是这里给出willin大师的搞笑验证码总结：
 <a href="http://kan.willin.org/?p=1063">網上千奇百怪的驗証碼設計</a>
-<h3 id="title_2">1.2 算术验证<span style="float:right"><a href="#top">∧</a></span></h3>
+<h3 id="title_2">1.2 算术验证</h3>
 这个输入的数字不多，用户体验比较好。
 这里推荐可以见<a href="http://www.ninthday.net/">星期九</a>的博客，同时他的一篇文章 ：<a href="http://www.ninthday.net/2010/11/adding-calculation-checking.html">继续折腾之添加代码实现评论算术验证</a>很具有参考价值。
-<h3 id="title_3">1.3 js动作验证<span style="float:right"><a href="#top">∧</a></span></h3>
+<h3 id="title_3">1.3 js动作验证</h3>
 js动作验证好处就是用户体验，不用输入难以辨别的数字，通过鼠标动作验证即可。坏处就是加载js比较大。速度会慢一点。
 a. QapTcha：只要拉一下即可，这种用户的体验比较好，只要动一动鼠标即可，这里推荐示例：<a href="http://www.iceray.net/">空空裤兜的博客</a>，<a href="http://blog.30c.org/">三十岁</a>
 b. 除了QapTcha还有很多其他的js方法见：<a href="http://www.iwanpc.com/8505.html">精选10种用户友好验证码—帮您实现更好的用户验证体验</a>
-<h2 id="title_4">2. 后台wordpress验证<span style="float:right"><a href="#top">∧</a></span></h2>
-<h3 id="title_5">2.1 Akismet插件<span style="float:right"><a href="#top">∧</a></span></h3>
+<h2 id="title_4">2. 后台wordpress验证</h2>
+<h3 id="title_5">2.1 Akismet插件</h3>
 wordpress自带的发垃圾插件，需要到wordpress.com注册一个激活码后才能使用。如果博客碰到垃圾评论的时候，建议不要立即删除，而是把它评为垃圾评论。这样Akismet会自动学习去辨认更多的垃圾评论，直到把所有的垃圾评论都干掉为止。
 由于智能，但是还是不够智能，Akismet对于spam的辨别能力还不是很好，很有可能把正常的留言拦截成spam。
-<h3 id="title_6">2.2 WP Anti Spam<span style="float:right"><a href="#top">∧</a></span></h3>
+<h3 id="title_6">2.2 WP Anti Spam</h3>
 我现在使用的就是这个，这个虽然没有前面的能挡住所有的垃圾评论，但是已经去除了绝大数的自动评论，而且不需要用户做任何的动作，比较友好。这里给出链接，willin大师使用代码解决的，安装难度其实不大。<a href="http://kan.willin.org/?p=1324">WP Anti Spam 小牆</a>
-<h2 id="title_7">3. 挥刀自宫wordpress功能<span style="float:right"><a href="#top">∧</a></span></h2>
-<h3 id="title_8">3.1 去除评论功能<span style="float:right"><a href="#top">∧</a></span></h3>
+<h2 id="title_7">3. 挥刀自宫wordpress功能</h2>
+<h3 id="title_8">3.1 去除评论功能</h3>
 如果你觉得垃圾评论实在太烦，甚至很厌恶了，不妨可以考虑把评论功能去除，去除的方法右轻到重有三种：
 a. 关闭时间比较长久的评论，时间按比较长的文章，很少有人关注了。呵呵，这种文章绝大多数情况下只有垃圾评论才能光顾，所以关掉这些评论功能，就给垃圾评论减少了很多的空间。
 b. 关闭每个文章的评论，这个在wp后台文章选项里面有。
 c. 删除wp-comments-post.php 和 wp-trackback.php，这个太狠了。呵呵
-<h3 id="title_9">3.2 关闭Pingbacks and trackbacks<span style="float:right"><a href="#top">∧</a></span></h3>
+<h3 id="title_9">3.2 关闭Pingbacks and trackbacks</h3>
 Pingbacks and trackbacks 最容易招来垃圾评论，可以把这个选项勾掉。
-<h3 id="title_10">3.3 先注册再评论<span style="float:right"><a href="#top">∧</a></span></h3>
+<h3 id="title_10">3.3 先注册再评论</h3>
 注册才有资格评论，这样最容易挡掉垃圾评论，但是用户体验很不好，特别是小博客，很少有人会为了给你评论而注册。
-<h2 id="title_11">4. 服务器级别限制<span style="float:right"><a href="#top">∧</a></span></h2>
-<h3 id="title_12">4.1 屏蔽IP地址<span style="float:right"><a href="#top">∧</a></span></h3>
+<h2 id="title_11">4. 服务器级别限制</h2>
+<h3 id="title_12">4.1 屏蔽IP地址</h3>
 过滤垃圾评论实在wordpress级别的过滤，这种屏蔽不能使垃圾评论源停止对你博客的攻击，这样就必须通过服务器级别的ip屏蔽来屏蔽此地址的访问来达到不影响博客性能的目的。如果有某个IP发了大量的垃圾评论，你可以屏蔽某个ip地址，如果你的空间是cpanel的话，在面板里面就有选项直接屏蔽，如果没有的话，也可以修改.htaccess文件来实现，这个文件不能随便修改，最好是有经验的人来做，否则网站可能就打不开了哦
 <pre lang="txt">
 Order allow,deny
@@ -196,7 +196,7 @@ Deny from 123.123.123.123
 Allow from all
 </pre>
 你可以把123.123.123.123改成你想屏蔽的地址
-<h3 id="title_13">4.2 自定义屏蔽IP<span style="float:right"><a href="#top">∧</a></span></h3>
+<h3 id="title_13">4.2 自定义屏蔽IP</h3>
 但是很多垃圾评论就比较麻烦了，这里说说我的方法了，仍然是数据库，仍然是SQL，大家不要害怕。
 用了willin的小墙之后，小墙会将垃圾评论标记为 spam，然后我们利用下面的sql语句选出有哪些ip盯上你了。
 <pre lang="sql">
@@ -209,12 +209,12 @@ ORDER BY COUNT( * ) DESC
 我选出来的如图：总共选出了141个(太恐怖了)，不能全部禁掉，只能将几个比较活跃的干掉！
 <a href="http://dhblog.org/wp-content/uploads/2011/07/spam_sql.png"><img class="aligncenter size-full wp-image-934" title="spam_sql" src="http://dhblog.org/wp-content/uploads/2011/07/spam_sql.png" alt="" width="254" height="441" /></a>
 将这些大于5的拷贝添加到.htaccess即可
-<h3 id="title_14">4.3 利用别人提供的攻击ip列表<span style="float:right"><a href="#top">∧</a></span></h3>
+<h3 id="title_14">4.3 利用别人提供的攻击ip列表</h3>
 一个一个屏蔽垃圾评论，当遇到大规模的垃圾评论的时候，可以用这个<a href="http://perishablepress.com/" target="_blank">Perishable Press</a>。jeff从很多垃圾评论里面总结出了一个黑名单。你可以从中选择你想要的来加入到你的.htaccess文件中去。下面是三个记录这些IP的网址：
 a. <a href="http://perishablepress.com/press/2009/03/16/the-perishable-press-4g-blacklist/">The Perishable Press 4G Blacklist</a>
 b. <a title="Permalink for this article" href="http://perishablepress.com/press/2009/04/21/4g-ultimate-referrer-blacklist/">4G Series: The Ultimate Referrer Blacklist, Featuring Over 8000 Banned Referrers</a>
 c. <a href="http://perishablepress.com/press/2009/03/29/4g-ultimate-user-agent-blacklist/">4G Series: The Ultimate User-Agent Blacklist, Featuring Over 1200 Bad Bots</a>
-<h3 id="title_15">4.4 拒绝没有上线的IP的评论<span style="float:right"><a href="#top">∧</a></span></h3>
+<h3 id="title_15">4.4 拒绝没有上线的IP的评论</h3>
 这个方法还是 .htaccess 文件有关，在 .htaccess 文件里面。换句话说如果评论并没有到你的博客，而是用机器人来发表垃圾评论的话，把他的链接给为你的博客的URL。所用代码如下：
 <pre lang='txt'>
 RewriteEngine On
@@ -228,7 +228,7 @@ RewriteRule (.*) ^http://%{REMOTE_ADDR}/$ [R=301,L]
 
 			</div>
 		</div>
-		<div style="height:30px"> <a href="#top" style="float:right"> 回到顶部 ∧ </a></div>
+		<div style="height:30px"> <a href="#top" style="float:right"> ∧回到顶部∧ </a></div>
 		<div id="comment">
 			<!-- Duoshuo Comment BEGIN -->
 			<div class="ds-thread" data-thread-key="31" data-title="wordpress安全:处理垃圾评论"></div>
@@ -288,7 +288,7 @@ RewriteRule (.*) ^http://%{REMOTE_ADDR}/$ [R=301,L]
 	</div>
 	<!--end: sidebar-->
 	<div id="footer">
-		<a href="#top" class="gotop_btn" id="goTopButton">∧</br>∧</br>∧</br></a>	
+		<a href="#top" title="回到顶部" class="gotop_btn" id="goTopButton">∧</br>∧</br>∧</br></a>	
 	<div id="footer-nav">
 		<a href="http://dhblog.org/html/aboutus.html">关于我们</a> | 
 		<a href="http://dhblog.org/html/mianze.html">免责声明</a> | 

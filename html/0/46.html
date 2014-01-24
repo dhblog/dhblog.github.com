@@ -152,12 +152,12 @@
 <li class="level2"><a href="#title_7" title="7 寄语">7 寄语</a></li>
 <li class="level2"><a href="#comment" title="留言">x. 留言</a></li>
 </ul></div></div>
-<h2 id="title_0">1 序言<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_0">1 序言</h2>
 上一遍讲到利用一个简单的例子说明了如何<a href="http://dhblog.org/archives/9.html">使用简单的ajax</a>。这里说明一个应用：最近评论的ajax分页应用。其效果就是右边的最近评论框，点击下一页和上一页可以不刷新整体页面而查看以前的评论。效果如图：
 <a href="http://dhblog.org/wp-content/uploads/2011/09/zuijpl.jpg"><img class="aligncenter" src="http://dhblog.org/wp-content/uploads/2011/09/zuijpl.jpg" alt="最近评论" title="zuijpl" width="251" height="356" class="size-full wp-image-56" /></a>
 这个例子不经讲诉的是ajax分页的问题，代码中还告诉大家dhchannel主题如何写出最近评论以及其css代码。
 
-<h2 id="title_1">2 需要的元素<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_1">2 需要的元素</h2>
 和上篇讲到的一样，元素包括：
 1. 最近评论的设计页面，和引用其的地方
 2. jquery.js，下载地址为:http://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js
@@ -179,10 +179,10 @@
 <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/comment_recent_cache.css" />
 </pre>
 
-<h2 id="title_2">3 例子的运行情况<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_2">3 例子的运行情况</h2>
 具体可以参考<a href="http://dhblog.org">我的博客</a>的侧边栏的最近评论。
 
-<h2 id="title_3">4 comment_recent_cache.php<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_3">4 comment_recent_cache.php</h2>
 将一下保存为comment_recent_cache.php文件
 <pre lang="php" line="1">
 <?php
@@ -291,14 +291,14 @@ sidebar.php中需要引用这个函数，各位可以视自己情况而定：
   <div class="singlewidget">
     <h3 id="title_4">
       最近评论
-    <span style="float:right"><a href="#top">∧</a></span></h3>
+    </h3>
     <div class="box">
       <div class="lastest_comments"><?php if (function_exists('dh_comment_recent')) dh_comment_recent(); ?></div>
     </div>
   </div>
 </pre>
 
-<h2 id="title_5">5 js部分<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_5">5 js部分</h2>
 下面的代码保存为 comment_recent_cache.js文件，放到模板里面，记得在header.php中包含哦
 <pre lang="js" line="1">
 var cnavi='.comment_recent_navi';
@@ -338,7 +338,7 @@ $(document).ready(function comment_recent_navi (){
 })
 </pre>
 
-<h2 id="title_6">6 css部分<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_6">6 css部分</h2>
 以下保存为comment_recent_cache.css文件，记得在header.php中引用哦
 <pre lang="css" line="1">
 .lastest_comments {
@@ -449,12 +449,12 @@ color:#666
 }
 </pre>
 
-<h2 id="title_7">7 寄语<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_7">7 寄语</h2>
 希望大家成功
 
 			</div>
 		</div>
-		<div style="height:30px"> <a href="#top" style="float:right"> 回到顶部 ∧ </a></div>
+		<div style="height:30px"> <a href="#top" style="float:right"> ∧回到顶部∧ </a></div>
 		<div id="comment">
 			<!-- Duoshuo Comment BEGIN -->
 			<div class="ds-thread" data-thread-key="46" data-title="wordpress ajax之五:最近评论ajax分页"></div>
@@ -514,7 +514,7 @@ color:#666
 	</div>
 	<!--end: sidebar-->
 	<div id="footer">
-		<a href="#top" class="gotop_btn" id="goTopButton">∧</br>∧</br>∧</br></a>	
+		<a href="#top" title="回到顶部" class="gotop_btn" id="goTopButton">∧</br>∧</br>∧</br></a>	
 	<div id="footer-nav">
 		<a href="http://dhblog.org/html/aboutus.html">关于我们</a> | 
 		<a href="http://dhblog.org/html/mianze.html">免责声明</a> | 

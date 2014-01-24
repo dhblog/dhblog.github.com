@@ -147,7 +147,7 @@
 <li class="level2"><a href="#title_6" title="后台php部分">后台php部分</a></li>
 <li class="level2"><a href="#comment" title="留言">x. 留言</a></li>
 </ul></div></div>
-<h2 id="title_0">序言<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_0">序言</h2>
 今天是星期一，是我发文章的日子。最近在搞一个东西，就是将ajax运用到wordpress中，大家可以看我的博客，里面有很多的ajax的东西，包括：
 1.首页的分页的ajax
 2.评论分页的ajax
@@ -155,7 +155,7 @@
 4.评论ajax提交
 后面的文章将逐步介绍如何实现上面的ajax功能，这篇文章的主要目的是让大家了解ajax的用法，用一个简单的例子说明ajax的使用，让大家能很快上手ajax，写出自己需要的ajax程序。
 
-<h2 id="title_1">ajax的优缺点<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_1">ajax的优缺点</h2>
 缺点：
 1. 各个浏览器对XMLHttpRequest对象的支持度不足(兼容性问题)
 2. 破坏浏览器的前进,后退功能。
@@ -168,7 +168,7 @@
 2. 使用使用时的体验较好
 3. 可以装一下，毕竟主题支持动态加载，nb啊，呵呵
 
-<h2 id="title_2">ajax的需要的元素<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_2">ajax的需要的元素</h2>
 元素包括：
 1. 一个html页面，这里包含了有css标记的元素，比如a，可以供js来寻找，在用户点击的时候发出ajax请求
 2. jquery.js，下载地址为:http://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js
@@ -187,7 +187,7 @@
 </pre>
 4.functions.php中添加行数即可
 
-<h2 id="title_3">例子的运行情况<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_3">例子的运行情况</h2>
 <div class="test_response">
 <div> 返回结果的位置 </div>
 <div class="test_navi">
@@ -196,7 +196,7 @@
 </div>
 请点击上面的“第一页”等，后台会返回你的请求之后的处理结果
 
-<h2 id="title_4">html部分<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_4">html部分</h2>
 你随便写一个文章，用html模式，把下面的代码贴进去就可以了。注意将
 http://dhblog.org/?navi=2 换成你的http://自己域名/?navi=2
 <pre lang="html" line="1">
@@ -208,7 +208,7 @@ http://dhblog.org/?navi=2 换成你的http://自己域名/?navi=2
 </div>
 </pre>
 
-<h2 id="title_5">js部分<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_5">js部分</h2>
 下面的代码保存为 test.js文件，放到模板里面，记得在header.php中包含哦
 <pre lang="js" line="1">
 var tnavi='.test_navi';
@@ -246,7 +246,7 @@ $(document).ready(function test_navi(){
 })
 </pre>
 
-<h2 id="title_6">后台php部分<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_6">后台php部分</h2>
 下面的代码放到functiongs.php中，http://dhblog.org/?navi=2 换成你的http://自己域名/?navi=2
 <pre lang="php" line="1">
 /*****************************************************
@@ -278,7 +278,7 @@ add_action('template_redirect', 'test_action_do');
 
 			</div>
 		</div>
-		<div style="height:30px"> <a href="#top" style="float:right"> 回到顶部 ∧ </a></div>
+		<div style="height:30px"> <a href="#top" style="float:right"> ∧回到顶部∧ </a></div>
 		<div id="comment">
 			<!-- Duoshuo Comment BEGIN -->
 			<div class="ds-thread" data-thread-key="41" data-title="wordpress ajax之一:一个简单的例子"></div>
@@ -338,7 +338,7 @@ add_action('template_redirect', 'test_action_do');
 	</div>
 	<!--end: sidebar-->
 	<div id="footer">
-		<a href="#top" class="gotop_btn" id="goTopButton">∧</br>∧</br>∧</br></a>	
+		<a href="#top" title="回到顶部" class="gotop_btn" id="goTopButton">∧</br>∧</br>∧</br></a>	
 	<div id="footer-nav">
 		<a href="http://dhblog.org/html/aboutus.html">关于我们</a> | 
 		<a href="http://dhblog.org/html/mianze.html">免责声明</a> | 

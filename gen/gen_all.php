@@ -125,6 +125,7 @@ function dh_gen_page()
 		$caturl = $DH_index_url.$urlcode.'/1.html';
 		$DH_output_content_each =  str_replace("%caturl%",$caturl,$DH_output_content_each);
 		$DH_output_content_each =  str_replace("%id%",$i+$begincount,$DH_output_content_each);
+		$DH_output_content_each =  str_replace("%tab%",'&nbsp;&nbsp;&nbsp;&nbsp;',$DH_output_content_each);
 		
 		$DH_output_file = output_page_path($DH_output_html_path,$i+$begincount);
 		dh_file_put_contents($DH_output_file,$DH_output_content_each);		

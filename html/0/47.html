@@ -149,12 +149,12 @@
 <li class="level2"><a href="#title_8" title="7 寄语">7 寄语</a></li>
 <li class="level2"><a href="#comment" title="留言">x. 留言</a></li>
 </ul></div></div>
-<h2 id="title_0">1 序言<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_0">1 序言</h2>
 上一遍讲到利用一个简单的例子说明了如何<a href="http://dhblog.org/archives/9.html">使用简单的ajax</a>。这里说明一个应用：评论表情动态加载。什么是表情动态加载呢?就是文章页面不加载表情，节省带宽，要知道加载很多表情符号，很费力的，在用户点击评论框之后，才动态加载表情，这样针对性更强，加快页面的转载速度。其效果就是点击评论框试试。效果如图：
 <a href="http://dhblog.org/wp-content/uploads/2011/09/biaoqing.png"><img src="http://dhblog.org/wp-content/uploads/2011/09/biaoqing.png" alt="表情动态加载" title="biaoqing" width="629" height="355" class="aligncenter size-full wp-image-59" /></a>
 这个例子不仅仅讲诉的是表情分页的问题，代码中还告诉大家dhchannel主题如何写出自定义表情符号。
 
-<h2 id="title_1">2 需要的元素<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_1">2 需要的元素</h2>
 和上篇讲到的一样，元素包括：
 1. jquery.js，下载地址为:http://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js
 2. 定义的js文件，规定请求的动作，和接受数据之后的动作 smiley_ajax.js
@@ -181,10 +181,10 @@
 6. 表情符号定义的需要的页面 smiley_settings.php
 放在主题下面即可，我是放在自己建立的functions/目录下
 
-<h2 id="title_2">3 例子的运行情况<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_2">3 例子的运行情况</h2>
 具体可以参考<a href="http://dhblog.org">我的博客</a>的评论效果。
 
-<h2 id="title_3">4 smiley.php<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_3">4 smiley.php</h2>
 将一下保存为smiley.php文件
 <pre lang="php" line="1">
 <script type="text/javascript" language="javascript">
@@ -245,7 +245,7 @@
 </pre>
 注意自己保存的表情文件需要和以上的同名！！
 
-<h2 id="title_4">5 smiley_settings.php<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_4">5 smiley_settings.php</h2>
 此文件和上面的smiley.php对应，规定哪些表情使用wp-includes\images\smilies中的哪个文件
 <pre lang="php" line="1">
 <?php
@@ -277,7 +277,7 @@
 include("smiley_settings.php");
 </pre>
 
-<h2 id="title_5">6 js部分<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_5">6 js部分</h2>
 下面的代码保存为 smiley_ajax.js文件，放到模板里面，记得在header.php中包含哦
 <pre lang="js" line="1">
 var sresponse='#smiley_ajax';
@@ -304,13 +304,13 @@ $(document).ready(function smiley_ajax(){
 })
 </pre>
 
-<h2 id="title_6">7 smiley_ajax.php<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_6">7 smiley_ajax.php</h2>
 js调用后台的函数应该这样写
 <pre lang="css" line="1">
 <div id="smiley_ajax"></div>
 </pre>
 
-<h2 id="title_7">8 comment.php的小小改动<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_7">8 comment.php的小小改动</h2>
 comment.php需要告诉js，在哪个地方放表情哦。在合适的地方放上以下的代码，就会在哪里显示表情。
 <pre lang="css" line="1">
 <?php
@@ -337,12 +337,12 @@ add_action('template_redirect', 'smiley_ajax_action_do');
 include("smiley_ajax.php");
 </pre>
 
-<h2 id="title_8">7 寄语<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_8">7 寄语</h2>
 希望大家成功
 
 			</div>
 		</div>
-		<div style="height:30px"> <a href="#top" style="float:right"> 回到顶部 ∧ </a></div>
+		<div style="height:30px"> <a href="#top" style="float:right"> ∧回到顶部∧ </a></div>
 		<div id="comment">
 			<!-- Duoshuo Comment BEGIN -->
 			<div class="ds-thread" data-thread-key="47" data-title="wordpress ajax之六:评论表情动态加载"></div>
@@ -402,7 +402,7 @@ include("smiley_ajax.php");
 	</div>
 	<!--end: sidebar-->
 	<div id="footer">
-		<a href="#top" class="gotop_btn" id="goTopButton">∧</br>∧</br>∧</br></a>	
+		<a href="#top" title="回到顶部" class="gotop_btn" id="goTopButton">∧</br>∧</br>∧</br></a>	
 	<div id="footer-nav">
 		<a href="http://dhblog.org/html/aboutus.html">关于我们</a> | 
 		<a href="http://dhblog.org/html/mianze.html">免责声明</a> | 

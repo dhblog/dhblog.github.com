@@ -147,15 +147,15 @@
 <li class="level3"><a href="#title_6" title="3.2 这里还提供了两个函数">3.2 这里还提供了两个函数</a></li>
 <li class="level2"><a href="#comment" title="留言">x. 留言</a></li>
 </ul></div></div>
-<h2 id="title_0">1 序言<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_0">1 序言</h2>
 首先祝大家国庆快乐！
 最近准备抛弃willian大师的my_visitor，因为占用数据库实在是太大，但是其很好用的三个功能：
 1. 简易post_view
 2. 定期备份
 3. 登录失败提醒
 还是很好用的，这里我自己参考他的代码，写了简易的post_view，用于统计，代码很少，希望能给大家帮助
-<h2 id="title_1">2 方法<span style="float:right"><a href="#top">∧</a></span></h2>
-<h3 id="title_2">2.2 dh_post_views.php<span style="float:right"><a href="#top">∧</a></span></h3>
+<h2 id="title_1">2 方法</h2>
+<h3 id="title_2">2.2 dh_post_views.php</h3>
 将下面的代码保存为dh_post_views.php
 <pre lang="php" line="1">
 <?php
@@ -234,23 +234,23 @@ function get_totalviews($echo = 1) {
  }
 ?>
 </pre>
-<h3 id="title_3">2.2 引用位置<span style="float:right"><a href="#top">∧</a></span></h3>
+<h3 id="title_3">2.2 引用位置</h3>
 在functions.php中引用
 <pre lang="php">
 include("dh_post_views.php");
 </pre>
-<h2 id="title_4">3 说明<span style="float:right"><a href="#top">∧</a></span></h2>
-<h3 id="title_5">3.1 需要在要使用的地方使用函数<span style="float:right"><a href="#top">∧</a></span></h3>
+<h2 id="title_4">3 说明</h2>
+<h3 id="title_5">3.1 需要在要使用的地方使用函数</h3>
 <pre lang="php" >
 阅读：<?php post_views(' ', ' 次'); ?>
 </pre>
-<h3 id="title_6">3.2 这里还提供了两个函数<span style="float:right"><a href="#top">∧</a></span></h3>
+<h3 id="title_6">3.2 这里还提供了两个函数</h3>
 (1)get_most_viewed_format 得到最多阅读的文章，列出5个。
 (2)get_totalviews 得到评论的总数
 
 			</div>
 		</div>
-		<div style="height:30px"> <a href="#top" style="float:right"> 回到顶部 ∧ </a></div>
+		<div style="height:30px"> <a href="#top" style="float:right"> ∧回到顶部∧ </a></div>
 		<div id="comment">
 			<!-- Duoshuo Comment BEGIN -->
 			<div class="ds-thread" data-thread-key="49" data-title="wordpress主题:非插件post_view"></div>
@@ -310,7 +310,7 @@ include("dh_post_views.php");
 	</div>
 	<!--end: sidebar-->
 	<div id="footer">
-		<a href="#top" class="gotop_btn" id="goTopButton">∧</br>∧</br>∧</br></a>	
+		<a href="#top" title="回到顶部" class="gotop_btn" id="goTopButton">∧</br>∧</br>∧</br></a>	
 	<div id="footer-nav">
 		<a href="http://dhblog.org/html/aboutus.html">关于我们</a> | 
 		<a href="http://dhblog.org/html/mianze.html">免责声明</a> | 

@@ -147,7 +147,7 @@
 <li class="level2"><a href="#title_6" title="7 寄语">7 寄语</a></li>
 <li class="level2"><a href="#comment" title="留言">x. 留言</a></li>
 </ul></div></div>
-<h2 id="title_0">1. 序言<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_0">1. 序言</h2>
 对于如何使用ajax写主题请参考：
 1. <a href="http://dhblog.org/9.html" target="_blank">wordpress ajax之一:一个简单的例子</a>
 2. <a href="http://dhblog.org/46.html" title="wordpress ajax之二:首页ajax分页" target="_blank">wordpress ajax之二:首页ajax分页</a>
@@ -157,13 +157,13 @@
 6. <a href="http://dhblog.org/57.html" title="wordpress ajax之六:评论表情动态加载" target="_blank">wordpress ajax之六:评论表情动态加载</a>
 这里再弄一个有趣的实例：动态的名言显示，点击显示下一个名言。
 效果如本博客，可以看到在博客的右上部分有名言的显示，点击，等一会儿就可以看到下一个随机名言。
-<h2 id="title_1">2. 需要的元素<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_1">2. 需要的元素</h2>
 和上篇讲到的一样，元素包括：
 1. jquery.js，下载地址为:http://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js
 2. 定义的js文件，规定请求的动作，和接受数据之后的动作 dh_say_ajax.js
 3. 定义点击评论框的操作dh_say_ajax.php
 4. 放名言的页面 header.php
-<h2 id="title_2">3. 元素的位置<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_2">3. 元素的位置</h2>
 1. jquery.js在header.php中包含,结算比较好的加载方法
 <pre lang="php">
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
@@ -181,7 +181,7 @@
 3. 定义点击评论框的操作dh_say_ajax.php
 放在主题下面即可，我是放在自己建立的functions/目录下
 4. header.php里面写入调用代码
-<h2 id="title_3">4. dh_say_ajax.js<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_3">4. dh_say_ajax.js</h2>
 将一下保存为dh_say_ajax.js文件
 <pre lang="js" line="1">
 var dh_say_click='#dh_say';
@@ -221,7 +221,7 @@ $(document).ready(function dh_say_ajax(){
 })
 </pre>
 js需要根据自己的网页中的css元素变化的哦。
-<h2 id="title_4">5. dh_say_ajax.php<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_4">5. dh_say_ajax.php</h2>
 下面的代码保存为 dh_say_ajax.php文件，需要在functions.php中需要引用这个文件
 <pre lang="php" line="1">
 <?php
@@ -253,19 +253,19 @@ functions.php中的代码
 <pre lang="php" line="1">
 include("dh_say_ajax.php");
 </pre>
-<h2 id="title_5">6 header.php的引用<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_5">6 header.php的引用</h2>
 这个看君的爱好选择放的位置，也可以不再header.php中。
 <pre lang="php" line="1">
 	<div id="dh_say_content" class="right" style="margin:4px 0 2px 0">
 		<p id="dh_say" title="点击可查看下一条"><?php dh_say();?></p>
 	</div>
 </pre>
-<h2 id="title_6">7 寄语<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_6">7 寄语</h2>
 希望大家成功
 
 			</div>
 		</div>
-		<div style="height:30px"> <a href="#top" style="float:right"> 回到顶部 ∧ </a></div>
+		<div style="height:30px"> <a href="#top" style="float:right"> ∧回到顶部∧ </a></div>
 		<div id="comment">
 			<!-- Duoshuo Comment BEGIN -->
 			<div class="ds-thread" data-thread-key="67" data-title="wordpress ajax之七:随机动态显示名言"></div>
@@ -325,7 +325,7 @@ include("dh_say_ajax.php");
 	</div>
 	<!--end: sidebar-->
 	<div id="footer">
-		<a href="#top" class="gotop_btn" id="goTopButton">∧</br>∧</br>∧</br></a>	
+		<a href="#top" title="回到顶部" class="gotop_btn" id="goTopButton">∧</br>∧</br>∧</br></a>	
 	<div id="footer-nav">
 		<a href="http://dhblog.org/html/aboutus.html">关于我们</a> | 
 		<a href="http://dhblog.org/html/mianze.html">免责声明</a> | 

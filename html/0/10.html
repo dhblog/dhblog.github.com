@@ -151,7 +151,7 @@
 一种是删除wordpress的无用数据或者不重要的数据，这里叫做数据库清理，需要对wordpress的数据库有一定的了解，这样减少数据量，可以使得数据库查找快。
 另一种是不删除数据库数据，只是将数据库的结构优化一下，就像整理电脑磁盘一样，这样让数据库结构合理，增加数据库查询效率。这里先说第一种，文章  中说明第二种方式。
 
-<h2 id="title_0">1 wordpress数据库表<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_0">1 wordpress数据库表</h2>
 首先我们需要了解wordpress各个数据库表（3.0以上）的作用，这样删除的时候心里有底。
 (1)wp_commentmeta: 用于保存评论的元信息，在将评论放入回收站等操作时会将数据放入此表，Akismet等插件也会生成此表的数据。此表不太重要。
 (2)wp_comments: 用于保存评论信息的表。
@@ -165,10 +165,10 @@
 (10)wp_usermeta : 用于保存用户元信息(meta)的表。
 (11)wp_users:用于保存Wordpress使用者的相关信息的表。
 
-<h2 id="title_1">2. wordpress数据库清理涉及到的表<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_1">2. wordpress数据库清理涉及到的表</h2>
 更换主题，删除插件会在将数据留在数据库中，在卸载后无法被清理。除此之外，在由于一些操作，会导致数据库的冗余，比如已经没有的评论，不应该在评论元数据表中有记录，由于没有外键的约束，这些记录没有被删除，会造成数据的冗余。本文的宗旨是删除掉不必要的数据库内容，提高wordpress的效率，在此，主要涉及到一下几张表：wp_options， wp_posts， wp_postmeta，wp_commentmeta。注意清理之前进行备份。
 
-<h2 id="title_2">3. wp_options的清理<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_2">3. wp_options的清理</h2>
 wp_options 这个数据表是wordpress设置的全局数据，这个表会经常有数据膨胀。主要原因是：
 (1)以前用过的一些插件、主题在删除之后没有进行设置的清理，造成残留数据。
 (2)占用数据的大户--RSS缓存，后台的数据调用竟然会放到数据库里面。
@@ -181,7 +181,7 @@ wp_options 这个数据表是wordpress设置的全局数据，这个表会经常
 truncate table wp_options;
 </pre>
 
-<h2 id="title_3">4.wp_posts清理<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_3">4.wp_posts清理</h2>
 wordpress的文章有好多：wp_posts表中包括
 文章种类：文章、修订版本、页面、文章的附件、菜单。
 其中每种文章又会有很多状态：继承、发布、私有、草稿、自动草稿、回收站中。
@@ -201,7 +201,7 @@ DELETE FROM  wp_posts
 WHERE not(post_status = 'publish' and post_type in('post','nav_menu_item','page'));
 </pre>
 
-<h2 id="title_4">5.wp_postmeta清理<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_4">5.wp_postmeta清理</h2>
 wp_postmeta是文章的元信息表，其数据是系统或者插件使用。
 冗余原因：
 (1)文章被删除之后，其在wp_postmeta中的数据理应被删除，在系统中多数情况是系统自动删除，但是由于人为删除文章，系统不知道被删除，就不会删除wp_postmeta表中的数据，造成冗余。
@@ -247,7 +247,7 @@ TRUNCATE TABLE wp_postmeta;
 (2)插件
 尚未发现比较好用的插件，希望读者推荐
 
-<h2 id="title_5">6. wp_commentmeta清理<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_5">6. wp_commentmeta清理</h2>
 冗余原因：
 (1)评论被删除之后，其在wp_commentmeta中的数据理应被删除，在系统中多数情况是系统自动删除，但是由于人为删除文章，系统不知道被删除，就不会删除wp_commentmeta表中的数据，造成冗余。
 (2)很多主题、插件没有做好及时清除的工作。比如akismet插件会生成记录，评论被移到回收站中有记录生成。
@@ -269,12 +269,12 @@ DELETE  FROM wp_commentmeta WHERE meta_key like '%trash%' or  meta_key like '%ak
 TRUNCATE TABLE wp_commentmeta
 </pre>
 
-<h2 id="title_6">7. 总结<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_6">7. 总结</h2>
 其实大部分无用的数据均在这几张表中，清理过后应该不会又太多的冗余数据了。但这里没有针对特殊插件或主题做数据库清理，有时这些插件和主题会悄悄动了一些数据库表，这样给清理带来很大难度，需要看代码才知道哦
 
 			</div>
 		</div>
-		<div style="height:30px"> <a href="#top" style="float:right"> 回到顶部 ∧ </a></div>
+		<div style="height:30px"> <a href="#top" style="float:right"> ∧回到顶部∧ </a></div>
 		<div id="comment">
 			<!-- Duoshuo Comment BEGIN -->
 			<div class="ds-thread" data-thread-key="10" data-title="wordpress提高速度之一(数据库清理)"></div>
@@ -334,7 +334,7 @@ TRUNCATE TABLE wp_commentmeta
 	</div>
 	<!--end: sidebar-->
 	<div id="footer">
-		<a href="#top" class="gotop_btn" id="goTopButton">∧</br>∧</br>∧</br></a>	
+		<a href="#top" title="回到顶部" class="gotop_btn" id="goTopButton">∧</br>∧</br>∧</br></a>	
 	<div id="footer-nav">
 		<a href="http://dhblog.org/html/aboutus.html">关于我们</a> | 
 		<a href="http://dhblog.org/html/mianze.html">免责声明</a> | 

@@ -147,14 +147,14 @@
 <li class="level2"><a href="#title_6" title="7 寄语">7 寄语</a></li>
 <li class="level2"><a href="#comment" title="留言">x. 留言</a></li>
 </ul></div></div>
-<h2 id="title_0">1 序言<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_0">1 序言</h2>
 上一遍讲到利用一个简单的例子说明了如何<a href="http://dhblog.org/archives/9.html">使用简单的ajax</a>。这里说明一个应用：评论页的ajax分页应用。关于这方面的文章：
 (1)<a href="http://winysky.com/wordpress-plug-ins-to-achieve-non-ajax-flip-comment">WordPress评论非插件实现ajax翻页</a>，我在测试的时候，发现里面虽然有一些地方有一点问题，但是这些可以参考一下哦。
 (2)<a href="http://www.ninthday.net/2011/08/comment-pages-ajax.html">非插件实现评论AJAX翻页</a>,这个是Harid的方法。
 各种方法基于的原理基本上一样，大家可以多多参考，希望能给自己折腾主题，又需要实现ajax效果的童鞋有一些帮助。
 如果要评论ajax分页，必须首先评论分页，代码中包含了评论分页的内容，大家参考即可。
 
-<h2 id="title_1">2 需要的元素<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_1">2 需要的元素</h2>
 和上篇讲到的一样，元素包括：
 1. 一个客户端页面，这里包含了有css标记的元素，比如a，可以供js来寻找，在用户点击的时候发出ajax请求
 2. jquery.js，下载地址为:http://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js
@@ -173,10 +173,10 @@
 </pre>
 4.functions.php中添加行数即可
 
-<h2 id="title_2">3 例子的运行情况<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_2">3 例子的运行情况</h2>
 具体可以参考<a href="http://dhblog.org">我的博客</a>的评论的分页ajax情况。
 
-<h2 id="title_3">4 comments.php部分<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_3">4 comments.php部分</h2>
 把comments.php写成两个文件，把comments.php中列出评论的部分分出成一个文件，实际上就是wp_list_comments函数和分页的函数。分出来为comment_list.php。是ajax请求需要重新加载的页面。
 index里面需要用到wp_list_comments和分页的地方写成：
 <pre lang="php" line="1">
@@ -242,7 +242,7 @@ function dh_commentnavi()
 ?>
 </pre>
 
-<h2 id="title_4">5 js部分<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_4">5 js部分</h2>
 下面的代码保存为comment_ajax_navi.js文件，放到模板里面，记得在header.php中包含哦
 <pre lang="js" line="1">
 var navi='.page_navi';
@@ -287,7 +287,7 @@ $(document).ready(function comment_ajax_navi (){
 })
 </pre>
 
-<h2 id="title_5">6 后台php部分<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_5">6 后台php部分</h2>
 下面的代码放到functiongs.php中，
 <pre lang="php" line="1">
 <?php
@@ -303,7 +303,7 @@ add_action('template_redirect', 'comment_ajax_navi');
 ?>
 </pre>
 
-<h2 id="title_6">7 寄语<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_6">7 寄语</h2>
 希望大家通过上面的例子能够成功实现评论的ajax翻页效果。有几个注意点：
 (1)每个人的主题设置不同，需要根据自己的主题设置自己的参数。特别是包含分页链接的div的class。我这里是.page_navi。还有就是包含index_list.php的 div id="comment_list"，需要在js中填入这两个关键的div。
 (2)喜欢折腾的主题中wp_list_comments一般都有callback函数，来重新写评论列表的部分，这时需要在comment_list.php中的wp_list_comments参数有所调整哦。
@@ -311,7 +311,7 @@ add_action('template_redirect', 'comment_ajax_navi');
 
 			</div>
 		</div>
-		<div style="height:30px"> <a href="#top" style="float:right"> 回到顶部 ∧ </a></div>
+		<div style="height:30px"> <a href="#top" style="float:right"> ∧回到顶部∧ </a></div>
 		<div id="comment">
 			<!-- Duoshuo Comment BEGIN -->
 			<div class="ds-thread" data-thread-key="44" data-title="wordpress ajax之三:评论ajax分页"></div>
@@ -371,7 +371,7 @@ add_action('template_redirect', 'comment_ajax_navi');
 	</div>
 	<!--end: sidebar-->
 	<div id="footer">
-		<a href="#top" class="gotop_btn" id="goTopButton">∧</br>∧</br>∧</br></a>	
+		<a href="#top" title="回到顶部" class="gotop_btn" id="goTopButton">∧</br>∧</br>∧</br></a>	
 	<div id="footer-nav">
 		<a href="http://dhblog.org/html/aboutus.html">关于我们</a> | 
 		<a href="http://dhblog.org/html/mianze.html">免责声明</a> | 

@@ -11,7 +11,7 @@ function article_index($content)
 			//if($num==0)
 			if(true)
 			{
-				$content = str_replace($matches[0][$num], '<'.$matches[1][$num].' id="title_'.$num.'">'.$title.'<span style="float:right"><a href="#top">∧</a></span></'.$matches[3][$num].'>', $content);
+				$content = str_replace($matches[0][$num], '<'.$matches[1][$num].' id="title_'.$num.'">'.$title.'</'.$matches[3][$num].'>', $content);
 			}
 			else
 			{

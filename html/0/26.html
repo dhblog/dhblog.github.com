@@ -147,7 +147,7 @@
 </ul></div></div>
 上次发了文章<a href="http://dhblog.org/archives/907.html">javascript 熬夜提醒</a>，用的不是服务器计算当前时间的方法，是用的浏览器在本地运行javascript的方法，这里说明一下各种方法和区别吧。
 我的网站上的时间就是用js方法显示的。
-<h2 id="title_0">1. php的服务器端方法<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_0">1. php的服务器端方法</h2>
 <pre lang="php" line="1">
 <?php
 	$hourdiff = "15"; /* 这是服务器时区和客户本地时区差 */
@@ -159,7 +159,7 @@
 详细使用方法见：
 <a href="http://php.net/manual/en/function.date.php">http://php.net/manual/en/function.date.php</a>
 
-<h2 id="title_1">2. jsp的服务器端方法<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_1">2. jsp的服务器端方法</h2>
 <pre lang="jsp" line="1">
 <%@ page import="java.util.Date"%>
 <%
@@ -170,13 +170,13 @@
 详细使用方法见：
 <a href="http://bbs.blueidea.com/viewthread.php?tid=989464&page=">jsp中的日期问题及其它</a>
 
-<h2 id="title_2">3. 服务器端方法的缺点<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_2">3. 服务器端方法的缺点</h2>
 缺点：
 1 不是客户端的时间，是服务器的时间，服务器可能在美国，这个时间对在不同时区的客户端是一样的，对每个客户端需要单独计算。而且换了不同时区的服务器，需要更改这些时区设置。
 2 服务器端计算，需要占用服务器的时间。
 所以，给出使用js的方法:
 
-<h2 id="title_3">4. js方法<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_3">4. js方法</h2>
 <pre lang='javascript' line="1">
 <script type="text/javascript">
 function showdate() //显示系统日期   
@@ -198,7 +198,7 @@ document.write(showdate());
 3 不同地区的客户能拿到他们的自己的当前时间，符合他们的需求
 4 js代码可以在任何环境中使用，不管是php、jsp还是asp
 
-<h2 id="title_4">5. flash方法<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_4">5. flash方法</h2>
 最后介绍的，当然是最厉害的，但这个方法最简单，也最有效果。就和我的网页上top上的圆形时钟和数字时钟一样，这些flash网上有，只要加入到html中就可以了。有需要可以在我的网站下载，找到我网站代码里面的flash地址，下载即可。
 <pre lang='html' line="1">
 <div style="position:absolute;top:30px;right:10px;">
@@ -216,7 +216,7 @@ document.write(showdate());
 
 			</div>
 		</div>
-		<div style="height:30px"> <a href="#top" style="float:right"> 回到顶部 ∧ </a></div>
+		<div style="height:30px"> <a href="#top" style="float:right"> ∧回到顶部∧ </a></div>
 		<div id="comment">
 			<!-- Duoshuo Comment BEGIN -->
 			<div class="ds-thread" data-thread-key="26" data-title="网页中显示当前日期(php/jsp/javascript/flash)"></div>
@@ -276,7 +276,7 @@ document.write(showdate());
 	</div>
 	<!--end: sidebar-->
 	<div id="footer">
-		<a href="#top" class="gotop_btn" id="goTopButton">∧</br>∧</br>∧</br></a>	
+		<a href="#top" title="回到顶部" class="gotop_btn" id="goTopButton">∧</br>∧</br>∧</br></a>	
 	<div id="footer-nav">
 		<a href="http://dhblog.org/html/aboutus.html">关于我们</a> | 
 		<a href="http://dhblog.org/html/mianze.html">免责声明</a> | 

@@ -143,10 +143,10 @@
 <li class="level2"><a href="#title_2" title="3 几点说明">3 几点说明</a></li>
 <li class="level2"><a href="#comment" title="留言">x. 留言</a></li>
 </ul></div></div>
-<h2 id="title_0">1 序言<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_0">1 序言</h2>
 自从上次推出<a href="http://dhblog.org/archives/1.html">帅哥认证</a>以来，<a href="http://www.initers.com/">IT圈中人</a>便锲而不舍地在我这里留言，希望能得到一个帅哥认证。但是就是没有看到自己的头像有帅哥标识，原因是我上次的全部是手动填的，这次把这个修改成自动的了，只要评论超过10条就有帅哥标识，于是乎，IT圈中人现在终于可以有了帅哥标识了。
 
-<h2 id="title_1">2 方法<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_1">2 方法</h2>
 将下面的代码保存为comment_g_title.php文件，并在functions.php中引用之。
 <pre lang="php" line="1">
 <?php
@@ -191,14 +191,14 @@ add_action('comment_post', 'get_comment_g_title');
 <pre lang="php" line="1">
 include("comment_g_title.php");
 </pre>
-<h2 id="title_2">3 几点说明<span style="float:right"><a href="#top">∧</a></span></h2>
+<h2 id="title_2">3 几点说明</h2>
 1. 使用了将帅哥保存到option表中的技巧。减少数据库的读写。
 2. 帅哥评选原则是 累计评论超过10条，系统自动评出帅哥
 3. 需要在显示图像的下面引用这个函数comment_g_title($comment->comment_author_email)，一般在wp_list_comments的callback函数中，关于wp_list_comments的callback函数如何写，就要google了。
 
 			</div>
 		</div>
-		<div style="height:30px"> <a href="#top" style="float:right"> 回到顶部 ∧ </a></div>
+		<div style="height:30px"> <a href="#top" style="float:right"> ∧回到顶部∧ </a></div>
 		<div id="comment">
 			<!-- Duoshuo Comment BEGIN -->
 			<div class="ds-thread" data-thread-key="42" data-title="wordpress主题:增加帅哥认证标识(续)"></div>
@@ -258,7 +258,7 @@ include("comment_g_title.php");
 	</div>
 	<!--end: sidebar-->
 	<div id="footer">
-		<a href="#top" class="gotop_btn" id="goTopButton">∧</br>∧</br>∧</br></a>	
+		<a href="#top" title="回到顶部" class="gotop_btn" id="goTopButton">∧</br>∧</br>∧</br></a>	
 	<div id="footer-nav">
 		<a href="http://dhblog.org/html/aboutus.html">关于我们</a> | 
 		<a href="http://dhblog.org/html/mianze.html">免责声明</a> | 
