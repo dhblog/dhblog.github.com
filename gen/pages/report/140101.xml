@@ -14,7 +14,44 @@
 		2.4 很多原来的博友、交流群全部丢失，还有搜索引擎还需要再照顾一下</br>
 --></_b>
 </_e>
-<_e><_d>2014012700</_d><_T>舍弃wordpress</_T><_c>建站技术</_c><_t>wordpress</_t><_t>经验分享</_t><_a>DH</_a>
+<_e><_d>2014012900</_d><_T>css实现回到顶部浮动标签</_T><_c>编程技术</_c><_t>css</_t><_a>DH</_a>
+<_b><!--
+	<h2>1. 示例</h2>
+	%top%当页面向下拉动之后，我的博客的右边中下部会浮现一个∧的浮动图标，点击会回到顶部。这个做法非常简单，基于简单的css和js实现的
+	<h2>2. html代码</h2>
+	%top%浮动的主体
+	<pre><xmp><a href="#top" title="回到顶部" class="gotop_btn1" id="goTopButton1">∧</br>∧</br>∧</br></a></xmp></pre>
+	<h2>3. css代码</h2>
+	%top%用于设定浮动的位置
+<pre><code>.gotop_btn1 {
+position: fixed;
+left: 50%;
+margin-left: 458px;
+top: 400px;
+font-weight:700;
+font-size:11px;
+width: 22px;
+height: 71px;
+display: none;
+}</code></pre>
+	<h2>4. js代码</h2>	
+	%top%用于设定在什么情况下浮动标签出现
+	<pre>
+<code>window.onscroll = function()
+{
+	var h =document.body.scrollTop,top = document.getElementById('goTopButton1');
+	if(h>0)
+	{
+		top.style.display = 'block';
+	}
+	else
+	{
+		top.style.display = 'none';
+	}
+}</code></pre>	
+--></_b>
+</_e>
+<_e><_d>2014020900</_d><_T>舍弃wordpress</_T><_c>建站技术</_c><_t>wordpress</_t><_t>经验分享</_t><_a>DH</_a>
 <_b><!--
 	<h2>1. 众说纷纭</h2>
 	%tab%做出舍弃wordpress的决定也很艰难的，之前写过很多的wordpress的文章，也搞过一个主题，现在要放弃它，很不舍得，前面的成果就废弃了，但是还是放弃了，说一下自己的想法和实践吧。
@@ -68,7 +105,7 @@
 		%tab%(4) 第三方插件解决统计留言</br>
 --></_b>
 </_e>
-<_e><_d>2014020300</_d><_T>多说留言的导入导出</_T><_c>建站技术</_c><_t>经验分享</_t><_a>DH</_a>
+<_e><_d>2014021000</_d><_T>多说留言的导入导出</_T><_c>建站技术</_c><_t>经验分享</_t><_a>DH</_a>
 <_b><!--
 	<h2>1. 祸起迁移</h2>
 	%tab%前段时间由于很多原因导致博客的迁移，但是原有使用的多说留言系统的留言已经混乱了，需要将留言对应到新的留言系统中。这里研究了一下多说的导入修改导出。
@@ -124,42 +161,5 @@ preg_match_all('/{"post_id":"(.*?)","thread_id":"(.*?)","message":"(.*?)","creat
 	%tab%5.2 支持自己修改导出导入文件较好。</br>
 	%tab%5.3 导入错误提示很少。</br>
 	%tab%5.4 评论导入每次不能超过1000条左右,没有提示，我自己测试出的。</br>
---></_b>
-</_e>
-<_e><_d>2014021000</_d><_T>css实现回到顶部浮动标签</_T><_c>编程技术</_c><_t>css</_t><_a>DH</_a>
-<_b><!--
-	<h2>1. 示例</h2>
-	%top%当页面向下拉动之后，我的博客的右边中下部会浮现一个∧的浮动图标，点击会回到顶部。这个做法非常简单，基于简单的css和js实现的
-	<h2>2. html代码</h2>
-	%top%浮动的主体
-	<pre><xmp><a href="#top" title="回到顶部" class="gotop_btn1" id="goTopButton1">∧</br>∧</br>∧</br></a></xmp></pre>
-	<h2>3. css代码</h2>
-	%top%用于设定浮动的位置
-<pre><code>.gotop_btn1 {
-position: fixed;
-left: 50%;
-margin-left: 458px;
-top: 400px;
-font-weight:700;
-font-size:11px;
-width: 22px;
-height: 71px;
-display: none;
-}</code></pre>
-	<h2>4. js代码</h2>	
-	%top%用于设定在什么情况下浮动标签出现
-	<pre>
-<code>window.onscroll = function()
-{
-	var h =document.body.scrollTop,top = document.getElementById('goTopButton1');
-	if(h>0)
-	{
-		top.style.display = 'block';
-	}
-	else
-	{
-		top.style.display = 'none';
-	}
-}</code></pre>	
 --></_b>
 </_e>

@@ -113,44 +113,43 @@ function dh_gen_share($lists)
 	$tongji.='<li>标签数目: <span style="font-size:12px;color:#555;">'.count($tags).'个</span></li>';
 	
 	$tongji.='<li>分类数目: <span style="font-size:12px;color:#555;">'.$countcats.'个</span></li>';
-    
-	//$datetoday =date("Y-m-d");
-	//$sql="select count(*) from page where updatetime >= '$datetoday'";
-	//$results=dh_mysql_query($sql);	
-	//$count = mysql_fetch_array($results);	
-	//$tongji.="\n".'<li><span class="lt2v0">最新更新:</span>'.'<span class="rt2v0 cred">'.$count[0].' 部</span></li>';
 
-	//$tongji = "<ul>".$tongji.'</ul>';
+	$tongji = "<ul>".$tongji.'</ul>';
 	
 	//$tongji = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">display:inline;float:left;overflow:hidden;width:110px;text-align:left;border:1px solid #f7f3ed;border-bottom:1px solid #ddd;margin:0;padding:5px 0 5px 5px;</style></head><body leftmargin="0"	topmargin="0" style="background-color:transparent"><ul>'.$tongji.'</ul></body></html>';
 	
-	$tongji = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">ul li{list-style: none;display:inline;float:left;overflow:hidden;width:110px;text-align:left;border:1px solid #f7f3ed;border-bottom:1px solid #ddd;margin:0;padding:5px 0 5px 5px;}</style></head><body leftmargin="0" topmargin="0" style="background-color:transparent;font-size:14px"><ul style="padding:0">'.$tongji.'</ul></body></html>';
+	//$tongji = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">ul li{list-style: none;display:inline;float:left;overflow:hidden;width:110px;text-align:left;border:1px solid #f7f3ed;border-bottom:1px solid #ddd;margin:0;padding:5px 0 5px 5px;}</style></head><body leftmargin="0" topmargin="0" style="background-color:transparent;font-size:14px"><ul style="padding:0">'.$tongji.'</ul></body></html>';
 	
-	$DH_output_file=$DH_input_path.'tongji.html';
-	dh_file_put_contents($DH_output_file,$tongji);	
+	//$DH_output_file=$DH_input_path.'tongji.html';
+	//dh_file_put_contents($DH_output_file,$tongji);	
 		
-	$tongjiframe='<iframe allowtransparency="true" src="'.$DH_home_url.'tongji.html" frameBorder="0" scrolling="no" height="90px"></iframe>';
+	//$tongjiframe='<iframe allowtransparency="true" src="'.$DH_home_url.'tongji.html" frameBorder="0" scrolling="no" height="390px"></iframe>';
 	
-	$DH_side_tongji= str_replace("%content%",$tongjiframe,$DH_side_tongji);
+	//$DH_side_tongji= str_replace("%content%",$tongjiframe,$DH_side_tongji);
 	
 	//友情链接
 	$DH_side_fl= str_replace("%title%",'友情链接',$DH_side_each);
 	$DH_side_fl= str_replace("%content%",'',$DH_side_fl);
 	
-	//$DH_side_content=$DH_side_ad.$DH_side_hotmovie.$DH_side_hottv.$DH_side_tongji;
 	
-	$DH_input_html  = $DH_html_path . 'side_eacht.html';
-	$DH_side_eacht = dh_file_get_contents($DH_input_html);
+	$DH_input_html  = $DH_html_path . 'side_dong.html';
+	$DH_side_dong = dh_file_get_contents($DH_input_html);
 	$tagsall='';
 	foreach($tags as $key=>$tag)
 	{
 		$urlcode = rawurlencode($key);
 		$urlcode = 't'.str_replace("%",'',$urlcode);	
-		$tagsall.="<a href=\"$DH_index_url$urlcode/1.html\" title=\"共有文章 $tag 篇\">$key</a>";
-	}	
-	$DH_side_eacht= str_replace("%content%",$tagsall,$DH_side_eacht);	
+		$tagsall.="<a href=\"$DH_index_url$urlcode/1.html\" title=\"共有文章 $tag 篇\" target=\"_blank\">$key</a>";
+	}
+	$DH_side_dong= str_replace("%tags%",$tagsall,$DH_side_dong);
+	$DH_side_dong= str_replace("%tongji%",$tongji,$DH_side_dong);
 	
-	$DH_side=$DH_side_ad.$DH_side_hot.$DH_side_pinglun.$DH_side_visitor.$DH_side_eacht.$DH_side_tongji;	
+	$DH_output_file=$DH_input_path.'side_dong.html';
+	dh_file_put_contents($DH_output_file,$DH_side_dong);	
+
+	$dongframe='<iframe allowtransparency="true" src="'.$DH_home_url.'side_dong.html" frameBorder="0" scrolling="no" width="240px" height="500px"></iframe>';	
+	
+	$DH_side=$DH_side_ad.$DH_side_hot.$DH_side_pinglun.$DH_side_visitor.$dongframe;	
 	
 	$DH_output_file = $DH_share_output_path. 'side.html';
 	dh_file_put_contents($DH_output_file,$DH_side);	
@@ -193,6 +192,8 @@ function dh_gen_public($lists,&$countpages,&$countcats,&$tags,&$countupdate)
 		if($dateThis >= $dateNow )
 			$countupdate++;
 	}
+	
+	ksort($tags);
 	
 	//print_r($cats);
 	//print_r($tags);

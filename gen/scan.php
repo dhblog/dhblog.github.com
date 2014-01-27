@@ -61,6 +61,7 @@ function get_entry($filename)
 				$eachentry = preg_replace( '/\r/s',"",$eachentry);
 				//去除<***>
 				$eachentry = preg_replace( '/<(.*?)>/s',"",$eachentry);	
+				$eachentry =  str_replace("%tab%",'',$eachentry);
 				if(mb_strlen($eachentry,'UTF-8')>128)
 				{
 					$x = mb_substr($eachentry,0,128,'UTF-8');
