@@ -13,12 +13,21 @@
 	<atom:link href="http://dhblog.org/rss.xml" rel="self" type="application/rss+xml" />
 	<link>http://dhblog.org/</link>
 	<description>DH出品,必属精品</description>
-	<lastBuildDate>Mon, 27 Jan 2014 15:29:09 +0800</lastBuildDate>
+	<lastBuildDate>Tue, 11 Feb 2014 19:05:39 +0800</lastBuildDate>
 	<language>zh-CN</language>
 	<sy:updatePeriod>daily</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
 	<generator>http://dhblog.org/</generator>
 		
+		<item>
+		<title>css实现最简单回到顶部浮动标签</title>
+		<link>http://dhblog.org/html/0/75.html</link>
+		<pubDate>Tue, 11 Feb 2014 00:00:00 +0800</pubDate>
+		<dc:creator>DH</dc:creator>
+		<category><![CDATA[编程技术]]></category>
+		<guid isPermaLink="true">http://dhblog.org/html/0/75.html</guid>
+		<description><![CDATA[ 	%top%当页面向下拉动之后，我的博客的右边中下部会浮现一个∧的浮动图标，点击会回到顶部。这个做法非常简单，基于简单的css和js实现的		%top%浮动的主体	∧∧∧		%top%用于设定浮动的位置.gotop_btn1 {position: fixe ]]></description>
+		</item>
 		<item>
 		<title>2014年博客开始正常运转</title>
 		<link>http://dhblog.org/html/0/74.html</link>
@@ -90,15 +99,6 @@
 		<category><![CDATA[编程技术]]></category>
 		<guid isPermaLink="true">http://dhblog.org/html/0/67.html</guid>
 		<description><![CDATA[ 垃圾评论一直是我们独立博客主讨厌的，因为这个需要浪费很多的数据库空间，造成不必要的浪费，而且，这个就像脚气一样，很难根除，实属讨厌之极!下面有几个规则：规则1：如果你的博客可以留下垃圾评论, 那这个垃圾评论还会再來, 而且越来越多.不仅spam如此, 人肉 ]]></description>
-		</item>
-		<item>
-		<title>wordpress ajax之七:随机动态显示名言</title>
-		<link>http://dhblog.org/html/0/66.html</link>
-		<pubDate>Mon, 20 Feb 2012 07:00:00 +0800</pubDate>
-		<dc:creator>DH</dc:creator>
-		<category><![CDATA[编程技术]]></category>
-		<guid isPermaLink="true">http://dhblog.org/html/0/66.html</guid>
-		<description><![CDATA[ 对于如何使用ajax写主题请参考：1. wordpress ajax之一:一个简单的例子2. wordpress ajax之二:首页ajax分页3. wordpress ajax之三:评论ajax分页4. wordpress ajax之四:archive页 ]]></description>
 		</item>
 	</channel>
 </rss>
