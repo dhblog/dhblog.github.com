@@ -13,7 +13,7 @@
 	<atom:link href="http://dhblog.org/rss.xml" rel="self" type="application/rss+xml" />
 	<link>http://dhblog.org/</link>
 	<description>DH出品,必属精品</description>
-	<lastBuildDate>Tue, 11 Feb 2014 19:05:39 +0800</lastBuildDate>
+	<lastBuildDate>Tue, 11 Feb 2014 20:18:54 +0800</lastBuildDate>
 	<language>zh-CN</language>
 	<sy:updatePeriod>daily</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -26,7 +26,7 @@
 		<dc:creator>DH</dc:creator>
 		<category><![CDATA[编程技术]]></category>
 		<guid isPermaLink="true">http://dhblog.org/html/0/75.html</guid>
-		<description><![CDATA[ 	%top%当页面向下拉动之后，我的博客的右边中下部会浮现一个∧的浮动图标，点击会回到顶部。这个做法非常简单，基于简单的css和js实现的		%top%浮动的主体	∧∧∧		%top%用于设定浮动的位置.gotop_btn1 {position: fixe ]]></description>
+		<description><![CDATA[ 	当页面向下拉动之后，我的博客的右边中下部会浮现一个∧的浮动图标，点击会回到顶部。这个做法非常简单，基于简单的css和js实现的		浮动的主体	∧∧∧		用于设定浮动的位置.gotop_btn1 {position: fixed;left: 50%;mar ]]></description>
 		</item>
 		<item>
 		<title>2014年博客开始正常运转</title>
