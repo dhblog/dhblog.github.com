@@ -87,7 +87,7 @@ echo $maxdate.":".$maxcount;
 
 function dh_gen_page()
 {
-	global $pages,$DH_home_url,$DH_index_url,$DH_html_path,$DH_output_path,$DH_output_html_path,$DH_src_path,$begincount;
+	global $pages,$DH_home_url,$DH_index_url,$DH_html_path,$DH_output_path,$DH_output_html_path,$DH_src_path,$begincount,$DH_html_url;
 	if (!file_exists($DH_output_html_path))  
 		mkdir($DH_output_html_path,0777);
 	
@@ -132,7 +132,8 @@ function dh_gen_page()
 		$DH_output_content_each =  str_replace("%caturl%",$caturl,$DH_output_content_each);
 		$DH_output_content_each =  str_replace("%id%",$i+$begincount,$DH_output_content_each);
 		$DH_output_content_each =  str_replace("%tab%",'&nbsp;&nbsp;&nbsp;&nbsp;',$DH_output_content_each);
-		
+		$titleurl = output_page_path($DH_html_url,$i+$begincount);
+		$DH_output_content_each =  str_replace("%titleurl%",$titleurl,$DH_output_content_each);
 		$DH_output_file = output_page_path($DH_output_html_path,$i+$begincount);
 		dh_file_put_contents($DH_output_file,$DH_output_content_each);		
 	}
@@ -233,7 +234,7 @@ function dh_gen_each_list($eachlist,$urlname,$name,$listeach,$content)
 		preg_match('/<\_T>(.*?)<\/\_T>/s',$onelist,$matchT);
 		preg_match('/<\_b>\<!\-\-(.*?)\-\-\><\/\_b>/s',$onelist,$matchb);
 		preg_match('/<\_d>(.*?)<\/\_d>/s',$onelist,$matchd);		
-		//preg_match('/<\_a>(.*?)<\/\_a>/s',$onelist,$matcha);
+		preg_match('/<\_a>(.*?)<\/\_a>/s',$onelist,$matcha);
 		preg_match('/<\_c>(.*?)<\/\_c>/s',$onelist,$matchc);
 		preg_match_all('/<\_t>(.*?)<\/\_t>/s',$onelist,$matchts);
 		//print_r($match);
@@ -259,6 +260,7 @@ function dh_gen_each_list($eachlist,$urlname,$name,$listeach,$content)
 		$html_url = output_page_path($DH_html_url,$lists_num[$list]);
 		$listtmp = str_replace("%url%",$html_url,$listtmp);
 		$listtmp = str_replace("%tags%",$tags,$listtmp);
+		$listtmp = str_replace("%author%",$matcha[1],$listtmp);
 		$time = strtotime($matchd[1].'00');
 		$date=date("y-m",$time);
 		//print_r($date);

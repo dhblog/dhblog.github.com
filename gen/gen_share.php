@@ -60,9 +60,11 @@ function dh_gen_share($lists)
 	$DH_input_html  = $DH_html_path . 'side_each2.html';
 	$DH_side_each2 = dh_file_get_contents($DH_input_html);	
 	//广告
-	$DH_side_ad= str_replace("%title%",'广告',$DH_side_each);
-	$DH_side_ad= str_replace("%more%",'',$DH_side_ad);
-	$DH_side_ad= str_replace("%content%",'',$DH_side_ad);
+//	$DH_side_ad= str_replace("%title%",'广告',$DH_side_each);
+//	$DH_side_ad= str_replace("%more%",'',$DH_side_ad);
+//	$DH_side_ad= str_replace("%content%",'',$DH_side_ad);
+	$DH_input_html  = $DH_html_path . 'side_ad.html';
+	$DH_side_ad = dh_file_get_contents($DH_input_html);	
 	
 	//热门文章
 	$DH_side_hot= str_replace("%title%",'热门文章',$DH_side_each);
@@ -78,7 +80,7 @@ function dh_gen_share($lists)
 	//最新访客
 	$DH_side_visitor= str_replace("%title%",'最新访客',$DH_side_each);
 	$DH_side_visitor= str_replace("%more%",'',$DH_side_visitor);
-	$DH_side_visitor= str_replace("%content%",'<ul style="margin:3px 0" class="ds-recent-visitors" data-num-items="10"></ul>',$DH_side_visitor);
+	$DH_side_visitor= str_replace("%content%",'<ul style="margin:8px 6px" class="ds-recent-visitors" data-num-items="10"></ul>',$DH_side_visitor);
 	
 	//网站统计
 	$DH_side_tongji= str_replace("%title%",'网站统计',$DH_side_each2);
