@@ -53,6 +53,52 @@ display: none;
 	%tab%本来找了很多资料，有用js的刷频的，有用jquery的，但是觉得还是这样简单，有效。简单简约依赖少，维护方便。
 --></_b>
 </_e>
+<_e><_d>2014022500</_d><_T>css实现最简单回到顶部浮动标签(兼容版)</_T><_c>编程技术</_c><_t>css</_t><_a>DH</_a>
+<_b><!--
+	<h2>1. 前言</h2>
+	上一篇文章中写道<a href="http://dhblog.org/html/0/76.html" target="_blank">使用简单的css和js实现浮动回到顶部</a>，遇到了两个问题：</br>
+	%tab%1. ∧ 比较土，用文字比较好</br>
+	%tab%2. firefox不兼容</br>
+	所以这里重新修改一下，弄一个兼容的版本
+	<h2>2. html代码</h2>
+	浮动的主体
+	<pre><xmp><a href="#top" title="回到顶部" class="gotop_btn" id="goTopButton">∧</br>回</br>到</br>顶</br>部</a></xmp></pre>
+	<h2>3. css代码</h2>
+	用于设定浮动的位置
+<pre><code>.gotop_btn1 {
+position: fixed;
+left: 50%;
+margin-left: 458px;
+top: 400px;
+font-weight:700;
+font-size:11px;
+width: 22px;
+height: 71px;
+display: none;
+}</code></pre>
+	<h2>4. js代码</h2>	
+	用于设定在什么情况下浮动标签出现
+	<pre>
+<code>window.onscroll = function()
+{
+	var h =document.body.scrollTop;
+	if(!h)
+		h=document.documentElement.scrollTop;
+	var top = document.getElementById('goTopButton');
+	if(h>0)
+	{
+		top.style.display = 'block';
+	}
+	else
+	{
+		top.style.display = 'none';
+	}
+};</code></pre>
+	<h2>4. 感想</h2>
+	%tab%还是要多测试，多使用才能磨练出一个比较好的体验度。
+--></_b>
+</_e>
+
 <_e><_d>2014040900</_d><_T>常用网站备案</_T><_c>建站技术</_c><_t>经验分享</_t><_a>DH</_a>
 <_b><!--
 	<h2>1. 素材网站</h2>
