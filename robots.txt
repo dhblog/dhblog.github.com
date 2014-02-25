@@ -1,5 +1,7 @@
 User-agent: *
 Disallow:/gen/
 
-Sitemap: http://127.0.0.1/dhblog/sitemap_baidu1.xml
-Sitemap: http://127.0.0.1/dhblog/sitemap1.xml
+Sitemap: http://dhblog.org/sitemap_baidu1.xml
+Sitemap: http://dhblog.org/sitemap_baidu0.xml
+Sitemap: http://dhblog.org/sitemap1.xml
+Sitemap: http://dhblog.org/sitemap0.xml

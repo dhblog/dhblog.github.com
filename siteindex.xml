@@ -1,11 +1,19 @@
 <?xml version=¡±1.0¡å encoding=¡±UTF-8¡å?>
 <sitemapindex xmlns=¡±http://www.google.com/schemas/sitemap/0.84¡å>
 <sitemap>
-	<loc>http://127.0.0.1/dhblog/sitemapxml/sitemap_baidu1.xml</loc>
-	<lastmod>2014-02-25T16:30:14+00:00</lastmod>
+	<loc>http://dhblog.org/sitemapxml/sitemap_baidu1.xml</loc>
+	<lastmod>2014-02-25T22:22:10+00:00</lastmod>
 </sitemap>
 <sitemap>
-	<loc>http://127.0.0.1/dhblog/sitemapxml/sitemap1.xml</loc>
-	<lastmod>2014-02-25T16:30:14+00:00</lastmod>
+	<loc>http://dhblog.org/sitemapxml/sitemap_baidu0.xml</loc>
+	<lastmod>2014-02-25T22:22:10+00:00</lastmod>
+</sitemap>
+<sitemap>
+	<loc>http://dhblog.org/sitemapxml/sitemap1.xml</loc>
+	<lastmod>2014-02-25T22:22:10+00:00</lastmod>
+</sitemap>
+<sitemap>
+	<loc>http://dhblog.org/sitemapxml/sitemap0.xml</loc>
+	<lastmod>2014-02-25T22:22:10+00:00</lastmod>
 </sitemap>
 </sitemapindex>

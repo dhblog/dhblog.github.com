@@ -25,13 +25,13 @@ global $DH_src_path;
 //$tags=array();
 
 //取出已经搞定的日期和数目
-$countpath=$DH_src_path.'tmp/count';
-$content = dh_file_get_contents("$countpath");
-preg_match('/<date>(.*?)<\/date><count>(.*?)<\/count>/s',$content,$match);
+$datepath=$DH_src_path.'tmp/date';
+$begindate = dh_file_get_contents("$datepath");
+//preg_match('/<date>(.*?)<\/date>/s',$content,$match);
 //print_r($match);
-$begindate=$match[1];
+//$begindate=$match[1];
 $todaydate=date("YmdH");
-$begincount=$match[2];
+//$begincount=$match[2];
 
 //扫描所有的文件
 $lists=array();
@@ -51,6 +51,9 @@ ksort($pages);
 dh_gen_share($lists);
 
 //输出到各个lists
+$tags=array();
+$cats=array();
+$all=array();
 dh_gen_list();
 //输出到pages
 dh_gen_page();
@@ -79,15 +82,15 @@ gen_sitemapall();
 gen_rss($lists,10);
 
 //将搞定的date和count写入文件保存
-$endcount=end($lists);
+//$endcount=end($lists);
 $maxdate=key($lists);
-$maxcount=$begincount+count($lists);
+//$maxcount=$begincount+count($lists);
 echo $maxdate.":".$maxcount;
 
 
 function dh_gen_page()
 {
-	global $pages,$DH_home_url,$DH_index_url,$DH_html_path,$DH_output_path,$DH_output_html_path,$DH_src_path,$begincount,$DH_html_url;
+	global $cats,$lists,$lists_num,$pages,$DH_home_url,$DH_index_url,$DH_html_path,$DH_output_path,$DH_output_html_path,$DH_src_path,$begincount,$DH_html_url;
 	if (!file_exists($DH_output_html_path))  
 		mkdir($DH_output_html_path,0777);
 	
@@ -97,6 +100,7 @@ function dh_gen_page()
 	$DH_output_content = str_replace("%home%",$DH_home_url,$DH_output_content);
 	//echo $DH_output_content;
 	$i=0;
+	$pagecount=count($pages);
 	foreach($pages as $key=>$page)
 	{
 		$i++;
@@ -134,14 +138,57 @@ function dh_gen_page()
 		$DH_output_content_each =  str_replace("%tab%",'&nbsp;&nbsp;&nbsp;&nbsp;',$DH_output_content_each);
 		$titleurl = output_page_path($DH_html_url,$i+$begincount);
 		$DH_output_content_each =  str_replace("%titleurl%",$titleurl,$DH_output_content_each);
-		$DH_output_file = output_page_path($DH_output_html_path,$i+$begincount);
+		$pageid=$lists_num[$matchd[1]];
+		
+		//利用cat找到相关的最多6篇的文章,坏处是无法保持page的不变性
+		//print_r($cats[$matchc[1]]);
+		//$j=0;
+		//$xiangguan='';
+		//foreach($cats[$matchc[1]] as $key=>$eachcats)
+		//{
+		//	$j++;
+		//	if($j>6)
+		//		break;
+		//	preg_match('/<\_T>(.*?)<\/\_T>/s',$lists[$eachcats],$matchTx);
+		//	$caturl = output_page_path($DH_html_url,$lists_num[$eachcats]);
+		//	$xiangguan.='<li style="width:48%;float:left"><a href="'.$caturl.'">'.$matchTx[1].'</a></li>';
+		//}
+		////print_r($xiangguan);
+		//$DH_output_content_each =  str_replace("%xiangguan%",$xiangguan,$DH_output_content_each);
+		
+		//找到前后6篇文章，好处是不变page内容，坏处是相关度不高
+		$j=1;
+		$xiangguan='';
+		$allcount=count($lists_num);
+		$baseid=$pageid;
+		//echo $baseid."\n";
+		while((($baseid-$j)>0) && (($baseid+$j)<$allcount))
+		{
+			if($j>3)
+				break;
+			//echo $baseid.'//'.$j."\n";
+			$lists_index=array_search($baseid+$j,$lists_num);
+			preg_match('/<\_T>(.*?)<\/\_T>/s',$lists[$lists_index],$matchTx);
+			$caturl = output_page_path($DH_html_url,$baseid+$j);	
+			$xiangguan.='<li style="width:48%;float:left"><a href="'.$caturl.'">'.$matchTx[1].'</a></li>';
+			
+			$lists_index=array_search($baseid-$j,$lists_num);
+			preg_match('/<\_T>(.*?)<\/\_T>/s',$lists[$lists_index],$matchTx);
+			$caturl = output_page_path($DH_html_url,$baseid-$j);	
+			$xiangguan.='<li style="width:48%;float:left"><a href="'.$caturl.'">'.$matchTx[1].'</a></li>';
+			$j++;
+		}
+		//print_r($xiangguan);
+		$DH_output_content_each =  str_replace("%xiangguan%",$xiangguan,$DH_output_content_each);	
+		
+		$DH_output_file = output_page_path($DH_output_html_path,$pageid);
 		dh_file_put_contents($DH_output_file,$DH_output_content_each);		
 	}
 }
 
 function dh_gen_list()
 {
-	global $lists,$DH_home_url,$DH_html_path,$DH_output_path,$DH_output_index_path,$DH_src_path;
+	global $tags,$cats,$all,$lists,$DH_home_url,$DH_html_path,$DH_output_path,$DH_output_index_path,$DH_src_path;
 	if (!file_exists($DH_output_index_path))  
 		mkdir($DH_output_index_path,0777);
 	
@@ -154,9 +201,6 @@ function dh_gen_list()
 	$listeach = dh_file_get_contents("$DH_input_html");	
 	//echo $DH_output_content;
 	
-	$tags=array();
-	$cats=array();
-	$all=array();
 	foreach($lists as $key=>$list)
 	{
 		preg_match('/<\_c>(.*?)<\/\_c>/s',$list,$matchc);
