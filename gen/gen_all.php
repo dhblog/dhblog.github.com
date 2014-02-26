@@ -63,7 +63,7 @@ $DH_input_html  = $DH_output_index_path."all/1.html";
 $DH_output_content = dh_file_get_contents("$DH_input_html");
 $DH_output_content = preg_replace('/<title>.*?<\/title>/s','<title>DH博客(DH出品,必属精品) 首页</title>',$DH_output_content);
 $DH_output_content = preg_replace('/<meta name="keywords" content="[^<]+" \/>/s','<meta name="keywords" content="DH博客,建站技术,编程技术,影视分享,网络推广" />',$DH_output_content);
-$DH_output_content = preg_replace('/<meta name="description" content="[^<]+" \/>/s','<meta name="description" content="DH博客是个人的分享博客,针对DH个人的兴趣方向,分享自己的心得,博客内容几乎全部原创.主要方向有:建站技术,编程技术,网站推广,影视分享等." />',$DH_output_content);
+$DH_output_content = preg_replace('/<meta name="description" content="[^<]+" \/>/s','<meta name="description" content="DH博客(http://dhblog.org)是个人的分享博客,针对DH个人的兴趣方向,分享自己的心得,博客内容几乎全部原创.主要方向有:建站技术,编程技术,网站推广等." />',$DH_output_content);
 dh_file_put_contents($DH_output_path."index.html",$DH_output_content);	
 //copy($DH_output_index_path."all/1.html",$DH_output_path."index.html");
 
