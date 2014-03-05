@@ -61,9 +61,9 @@ dh_gen_page();
 //拷贝index
 $DH_input_html  = $DH_output_index_path."all/1.html";
 $DH_output_content = dh_file_get_contents("$DH_input_html");
-$DH_output_content = preg_replace('/<title>.*?<\/title>/s','<title>DH博客(DH出品,必属精品) 首页</title>',$DH_output_content);
-$DH_output_content = preg_replace('/<meta name="keywords" content="[^<]+" \/>/s','<meta name="keywords" content="DH博客,建站技术,编程技术,影视分享,网络推广" />',$DH_output_content);
-$DH_output_content = preg_replace('/<meta name="description" content="[^<]+" \/>/s','<meta name="description" content="DH博客(http://dhblog.org)是个人的分享博客,针对DH个人的兴趣方向,分享自己的心得,博客内容几乎全部原创.主要方向有:建站技术,编程技术,网站推广等." />',$DH_output_content);
+$DH_output_content = preg_replace('/<title>.*?<\/title>/s','<title>灯火部落(DH出品,必属精品) 首页</title>',$DH_output_content);
+$DH_output_content = preg_replace('/<meta name="keywords" content="[^<]+" \/>/s','<meta name="keywords" content="灯火部落,建站技术,编程技术,网络推广" />',$DH_output_content);
+$DH_output_content = preg_replace('/<meta name="description" content="[^<]+" \/>/s','<meta name="description" content="灯火部落(http://www.dhblog.org)是个人的分享博客,针对DH个人的兴趣方向,分享自己的心得,博客内容几乎全部原创.主要方向有:建站技术,编程技术,网站推广等." />',$DH_output_content);
 dh_file_put_contents($DH_output_path."index.html",$DH_output_content);	
 //copy($DH_output_index_path."all/1.html",$DH_output_path."index.html");
 
@@ -97,7 +97,6 @@ function dh_gen_page()
 	$DH_input_html  = $DH_html_path . 'page.html';
 	$DH_output_content = dh_file_get_contents("$DH_input_html");
 	$DH_output_content = setshare($DH_output_content,'page.js');
-	$DH_output_content = str_replace("%home%",$DH_home_url,$DH_output_content);
 	//echo $DH_output_content;
 	$i=0;
 	$pagecount=count($pages);
@@ -123,7 +122,7 @@ function dh_gen_page()
 			}
 		}
 		$pubtime = date("Y-m-d",strtotime($matchd[1].'00'));
-		$metas="发表日期：".$pubtime." 作者：".$matcha[1]."分类：".$matchc[1]." 标签： ".$tags;		
+		$metas="发表日期：".$pubtime." 作者：".$matcha[1]."分类：".$matchc[1]." 标签： ".$tags;	
 		$DH_output_content_each =  str_replace("%metas%",$metas,$DH_output_content);
 		$article_index=article_index($matchb[1]);
 		$DH_output_content_each =  str_replace("%entry%",$article_index,$DH_output_content_each);
@@ -138,6 +137,7 @@ function dh_gen_page()
 		$DH_output_content_each =  str_replace("%tab%",'&nbsp;&nbsp;&nbsp;&nbsp;',$DH_output_content_each);
 		$titleurl = output_page_path($DH_html_url,$i+$begincount);
 		$DH_output_content_each =  str_replace("%titleurl%",$titleurl,$DH_output_content_each);
+		$DH_output_content_each =  str_replace("%home%",$DH_home_url,$DH_output_content_each);
 		$pageid=$lists_num[$matchd[1]];
 		
 		//利用cat找到相关的最多6篇的文章,坏处是无法保持page的不变性
@@ -182,7 +182,7 @@ function dh_gen_page()
 		$DH_output_content_each =  str_replace("%xiangguan%",$xiangguan,$DH_output_content_each);	
 		
 		$DH_output_file = output_page_path($DH_output_html_path,$pageid);
-		dh_file_put_contents($DH_output_file,$DH_output_content_each);		
+		dh_file_put_contents($DH_output_file,$DH_output_content_each);
 	}
 }
 

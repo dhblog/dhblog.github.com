@@ -11,8 +11,8 @@ $pagecount=10;
 
 $DH_output_path= $_SERVER['DOCUMENT_ROOT'] . '/dhblog/';
 $DH_input_path= $_SERVER['DOCUMENT_ROOT'] . '/dhblog/';
-//$DH_home_url= 'http://127.0.0.1/dhblog/';
-$DH_home_url= 'http://www.dhblog.org/';
+$DH_home_url= 'http://127.0.0.1/dhblog/';
+//$DH_home_url= 'http://www.dhblog.org/';
 
 
 $DH_src_path= $DH_input_path. 'gen/';
