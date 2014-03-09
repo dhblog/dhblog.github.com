@@ -11,8 +11,8 @@ $pagecount=10;
 
 $DH_output_path= $_SERVER['DOCUMENT_ROOT'] . '/dhblog/';
 $DH_input_path= $_SERVER['DOCUMENT_ROOT'] . '/dhblog/';
-$DH_home_url= 'http://127.0.0.1/dhblog/';
-//$DH_home_url= 'http://www.dhblog.org/';
+//$DH_home_url= 'http://127.0.0.1/dhblog/';
+$DH_home_url= 'http://dhblog.org/';
 
 
 $DH_src_path= $DH_input_path. 'gen/';
@@ -22,7 +22,8 @@ $DH_output_index_path = $DH_output_path.'index/';
 $DH_html_url= $DH_home_url.'html/';
 $DH_index_url= $DH_home_url.'index/';
 
-
+$DH_name= '灯火部落';
+$DH_name_des= '建站技术分享';
 //页面显示的文章列表条目的个数
 $DH_page_count_limit = 4;
 //分页中能展示的页面数

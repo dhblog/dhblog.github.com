@@ -16,7 +16,7 @@
 
 function dh_gen_share($lists)
 {
-	global $DH_html_path,$DH_index_url,$DH_output_path,$DH_input_path,$DH_home_url,$DH_page_store_deep,$conn;
+	global $DH_html_path,$DH_index_url,$DH_output_path,$DH_input_path,$DH_home_url,$DH_page_store_deep,$conn,$DH_name_des;
 	
 	$DH_share_output_path = $DH_input_path.'gen/top/';
 	if (!file_exists($DH_share_output_path))  
@@ -34,7 +34,8 @@ function dh_gen_share($lists)
 
 	$DH_input_html  = $DH_html_path . 'head.html';
 	$DH_output = dh_file_get_contents($DH_input_html);
-	$DH_output = str_replace("%home%",$DH_home_url,$DH_output);	
+	$DH_output = str_replace("%home%",$DH_home_url,$DH_output);
+	$DH_output = str_replace("%name_des%",$DH_name_des,$DH_output);	
 	$DH_output_file = $DH_share_output_path. 'head.html';
 	dh_file_put_contents($DH_output_file,$DH_output);		
 	echo "gen head success !</br>\n";
