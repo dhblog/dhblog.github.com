@@ -124,9 +124,9 @@ function dh_gen_page()
 			}
 		}
 		$pubtime = date("Y-m-d",strtotime($matchd[1].'00'));
-		$metas="发表日期：".$pubtime." 作者：".$matcha[1]."分类：".$matchc[1]." 标签： ".$tags;	
+		$metas="发表日期：".$pubtime." 作者：".$matcha[1]."分类：".$matchc[1]." 标签： ".$tags;
 		$DH_output_content_each =  str_replace("%metas%",$metas,$DH_output_content);
-		$DH_output_content_each =  str_replace("%tags_key%",$tags_key,$DH_output_content);
+		$DH_output_content_each =  str_replace("%tags_key%",$tags_key,$DH_output_content_each);
 		$article_index=article_index($matchb[1]);
 		$DH_output_content_each =  str_replace("%entry%",$article_index,$DH_output_content_each);
 		$DH_output_content_each =  str_replace("%title%",$matchT[1],$DH_output_content_each);
