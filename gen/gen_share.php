@@ -59,7 +59,11 @@ function dh_gen_share($lists)
 	$DH_side_each = dh_file_get_contents($DH_input_html);
 	
 	$DH_input_html  = $DH_html_path . 'side_each2.html';
-	$DH_side_each2 = dh_file_get_contents($DH_input_html);	
+	$DH_side_each2 = dh_file_get_contents($DH_input_html);
+	
+	$DH_input_html  = $DH_html_path . 'side_eacht.html';
+	$DH_side_eacht = dh_file_get_contents($DH_input_html);
+	
 	//广告
 //	$DH_side_ad= str_replace("%title%",'广告',$DH_side_each);
 //	$DH_side_ad= str_replace("%more%",'',$DH_side_ad);
@@ -129,30 +133,36 @@ function dh_gen_share($lists)
 	//$tongjiframe='<iframe allowtransparency="true" src="'.$DH_home_url.'tongji.html" frameBorder="0" scrolling="no" height="390px"></iframe>';
 	
 	//$DH_side_tongji= str_replace("%content%",$tongjiframe,$DH_side_tongji);
-	
-	//友情链接
-	$DH_side_fl= str_replace("%title%",'友情链接',$DH_side_each);
-	$DH_side_fl= str_replace("%content%",'',$DH_side_fl);
-	
-	
-	$DH_input_html  = $DH_html_path . 'side_dong.html';
-	$DH_side_dong = dh_file_get_contents($DH_input_html);
+
+
+	//标签
 	$tagsall='';
 	foreach($tags as $key=>$tag)
 	{
 		$urlcode = rawurlencode($key);
 		$urlcode = 't'.str_replace("%",'',$urlcode);	
-		$tagsall.="<a href=\"$DH_index_url$urlcode/1.html\" title=\"共有文章 $tag 篇\" target=\"_blank\">$key</a>";
+		//$tagsall.="<a href=\"$DH_index_url$urlcode/1.html\" title=\"共有文章 $tag 篇\" target=\"_blank\">$key</a>";
+		$tagsall.="<a href=\"$DH_index_url$urlcode/1.html\" title=\"标签为的 ".$key." 的文章\" target=\"_blank\">$key</a>";
 	}
-	$DH_side_dong= str_replace("%tags%",$tagsall,$DH_side_dong);
+	$DH_side_tags= str_replace("%title%",'标签云',$DH_side_eacht);
+	$DH_side_tags= str_replace("%more%",'',$DH_side_tags);
+	$DH_side_tags= str_replace("%content%",'<ul>'.$tagsall.'</ul>',$DH_side_tags);
+	
+	//友情链接
+	$DH_side_fl= str_replace("%title%",'友情链接',$DH_side_each);
+	$DH_side_fl= str_replace("%content%",'',$DH_side_fl);
+	
+	$DH_input_html  = $DH_html_path . 'side_dong.html';
+	$DH_side_dong = dh_file_get_contents($DH_input_html);
+	//$DH_side_dong= str_replace("%tags%",$tagsall,$DH_side_dong);
 	$DH_side_dong= str_replace("%tongji%",$tongji,$DH_side_dong);
 	
 	$DH_output_file=$DH_input_path.'side_dong.html';
 	dh_file_put_contents($DH_output_file,$DH_side_dong);	
 
-	$dongframe='<iframe allowtransparency="true" src="'.$DH_home_url.'side_dong.html" frameBorder="0" scrolling="no" width="240px" height="500px"></iframe>';	
+	$dongframe='<iframe allowtransparency="true" src="'.$DH_home_url.'side_dong.html" frameBorder="0" scrolling="no" width="255px" height="210px"></iframe>';	
 	
-	$DH_side=$DH_side_ad.$DH_side_hot.$DH_side_pinglun.$DH_side_visitor.$dongframe;	
+	$DH_side=$DH_side_ad.$DH_side_hot.$DH_side_pinglun.$DH_side_visitor.$DH_side_tags.$dongframe;	
 	
 	$DH_output_file = $DH_share_output_path. 'side.html';
 	dh_file_put_contents($DH_output_file,$DH_side);	

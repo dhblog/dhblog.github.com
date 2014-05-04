@@ -22,10 +22,10 @@ function article_index($content)
 			else if($matches[1][$num] == 'h3')
 				$ul_li .= '<li class="level3"><a href="#title_'.$num.'" title="'.$title.'">'.$title."</a></li>\n";
         }
-		$ul_li .= '<li class="level2"><a href="#comment" title="留言">x. 留言</a></li>'."\n";
+		$ul_li .= '<li class="level2"><a href="#comment" title="留言">x.留言</a></li>'."\n";
 		
         $content = '<div id="article_index" style="right:10px;top:15px">
-					<div id="index_title"><span id="the_index_title">正文索引</span><span id="show_index" onclick="showhide(\'show_index\',\'index_ul\',\'[ 展开 ]\',\'[ 隐藏 ]\');">[ 隐藏 ]</span></div>
+					<div id="index_title"><span id="the_index_title">索引</span><span id="show_index" onclick="showhide(\'show_index\',\'index_ul\',\'[展开]\',\'[隐藏]\');">[隐藏]</span></div>
 					<div id="index_ul" style="display:block"><ul>' . $ul_li . '</ul></div></div>' . $content;
     }
     return $content;
