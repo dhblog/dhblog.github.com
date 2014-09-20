@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>wordpress安全:处理垃圾评论-灯火部落</title>
+	<meta name="keywords" content="wordpress安全:处理垃圾评论,灯火部落,建站技术,wordpress"/>
+	<meta name="description" content="wordpress安全:处理垃圾评论的详细页面信息,作者是灯火部落,分类是建站技术,wordpress" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Language" content="zh-CN">	
+	<link rel="stylesheet" type="text/css" media="all" href="http://dhblog.org/css/style.css"/>
+	<link rel="shortcut icon" href="http://dhblog.org/favicon.ico" type="image/x-icon">
+	<script type="text/javascript">
+	
+	</script>
+</head>
+<body>
+<div id="wrapper">
+	<div id="top" style="height:30px;border-top: 1px solid #898f8f;border-bottom: 1px solid #898f8f;position:relative;">
+  <div class="topnav">
+    <div class="left">
+        <div>
+			<ul class="menu">
+			<li><a href="http://dhblog.org/" title="灯火部落">灯火部落</a></li> 
+			<li><a href="http://www.movie002.com/" title="影视推荐">影视推荐</a></li> 
+			<li><a href="http://v.movie002.com/" title="影视大全">影视大全</a></li> 
+			<li><a href="http://dh.movie002.com/" title="影视网站">影视网站</a></li> 
+			<li><a href="http://dhblog.org/html/links.html">友情链接</a></li> 
+			<li><a href="http://dhblog.org/html/0/1.html">给我留言</a></li> 
+			</ul>
+        </div> 
+    </div>
+    <!--end: left-->
+    <div style="position:absolute;top:0;left:0;">
+		<script type="text/javascript">
+			function showWarning() //显示系统日期   
+			{   
+				var now = new Date();
+				var hour = now.getHours();
+				if(hour>=22||hour<=6)
+				{
+					var message='<div style="border:2px solid #FF3300;font-size:12px;margin:2px 20px 0 440px;background:#FFFFDF;padding:2px;">提醒: 已经是夜里 ';
+					message +=hour;
+					message +=' 点多了，为了您和家人的健康，请注意按时作息减少熬夜。</div>';
+					return message;
+				}
+				else 
+				{			
+				   return ''; 
+				}
+			}
+			document.write(showWarning());
+		</script>
+    </div>
+    <!--end: right-->
+  </div>
+</div>
+<!--end: top-->
+<div id="header"> 
+  <div  class="toplink">
+    <ul>
+	  <li><a href="http://dhblog.org/rss.xml" target="_blank">文章RSS</a></li>
+	  <li>
+	  	<script type="text/javascript">
+		function showdate() //显示系统日期   
+		{   
+			var now = new Date();
+			var year = now.getFullYear();
+			var month = now.getMonth()+1; 
+			var day = now.getDate();
+			return year+"年"+month+"月"+day+"日";   
+		}
+		document.write(showdate());
+		</script>	
+	  </li>
+   </ul>
+  </div>
+  <div style="position:absolute;top:5px;left:35px;">
+   <object type="application/x-shockwave-flash" data="http://dhblog.org/images/relog.swf" WIDTH=80 HEIGHT=80>
+    <param name="movie" value="http://dhblog.org/images/relog.swf" />
+    <param name="WMode" value="Transparent" />
+   </object>
+  </div>
+  <div class="logo">
+    <h1 ><a href="http://dhblog.org/">
+      灯火部落
+      </a></h1>
+    <h2 class="description">
+      建站技术分享
+    </h2>
+  </div>
+</div>
+<!--end: header-->
+<div style="height:32px;position:relative;border-bottom: 1px solid #252525;border-top: 1px solid #252525;">
+	<div style="position:absolute;top:5px;left:10px;">类别导航：</div>
+	<div style="position:absolute;top:0;left:90px;">
+		<div class="topnav">
+			<div class="left">
+				<ul>
+					<li><a href="http://dhblog.org/">IT 技术</a>
+						<ul>
+							<li><a href="http://dhblog.org//index/cE5BBBAE7AB99E68A80E69CAF/1.html">建站技术</a></li>
+							<li><a href="http://dhblog.org//index/cE7BD91E7BB9CE68EA8E5B9BF/1.html">编程技术</a></li>
+						</ul>
+					</li>
+					<li><a href="http://dhblog.org//index/cE7BD91E7BB9CE68EA8E5B9BF/1.html">网络推广</a></li>
+					<li><a href="http://dhblog.org//index/cE7BD91E7AB99E79B88E588A9/1.html">网站盈利</a></li>
+					<li><a href="http://dhblog.org//index/cE585B6E4BB96E4BAA4E6B581/1.html">其他交流</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!--end: menunav-->
+<div class="top_content" style="position:relative">
+	<iframe id="iframe_say" allowtransparency="true" width="90%" height="20px" src="http://movie002.com/dh_say.php" style="position:absolute;top:8px;right:50px;" frameBorder="0" scrolling="no" ></iframe>
+	<span style="width:40px;font-size:12px;position:absolute;top:7px;right:0;float:right" onclick="iframe_say.window.location.reload();">下一条</span>
+</div>
+	<div id="content">
+		<div class="browse">你的位置：<a href="http://dhblog.org/">首页</a> >>  <a href="http://dhblog.org/index/cE5BBBAE7AB99E68A80E69CAF/1.html" title="查看分类 建站技术 下的所有文章">建站技术</a> >> wordpress安全:处理垃圾评论 </div>
+		<div class="entry">
+			<h1>wordpress安全:处理垃圾评论</h1>
+			<div style="height:35px">发表日期：2011-07-01 作者：DH分类：建站技术 标签： wordpress </div>
+			<div style="height:40px">
+				<!-- Baidu Button BEGIN -->
+				<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_mshare" data-cmd="mshare" title="分享到一键分享">一键分享</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧">百度贴吧</a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网">豆瓣网</a><a href="#" class="bds_hi" data-cmd="hi" title="分享到百度空间">百度空间</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a></div>
+				<!-- Baidu Button END -->
+			</div>
+			<div>
+			<div id="article_index" style="right:10px;top:15px">
+					<div id="index_title"><span id="the_index_title">索引</span><span id="show_index" onclick="showhide('show_index','index_ul','[展开]','[隐藏]');">[隐藏]</span></div>
+					<div id="index_ul" style="display:block"><ul><li class="level2"><a href="#title_0" title="1 前台客户端验证">1 前台客户端验证</a></li>
+<li class="level3"><a href="#title_1" title="1.1 验证码验证">1.1 验证码验证</a></li>
+<li class="level3"><a href="#title_2" title="1.2 算术验证">1.2 算术验证</a></li>
+<li class="level3"><a href="#title_3" title="1.3 js动作验证">1.3 js动作验证</a></li>
+<li class="level2"><a href="#title_4" title="2. 后台wordpress验证">2. 后台wordpress验证</a></li>
+<li class="level3"><a href="#title_5" title="2.1 Akismet插件">2.1 Akismet插件</a></li>
+<li class="level3"><a href="#title_6" title="2.2 WP Anti Spam">2.2 WP Anti Spam</a></li>
+<li class="level2"><a href="#title_7" title="3. 挥刀自宫wordpress功能">3. 挥刀自宫wordpress功能</a></li>
+<li class="level3"><a href="#title_8" title="3.1 去除评论功能">3.1 去除评论功能</a></li>
+<li class="level3"><a href="#title_9" title="3.2 关闭Pingbacks and trackbacks">3.2 关闭Pingbacks and trackbacks</a></li>
+<li class="level3"><a href="#title_10" title="3.3 先注册再评论">3.3 先注册再评论</a></li>
+<li class="level2"><a href="#title_11" title="4. 服务器级别限制">4. 服务器级别限制</a></li>
+<li class="level3"><a href="#title_12" title="4.1 屏蔽IP地址">4.1 屏蔽IP地址</a></li>
+<li class="level3"><a href="#title_13" title="4.2 自定义屏蔽IP">4.2 自定义屏蔽IP</a></li>
+<li class="level3"><a href="#title_14" title="4.3 利用别人提供的攻击ip列表">4.3 利用别人提供的攻击ip列表</a></li>
+<li class="level3"><a href="#title_15" title="4.4 拒绝没有上线的IP的评论">4.4 拒绝没有上线的IP的评论</a></li>
+<li class="level2"><a href="#comment" title="留言">x.留言</a></li>
+</ul></div></div>
+<div style="color: #f00; font-size: 16px; font-weight: 700;">以此文献给 中国共产党建党90周年！</div>
+最近看到很多电视剧、电影都给党的生日献礼，我也不例外，献礼一篇文章吧！本来呢，以我的风格，肯定是之一、之二之类的。像这篇文章，会分为四个篇章。但是既然是献礼文章，就不能马虎，一气呵成，不拖泥带水。
+上一篇文章讲到<a href="http://dhblog.org/archives/932.html"> wordpress安全:被垃圾评论搞的很烦</a>，不少博友提出了很多的解决方法，在此表示非常的感谢，也知道大部分博友也遇到这个非常烦人的问题，垃圾评论就像前面的一坨屎一样，恶习却只能视而不见。彻底阻止它们来访问你，并试图利用wp_comment.php是不可能的，只能屏蔽掉，视而不见。如果不断有垃圾评论，利用很多的ip访问你，就等于一种DOS攻击，从这个角度讲，是威胁到博客的安全。所以tag就是wordpress安全。
+上一篇中给出了暂时应对垃圾评论的方法，老是这样应对，绝对不是办法，所以给出了我总结了对付垃圾评论的办法：
+<h2 id="title_0">1 前台客户端验证</h2>
+<h3 id="title_1">1.1 验证码验证</h3>
+输入验证码的方法是最常用的，我接触的wordpress博客使用验证码验证的不多，我没有使用验证码方法，觉得这个会影响博友们的体验，打击大家的评论激情，但是这里给出willin大师的搞笑验证码总结：
+<a href="http://kan.willin.org/?p=1063">網上千奇百怪的驗証碼設計</a>
+<h3 id="title_2">1.2 算术验证</h3>
+这个输入的数字不多，用户体验比较好。
+这里推荐可以见<a href="http://www.ninthday.net/">星期九</a>的博客，同时他的一篇文章 ：<a href="http://www.ninthday.net/2010/11/adding-calculation-checking.html">继续折腾之添加代码实现评论算术验证</a>很具有参考价值。
+<h3 id="title_3">1.3 js动作验证</h3>
+js动作验证好处就是用户体验，不用输入难以辨别的数字，通过鼠标动作验证即可。坏处就是加载js比较大。速度会慢一点。
+a. QapTcha：只要拉一下即可，这种用户的体验比较好，只要动一动鼠标即可，这里推荐示例：<a href="http://www.iceray.net/">空空裤兜的博客</a>，<a href="http://blog.30c.org/">三十岁</a>
+b. 除了QapTcha还有很多其他的js方法见：<a href="http://www.iwanpc.com/8505.html">精选10种用户友好验证码—帮您实现更好的用户验证体验</a>
+<h2 id="title_4">2. 后台wordpress验证</h2>
+<h3 id="title_5">2.1 Akismet插件</h3>
+wordpress自带的发垃圾插件，需要到wordpress.com注册一个激活码后才能使用。如果博客碰到垃圾评论的时候，建议不要立即删除，而是把它评为垃圾评论。这样Akismet会自动学习去辨认更多的垃圾评论，直到把所有的垃圾评论都干掉为止。
+由于智能，但是还是不够智能，Akismet对于spam的辨别能力还不是很好，很有可能把正常的留言拦截成spam。
+<h3 id="title_6">2.2 WP Anti Spam</h3>
+我现在使用的就是这个，这个虽然没有前面的能挡住所有的垃圾评论，但是已经去除了绝大数的自动评论，而且不需要用户做任何的动作，比较友好。这里给出链接，willin大师使用代码解决的，安装难度其实不大。<a href="http://kan.willin.org/?p=1324">WP Anti Spam 小牆</a>
+<h2 id="title_7">3. 挥刀自宫wordpress功能</h2>
+<h3 id="title_8">3.1 去除评论功能</h3>
+如果你觉得垃圾评论实在太烦，甚至很厌恶了，不妨可以考虑把评论功能去除，去除的方法右轻到重有三种：
+a. 关闭时间比较长久的评论，时间按比较长的文章，很少有人关注了。呵呵，这种文章绝大多数情况下只有垃圾评论才能光顾，所以关掉这些评论功能，就给垃圾评论减少了很多的空间。
+b. 关闭每个文章的评论，这个在wp后台文章选项里面有。
+c. 删除wp-comments-post.php 和 wp-trackback.php，这个太狠了。呵呵
+<h3 id="title_9">3.2 关闭Pingbacks and trackbacks</h3>
+Pingbacks and trackbacks 最容易招来垃圾评论，可以把这个选项勾掉。
+<h3 id="title_10">3.3 先注册再评论</h3>
+注册才有资格评论，这样最容易挡掉垃圾评论，但是用户体验很不好，特别是小博客，很少有人会为了给你评论而注册。
+<h2 id="title_11">4. 服务器级别限制</h2>
+<h3 id="title_12">4.1 屏蔽IP地址</h3>
+过滤垃圾评论实在wordpress级别的过滤，这种屏蔽不能使垃圾评论源停止对你博客的攻击，这样就必须通过服务器级别的ip屏蔽来屏蔽此地址的访问来达到不影响博客性能的目的。如果有某个IP发了大量的垃圾评论，你可以屏蔽某个ip地址，如果你的空间是cpanel的话，在面板里面就有选项直接屏蔽，如果没有的话，也可以修改.htaccess文件来实现，这个文件不能随便修改，最好是有经验的人来做，否则网站可能就打不开了哦
+<pre lang="txt">
+Order allow,deny
+Deny from 123.123.123.123
+Allow from all
+</pre>
+你可以把123.123.123.123改成你想屏蔽的地址
+<h3 id="title_13">4.2 自定义屏蔽IP</h3>
+但是很多垃圾评论就比较麻烦了，这里说说我的方法了，仍然是数据库，仍然是SQL，大家不要害怕。
+用了willin的小墙之后，小墙会将垃圾评论标记为 spam，然后我们利用下面的sql语句选出有哪些ip盯上你了。
+<pre lang="sql">
+SELECT comment_author_IP, COUNT( * )
+FROM  `wp_comments`
+WHERE comment_approved =  'spam'
+GROUP BY comment_author_IP
+ORDER BY COUNT( * ) DESC
+</pre>
+我选出来的如图：总共选出了141个(太恐怖了)，不能全部禁掉，只能将几个比较活跃的干掉！
+<a href="http://dhblog.org/wp-content/uploads/2011/07/spam_sql.png"><img class="aligncenter size-full wp-image-934" title="spam_sql" src="http://dhblog.org/wp-content/uploads/2011/07/spam_sql.png" alt="" width="254" height="441" /></a>
+将这些大于5的拷贝添加到.htaccess即可
+<h3 id="title_14">4.3 利用别人提供的攻击ip列表</h3>
+一个一个屏蔽垃圾评论，当遇到大规模的垃圾评论的时候，可以用这个<a href="http://perishablepress.com/" target="_blank">Perishable Press</a>。jeff从很多垃圾评论里面总结出了一个黑名单。你可以从中选择你想要的来加入到你的.htaccess文件中去。下面是三个记录这些IP的网址：
+a. <a href="http://perishablepress.com/press/2009/03/16/the-perishable-press-4g-blacklist/">The Perishable Press 4G Blacklist</a>
+b. <a title="Permalink for this article" href="http://perishablepress.com/press/2009/04/21/4g-ultimate-referrer-blacklist/">4G Series: The Ultimate Referrer Blacklist, Featuring Over 8000 Banned Referrers</a>
+c. <a href="http://perishablepress.com/press/2009/03/29/4g-ultimate-user-agent-blacklist/">4G Series: The Ultimate User-Agent Blacklist, Featuring Over 1200 Bad Bots</a>
+<h3 id="title_15">4.4 拒绝没有上线的IP的评论</h3>
+这个方法还是 .htaccess 文件有关，在 .htaccess 文件里面。换句话说如果评论并没有到你的博客，而是用机器人来发表垃圾评论的话，把他的链接给为你的博客的URL。所用代码如下：
+<pre lang='txt'>
+RewriteEngine On
+RewriteCond %{REQUEST_METHOD} POST
+RewriteCond %{REQUEST_URI} .wp-comments-post\.php*
+RewriteCond %{HTTP_REFERER} !.*yourblog.com.* [OR]
+RewriteCond %{HTTP_USER_AGENT} ^$
+RewriteRule (.*) ^http://%{REMOTE_ADDR}/$ [R=301,L]
+</pre>
+这篇文章到此结束，太长了，希望能读完，呵呵。并选择适合于自己的方法
+
+			</br></br>除非注明，文章均为<a href="http://dhblog.org/">灯火部落</a>原创，转载请注明出处：<a href="http://dhblog.org/html/0/30.html">wordpress安全:处理垃圾评论-灯火部落</a>
+			</div>
+			<div style="border-top:1px solid #bbb;margin-top:10px;padding:10px 0 0 0">
+				相关文章：</br>
+				<li style="width:48%;float:left"><a href="http://dhblog.org/html/0/31.html">IT求职知识:基础知识1(c++代码篇)</a></li><li style="width:48%;float:left"><a href="http://dhblog.org/html/0/29.html">wordpress安全:被垃圾评论搞的很烦</a></li><li style="width:48%;float:left"><a href="http://dhblog.org/html/0/32.html">IT求职知识:基础知识2(c++理论篇)</a></li><li style="width:48%;float:left"><a href="http://dhblog.org/html/0/28.html">wordpress提高速度之六:主题中数据库定时优化(WP_Cron篇)</a></li><li style="width:48%;float:left"><a href="http://dhblog.org/html/0/33.html">wordperss和zblog的一个区别，求解</a></li><li style="width:48%;float:left"><a href="http://dhblog.org/html/0/27.html">wordpress提高速度之五:主题中数据库定时优化(访问触发篇)</a></li>
+			</div>
+		</div>
+		<div style="height:30px"> <a href="#top" style="float:right"> ∧回到顶部∧ </a></div>
+		<div id="comment">
+			<!-- Duoshuo Comment BEGIN -->
+			<div class="ds-thread" data-thread-key="30" data-title="wordpress安全:处理垃圾评论"></div>
+			<!-- Duoshuo Comment END -->		
+		</div>		
+	</div>
+	<div id="sidebar">
+		<div class="singlewidget">
+	<h3>
+		广告
+	</h3>
+	<div class="box">
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- 右侧边栏 -->
+		<ins class="adsbygoogle"
+			 style="display:inline-block;width:250px;height:250px"
+			 data-ad-client="ca-pub-5121554631963985"
+			 data-ad-slot="7830703534"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+</div>
+<div class="singlewidget">
+	<h3>
+		热门文章
+	</h3>
+	<div class="box">
+		<ul  class="ds-top-threads" data-range="weekly" data-num-items="5"></ul>
+	</div>
+</div>
+<div class="singlewidget">
+	<h3>
+		最新评论
+	</h3>
+	<div class="box">
+		<ul class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="0" data-show-admin="1" data-excerpt-length="20"></ul>
+
+	</div>
+</div>
+<div class="singlewidget">
+	<h3>
+		最新访客
+	</h3>
+	<div class="box">
+		<ul style="margin:8px 6px" class="ds-recent-visitors" data-num-items="10"></ul>
+	</div>
+</div>
+<div class="tag_widget">
+	<h3>
+		标签
+	</h3>
+	<div class="tag_widget_box">
+	  <ul><a href="http://dhblog.org/index/tajax/1.html" title="标签为的 ajax 的文章" target="_blank">ajax</a><a href="http://dhblog.org/index/tc2B2B/1.html" title="标签为的 c++ 的文章" target="_blank">c++</a><a href="http://dhblog.org/index/tcss/1.html" title="标签为的 css 的文章" target="_blank">css</a><a href="http://dhblog.org/index/tjavascript/1.html" title="标签为的 javascript 的文章" target="_blank">javascript</a><a href="http://dhblog.org/index/tphp/1.html" title="标签为的 php 的文章" target="_blank">php</a><a href="http://dhblog.org/index/twordpress/1.html" title="标签为的 wordpress 的文章" target="_blank">wordpress</a><a href="http://dhblog.org/index/tE58F8BE68385E68EA8E88D90/1.html" title="标签为的 友情推荐 的文章" target="_blank">友情推荐</a><a href="http://dhblog.org/index/tE58F8BE68385E993BEE68EA5/1.html" title="标签为的 友情链接 的文章" target="_blank">友情链接</a><a href="http://dhblog.org/index/tE59F9FE5908D/1.html" title="标签为的 域名 的文章" target="_blank">域名</a><a href="http://dhblog.org/index/tE680BBE7BB93/1.html" title="标签为的 总结 的文章" target="_blank">总结</a><a href="http://dhblog.org/index/tE6909CE7B4A2E5BC95E6938E/1.html" title="标签为的 搜索引擎 的文章" target="_blank">搜索引擎</a><a href="http://dhblog.org/index/tE7A9BAE997B4/1.html" title="标签为的 空间 的文章" target="_blank">空间</a><a href="http://dhblog.org/index/tE7BB8FE9AA8CE58886E4BAAB/1.html" title="标签为的 经验分享 的文章" target="_blank">经验分享</a><a href="http://dhblog.org/index/tE88194E79B9F/1.html" title="标签为的 联盟 的文章" target="_blank">联盟</a></ul>
+	</div>
+</div><iframe allowtransparency="true" src="http://dhblog.org/side_dong.html" frameBorder="0" scrolling="no" width="255px" height="210px"></iframe>
+	</div>
+	<!--end: sidebar-->
+	<div id="footer">
+	<a href="#top" title="回到顶部" class="gotop_btn" id="goTopButton">∧</br>回</br>到</br>顶</br>部</a>	
+	<!-- <a href="%next_title%" title="%next_title%" class="goto_next">&gt;</a> -->
+	<!-- <a href="%pre_title%" title="%pre_title%" class="goto_pre">&lt;</a> -->
+	<div id="footer-nav">
+		<a href="http://dhblog.org/siteindex.html">网站地图索引</a> | 
+		<a href="http://dhblog.org/sitemap.html">最近网站地图</a> | 
+		<a href="http://dhblog.org/html/0/1.html">友情链接</a> | 
+		<a href="javascript:void(0);" onclick="AddFavorite('灯火部落','http://dhblog.org')">收藏本站</a> | 
+		<a href="#top">回到顶部</a> 
+	</div>
+	<div class="cpright">
+		Copyright &copy; 2011 - 2021 &nbsp;
+		<a href="%DH_home_href%"><strong></strong>&reg;</a> &nbsp;
+		<a href="/sitemap.html">网站地图</a> &nbsp;
+		All rights reserved
+		<a href="http://www.miibeian.gov.cn" target="_blank">免备案</a>
+	</div>
+	</div>
+	<!--end: bottom-->
+</div>
+<!--end: wrapper-->
+	<script type="text/javascript">
+	eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('f g(7,5,8,e){9 3=6.4(7);9 0=6.4(5);a(0.1.2==\'d\'){0.1.2=\'c\';3.b=8}h a(0.1.2==\'c\'){0.1.2=\'d\';3.b=e}};',18,18,'id2div|style|display|id1div|getElementById|id2|document|id1|tx1|var|if|innerHTML|none|block|tx2|function|showhide|else'.split('|'),0,{}))
+
+	</script>
+	<script type="text/javascript">
+	eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('3 F(k,m){    B{        f.C.E(m,k);    }    t(e){        B{            f.K.O(k,m,"");        }        t(e){            M("抱歉，您所使用的浏览器无法完成此操作。\\n\\n加入收藏失败，请使用N+D进行添加");        }    }};f.J=3(){6 h=2.c.I,j=2.G(\'H\');L(h>0){j.s.r=\'Y\'}X{j.s.r=\'Z\'}}3 4(){(3(){6 4=2.p(\'7\');4.d=\'b/9\';4.i=\'g://10.4.l/W.R?S=u&T=u\';(2.5(\'c\')[0]||2.5(\'q\')[0]).o(4)})()}<7 d="b/9">6 P={U:"12"};(3(){6 1=2.p(\'7\');1.d=\'b/9\';1.v=Q;1.i=\'g://z.a.l/w.x\';1.y=\'A-8\';(2.5(\'q\')[0]||2.5(\'c\')[0]).o(1)})();</7>3 a(){(3(){6 1=2.p(\'7\');1.d=\'b/9\';1.v=V;1.i=\'g://z.a.l/w.x\';1.y=\'A-8\';(2.5(\'c\')[0]||2.5(\'q\')[0]).o(1)})()}f.11=3(){4();a()};',62,65,'|ds|document|function|cnzz|getElementsByTagName|var|script||javascript|duoshuo|text|body|type||window|http||src|top|title|com|url||appendChild|createElement|head|display|style|catch|1000362336|async|embed|js|charset|static|UTF|try|external||addFavorite|AddFavorite|getElementById|goTopButton|scrollTop|onscroll|sidebar|if|alert|Ctrl|addPanel|duoshuoQuery|true|php|id|web_id|short_name|false|z_stat|else|block|none|s22|onload|dhblog2'.split('|'),0,{}))
+
+	</script>
+	<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</body>
+</html>
