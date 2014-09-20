@@ -18,11 +18,6 @@ function AddFavorite(title, url)
     }
 };
 
-//window.onload = function ()
-//{
-//	iframe_say.window.location.reload();
-//};
-
 window.onscroll = function()
 {
 	var h =document.body.scrollTop,top = document.getElementById('goTopButton');
@@ -34,7 +29,7 @@ window.onscroll = function()
 	{
 		top.style.display = 'none';
 	}
-}
+};
 
 function cnzz()
 {
@@ -45,18 +40,7 @@ function cnzz()
 		(document.getElementsByTagName('body')[0]
 		||document.getElementsByTagName('head')[0]).appendChild(cnzz);
 	})();
-}
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"dhblog2"};
-		(function() {
-			var ds = document.createElement('script');
-			ds.type = 'text/javascript';ds.async = true;
-			ds.src = 'http://static.duoshuo.com/embed.js';
-			ds.charset = 'UTF-8';
-			(document.getElementsByTagName('head')[0] 
-			|| document.getElementsByTagName('body')[0]).appendChild(ds);
-		})();
-	</script>
+};
 	
 function duoshuo()
 {
@@ -70,10 +54,11 @@ function duoshuo()
 		(document.getElementsByTagName('body')[0]
 		|| document.getElementsByTagName('head')[0]).appendChild(ds);
 	})();
-}	
+};
 	
 window.onload = function ()
 {
 	cnzz();
 	duoshuo();
+	//iframe_say.window.location.reload();
 };

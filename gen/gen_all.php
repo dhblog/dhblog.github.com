@@ -9,13 +9,14 @@
 
 header('Content-Type:text/html;charset= UTF-8'); 
 require("config.php");
-require("scan.php");
+require("../common/base.php");
+require("../common/scan.php");
 #需要使用的基础函数
-require("compressJS.class.php");
-require("page_navi.php");
+require("../common/compressJS.class.php");
+require("../common/page_navi.php");
 require("gen_share.php");
 require("sitemap/gen.php");
-require("article_index.php");
+require("../common/article_index.php");
 require("genrss/gen.php");
 set_time_limit(600); 
 

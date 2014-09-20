@@ -16,57 +16,6 @@ function cut_word( &$name, $word)
 	return FALSE;  
 }  
 
-function insertcelebrity($celebritys)
-{
-	preg_match_all('/\[(.*?)\]/s',$celebritys,$match);
-//	print_r($match);
-	if(!empty($match[1]))
-	{
-		foreach ($match[1] as $celebrity)
-		{
-			list($name, $id) = split('[|]', $celebrity);
-			$name=trim($name);
-			$id=trim($id);
-			$name = str_replace("'","\'",$name);
-			$sql="insert into celebrity(id,name) values('$id','$name') ON DUPLICATE KEY UPDATE name = '$name'";
-			$sqlresult=dh_mysql_query($sql);
-		}
-	}	
-}
-
-function setupdatetime($change,$newdate,$authorid)
-{
-	if($change)
-	{
-		$sql="update author set updatetime='$newdate' where id = $authorid;";
-		echo $sql."</br>\n";
-		$result=dh_mysql_query($sql);		
-	}
-}
-
-function setupdatetime2($change,$newdate,$authorname)
-{
-	if($change)
-	{
-		$sql="update author set updatetime='$newdate' where name = '$authorname';";
-		echo $sql."</br>\n";
-		$result=dh_mysql_query($sql);		
-	}
-}
-
-function dh_mysql_query($sql)
-{
-	$rs = mysql_query($sql);
-	$mysql_error = mysql_error();
-	if($mysql_error)
-	{
-		echo 'dh_mysql_query error info:'.$mysql_error.'</br>';
-		echo $sql;
-		return null;
-	}
-	return $rs;
-}
-
 function output_page_path($basepath,$id) 
 {	
 	global $DH_page_store_deep,$DH_page_store_count;
@@ -163,11 +112,11 @@ function higrid_compress_html($higrid_uncompress_html_source )
 	return $higrid_uncompress_html_source; 
 } 
 
-function getupdatebegin($day)
+function getupdatebegin($day,$table='link')
 {
 	//默认设置成120天之前
 	//$day = 365;
-	$sql="select max(updatetime) from page";
+	$sql="select max(updatetime) from ".$table;
 	$res = dh_mysql_query($sql);	
 	$updatetime = mysql_fetch_array($res);
 	$timenow = strtotime($updatetime[0]);
@@ -201,10 +150,11 @@ function iconvbuffgbk($buff)
 }
 function getrealtime($timebuf)
 {
+	$timetobe=date("Y-m-d H:i:s",strtotime($timebuf));
 	$datenow = date("Y-m-d H:i:s");
-	if($timebuf > $datenow)
+	if($timetobe > $datenow)
 		return $datenow;
-	return $timebuf;
+	return $timetobe;
 }
 
 function ftrim2($str)

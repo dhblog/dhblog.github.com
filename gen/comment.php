@@ -1,7 +1,7 @@
 <?php
 
 require("config.php");
-require("scan.php");
+require("../common/scan.php");
 
 header('Content-Type:text/html;charset= UTF-8'); 
 date_default_timezone_set('PRC');
