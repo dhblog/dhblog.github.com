@@ -35,3 +35,45 @@ window.onscroll = function()
 		top.style.display = 'none';
 	}
 }
+
+function cnzz()
+{
+	(function() {
+		var cnzz = document.createElement('script');
+		cnzz.type = 'text/javascript';
+		cnzz.src = 'http://s22.cnzz.com/z_stat.php?id=1000362336&web_id=1000362336';
+		(document.getElementsByTagName('body')[0]
+		||document.getElementsByTagName('head')[0]).appendChild(cnzz);
+	})();
+}
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"dhblog2"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = 'http://static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			|| document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+	</script>
+	
+function duoshuo()
+{
+	//多说
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';
+		ds.async = false;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('body')[0]
+		|| document.getElementsByTagName('head')[0]).appendChild(ds);
+	})();
+}	
+	
+window.onload = function ()
+{
+	cnzz();
+	duoshuo();
+};

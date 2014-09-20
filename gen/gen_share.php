@@ -149,8 +149,8 @@ function dh_gen_share($lists)
 	$DH_side_tags= str_replace("%content%",'<ul>'.$tagsall.'</ul>',$DH_side_tags);
 	
 	//友情链接
-	$DH_side_fl= str_replace("%title%",'友情链接',$DH_side_each);
-	$DH_side_fl= str_replace("%content%",'',$DH_side_fl);
+	//$DH_side_fl= str_replace("%title%",'友情链接',$DH_side_each);
+	//$DH_side_fl= str_replace("%content%",'',$DH_side_fl);
 	
 	$DH_input_html  = $DH_html_path . 'side_dong.html';
 	$DH_side_dong = dh_file_get_contents($DH_input_html);
