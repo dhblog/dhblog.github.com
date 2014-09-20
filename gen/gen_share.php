@@ -55,41 +55,11 @@ function dh_gen_share($lists)
 	dh_file_put_contents($DH_output_file,$DH_output);	
 	echo "gen meta success !</br>\n";
 	
-	$DH_input_html  = $DH_html_path . 'side_each.html';
-	$DH_side_each = dh_file_get_contents($DH_input_html);
+	$DH_input_html  = $DH_html_path . 'side.html';
+	$DH_side = dh_file_get_contents($DH_input_html);
 	
-	$DH_input_html  = $DH_html_path . 'side_each2.html';
-	$DH_side_each2 = dh_file_get_contents($DH_input_html);
-	
-	$DH_input_html  = $DH_html_path . 'side_eacht.html';
-	$DH_side_eacht = dh_file_get_contents($DH_input_html);
-	
-	//广告
-//	$DH_side_ad= str_replace("%title%",'广告',$DH_side_each);
-//	$DH_side_ad= str_replace("%more%",'',$DH_side_ad);
-//	$DH_side_ad= str_replace("%content%",'',$DH_side_ad);
-	$DH_input_html  = $DH_html_path . 'side_ad.html';
-	$DH_side_ad = dh_file_get_contents($DH_input_html);	
-	
-	//热门文章
-	$DH_side_hot= str_replace("%title%",'热门文章',$DH_side_each);
-	$DH_side_hot= str_replace("%more%",'',$DH_side_hot);
-	$DH_side_hot= str_replace("%content%",'<ul  class="ds-top-threads" data-range="weekly" data-num-items="5"></ul>',$DH_side_hot);	
-	
-	//最新评论
-	$DH_side_pinglun= str_replace("%title%",'最新评论',$DH_side_each);
-	$DH_side_pinglun= str_replace("%more%",'',$DH_side_pinglun);
-	$DH_side_pinglun= str_replace("%content%",'<ul class="ds-recent-comments" data-num-items="5" data-show-avatars="1" data-show-time="1" data-show-title="0" data-show-admin="1" data-excerpt-length="20"></ul>
-',$DH_side_pinglun);
-
-	//最新访客
-	$DH_side_visitor= str_replace("%title%",'最新访客',$DH_side_each);
-	$DH_side_visitor= str_replace("%more%",'',$DH_side_visitor);
-	$DH_side_visitor= str_replace("%content%",'<ul style="margin:8px 6px" class="ds-recent-visitors" data-num-items="10"></ul>',$DH_side_visitor);
 	
 	//网站统计
-	$DH_side_tongji= str_replace("%title%",'网站统计',$DH_side_each2);
-	$DH_side_tongji= str_replace("%more%",'',$DH_side_tongji);
 	$diffecho = '';
 	$datetoday = strtotime(date("Y-m-d"));
 	$datebegin = strtotime('2011-02-08');
@@ -104,37 +74,24 @@ function dh_gen_share($lists)
 	$days = $monthc % 30;
 	if($days>0)
 		$diffecho .= $days.'天';	
-	$tongji='<li>运行时间: <span style="font-size:12px;color:#555;">'.$diff.'天</span></li>';
-	
+	$tongji='<li>运行时间: <span style="font-size:12px;color:#555;">'.$diff.'天</span></li>';	
 	$countpages=0;
 	$countcats=0;
 	$tags=array();
-	$countupdate=0;
-	
-	dh_gen_public($lists,$countpages,$countcats,$tags,$countupdate);
-	
-	$tongji.='<li>博文总数: <span style="font-size:12px;color:#555;">'.$countpages.'篇</span></li>';
-		
-	$tongji.='<li>最近更新: <span style="font-size:12px;color:#555;">'.$countupdate.'篇</span></li>';
-	
-	$tongji.='<li>标签数目: <span style="font-size:12px;color:#555;">'.count($tags).'个</span></li>';
-	
+	$countupdate=0;	
+	dh_gen_public($lists,$countpages,$countcats,$tags,$countupdate);	
+	$tongji.='<li>博文总数: <span style="font-size:12px;color:#555;">'.$countpages.'篇</span></li>';		
+	$tongji.='<li>最近更新: <span style="font-size:12px;color:#555;">'.$countupdate.'篇</span></li>';	
+	$tongji.='<li>标签数目: <span style="font-size:12px;color:#555;">'.count($tags).'个</span></li>';	
 	$tongji.='<li>分类数目: <span style="font-size:12px;color:#555;">'.$countcats.'个</span></li>';
-
 	$tongji = "<ul>".$tongji.'</ul>';
+	$DH_input_html  = $DH_html_path . 'side_dong.html';
+	$DH_side_dong = dh_file_get_contents($DH_input_html);
+	//$DH_side_dong= str_replace("%tags%",$tagsall,$DH_side_dong);
+	$DH_side_dong= str_replace("%tongji%",$tongji,$DH_side_dong);	
+	$DH_output_file=$DH_input_path.'side_dong.html';
+	dh_file_put_contents($DH_output_file,$DH_side_dong);
 	
-	//$tongji = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">display:inline;float:left;overflow:hidden;width:110px;text-align:left;border:1px solid #f7f3ed;border-bottom:1px solid #ddd;margin:0;padding:5px 0 5px 5px;</style></head><body leftmargin="0"	topmargin="0" style="background-color:transparent"><ul>'.$tongji.'</ul></body></html>';
-	
-	//$tongji = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">ul li{list-style: none;display:inline;float:left;overflow:hidden;width:110px;text-align:left;border:1px solid #f7f3ed;border-bottom:1px solid #ddd;margin:0;padding:5px 0 5px 5px;}</style></head><body leftmargin="0" topmargin="0" style="background-color:transparent;font-size:14px"><ul style="padding:0">'.$tongji.'</ul></body></html>';
-	
-	//$DH_output_file=$DH_input_path.'tongji.html';
-	//dh_file_put_contents($DH_output_file,$tongji);	
-		
-	//$tongjiframe='<iframe allowtransparency="true" src="'.$DH_home_url.'tongji.html" frameBorder="0" scrolling="no" height="390px"></iframe>';
-	
-	//$DH_side_tongji= str_replace("%content%",$tongjiframe,$DH_side_tongji);
-
-
 	//标签
 	$tagsall='';
 	foreach($tags as $key=>$tag)
@@ -144,31 +101,10 @@ function dh_gen_share($lists)
 		//$tagsall.="<a href=\"$DH_index_url$urlcode/1.html\" title=\"共有文章 $tag 篇\" target=\"_blank\">$key</a>";
 		$tagsall.="<a href=\"$DH_index_url$urlcode/1.html\" title=\"标签为的 ".$key." 的文章\" target=\"_blank\">$key</a>";
 	}
-	$DH_side_tags= str_replace("%title%",'标签云',$DH_side_eacht);
-	$DH_side_tags= str_replace("%more%",'',$DH_side_tags);
-	$DH_side_tags= str_replace("%content%",'<ul>'.$tagsall.'</ul>',$DH_side_tags);
-	
-	//友情链接
-	//$DH_side_fl= str_replace("%title%",'友情链接',$DH_side_each);
-	//$DH_side_fl= str_replace("%content%",'',$DH_side_fl);
-	
-	$DH_input_html  = $DH_html_path . 'side_dong.html';
-	$DH_side_dong = dh_file_get_contents($DH_input_html);
-	//$DH_side_dong= str_replace("%tags%",$tagsall,$DH_side_dong);
-	$DH_side_dong= str_replace("%tongji%",$tongji,$DH_side_dong);
-	
-	$DH_output_file=$DH_input_path.'side_dong.html';
-	dh_file_put_contents($DH_output_file,$DH_side_dong);	
-
-	$dongframe='<iframe allowtransparency="true" src="'.$DH_home_url.'side_dong.html" frameBorder="0" scrolling="no" width="255px" height="210px"></iframe>';	
-	
-	$DH_side=$DH_side_ad.$DH_side_hot.$DH_side_pinglun.$DH_side_visitor.$DH_side_tags.$dongframe;	
-	
+	$DH_side= str_replace("%tagcontent%",'<ul>'.$tagsall.'</ul>',$DH_side);
 	$DH_output_file = $DH_share_output_path. 'side.html';
 	dh_file_put_contents($DH_output_file,$DH_side);	
-	echo "gen side success !</br>\n";
-	
-	echo "gen cse success !</br>\n";	
+	echo "gen side success !</br>\n";	
 }
 
 
