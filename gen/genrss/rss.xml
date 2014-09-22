@@ -9,10 +9,10 @@
 	>
 
 <channel>
-	<title>DH博客</title>
+	<title>灯火部落</title>
 	<atom:link href="http://dhblog.org/rss.xml" rel="self" type="application/rss+xml" />
 	<link>http://dhblog.org/</link>
-	<description>DH出品,必属精品</description>
+	<description>建站技术分享</description>
 	<lastBuildDate>%lastBuildDate%</lastBuildDate>
 	<language>zh-CN</language>
 	<sy:updatePeriod>daily</sy:updatePeriod>

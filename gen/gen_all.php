@@ -65,6 +65,7 @@ $DH_output_content = dh_file_get_contents("$DH_input_html");
 $DH_output_content = preg_replace('/<title>.*?<\/title>/s',"<title>$DH_name-$DH_name_des 首页</title>",$DH_output_content);
 $DH_output_content = preg_replace('/<meta name="keywords" content="[^<]+" \/>/s','<meta name="keywords" content="灯火部落,建站技术,编程技术,网络推广" />',$DH_output_content);
 $DH_output_content = preg_replace('/<meta name="description" content="[^<]+" \/>/s','<meta name="description" content="灯火部落(http://dhblog.org)是网站技术和推广SEO等方面的分享。网站内容几乎原创，主要方向有:建站技术,编程技术,网站推广等." />',$DH_output_content);
+$DH_output_content = preg_replace('/<link rel=\'canonical\'.*?\/>/s',"<link rel='canonical' href='http://dhblog.org/index.html'/>",$DH_output_content);
 dh_file_put_contents($DH_output_path."index.html",$DH_output_content);	
 //copy($DH_output_index_path."all/1.html",$DH_output_path."index.html");
 
@@ -334,6 +335,8 @@ function dh_gen_each_list($eachlist,$urlname,$name,$listeach,$content)
 			$caturl = $DH_index_url.$urlname.'/1.html';
 			$content_new =  str_replace("%caturl%",$caturl,$content_new);			
 			$content_new =  str_replace("%page%",$catpage,$content_new);
+			$titleurl = $DH_index_url.$urlname.'/'.$catpage.'.html';
+			$content_new =  str_replace("%titleurl%",$titleurl,$content_new);
 			
 			$DH_output_file = $DH_output_file_dir.$catpage.'.html';
 			dh_file_put_contents($DH_output_file,$content_new);
@@ -353,6 +356,8 @@ function dh_gen_each_list($eachlist,$urlname,$name,$listeach,$content)
 		$caturl = $DH_index_url.$urlname.'/1.html';
 		$content_new =  str_replace("%caturl%",$caturl,$content_new);
 		$content_new =  str_replace("%page%",$catpage,$content_new);
+		$titleurl = $DH_index_url.$urlname.'/'.$catpage.'.html';
+		$content_new =  str_replace("%titleurl%",$titleurl,$content_new);	
 		
 		$DH_output_file = $DH_output_file_dir.$catpage.'.html';
 		dh_file_put_contents($DH_output_file,$content_new);
