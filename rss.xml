@@ -13,7 +13,7 @@
 	<atom:link href="http://dhblog.org/rss.xml" rel="self" type="application/rss+xml" />
 	<link>http://dhblog.org/</link>
 	<description>建站技术分享</description>
-	<lastBuildDate>Mon, 22 Sep 2014 17:10:03 +0800</lastBuildDate>
+	<lastBuildDate>Thu, 25 Sep 2014 09:55:50 +0800</lastBuildDate>
 	<language>zh-CN</language>
 	<sy:updatePeriod>daily</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -21,12 +21,21 @@
 		
 		<item>
 		<title>电影网站稳步增长</title>
-		<link>http://dhblog.org/html/0/72.html</link>
+		<link>http://dhblog.org/html/0/73.html</link>
 		<pubDate>Sat, 20 Sep 2014 00:00:00 +0800</pubDate>
 		<dc:creator>DH</dc:creator>
 		<category><![CDATA[建站技术]]></category>
-		<guid isPermaLink="true">http://dhblog.org/html/0/72.html</guid>
+		<guid isPermaLink="true">http://dhblog.org/html/0/73.html</guid>
 		<description><![CDATA[ 	由于博主是电影爱好者，每次需要下载或在看电影都会到搜索引擎上去找，遇到很多的问题：		1.1 搜索引擎给出的结果不是很好，需要花很多时间去淘汰		1.2 大部分电影网站的缺点是内容不真实、欺骗用户获取流量，广告太多，无法忍受		1.3 电影发布网站有比较 ]]></description>
+		</item>
+		<item>
+		<title>建站常用工具网站一览</title>
+		<link>http://dhblog.org/html/0/72.html</link>
+		<pubDate>Thu, 11 Sep 2014 00:00:00 +0800</pubDate>
+		<dc:creator>DH</dc:creator>
+		<category><![CDATA[建站技术]]></category>
+		<guid isPermaLink="true">http://dhblog.org/html/0/72.html</guid>
+		<description><![CDATA[ 	1.1 字体：	第一字体	1.2 素材：	LogoYes		站长工具	CIKU词库	AlexaCN	Alexa		爱站网	统计：	百度统计	51啦 	CNZZ	量子统计 	站长工具：	百度站长工具	360站长工具	搜狗站长工具	素材：	素材：		多备份	 ]]></description>
 		</item>
 		<item>
 		<title>博客更新缓慢</title>
@@ -90,15 +99,6 @@
 		<category><![CDATA[建站技术]]></category>
 		<guid isPermaLink="true">http://dhblog.org/html/0/65.html</guid>
 		<description><![CDATA[ 1.1 购买域名godday、万网、美橙、空间商提供的 需要50元/年1.2 购买空间blogbus、godday、vps、ramhost、sina app、阿里云等 100元/年 -> 50元/月 -> ？1.3 备案国外空间商无需备案、国内空间商需要， ]]></description>
-		</item>
-		<item>
-		<title>wordpress:wordpress博客我面临的两个问题</title>
-		<link>http://dhblog.org/html/0/64.html</link>
-		<pubDate>Wed, 23 May 2012 07:00:00 +0800</pubDate>
-		<dc:creator>DH</dc:creator>
-		<category><![CDATA[建站技术]]></category>
-		<guid isPermaLink="true">http://dhblog.org/html/0/64.html</guid>
-		<description><![CDATA[ 这个问题很多博主都提过了，wordpress功能越来越多的同时，带来的问题就是臃肿，随着插件和主题的增加，还有文章数据的增多，特别是评论数目的增多，不得不提的就是速度变慢了。这个问题很多博主都提过了，wordpress使用者越来越多的同时，带来的问题就是安 ]]></description>
 		</item>
 	</channel>
 </rss>

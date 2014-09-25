@@ -210,13 +210,37 @@ preg_match_all('/{"post_id":"(.*?)","thread_id":"(.*?)","message":"(.*?)","creat
 		%tab%(4) 多使用第三方提供的服务和插件，比如留言、统计和查询等
 --></_b>
 </_e>
-<_e><_d>2015040900</_d><_T>常用网站备案</_T><_c>建站技术</_c><_t>经验分享</_t><_a>DH</_a>
+<_e><_d>2014091100</_d><_T>建站常用工具网站一览</_T><_c>建站技术</_c><_t>经验分享</_t><_a>DH</_a>
 <_b><!--
 	<h2>1. 素材网站</h2>
-	<h2>1. 网站建设</h2>
-	<h2>2. SEO专题</h2>
-	<h2>2. 监控网站</h2>
-	<h2>2. 技术相关</h2>
-	<h2>2. 优秀博客</h2>
+	<b>1.1 字体：</b></br>
+	<a href="http://www.diyiziti.com/" target="_blank">第一字体</a></br>
+	<b>1.2 素材：</b></br>
+	<a href="http://logoyes.com/" target="_blank">LogoYes</a></br>
+	<h2>3. SEO工具</h2>
+	<a href="http://seo.chinaz.com/" target="_blank">站长工具</a>
+	<a href="http://www.ciku5.com/" target="_blank">CIKU词库</a>
+	<a href="http://www.alexa.cn/" target="_blank">AlexaCN</a>
+	<a href="http://www.alexa.com/" target="_blank">Alexa</a>	
+	<a href="http://www.aizhan.com/" target="_blank">爱站网</a></br>
+	<b>统计：</b></br>
+	<a href="http://tongji.baidu.com/" target="_blank">百度统计</a>
+	<a href="http://www.51.la/" target="_blank">51啦</a> 
+	<a href="http://www.cnzz.com" target="_blank">CNZZ</a>
+	<a href="tongji.linezing.com/" target="_blank">量子统计</a></br> 
+	<b>站长工具：</b></br>
+	<a href="http://dbfen.com" target="_blank">百度站长工具</a>
+	<a href="http://dbfen.com" target="_blank">360站长工具</a>
+	<a href="http://dbfen.com" target="_blank">搜狗站长工具</a></br>
+	<b>素材：</b></br>
+	<b>素材：</b></br>
+	<h2>4. 网站备份</h2>
+	<a href="http://dbfen.com" target="_blank">多备份</a></br>
+	<h2>2. 监控安全</h2>
+	<b>DNS解析：</b>
+	<b>云监控：</b>
+	<b>安全：</b>
+	360云监控：
+	不断更新中...
 --></_b>
 </_e>
