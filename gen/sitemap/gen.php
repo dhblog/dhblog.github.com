@@ -52,14 +52,14 @@ function gen_sitemap($lists)
 //产生百度和google的网站地图
 function gen_xml($date,$cycle,$lists,$pagecount)
 {	
-	global $DH_src_path,$DH_output_path,$DH_home_url,$DH_html_url;
+	global $DH_src_path,$DH_output_path,$DH_home_url,$DH_html_url,$DH_name;
 	$sitemappath=$DH_output_path.'sitemapxml/';
 	if (!file_exists($sitemappath))  
 		mkdir($sitemappath,0777);
 	
 	$timetmp = strtotime($date);
 	$updatetime = date("Y-m-d",$timetmp)."T".date("H:i:s",$timetmp)."+00:00";
-
+	
 	$list_count=count($lists);
 	$times=ceil($list_count/$pagecount);	
 	
@@ -90,7 +90,7 @@ function gen_xml($date,$cycle,$lists,$pagecount)
 		
 		$sitemap_baidu_each = str_replace("%url%",$DH_home_url,$DH_sitemap_baidu_each);		
 		$sitemap_baidu_each = str_replace("%updatetime%",$updatetime,$sitemap_baidu_each);	
-		$title = '二手电影-影视资源导航';	
+		$title = $DH_name;	
 		$sitemap_baidu_each = str_replace("%title%",$title,$sitemap_baidu_each);		
 		$sitemap_baidu_all.=$sitemap_baidu_each;		
 	}
@@ -104,7 +104,9 @@ function gen_xml($date,$cycle,$lists,$pagecount)
 		$pagesindex=$list_count - $i;
 		$htmlpath = output_page_path($DH_html_url,$pagesindex);
 		$sitemap_each = str_replace("%url%",$htmlpath,$DH_sitemap_each);
-		$timetmp = strtotime($key.'00');
+		//$timetmp = strtotime($key.'00');
+		preg_match('/<\_d>(.*?)<\/\_d>/s',$list,$matchd);
+		$timetmp=strtotime(substr($matchd[1],0,8));	
 		$updatetime = date("Y-m-d",$timetmp)."T".date("H:i:s",$timetmp)."+00:00";
 		
 		$sitemap_each = str_replace("%updatetime%",$updatetime,$sitemap_each);
@@ -113,7 +115,7 @@ function gen_xml($date,$cycle,$lists,$pagecount)
 		$sitemap_all.=$sitemap_each;
 				
 		$sitemap_baidu_each = str_replace("%url%",$htmlpath,$DH_sitemap_baidu_each);
-		$updatetime2=date('Y-m-d H:i:s',strtotime($key.'00'));
+		$updatetime2=date('Y-m-d H:i:s',$timetmp);		
 		$sitemap_baidu_each = str_replace("%updatetime%",$updatetime2,$sitemap_baidu_each);	
 		preg_match('/<\_T>(.*?)<\/\_T>/s',$list,$matchT);
 		$sitemap_baidu_each = str_replace("%title%",$matchT[1],$sitemap_baidu_each);		
@@ -169,7 +171,7 @@ function gen_html_num($lists,$pagecount)
 	$liout='';
 	$i=0;
 	$rlists=array_reverse($lists);
-	
+	//print_r($lists);
 	$sitemaphtml='';
 	foreach($rlists as $key=>$list)
 	{
@@ -184,7 +186,9 @@ function gen_html_num($lists,$pagecount)
 		preg_match('/<\_T>(.*?)<\/\_T>/s',$list,$matchT);
 		$pagesindex=$list_count - $i;
 		$htmlpath = output_page_path($DH_html_url,$pagesindex);
-		$updatetime=date('Y-m-d',strtotime($key.'00'));
+		//$updatetime=date('Y-m-d',strtotime($key.'00'));
+		$updatetime=date('Y-m-d',strtotime(substr($key,0,8)));
+		
 		$liout.='<li> '.$i.' ['.$updatetime.']'.$type.'] <a href="'.$htmlpath.'" target="_blank">'.$matchT[1]."</a></li>\n";
 		//如果达到达到要求，开始写文件
 		if($i%$pagecount==0)

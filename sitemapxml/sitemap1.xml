@@ -1,448 +1,448 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="http://127.0.0.1/dhblog/wp-content/plugins/google-sitemap-generator/sitemap.xsl"?>
-<!-- generated-on="2014-09-25T11:31:08+00:00" -->
+<!-- generated-on="2014-09-25T18:30:09+00:00" -->
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>http://dhblog.org/</loc>
-		<lastmod>2014-09-25T11:31:08+00:00</lastmod>
+		<lastmod>2014-09-25T18:30:09+00:00</lastmod>
 		<changefreq>daily</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/72.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2010-12-31T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/71.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-01-09T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/70.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-01-14T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/69.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-01-28T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/68.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-02-08T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/67.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-02-08T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/66.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-02-15T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/65.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-02-16T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/64.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-02-26T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/63.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-03-28T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/62.html</loc>
-		<lastmod>2014-09-25T10:00:00+00:00</lastmod>
+		<lastmod>2011-04-08T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/61.html</loc>
-		<lastmod>2014-09-25T11:00:00+00:00</lastmod>
+		<lastmod>2011-04-18T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/60.html</loc>
-		<lastmod>2014-09-25T12:00:00+00:00</lastmod>
+		<lastmod>2011-05-03T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/59.html</loc>
-		<lastmod>2014-09-25T13:00:00+00:00</lastmod>
+		<lastmod>2011-05-11T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/58.html</loc>
-		<lastmod>2014-09-25T14:00:00+00:00</lastmod>
+		<lastmod>2011-05-16T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/57.html</loc>
-		<lastmod>2014-09-25T15:00:00+00:00</lastmod>
+		<lastmod>2011-05-21T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/56.html</loc>
-		<lastmod>2014-09-25T16:00:00+00:00</lastmod>
+		<lastmod>2011-05-24T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/55.html</loc>
-		<lastmod>2014-09-25T17:00:00+00:00</lastmod>
+		<lastmod>2011-05-27T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/54.html</loc>
-		<lastmod>2014-09-25T18:00:00+00:00</lastmod>
+		<lastmod>2011-05-27T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/53.html</loc>
-		<lastmod>2014-09-25T19:00:00+00:00</lastmod>
+		<lastmod>2011-05-30T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/52.html</loc>
-		<lastmod>2014-09-25T20:00:00+00:00</lastmod>
+		<lastmod>2011-06-02T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/51.html</loc>
-		<lastmod>2014-09-25T21:00:00+00:00</lastmod>
+		<lastmod>2011-06-05T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/50.html</loc>
-		<lastmod>2014-09-25T22:00:00+00:00</lastmod>
+		<lastmod>2011-06-07T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/49.html</loc>
-		<lastmod>2014-09-25T23:00:00+00:00</lastmod>
+		<lastmod>2011-06-10T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/48.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-06-13T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/47.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-06-19T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/46.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-06-22T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/45.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-06-25T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/44.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-06-28T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/43.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-07-01T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/42.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-07-05T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/41.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-07-07T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/40.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-07-11T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/39.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-07-15T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/38.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-07-18T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/37.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-07-21T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/36.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-07-24T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/35.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-08-01T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/34.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-08-08T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/33.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-08-15T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/32.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-08-22T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/31.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-08-29T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/30.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-09-05T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/29.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-09-12T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/28.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-09-19T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/27.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-09-26T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/26.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-10-01T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/25.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-10-08T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/24.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-10-17T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/23.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-10-24T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/22.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-11-07T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/21.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-11-14T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/20.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-11-28T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/19.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-12-13T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/18.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-12-19T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/17.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2011-12-26T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/16.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2012-01-09T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/15.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2012-01-31T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/14.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2012-02-13T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/13.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2012-02-20T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/12.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2012-02-27T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/11.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2012-03-05T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/10.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2012-04-26T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/9.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2012-05-03T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/8.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2012-05-23T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/7.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2012-11-20T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/6.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2013-01-16T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/5.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2014-01-18T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/4.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2014-02-11T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/3.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2014-02-25T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/2.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2014-03-09T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/1.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2014-05-04T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
 	<url>
 		<loc>http://dhblog.org/html/0/0.html</loc>
-		<lastmod>1970-01-01T08:00:00+00:00</lastmod>
+		<lastmod>2014-09-11T00:00:00+00:00</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.2</priority>
 	</url>
