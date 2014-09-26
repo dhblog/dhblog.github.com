@@ -171,7 +171,7 @@ function gen_html_num($lists,$pagecount)
 	$liout='';
 	$i=0;
 	$rlists=array_reverse($lists);
-	//print_r($lists);
+	//print_r($rlists);
 	$sitemaphtml='';
 	foreach($rlists as $key=>$list)
 	{
@@ -186,8 +186,8 @@ function gen_html_num($lists,$pagecount)
 		preg_match('/<\_T>(.*?)<\/\_T>/s',$list,$matchT);
 		$pagesindex=$list_count - $i;
 		$htmlpath = output_page_path($DH_html_url,$pagesindex);
-		//$updatetime=date('Y-m-d',strtotime($key.'00'));
-		$updatetime=date('Y-m-d',strtotime(substr($key,0,8)));
+		preg_match('/<\_d>(.*?)<\/\_d>/s',$list,$matchd);
+		$updatetime=date('Y-m-d',strtotime(substr($matchd[1],0,8)));
 		
 		$liout.='<li> '.$i.' ['.$updatetime.']'.$type.'] <a href="'.$htmlpath.'" target="_blank">'.$matchT[1]."</a></li>\n";
 		//如果达到达到要求，开始写文件
