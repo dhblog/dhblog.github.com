@@ -217,7 +217,7 @@ preg_match_all('/{"post_id":"(.*?)","thread_id":"(.*?)","message":"(.*?)","creat
 	<a href="http://www.diyiziti.com/" target="_blank">第一字体</a></br>
 	<b>1.2 素材：</b></br>
 	<a href="http://logoyes.com/" target="_blank">LogoYes</a></br>
-	<h2>3. SEO工具</h2>
+	<h2>2. SEO工具</h2>
 	<a href="http://seo.chinaz.com/" target="_blank">站长工具</a>
 	<a href="http://www.ciku5.com/" target="_blank">CIKU词库</a>
 	<a href="http://www.alexa.cn/" target="_blank">AlexaCN</a>
@@ -234,13 +234,22 @@ preg_match_all('/{"post_id":"(.*?)","thread_id":"(.*?)","message":"(.*?)","creat
 	<a href="http://dbfen.com" target="_blank">搜狗站长工具</a></br>
 	<b>素材：</b></br>
 	<b>素材：</b></br>
-	<h2>4. 网站备份</h2>
+	<h2>3. 网站备份</h2>
 	<a href="http://dbfen.com" target="_blank">多备份</a></br>
-	<h2>2. 监控安全</h2>
+	<h2>4. 监控安全</h2>
 	<b>DNS解析：</b>
+	<a href="http://dsnpod.com" target="_blank">DSNPOD</a>
+	<a href="http://www.360dns.com/" target="_blank">360dns</a>
+	<a href="http://wangzhan.360.cn/dns/" target="_blank">360网站卫士</a></br>
 	<b>云监控：</b>
 	<b>安全：</b>
 	360云监控：
+	<h2>5. 其他</h2>
+	<b>企业邮箱：</b>
+	<a href="http://ym.163.com" target="_blank">163企业邮箱</a>
+	<a href="http://exmail.qq.com/" target="_blank">qq企业邮箱</a>
+	<a href="http://zoho.com" target="_blank">zoho企业邮箱</a>
+	<a href="https://domains.live.com/" target="_blank">hotmail企业邮箱</a></br>	
 	不断更新中...
 --></_b>
 </_e>
